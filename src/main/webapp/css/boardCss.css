@@ -1,0 +1,50 @@
+@charset "EUC-KR";
+
+body {
+	width: 100%;
+	margin: 0 auto;
+}
+
+#contain{
+	height:1000px;
+}
+
+#log{
+	/* position:fixed; */
+	top:0;
+	left:0;
+	width:100px;
+	height:50px;
+	background-color:rgba(0,0,0,0.7);
+	color:white;
+	text-align:center;
+	line-height:50px;
+}
+
+table{
+	width: 100%;
+	border: 1px solid #333333;
+	border-collapse: collapse;
+	text-align: center;
+}
+
+
+#boardContent{
+	width: 80%;
+	height: 400px;
+	overflow: auto;
+	overflow-x: hidden;
+	margin: auto;
+}
+
+#board > tr, td {
+	border: 1px solid #333333;
+}
+
+.menuBar {
+	padding-top: 2%;
+	width: 80%;
+	margin: auto;
+	text-align: right;
+}
+
