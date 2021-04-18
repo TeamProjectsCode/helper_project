@@ -1,0 +1,184 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="EUC-KR">
+ <link rel="stylesheet" href="header,nav,foot.css"  type="text/css" />
+<title>Document</title>
+
+<style>
+.box {
+	border: 3px solid #71a2fc;;
+	width: auto;
+	height: 700px;
+	margin: 10px;
+	margin-top: 100px;
+	display: flex;
+	text-align: center;
+}
+
+.mainbox {
+	border: 1px solid #71a2fc;
+	margin: 20px;
+	height: 590px;
+	width: auto;
+	padding: 20px;
+	margin-left: 200px;
+}
+
+.leftbox {
+	margin: 20px;
+	width: 150px;
+	height: 590px;
+	padding: 20px;
+	float: left;
+	line-height: 200%;
+}
+
+.leftbox h3 {
+	border: 3px solid #71a2fc;;
+	vertical-align: middle;
+	text-align: center;
+	height: 40px;
+	width: auto;
+	margin: 10px;
+}
+
+button {
+	background: #71a2fc;
+	color: #fff;
+	border: none;
+	position: relative;
+	width: 130px;
+	height: 60px;
+	font-size: 1.0em;
+	padding: 0 10px;
+	cursor: pointer;
+	transition: 800ms ease all;
+	outline: none;
+	margin: 10px;
+	margin-top: 30px;
+}
+
+button:hover {
+	background: #fff;
+	color: #71a2fc;;
+}
+
+button:before, button:after {
+	content: '';
+	position: absolute;
+	top: 0;
+	right: 0;
+	height: 2px;
+	width: 0;
+	background: #71a2fc;;
+	transition: 400ms ease all;
+}
+
+button:after {
+	right: inherit;
+	top: inherit;
+	left: 0;
+	bottom: 0;
+}
+
+button:hover:before, button:hover:after {
+	width: 100%;
+	transition: 800ms ease all;
+}
+
+h1 {
+	text-align: center;
+}
+
+legend {
+	background-color: #71a2fc;
+	color: #fff;
+	padding: 3px 6px;
+}
+
+h1 {
+	text-align: center;
+}
+
+table {
+	margin-left: 50px;
+	margin-top: 70px;
+	border: 1px solid #71a2fc;
+}
+
+td {
+	border: 1px solid #71a2fc;
+}
+</style>
+</head>
+<body>
+	<header>
+		<div class="hbox">
+			<a href="#" class="text1">로그인</a> <a href="#" class="text1">회원가입</a>
+			<a href="#" class="text1">고객센터</a>
+		</div>
+	</header>
+	<nav>
+		<div class="nbox">
+			<a href="#" class="text2">홈</a> <a href="#" class="text2">로그인</a> <a
+				href="#" class="text2">마이페이지</a> <a href="#" class="text2">구인게시판</a>
+			<a href="#" class="text2">포인트 상점</a>
+		</div>
+	</nav>
+	<section>
+		<form>
+			<div class="top"></div>
+			<div class="mid"></div>
+			<div class="box">
+				<div class="leftbox">
+					<h3>My page</h3>
+					<button type="button"
+						onclick="location.href='MyPage_pix_impor.jsp'">회원정보 수정</button>
+					<br>
+					<button type="button" onclick="location.href='MyPage_MyWrite.jsp'">내가
+						쓴글</button>
+					<br>
+					<button type="button" onclick="location.href='#'">지원현황</button>
+					<br>
+					<button type="button" onclick="location.href='#'">스크렙</button>
+					<br>
+					<button type="button" onclick="location.href='Mypage_license.jsp'">자격증
+						및 경력</button>
+				</div>
+				<div class="mainbox">
+					<h1>등록한 글 목록</h1>
+					<table>
+						<tr style="height: 50px;">
+							<td>날짜</td>
+							<td style="width: 500px;">글 제목1</td>
+							<td><input type="submit" value="수정"></td>
+							<td><input type="submit" value="삭제"></td>
+						</tr>
+						<tr style="height: 50px;">
+							<td>날짜</td>
+							<td style="width: 500px;">글 제목2</td>
+							<td><input type="submit" value="수정"></td>
+							<td><input type="submit" value="삭제"></td>
+						</tr>
+						<tr style="height: 50px;">
+							<td>날짜</td>
+							<td style="width: 500px;">글 제목3</td>
+							<td><input type="submit" value="수정"></td>
+							<td><input type="submit" value="삭제"></td>
+						</tr>
+					</table>
+				</div>
+			</div>
+		</form>
+	</section>
+	<div class="footer">
+		<div class="fot"></div>
+		| <a href="#">이용약관</a> | <a href="#">개인정보취급방침</a> | <a href="#">사이트맵</a>
+		|
+		<p>Copyright ⓒ 2013 welcome365.tistory.All Rights Reserved</p>
+	</div>
+
+</body>
+</html>
