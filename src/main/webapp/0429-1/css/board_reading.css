@@ -76,6 +76,7 @@ textarea {
     display: flex;
     background: #1f1f1f;
     padding:30px;
+    margin-top: 50px;
   }
  #f_img{
       width: 100px;
@@ -90,7 +91,7 @@ textarea {
     flex:9;
     color: #fff;
   }
-.nav {
+.section {
   margin-top: 10px;
   border: 2px solid #3E3DB0;
   border-radius: 10px;

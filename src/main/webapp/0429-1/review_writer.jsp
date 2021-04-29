@@ -4,7 +4,7 @@
 <html>
   <head>
     <meta charset="EUC-KR" />
-    <link rel="stylesheet" href="review_writer.css" type="text/css" />
+    <link rel="stylesheet" href="css/review_writer.css" type="text/css" />
     <title>Insert title here</title>
     <script type="text/javascript" src="script.js" charset="utf-8"></script>
   </head>
@@ -15,7 +15,7 @@
               <h1>
                 <a href="#">
                 <img
-                    src="../images/logo11.png"
+                    src="images/logo11.png"
                     alt="home"
                     width="200"
                     height="100"/></a>
@@ -33,7 +33,7 @@
           </header>
       <form action="" method="POST">
         <h1>후기작성</h1>
-        <div class="nav">
+        <div class="section">
           <ul>
             <div class="title">
               <h3>제목 &nbsp;&nbsp;&nbsp;<input type="text" name="title" /></h3>
@@ -57,7 +57,7 @@
         </div>
       </form>
       <div class="footer">
-            <div class="f_img"><img src="../images/footer.png" id="f_img"></div>
+            <div class="f_img"><img src="images/footer.png" id="f_img"></div>
             <div>
               Green.co <br>
               Addr. 부산시 가나다동 가나다라구 2로 1234 <br>

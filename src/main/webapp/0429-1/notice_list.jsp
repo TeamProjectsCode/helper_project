@@ -4,7 +4,7 @@
 <html>
   <head>
     <meta charset="EUC-KR" />
-    <link rel="stylesheet" href="notice_list.css" type="text/css" />
+    <link rel="stylesheet" href="css/notice.css" type="text/css" />
     <title>Insert title here</title>
     <script type="text/javascript" src="script.js" charset="utf-8"></script>
   </head>
@@ -15,7 +15,7 @@
               <h1>
                 <a href="#">
                 <img
-                    src="../images/logo11.png"
+                    src="images/logo11.png"
                     alt="home"
                     width="200"
                     height="100"/></a>
@@ -31,104 +31,81 @@
               </ul>
             </div>
           </header>
-      <form action="" method="POST">
+      <form>
         <h1>공지 사항</h1>
-        <div class="nav">
-          <ul>
-            <div class="select_bar">
-              <h3>
-              검색 <input type= "text" value=""> &nbsp; &nbsp;
-              </h3>
-            </ul>
-
-            <div class="list"  style="overflow: auto; height: 400px">
+        <div class="section">
+        <div class = "serch">
+              <h3>검색 <input type= "text" value=""> &nbsp; &nbsp;</h3>
+        </div>
+            <div class="list" style="overflow: auto; height: 400px">
                 <table>
                     <tr>
                         <td style="width: 500px;"><a href="#">[필독사항] 홈페이지 업데이트 예정</a></td>
-                        <td class="time">21/04/27</td>
-                        <td class="hit">조회수 : 00 </td>
+                        <td>21/04/27</td>
+                        <td>조회수 : 00 </td>
                       
                     </tr>
                     <tr>
                         <td style="width: 500px;"><a href="#">[필독사항] 욕설 유저 가만 안둠</a></td>
-                        <td class="time">21/04/27</td>
-                        <td class="hit">조회수 : 00 </td>
+                        <td>21/04/27</td>
+                        <td>조회수 : 00 </td>
                         
                     </tr>
                     <tr>
                         <td style="width: 500px;"><a href="#">[필독사항] 사기 먹튀 유저는 경찰서에 갈 수 있습니다.</a></td>
-                        <td class="time">21/04/27</td>
-                        <td class="hit">조회수 : 00 </td>
+                        <td>21/04/27</td>
+                        <td>조회수 : 00 </td>
                  
                     </tr>
                     <tr>
                         <td style="width: 500px;"><a href="#">[이벤트] 추첨을 통해 ...</a></td>
                         <td class="time">21/04/27</td>
                         <td class="hit">조회수 : 00 </td>
-                   
+                    <tr>
+                        <td><a href="#">제목</a></td>
+                        <td>21/04/27</td>
+                        <td>조회수 : 00 </td>
                     </tr>
                     <tr>
-                        <td style="width: 500px;"><a href="#">제목</a></td>
-                        <td class="time">21/04/27</td>
-                        <td class="hit">조회수 : 00 </td>
-                       
+                        <td><a href="#">제목</a></td>
+                        <td>21/04/27</td>
+                        <td>조회수 : 00 </td>
                     </tr>
                     <tr>
-                        <td style="width: 500px;"><a href="#">제목</a></td>
-                        <td class="time">21/04/27</td>
-                        <td class="hit">조회수 : 00 </td>
-                      
+                        <td><a href="#">제목</a></td>
+                        <td>21/04/27</td>
+                        <td>조회수 : 00 </td>
                     </tr>
                     <tr>
-                        <td style="width: 500px;"><a href="#">제목</a></td>
-                        <td class="time">21/04/27</td>
-                        <td class="hit">조회수 : 00 </td>
-                      
+                        <td><a href="#">제목</a></td>
+                        <td>21/04/27</td>
+                        <td>조회수 : 00 </td>
                     </tr>
                     <tr>
-                        <td style="width: 500px;"><a href="#">제목</a></td>
-                        <td class="time">21/04/27</td>
-                        <td class="hit">조회수 : 00 </td>
-                       
-                    </tr>
+                        <td><a href="#">제목</a></td>
+                        <td>21/04/27</td>
+                        <td>조회수 : 00 </td>
+                    </tr>          
                     <tr>
-                        <td style="width: 500px;"><a href="#">제목</a></td>
-                        <td class="time">21/04/27</td>
-                        <td class="hit">조회수 : 00 </td>
-                      
-                    </tr>
+                        <td><a href="#">제목</a></td>
+                        <td>21/04/27</td>
+                        <td>조회수 : 00 </td>
+                    </tr>          
                     <tr>
-                        <td style="width: 500px;"><a href="#">제목</a></td>
-                        <td class="time">21/04/27</td>
-                        <td class="hit">조회수 : 00 </td>
-                        
-                    </tr>
-                    <tr>
-                        <td style="width: 500px;"><a href="#">제목</a></td>
-                        <td class="time">21/04/27</td>
-                        <td class="hit">조회수 : 00 </td>
-                     
-                    </tr>
-                 
-                  
+                        <td><a href="#">제목</a></td>
+                        <td>21/04/27</td>
+                        <td>조회수 : 00 </td>
+                    </tr>          
                 </table>
             </div>
-            <div class="page">
-                <a href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#">6</a>
-                <a href="#">7</a>
-                <a href="#">8</a>
-                <a href="#">9</a>
-            </div>
-        </div>
+            <div class="button">
+				<button type="submit" onclick="">뒤로가기</button>
+			</div>
         </div>
       </form>
+      <div class ="space"></div>
       <div class="footer">
-            <div class="f_img"><img src="../images/footer.png" id="f_img"></div>
+            <div class="f_img"><img src="images/footer.png" id="f_img"></div>
             <div>
               Green.co <br>
               Addr. 부산시 가나다동 가나다라구 2로 1234 <br>

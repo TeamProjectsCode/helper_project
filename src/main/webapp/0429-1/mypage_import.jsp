@@ -1,13 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-	pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<link rel="stylesheet" href="myImpo.css"  type="text/css" />
-<title>Document</title>
+<link rel="stylesheet" href="css/mypage_import.css" />
+<title>경력사항</title>
 </head>
-
 <body>
     <div class="total">
        <header class="header">
@@ -15,7 +14,7 @@
               <h1>
                 <a href="#">
                 <img
-                    src="../images/logo11.png"
+                    src="images/logo11.png"
                     alt="home"
                     width="200"
                     height="100"/></a>
@@ -31,20 +30,19 @@
               </ul>
             </div>
           </header>
-<main>
 	<form>
-		<div class="box">
+		<div class="section">
 			<div class="leftbox">
-				<h3>My page</h3>
-				<button type="button" onclick="location.href='MyPage_pix_impor.jsp'">회원정보 수정</button>
+			<h3>My page</h3>
+				<button type="button" onclick="location.href='mypage_import.jsp'">회원정보 수정</button>
 				<br>
-				<button type="button" onclick="location.href='MyPage_MyWrite.jsp'">내가 쓴글</button>
+				<button type="button" onclick="location.href='mypage_myWrite.jsp'">내가 쓴글</button>
 				<br>
 				<button type="button" onclick="location.href='#'">지원현황</button>
 				<br>
 				<button type="button" onclick="location.href='#'">스크랩</button>
 				<br>
-				<button type="button" onclick="location.href='Mypage_license.jsp'">자격증 및 경력</button>
+				<button type="button" onclick="location.href='mypage_license1.jsp'">자격증 및 경력</button>
 			</div>
 			<div class="mainbox">
 				<h1>회원 정보 변경</h1>
@@ -87,19 +85,17 @@
 						<td class="title">*전화번호</td>
 						<td><input type="text" style="width: auto"></td>
 					</tr>
-					<tr>
-						<td><input type="submit" value="수정 완료"></td>
-						<td><input type="submit" value="회원 탈퇴"></td>
-					</tr>
 				</table>
+					<div class="button">
+					<button type="submit" onclick="">완 료</button>
+					<span><button type="reset">다시쓰기</button></span>
+					</div>
 			</div>
 		</div>
 	</form>
-</main>
-<div class="clear"></div>
 <div class="clear"></div>
     <div class="footer">
-            <div class="f_img"><img src="../images/footer.png" id="f_img"></div>
+            <div class="f_img"><img src="images/footer.png" id="f_img"></div>
             <div>
               Green.co <br>
               Addr. 부산시 가나다동 가나다라구 2로 1234 <br>

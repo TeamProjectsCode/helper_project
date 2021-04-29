@@ -4,17 +4,18 @@
 <html>
   <head>
     <meta charset="EUC-KR" />
-    <link rel="stylesheet" href="review_list.css" type="text/css" />
+    <link rel="stylesheet" href="css/review_list.css" type="text/css" />
     <title>Insert title here</title>
     <script type="text/javascript" src="script.js" charset="utf-8"></script>
   </head>
- <body>
+  <body>
     <div class="total">
-      <div class="header_logo">
+     <header class="header">
+            <div class="header_logo">
               <h1>
                 <a href="#">
                 <img
-                    src="../images/logo11.png"
+                    src="images/logo11.png"
                     alt="home"
                     width="200"
                     height="100"/></a>
@@ -30,13 +31,14 @@
               </ul>
             </div>
           </header>
-      <form action="" method="POST">
+      <form action=""method="POST" >
         <h1>후기 게시판</h1>
-        <div class="nav">
+        <div class="section">
+        <div class="serch">
+                <a href="review_writer.jsp"><h4>글쓰기</h4></a>
           <ul>
-            <div class="select_bar">
               <h3>
-              검색 <input type= "text" value=""> &nbsp; &nbsp;
+             	 검색 <input type= "text" value=""> &nbsp; &nbsp;
                 <select>
                   <option value="local">전체</option>
                   <option value="local">서울</option>
@@ -44,14 +46,13 @@
                   <option value="local">대구</option>
                   <option value="local">대전</option>
                 </select>&nbsp; &nbsp;
-           <select>
+           			<select>
                     <option value="">인기글</option>
                     <option value="">최신글</option>
                   </select>&nbsp; &nbsp;
-                <a href="review_writer.jsp" class="write">글쓰기</a>
               </h3>
             </ul>
-
+        </div>
             <div class="list"  style="overflow: auto; height: 400px">
                 <table>
                     <tr>
@@ -119,27 +120,18 @@
                         <td class="time">21/04/27</td>
                         <td class="hit">조회수 : 00 </td>
                         <td><input type="button" value="신고"></td>
-                    </tr>
-                 
-                  
+                    </tr>                               
                 </table>
             </div>
-            <div class="page">
-                <a href="#">1</a>
-                <a href="#">2</a>
-                <a href="#">3</a>
-                <a href="#">4</a>
-                <a href="#">5</a>
-                <a href="#">6</a>
-                <a href="#">7</a>
-                <a href="#">8</a>
-                <a href="#">9</a>
-            </div>
         </div>
+         <div class="button">
+				<button type="submit" onclick="">뒤로가기</button>
+			</div>
         </div>
+         <div class ="space"></div>
       </form>
      <div class="footer">
-            <div class="f_img"><img src="../images/footer.png" id="f_img"></div>
+            <div class="f_img"><img src="images/footer.png" id="f_img"></div>
             <div>
               Green.co <br>
               Addr. 부산시 가나다동 가나다라구 2로 1234 <br>

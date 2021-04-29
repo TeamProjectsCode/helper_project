@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-    <link rel="stylesheet" type="text/css" href="login.css" />
+    <link rel="stylesheet" type="text/css" href="css/login.css" />
     <title>Document</title>
 </head>
 <body>
@@ -12,7 +12,7 @@
             <header class="header">
                 <div class="header_logo">
                     <h1>
-                        <a href="#"> <img src="../images/logo11.png" alt="home"
+                        <a href="#"> <img src="images/logo11.png" alt="home"
                             width="200" height="100" /></a>
                     </h1>
                 </div>
@@ -26,29 +26,27 @@
                     </ul>
                 </div>
             </header>
-            <section>
-                <div>
-                    <form action="index.html" method="post" class="loginForm">
-                        <h1>Login</h1>
-                        <div class="idForm">
-                            <input type="text" class="id" placeholder="ID">
-                        </div>
-                        <div class="passForm">
-                            <input type="password" class="pw" placeholder="PW">
-                        </div>
-                        <button type="button" class="btn">로그인</button>
-                        <button type="button" class="btn">계정이 없으신가요? 가입하기</button>
-    
-                        <div class="bottomText">
-                            <a href="#">비밀번호를 잊으셨나요?</a>
-                        </div>
-                    </form>
-                </div>
-            </section>
+      <form action="index.html" method="post">
+			<div class="loginForm">
+				<h1>Login</h1>
+				<div class="idForm">
+					<input type="text" class="id" placeholder="ID">
+				</div>
+				<div class="passForm">
+					<input type="password" class="pw" placeholder="PW">
+				</div>
+				<button type="button" class="btn">로그인</button>
+				<button type="button" class="btn">계정이 없으신가요? 가입하기</button>
+
+				<div class="bottomText">
+					<a href="#">비밀번호를 잊으셨나요?</a>
+				</div>
+			</div>
+		</form>
             <div class="clear"></div>
             <div class="footer">
                 <div class="f_img">
-                    <img src="../images/footer.png" id="f_img"></div>
+                    <img src="images/footer.png" id="f_img"></div>
                    <div class="f_info"> Green.co <br> Addr. 부산시 가나다동 가나다라구 2로 1234 <br> 010 - 123
                     -1234 <br> COPYRIGHT 2019. TAMO. ALL RIGHT RESERVED.</div>
             </div>

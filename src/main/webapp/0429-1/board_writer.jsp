@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-<link rel="stylesheet" href="writer.css" type="text/css" />
+<link rel="stylesheet" href="css/board_writer.css" type="text/css" />
 <title>Insert title here</title>
 <script type="text/javascript" src="script.js" charset="utf-8"></script>
 </head>
@@ -13,7 +13,7 @@
 		<header class="header">
 			<div class="header_logo">
 				<h1>
-					<a href="#"> <img src="../images/logo11.png" alt="home"
+					<a href="#"> <img src="images/logo11.png" alt="home"
 						width="200" height="100" /></a>
 				</h1>
 			</div>
@@ -28,30 +28,25 @@
 			</div>
 		</header>
 		<form action="" method="POST">
-			<fieldset class="title">
+		<div class = "section">
+			<div class="title">
 				<ul>
 					<h3>
 						제목 &nbsp;&nbsp;&nbsp;<input type="text" name="title">
 					</h3>
 				</ul>
-			</fieldset>
-			<fieldset class="date">
+			</div>
+			<div class="import">
 				<ul>
-					<h3>공고기간</h3>
+					<h3>공고 내용</h3>
+					<br>
 				</ul>
 				<ul>
-					<input type="date">&nbsp;~&nbsp;
-					<input type="date">
+					<h4>기간 &nbsp; &nbsp;<input type="date"></h4>
 				</ul>
-			</fieldset>
-			<fieldset class="detail">
-				<ul>
-					<h3>상세공고</h3>
-				</ul>
-				<hr>
 				<ul>
 					<h4>
-						하는 일 &nbsp;&nbsp;&nbsp; <select>
+						카테고리 &nbsp;&nbsp;&nbsp; <select>
 							<option value="job">가사도우미</option>
 							<option value="job">청소도우미</option>
 							<option value="job">등하원도우미</option>
@@ -106,16 +101,17 @@
 					<h4>상세</h4>
 					<textarea cols="50" rows="10"></textarea>
 				</ul>
-			</fieldset>
-			<fieldset class="btn">
+			</div>
+			<div class="button">
 				<button type="submit" onclick="">신청하기</button>
 				<span><button type="reset">다시쓰기</button></span>
-			</fieldset>
+			</div>
+		</div>
 		</form>
-		<div class="clear"></div>
+		<div calss = "space"></div>
 		<div class="footer">
 			<div class="f_img">
-				<img src="../images/footer.png" id="f_img">
+				<img src="images/footer.png" id="f_img">
 			</div>
 			<div>
 				Green.co <br> Addr. 부산시 가나다동 가나다라구 2로 1234 <br> 010 - 123

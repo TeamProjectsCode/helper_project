@@ -61,7 +61,7 @@ button {
   height: 2.5rem;
   border: 1px;
   border-radius: 12px;
-  background-color: #9dcdd7;
+  background-color: #FFCC79;
 }
 span {
   float: right;
@@ -69,21 +69,22 @@ span {
 textarea {
   margin-top: 10px;
 }
-
-.nav {
+.section {
   margin-top: 10px;
-  border: 2px solid #9dcdd7;
+  border: 2px solid #3E3DB0;
   border-radius: 10px;
 }
-.select_bar {
+.serch {
   padding: 30px;
-  border-bottom: 2px solid #9dcdd7;
+  border-bottom: 2px solid #3E3DB0;
 }
 .botton {
   margin: 10px;
 }
 .list {
-  margin: 30px;
+	margin-left:50px;
+    margin: 30px;
+    padding: 30px;
 }
 .list table tr {
   margin-bottom: 10px;
@@ -95,18 +96,15 @@ textarea {
 .hit {
   font-size: 12px;
 }
-.page {
-  margin: 30px;
+.serch a{
+	float: right;
+	margin-right:30px;
 }
-.page a {
-  padding: 20px;
+.button {
+  float:right;
 }
-.write {
-  float: right;
-  margin-right: 40px;
-}
-.time {
-  font-size: 12px;
+.space{
+	height:100px;
 }
 .footer{
     display: flex;

@@ -24,6 +24,7 @@ ul {
   box-sizing: border-box;
   margin-bottom: 40px;
   background-image: url("../images/headerr.png");
+   
   /*border-bottom: 0px solid #999;*/
 }
 .header_logo h1 a {
@@ -40,9 +41,9 @@ ul {
   display: inline-block;
 }
 .header_gnb ul a {
-  display: block;
+  display: flex;
   font-family: "S-CoreDream-4Regular", sans-serif;
-  color: #6b6c6f;
+  color: white;
   margin: 0px 16px;
   letter-spacing: 1px;
 }
@@ -62,7 +63,7 @@ button {
   height: 2.5rem;
   border: 1px;
   border-radius: 12px;
-  background-color: #FFCC79;
+  background-color:#FFCC79;
 }
 span {
   float: right;
@@ -74,6 +75,7 @@ textarea {
     display: flex;
     background: #1f1f1f;
     padding:30px;
+    margin-top: 50px;
   }
  #f_img{
       width: 100px;
@@ -97,7 +99,7 @@ textarea {
   padding: 30px;
   border-bottom: 2px solid #3E3DB0;
 }
-.select_bar {
+.local {
   padding: 30px;
   border-bottom: 2px solid #3E3DB0;
 }
@@ -106,6 +108,17 @@ textarea {
   margin-left: 30px;
   margin-bottom: 20px;
 }
-.botton {
-  margin: 10px;
+.button {
+  float:right;
 }
+.space{
+	height:100px;
+}
+.serch{
+  padding: 30px;
+  border-bottom: 1px solid #3E3DB0;
+}
+.list table tr td{
+	padding: 10px;
+}
+
