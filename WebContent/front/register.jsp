@@ -28,7 +28,7 @@
 			</div>
 		</header>
 		<section id="contents">
-			<form action="#" class="sign-up-form">
+			<form action="#" class="sign-up-form" id="form" name="form" method="post">
 				<div class="main">
 					<div class="title">
 						<h1>회원가입</h1>
@@ -88,6 +88,21 @@
 							<td><input type="email" placeholder="이메일" name="email1"></td>
 						</tr>
 
+						<!-- 주소 입력 넣을 부분 -->
+						<script type="text/javascript" src="juso.js" ></script> 
+						<tr>
+							<th>주소</th>
+							<tr>
+								<td>도로명주소</td>
+								<td><input type="text"  style="width:500px;" id="roadAddrPart1"  name="roadAddrPart1" /></td>
+							</tr>
+							<tr>
+								<td>고객입력 상세주소</td>
+								<td><input type="text"  style="width:500px;" id="addrDetail"  name="addrDetail" /></td>
+							</tr>
+							<td colspan="2"><input type="button" onClick="goPopup();" value="팝업_domainChk"/></td>
+						</tr>
+						
 						<tr>
 							<th><input type="submit" class="btn" value="신청하기"
 								onclick="location.href='#'"></th>
