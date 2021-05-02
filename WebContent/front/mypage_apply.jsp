@@ -34,9 +34,9 @@
 			<div class="box">
 				<div class="leftbox">
 					<h3>My page</h3>
-                    <button type="button" onclick="location.href='MyPage_pix_impor.jsp'">회원정보 수정</button>
+                    <button type="button" onclick="location.href='mypage_import.jsp'">회원정보 수정</button>
                     <br>
-                    <button type="button" onclick="location.href='MyPage_MyWrite.jsp'">내가 쓴글</button>
+                    <button type="button" onclick="location.href='mypage_myWrite.jsp'">내가 쓴글</button>
                     <br>
                     <button type="button" onclick="location.href='mypage_apply.jsp'">지원현황</button>
                     <br>
@@ -44,7 +44,7 @@
                     <br>
                     <button type="button" onclick="location.href='mypageLike.jsp'">스크랩</button>
                     <br>
-                    <button type="button" onclick="location.href='my_license1.jsp'">자격증 및 경력</button>
+                    <button type="button" onclick="location.href='mypage_license1.jsp'">자격증 및 경력</button>
 				</div>
 					
 					<p>&nbsp;&nbsp;</p>
