@@ -20,14 +20,14 @@
 			<div class="header_gnb">
 				<ul>
 					<li><a href="main.jsp">HOME</a></li>
-					<li><a href="#">구인게시판</a></li>
+					<li><a href="board_list.jsp">구인게시판</a></li>
 					<li><a href="shop.jsp">포인트상점</a></li>
 					<li><a href="mypage_import.jsp">마이페이지</a></li>
 					<li><a href="login.jsp">LOGIN</a></li>
 				</ul>
 			</div>
 		</header>
-
+<div class = "space"></div>
 		<div class="product_view">
 			<h2>[정관장]정관장 디지털 상품권 (3만원권)</h2>
 			<table>

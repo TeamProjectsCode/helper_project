@@ -75,10 +75,6 @@ table{
 table tr th{
   padding: 10px;
 }
-
-.input-field{
-	position: absolute;
-}
 .btn{ 
   width: 150px;
   background-color: #AACFD0;
@@ -104,11 +100,6 @@ table, td, th {
     display: flex;
     background: #1f1f1f;
     padding:30px;
-    margin-top: 50px;
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
   }
  #f_img{
       width: 100px;
@@ -125,4 +116,8 @@ table, td, th {
   }
   .clear{
   height: 100px;
+  }
+  .title{
+  margin-top:100px;
+  text-align : center;
   }

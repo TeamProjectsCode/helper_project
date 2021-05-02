@@ -15,9 +15,9 @@
 						<input type="search" placeholder="search"> <span>검색</span>
 					</form>
 				</div>
-				<ul class="nav">
+				<ul class = "nav">
 					<li><a href="main.jsp">HOME</a></li>
-					<li><a href="#">구인게시판</a></li>
+					<li><a href="board_list.jsp">구인게시판</a></li>
 					<li><a href="shop.jsp">포인트상점</a></li>
 					<li><a href="mypage_import.jsp">마이페이지</a></li>
 					<li><a href="login.jsp">LOGIN</a></li>

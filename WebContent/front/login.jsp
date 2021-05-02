@@ -17,15 +17,16 @@
                     </h1>
                 </div>
                 <div class="header_gnb">
-                    <ul>
-                        <li><a href="main.jsp">홈</a></li>
-						<li><a href="#">구인게시판</a></li>
-						<li><a href="shop.jsp">포인트상점</a></li>
-						<li><a href="mypage_import.jsp">마이페이지</a></li>
-						<li><a href="login.jsp">로그인</a></li>
-                    </ul>
+                  <ul>
+					<li><a href="main.jsp">HOME</a></li>
+					<li><a href="board_list.jsp">구인게시판</a></li>
+					<li><a href="shop.jsp">포인트상점</a></li>
+					<li><a href="mypage_import.jsp">마이페이지</a></li>
+					<li><a href="login.jsp">LOGIN</a></li>
+				</ul>
                 </div>
             </header>
+            <div class = "space"></div>
       <form action="index.html" method="post">
 			<div class="loginForm">
 				<h1>Login</h1>

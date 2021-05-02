@@ -20,14 +20,13 @@
 			<div class="header_gnb">
 				<ul>
 					<li><a href="main.jsp">HOME</a></li>
-					<li><a href="#">구인게시판</a></li>
+					<li><a href="board_list.jsp">구인게시판</a></li>
 					<li><a href="shop.jsp">포인트상점</a></li>
 					<li><a href="mypage_import.jsp">마이페이지</a></li>
 					<li><a href="login.jsp">LOGIN</a></li>
 				</ul>
 			</div>
 		</header>
-		<section id="contents">
 			<form action="#" class="sign-up-form" id="form" name="form" method="post">
 				<div class="main">
 					<div class="title">
@@ -93,14 +92,14 @@
 						<tr>
 							<th>주소</th>
 							<tr>
-								<td>도로명주소</td>
+								<th>도로명주소</th>
 								<td><input type="text"  style="width:500px;" id="roadAddrPart1"  name="roadAddrPart1" /></td>
 							</tr>
 							<tr>
-								<td>고객입력 상세주소</td>
+								<th>고객입력 상세주소</th>
 								<td><input type="text"  style="width:500px;" id="addrDetail"  name="addrDetail" /></td>
-							</tr>
 							<td colspan="2"><input type="button" onClick="goPopup();" value="팝업_domainChk"/></td>
+							</tr>
 						</tr>
 						
 						<tr>
@@ -112,7 +111,7 @@
 					</table>
 				</div>
 			</form>
-		</section>
+	
 		<div class="clear"></div>
 		<div class="footer">
 			<div class="f_img">

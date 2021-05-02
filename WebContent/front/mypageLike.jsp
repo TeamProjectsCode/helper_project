@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
- <link rel="stylesheet" href="css/myWrite.css"  type="text/css" />
+ <link rel="stylesheet" href="css/mypage_like.css"  type="text/css" />
 <title>Document</title>
 
 </head>
@@ -19,13 +19,12 @@
         </div>
         <div class="header_gnb">
             <ul>
-	             <li><a href="main.jsp">홈</a></li>
-		         <li><a href="#">구인게시판</a></li>
-		         <li><a href="shop.jsp">포인트상점</a></li>
-		         <li><a href="mypage_apply.jsp">마이페이지</a></li>
-		         <li><a href="login.jsp">로그인</a></li>
-  
-            </ul>
+					<li><a href="main.jsp">HOME</a></li>
+					<li><a href="board_list.jsp">구인게시판</a></li>
+					<li><a href="shop.jsp">포인트상점</a></li>
+					<li><a href="mypage_import.jsp">마이페이지</a></li>
+					<li><a href="login.jsp">LOGIN</a></li>
+				</ul>
         </div>
     </header>
 	<section>
@@ -72,21 +71,16 @@
 		</form>
 	</section>
 	<div class="clear"></div>
-     <footer>
-        <div id="footer_box">
-            <div id="footer_logo">
-                <img src="images/footer.png" width="100" height="100">
-            </div>
-            <div id="address">
-                <ul>
-                   <li>Green.co</li>
-                        <li>Addr. 부산시 가나다동 가나다라구 2로 1234</li>
-                        <li>010 - 123 - 1234</li>
-                        <li>© COPYRIGHT 2019. TAMO. ALL RIGHT RESERVED.</li>
-                </ul>
-            </div>
-        </div>
-</footer>
+		<div class="footer">
+			<div class="f_img">
+				<img src="images/footer.png" id="f_img">
+			</div>
+			<div>
+				Green.co <br> Addr. 부산시 가나다동 가나다라구 2로 1234 <br> 010 - 123
+				-1234 <br> COPYRIGHT 2019. TAMO. ALL RIGHT RESERVED.
+			</div>
+		</div>
+
 </div>
 </body>
 </html>
