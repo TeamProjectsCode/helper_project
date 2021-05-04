@@ -18,11 +18,11 @@
 			</div>
 			<div class="header_gnb">
 				<ul>
-					<li><a href="main.jsp">홈</a></li>
-		            <li><a href="#">구인게시판</a></li>
-		            <li><a href="shop.jsp">포인트상점</a></li>
-		            <li><a href="mypage_apply.jsp">마이페이지</a></li>
-		            <li><a href="login.jsp">로그인</a></li>
+					<li><a href="main.jsp">HOME</a></li>
+					<li><a href="board_list.jsp">구인게시판</a></li>
+					<li><a href="shop.jsp">포인트상점</a></li>
+					<li><a href="mypage_import.jsp">마이페이지</a></li>
+					<li><a href="login.jsp">LOGIN</a></li>
 				</ul>
 			</div>
 		</header>
@@ -30,17 +30,17 @@
 	<div class="section">
 		<div class="leftbox">
 			<h3>My page</h3>
-				<button type="button" onclick="location.href='mypage_import.jsp'">회원정보 수정</button>
-				<br>
-				<button type="button" onclick="location.href='mypage_myWrite.jsp'">내가 쓴글</button>
-				<br>
-				<button type="button" onclick="location.href='mypage_apply.jsp'">지원현황</button>
-				<br>
-				<button type="button" onclick="location.href='mypage_point.jsp'">마이포인트조회</button>
-				<br>
-				<button type="button" onclick="location.href='mypageLike.jsp'">스크랩</button>
-				<br>
-				<button type="button" onclick="location.href='mypage_license1.jsp'">자격증 및 경력</button>
+				 <button type="button" onclick="location.href='mypage_import.jsp'">회원정보 수정</button>
+                    <br>
+                    <button type="button" onclick="location.href='mypage_myWrite.jsp'">내가 쓴글</button>
+                    <br>
+                    <button type="button" onclick="location.href='mypage_apply.jsp'">지원현황</button>
+                    <br>
+                    <button type="button" onclick="location.href='mypage_point.jsp'">마이포인트조회</button>
+                    <br>
+                    <button type="button" onclick="location.href='mypageLike.jsp'">스크랩</button>
+                    <br>
+                     <button type="button" onclick="location.href='mypage_license1.jsp'">자격증 및 경력</button>
 		</div>
 		<div class="mainbox" >
 			<h1>자격증 및 경력</h1>

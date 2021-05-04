@@ -20,14 +20,14 @@
 			<div class="header_gnb">
 				<ul>
 					<li><a href="main.jsp">HOME</a></li>
-					<li><a href="#">구인게시판</a></li>
+					<li><a href="board_list.jsp">구인게시판</a></li>
 					<li><a href="shop.jsp">포인트상점</a></li>
 					<li><a href="mypage_import.jsp">마이페이지</a></li>
 					<li><a href="login.jsp">LOGIN</a></li>
 				</ul>
 			</div>
 		</header>
-
+<div class = "space"></div>
 		<div class="product_view">
 			<h2>[스타벅스] 따뜻한 아메리카노</h2>
 			<table>
@@ -85,6 +85,7 @@
 				<a href="shop.jsp" class="btn3">목록으로</a>
 			</div>
 		</div>
+
 		<div class="clear"></div>
 		<footer>
 			<div id="footer_box">

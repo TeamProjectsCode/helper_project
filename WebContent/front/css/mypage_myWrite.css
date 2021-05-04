@@ -53,17 +53,22 @@ form {
   margin-left: auto;
   margin-right: auto;
 }
+.clear{
+	height:100px;
+}
 .section {
   margin-top: 10px;
   display:flex;
 }
 .mainbox {
+	width:auto;
+	height:500px;
   	border: 2px solid #3E3DB0;
   	border-radius: 10px;
 	margin: 20px;
 	padding: 20px;
     font-family: 'S-CoreDream-4Regular',sans-serif;
- 	flex-basis:auto;
+ 	display: inline-block; 
 }
 .mainbox table tr td{
 	padding : 10px;
@@ -79,24 +84,28 @@ form {
 .button{
 	margin-left:270px;
 	margin-bottom:50px;
+	border: none;
 }
 .leftbox {
 	width: 170px;
 	margin: 20px;
 	padding: 20px;
- 	flex-basis:auto;
+ 	  display: inline-block; 
+ 	  float:left;
+ 	  border: none;
 }
 .leftbox h3{
+	text-align:center;
 	width:130px;
 	padding : 10px;
   	border-radius: 10px;
   	background:#3E3DB0;
   	color:white;
   	margin-bottom:20px;
+  	border: none;
 }
 .leftbox button {
 	background:#FFCC79 ;
-	color: #fff;
 	width: 130px;
 	height: 60px;
 	font-size: 1.0em;
@@ -105,19 +114,26 @@ form {
 	margin: 10px;
 	margin-top: 30px;
     font-family: 'S-CoreDream-4Regular',sans-serif;
+    border: none;
+    color: white;
 }
 .button button{
   margin: 10px;
   width: 10rem;
   height: 2.5rem;
-  border: 1px;
-  border-radius: 12px;
   background-color:#FFCC79;
+  color: white;
+  border: none;
+}
+.button{
+	text-align: center;
+	border: none;
 }
 .footer{
     display: flex;
     background: #1f1f1f;
     padding:30px;
+    margin-top: 50px;
   }
  #f_img{
       width: 100px;

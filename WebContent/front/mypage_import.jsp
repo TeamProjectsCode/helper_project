@@ -17,35 +17,38 @@
 				</h1>
 			</div>
 			<div class="header_gnb">
-				<ul>
-					<li><a href="main.jsp">홈</a></li>
-					<li><a href="#">구인게시판</a></li>
+			<ul>
+					<li><a href="main.jsp">HOME</a></li>
+					<li><a href="board_list.jsp">구인게시판</a></li>
 					<li><a href="shop.jsp">포인트상점</a></li>
-					<li><a href="mypage_apply.jsp">마이페이지</a></li>
-					<li><a href="login.jsp">로그인</a></li>
-				</ul>
+					<li><a href="mypage_import.jsp">마이페이지</a></li>
+					<li><a href="login.jsp">LOGIN</a></li>
+			</ul>
 			</div>
 		</header>
 		<form>
 			<div class="section">
 				<div class="leftbox">
 					<h3>My page</h3>
-					<button type="button" onclick="location.href='mypage_import.jsp'">회원정보수정</button>
-					<br>
-					<button type="button" onclick="location.href='mypage_myWrite.jsp'">내가쓴글</button>
-					<br>
-					<button type="button" onclick="location.href='mypage_apply.jsp'">지원현황</button>
-					<br>
-					<button type="button" onclick="location.href='mypage_point.jsp'">마이포인트조회</button>
-					<br>
-					<button type="button" onclick="location.href='mypageLike.jsp'">스크랩</button>
-					<br>
-					<button type="button" onclick="location.href='my_license1.jsp'">자격증 및 경력</button>
+					 <button type="button" onclick="location.href='mypage_import.jsp'">회원정보 수정</button>
+                    <br>
+                    <button type="button" onclick="location.href='mypage_myWrite.jsp'">내가 쓴글</button>
+                    <br>
+                    <button type="button" onclick="location.href='mypage_apply.jsp'">지원현황</button>
+                    <br>
+                    <button type="button" onclick="location.href='mypage_point.jsp'">마이포인트조회</button>
+                    <br>
+                    <button type="button" onclick="location.href='mypageLike.jsp'">스크랩</button>
+                    <br>
+                     <button type="button" onclick="location.href='mypage_license1.jsp'">자격증 및 경력</button>
 				</div>
 				<div class="mainbox">
 					<h1>회원 정보 변경</h1>
+					<br>
+					<br>
+					<br>
 					<table>
-						<caption>*표시는 필수 입력 사항입니다</caption>
+						<caption >*표시는 필수 입력 사항입니다</caption>
 						<tr>
 							<td class="title">*아이디</td>
 							<td><input type="text" style="width: auto"></td>
@@ -84,6 +87,7 @@
 							<td><input type="text" style="width: auto"></td>
 						</tr>
 					</table>
+					<br><br>
 					<div class="button">
 						<button type="submit" onclick="">완 료</button>
 						<span><button type="reset">다시쓰기</button></span>

@@ -53,7 +53,7 @@
 	});
 </script>
 
-<link rel="stylesheet" href="./css/writer.css" type="text/css" />
+<link rel="stylesheet" href="./css/board_writer.css" type="text/css" />
 <title>Insert title here</title>
 </head>
 <body>
@@ -67,15 +67,16 @@
 			</div>
 			<div class="header_gnb">
 				<ul>
-					<li><a href="main.jsp">홈</a></li>
-					<li><a href="#">구인게시판</a></li>
+					<li><a href="main.jsp">HOME</a></li>
+					<li><a href="board_list.jsp">구인게시판</a></li>
 					<li><a href="shop.jsp">포인트상점</a></li>
 					<li><a href="mypage_import.jsp">마이페이지</a></li>
-					<li><a href="login.jsp">로그인</a></li>
+					<li><a href="login.jsp">LOGIN</a></li>
 				</ul>
 			</div>
 		</header>
 		<form action="" method="POST">
+			<div class = "section">
 			<fieldset class="title">
 				<ul>
 					<h3>
@@ -103,7 +104,7 @@
 				<hr>
 				<ul>
 					<h4>
-						하는 일 &nbsp;&nbsp;&nbsp; <select>
+						카테고리 &nbsp;&nbsp;&nbsp; <select>
 							<option value="job">가사도우미</option>
 							<option value="job">청소도우미</option>
 							<option value="job">등하원도우미</option>
@@ -156,13 +157,14 @@
 				</ul>
 				<ul>
 					<h4>상세</h4>
-					<textarea cols="50" rows="10"></textarea>
+					<textarea cols="120" rows="10"></textarea>
 				</ul>
 			</fieldset>
 			<fieldset class="btn">
 				<button type="submit" onclick="">신청하기</button>
 				<span><button type="reset">다시쓰기</button></span>
 			</fieldset>
+			</div>
 		</form>
 		<div class="clear"></div>
 		<div class="footer">

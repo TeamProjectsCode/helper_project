@@ -15,9 +15,9 @@
 						<input type="search" placeholder="search"> <span>검색</span>
 					</form>
 				</div>
-				<ul class="nav">
+				<ul class = "nav">
 					<li><a href="main.jsp">HOME</a></li>
-					<li><a href="#">구인게시판</a></li>
+					<li><a href="board_list.jsp">구인게시판</a></li>
 					<li><a href="shop.jsp">포인트상점</a></li>
 					<li><a href="mypage_import.jsp">마이페이지</a></li>
 					<li><a href="login.jsp">LOGIN</a></li>
@@ -70,7 +70,7 @@
 				</div>
 				<div class="contents1_bold">구인 게시판</div>
 				<div class="contents2">내가 잘하는 일로 이웃도 돕고 돈도 벌고 이석이조!</div>
-				<div class="more"><a href="#">MORE</a></div>
+				<div class="more"><a href="board_list.jsp">MORE</a></div>
 			</li>
 
 			<li>
@@ -83,7 +83,7 @@
 					<p></p>
 					내 주변의 능력자를 찾을 수 있습니다!
 				</div>
-				<div class="more"><a href="jobOffer_write.jsp">MORE</a></div>
+				<div class="more"><a href="board_write.jsp">MORE</a></div>
 			</li>
 
 			<li>
