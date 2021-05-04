@@ -13,7 +13,7 @@
    <header class="header">
 			<div class="header_logo">
 				<h1>
-					<a href="#"> <img src="images/logo11.png" alt="home"
+					<a href="main.jsp"> <img src="images/logo11.png" alt="home"
 						width="200" height="100" /></a>
 				</h1>
 			</div>

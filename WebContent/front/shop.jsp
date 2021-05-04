@@ -27,6 +27,7 @@
 				</ul>
 			</div>
 		</header>
+		<center>
 		<div class="main">
 			<ul class="product_list">
 				<li>
@@ -193,6 +194,7 @@
 				</li>
 			</ul>
 		</div>
+		</center>
 		<div class="clear"><br><br></div>
 		 <footer>
             <div id="footer_box">

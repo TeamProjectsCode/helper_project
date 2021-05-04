@@ -35,7 +35,7 @@
         <h1>구인 게시판</h1>
         <div class="section">
         <div class="serch">
-                <a href="review_writer.jsp"><h4>글쓰기</h4></a>
+                <a href="board_write.jsp"><h4>글쓰기</h4></a>
           <ul>
               <h3>
              	 검색 <input type= "text" value=""> &nbsp; &nbsp;

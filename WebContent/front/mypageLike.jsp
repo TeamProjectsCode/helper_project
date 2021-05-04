@@ -48,6 +48,7 @@
 				</div>
 				<div class="mainbox">
 					<h1>좋아요 한 구직목록</h1>
+					<br>
 					<table>
 						<tr style="height: 50px;">
 							<td>날짜</td>

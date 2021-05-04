@@ -42,9 +42,8 @@ header {
 }
 .header_gnb ul a {
   display: flex;
-  font-family: "S-CoreDream-4Regular", sans-serif;
   color: white;
-  margin: 0px 16px;
+  margin: 0px 20px;
   letter-spacing: 1px;
 }
 form {
@@ -58,12 +57,13 @@ form {
 }
 .mainbox {
 	height : 700px;
-  	border: 2px solid #3E3DB0;
-  	border-radius: 10px;
+  	width:600px;
 	margin: 20px;
 	padding: 20px;
-    font-family: 'S-CoreDream-4Regular',sans-serif;
     display: inline-block;
+}
+.pointt{
+	width: 600px;
 }
 .leftbox {
 	margin: 20px;
@@ -71,6 +71,7 @@ form {
 	text-align : center;
 	display: inline-block;
 	float:left;
+	border: none;
 }
 .leftbox h3{
 	width:130px;
@@ -79,6 +80,7 @@ form {
   	background:#3E3DB0;
   	color:white;
   	margin-bottom:20px;
+  	border: none;
 }
 .leftbox button {
 	background:#FFCC79 ;
@@ -92,7 +94,7 @@ form {
 	outline: none;
 	margin: 10px;
 	margin-top: 30px;
-    font-family: 'S-CoreDream-4Regular',sans-serif;
+    border: none;
 }
 .button button{
   margin: 10px;

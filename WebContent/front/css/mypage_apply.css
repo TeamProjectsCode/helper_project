@@ -63,8 +63,6 @@ form {
 .mainbox {
 	width:auto;
 	height:500px;
-  	border: 2px solid #3E3DB0;
-  	border-radius: 10px;
 	margin: 20px;
 	padding: 20px;
     font-family: 'S-CoreDream-4Regular',sans-serif;
@@ -84,13 +82,15 @@ form {
 .button{
 	margin-left:270px;
 	margin-bottom:50px;
+	border: none;
 }
 .leftbox {
-	width: 170px;
 	margin: 20px;
 	padding: 20px;
- 	  display: inline-block; 
- 	  float:left;
+	text-align : center;
+	display: inline-block;
+	float:left;
+	border: none;
 }
 .leftbox h3{
 	width:130px;
@@ -99,6 +99,7 @@ form {
   	background:#3E3DB0;
   	color:white;
   	margin-bottom:20px;
+  	border: none;
 }
 .leftbox button {
 	background:#FFCC79 ;
@@ -107,16 +108,19 @@ form {
 	height: 60px;
 	font-size: 1.0em;
 	padding: 0 10px;
+	cursor: pointer;
+	transition: 800ms ease all;
 	outline: none;
 	margin: 10px;
 	margin-top: 30px;
     font-family: 'S-CoreDream-4Regular',sans-serif;
+    border: none;
 }
 .button button{
   margin: 10px;
   width: 10rem;
   height: 2.5rem;
-  border: 1px;
+  border: none;
   border-radius: 12px;
   background-color:#FFCC79;
 }

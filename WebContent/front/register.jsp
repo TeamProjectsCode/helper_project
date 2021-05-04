@@ -27,6 +27,7 @@
 				</ul>
 			</div>
 		</header>
+		<center>
 			<form action="#" class="sign-up-form" id="form" name="form" method="post">
 				<div class="main">
 					<div class="title">
@@ -93,7 +94,7 @@
 							<th>주소</th>
 							<tr>
 								<th>도로명주소</th>
-								<td><input type="text"  style="width:500px;" id="roadAddrPart1"  name="roadAddrPart1" /></td>
+								<td><input type="text"  style="width:500px;" id="roadAddrPart1"  name="roadAddrPart1" ></td>
 							</tr>
 							<tr>
 								<th>고객입력 상세주소</th>
@@ -111,6 +112,7 @@
 					</table>
 				</div>
 			</form>
+			</certer>
 	
 		<div class="clear"></div>
 		<div class="footer">

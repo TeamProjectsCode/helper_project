@@ -66,11 +66,12 @@
 	padding: 20px;
 	float: left;
 	line-height: 200%;
+	border: none;
     
 }
 
 .leftbox h3 {
-	border: 0px solid ;
+	border: none;
 	vertical-align: middle;
 	text-align: center;
 	height: 40px;

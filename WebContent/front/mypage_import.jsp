@@ -44,8 +44,11 @@
 				</div>
 				<div class="mainbox">
 					<h1>회원 정보 변경</h1>
+					<br>
+					<br>
+					<br>
 					<table>
-						<caption>*표시는 필수 입력 사항입니다</caption>
+						<caption >*표시는 필수 입력 사항입니다</caption>
 						<tr>
 							<td class="title">*아이디</td>
 							<td><input type="text" style="width: auto"></td>
@@ -84,6 +87,7 @@
 							<td><input type="text" style="width: auto"></td>
 						</tr>
 					</table>
+					<br><br>
 					<div class="button">
 						<button type="submit" onclick="">완 료</button>
 						<span><button type="reset">다시쓰기</button></span>

@@ -85,6 +85,7 @@
 				<a href="shop.jsp" class="btn3">목록으로</a>
 			</div>
 		</div>
+
 		<div class="clear"></div>
 		<footer>
 			<div id="footer_box">

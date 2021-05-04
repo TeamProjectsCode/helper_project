@@ -42,7 +42,6 @@ header {
 }
 .header_gnb ul a {
   display: flex;
-  font-family: "S-CoreDream-4Regular", sans-serif;
   color: white;
   margin: 0px 16px;
   letter-spacing: 1px;
@@ -57,11 +56,10 @@ form {
   margin-top: 10px;
 }
 .mainbox {
-  	border: 2px solid #3E3DB0;
+  	border: 1px solid #3E3DB0;
   	border-radius: 10px;
 	margin: 20px;
 	padding: 20px;
-    font-family: 'S-CoreDream-4Regular',sans-serif;
     display: inline-block;
 }
 .leftbox {
@@ -69,18 +67,19 @@ form {
 	padding: 20px;
 	text-align : center;
 	display: inline-block; 
+	border: none;
 }
 .leftbox h3{
 	width:130px;
 	padding : 10px;
-  	border-radius: 10px;
+	border:none;
   	background:#3E3DB0;
   	color:white;
   	margin-bottom:20px;
+  	border: none;
 }
 .leftbox button {
 	background:#FFCC79 ;
-	color: #fff;
 	width: 130px;
 	height: 60px;
 	font-size: 1.0em;
@@ -90,15 +89,17 @@ form {
 	outline: none;
 	margin: 10px;
 	margin-top: 30px;
-    font-family: 'S-CoreDream-4Regular',sans-serif;
+    color: white;
 }
 .button button{
   margin: 10px;
   width: 10rem;
   height: 2.5rem;
-  border: 1px;
-  border-radius: 12px;
   background-color:#FFCC79;
+  border: none;
+}
+button{
+	border: none;
 }
 legend {
     background-color: #FFCC79 ;

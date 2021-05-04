@@ -157,7 +157,7 @@
 				</ul>
 				<ul>
 					<h4>상세</h4>
-					<textarea cols="50" rows="10"></textarea>
+					<textarea cols="120" rows="10"></textarea>
 				</ul>
 			</fieldset>
 			<fieldset class="btn">
