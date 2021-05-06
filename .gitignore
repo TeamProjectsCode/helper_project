@@ -5,3 +5,5 @@ desktop.ini
 .settings/
 
 .classpath
+
+WebContent/WEB-INF/classes/
