@@ -1,3 +1,6 @@
+<%@page import="dbBeans.JobPostBean"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="dbBeans.JobBoardDBList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -5,6 +8,7 @@
   <head>
     <meta charset="EUC-KR" />
     <link rel="stylesheet" href="css/board_list.css" type="text/css" />
+    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
     <title>Insert title here</title>
     <script type="text/javascript" src="script.js" charset="utf-8"></script>
   </head>
@@ -53,8 +57,48 @@
               </h3>
             </ul>
         </div>
-            <div class="list"  style="overflow: auto; height: 400px">
-                <table>
+        <!-- ★leni★ class list 사용하는지 여쭤보고 수정가능하면 수정하기 -->
+            <div class="list" id="job_board_content" style="overflow: auto; height: 400px">
+               <%
+                	JobBoardDBList jbl = JobBoardDBList.getInstance();
+                	ArrayList<JobPostBean> jp = jbl.getList();
+               	%>
+               	<script type="text/javascript">
+					$('#job_board_content').scroll(function () {
+						var scrollT = $(this).scrollTop(); // 스크롤바의 상단위치
+						var scrollH = $(this).height(); // 스크롤 바가 갖는 div의 높이
+						var contentH = $('#job_board').height(); // 문서 전체 내용을 갖는 div의 높이
+						
+						if(scrollT+scrollH+1 >= contentH){
+							/* ★leni★ 요기에 jdbc 읽어오는 부분이 있으면 끝! */
+							<%
+							for(int i=0; i<jp.size(); i++) {
+							%>
+							$('#job_board').append('<tr>'+
+									'<td><a href="#"><%=jp.get(i).getJob_titile() %></td>'+
+									'<td class"time"><%=jp.get(i).getCreated_at() %></td>'+
+									'<td><input type="checkbox" value=""></td>'+
+									'</tr>');
+							<%
+							}
+							%>
+						}			
+					});
+				</script>
+				
+                <table id="job_board">
+                <%
+                	for(int i=0; i<jp.size(); i++){
+                %>
+                	<tr>
+                        <td style="width: 500px;"><a href="#"><%=jp.get(i).getJob_titile() %></a></td>
+                        <td class="time"><%=jp.get(i).getCreated_at() %></td>
+                        <td><input type="checkbox" value=""></td>
+                    </tr>
+                <%
+                	}
+                %>
+                
                     <tr>
                         <td style="width: 500px;"><a href="#">제목</a></td>
                         <td class="time">21/04/27</td>
@@ -114,7 +158,7 @@
                         <td style="width: 500px;"><a href="#">제목</a></td>
                         <td class="time">21/04/27</td>
                         <td><input type="checkbox" value=""></td>
-                    </tr>                               
+                    </tr>
                 </table>
             </div>
         </div>
