@@ -32,15 +32,13 @@
 			<h3>My page</h3>
 				 <button type="button" onclick="location.href='mypage_import.jsp'">회원정보 수정</button>
                     <br>
-                    <button type="button" onclick="location.href='mypage_myWrite.jsp'">내가 쓴글</button>
+                    <button type="button" onclick="location.href='mypage_write.jsp'">내가 쓴글</button>
                     <br>
                     <button type="button" onclick="location.href='mypage_apply.jsp'">지원현황</button>
                     <br>
                     <button type="button" onclick="location.href='mypage_point.jsp'">마이포인트조회</button>
                     <br>
                     <button type="button" onclick="location.href='mypageLike.jsp'">스크랩</button>
-                    <br>
-                     <button type="button" onclick="location.href='mypage_license1.jsp'">자격증 및 경력</button>
 		</div>
 		<div class="mainbox" >
 			<h1>자격증 및 경력</h1>

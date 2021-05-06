@@ -63,10 +63,7 @@ form {
     font-family: 'S-CoreDream-4Regular',sans-serif;
     display: inline-block; 
 }
- table{
-	border: 2px solid #3E3DB0;
-  	border-radius: 10px;
-}
+
 .mainbox table tr td{
 	padding : 20px;
 }
