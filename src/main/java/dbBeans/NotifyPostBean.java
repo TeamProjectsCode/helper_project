@@ -17,7 +17,7 @@ import java.sql.Timestamp;
 public class NotifyPostBean {
 	private int no;
 	private Timestamp created_at;
-	private String creator_nick; // UserBaen
+	private int creator;
 	private String notify_title;
 	private int notify_hits;
 	private String notify_detail;
@@ -34,11 +34,11 @@ public class NotifyPostBean {
 	public void setCreated_at(Timestamp created_at) {
 		this.created_at = created_at;
 	}
-	public String getCreator_nick() {
-		return creator_nick;
+	public int getCreator() {
+		return creator;
 	}
-	public void setCreator_nick(String creator_nick) {
-		this.creator_nick = creator_nick;
+	public void setCreator(int creator) {
+		this.creator = creator;
 	}
 	public String getNotify_title() {
 		return notify_title;

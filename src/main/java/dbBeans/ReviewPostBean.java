@@ -20,12 +20,12 @@ import java.sql.Timestamp;
 public class ReviewPostBean {
 	private int no;
 	private Timestamp created_at;
-	private String creator_nick; // UserBean
+	private int creator;
 	private String review_titile;
 	private int review_hits;
 	private int review_score;
 	private String review_detail;
-	private int job_post; // JobBoardBean
+	private int job_post;
 	
 	public int getNo() {
 		return no;
@@ -39,11 +39,11 @@ public class ReviewPostBean {
 	public void setCreated_at(Timestamp created_at) {
 		this.created_at = created_at;
 	}
-	public String getCreator() {
-		return creator_nick;
+	public int getCreator() {
+		return creator;
 	}
-	public void setCreator(String creator_nick) {
-		this.creator_nick = creator_nick;
+	public void setCreator(int creator) {
+		this.creator = creator;
 	}
 	public String getReview_titile() {
 		return review_titile;

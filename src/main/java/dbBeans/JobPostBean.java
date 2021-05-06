@@ -29,7 +29,7 @@ import java.sql.Timestamp;
 public class JobPostBean {
 	private int no;
 	private Timestamp created_at;
-	private String creator_nick;
+	private int creator;
 	private int category;
 	private String job_titile;
 	private Timestamp job_time_start;
@@ -54,11 +54,11 @@ public class JobPostBean {
 	public void setCreated_at(Timestamp created_at) {
 		this.created_at = created_at;
 	}
-	public String getCreator_nick() {
-		return creator_nick;
+	public int getCreator() {
+		return creator;
 	}
-	public void setCreator_nick(String creator_nick) {
-		this.creator_nick = creator_nick;
+	public void setCreator(int creator) {
+		this.creator = creator;
 	}
 	public int getCategory() {
 		return category;

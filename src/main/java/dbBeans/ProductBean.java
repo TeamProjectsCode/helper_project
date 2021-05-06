@@ -18,7 +18,7 @@ public class ProductBean {
 	private String name;
 	private int amount;
 	private int price;
-	private String brand_name;
+	private int brand;
 	private String image_url;
 	private String detail;
 	
@@ -46,11 +46,11 @@ public class ProductBean {
 	public void setPrice(int price) {
 		this.price = price;
 	}
-	public String getBrand_name() {
-		return brand_name;
+	public int getBrand() {
+		return brand;
 	}
-	public void setBrand_name(String brand_name) {
-		this.brand_name = brand_name;
+	public void setBrand(int brand) {
+		this.brand = brand;
 	}
 	public String getImage_url() {
 		return image_url;
