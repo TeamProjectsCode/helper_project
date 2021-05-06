@@ -31,7 +31,7 @@
 				</ul>
             </div>
           </header>
-      <form action=""method="POST" >
+      <form action=""method="post">
         <h1>구인 게시판</h1>
         <div class="section">
         <div class="serch">
@@ -58,84 +58,63 @@
                     <tr>
                         <td style="width: 500px;"><a href="#">제목</a></td>
                         <td class="time">21/04/27</td>
-                        <td><input type="button" value="스크랩"></td>
+                        <td><input type="checkbox" value=""></td>
                     </tr>
                     <tr>
                         <td style="width: 500px;"><a href="#">제목</a></td>
                         <td class="time">21/04/27</td>
-                        <td><input type="button" value="스크랩"></td>
+                        <td><input type="checkbox" value=""></td>
                     </tr>
                     <tr>
                         <td style="width: 500px;"><a href="#">제목</a></td>
                         <td class="time">21/04/27</td>
-                        <td><input type="button" value="스크랩"></td>
+                        <td><input type="checkbox" value=""></td>
                     </tr>
                     <tr>
                         <td style="width: 500px;"><a href="#">제목</a></td>
                         <td class="time">21/04/27</td>
-                        <td><input type="button" value="스크랩"></td>
+                        <td><input type="checkbox" value=""></td>
                     </tr>
                     <tr>
                         <td style="width: 500px;"><a href="#">제목</a></td>
                         <td class="time">21/04/27</td>
-                        <td><input type="button" value="스크랩"></td>
+                        <td><input type="checkbox" value=""></td>
                     </tr>
                     <tr>
                         <td style="width: 500px;"><a href="#">제목</a></td>
                         <td class="time">21/04/27</td>
-                        <td><input type="button" value="스크랩"></td>
+                        <td><input type="checkbox" value=""></td>
                     </tr>
                     <tr>
                         <td style="width: 500px;"><a href="#">제목</a></td>
                         <td class="time">21/04/27</td>
-                        <td><input type="button" value="스크랩"></td>
+                        <td><input type="checkbox" value=""></td>
                     </tr>
                     <tr>
                         <td style="width: 500px;"><a href="#">제목</a></td>
                         <td class="time">21/04/27</td>
-                        <td><input type="button" value="스크랩"></td>
+                        <td><input type="checkbox" value=""></td>
                     </tr>
                     <tr>
                         <td style="width: 500px;"><a href="#">제목</a></td>
                         <td class="time">21/04/27</td>
-                        <td><input type="button" value="스크랩"></td>
+                        <td><input type="checkbox" value=""></td>
                     </tr>
                     <tr>
                         <td style="width: 500px;"><a href="#">제목</a></td>
                         <td class="time">21/04/27</td>
-                        <td><input type="button" value="스크랩"></td>
+                        <td><input type="checkbox" value=""></td>
                     </tr>
                     <tr>
                         <td style="width: 500px;"><a href="#">제목</a></td>
                         <td class="time">21/04/27</td>
-                        <td><input type="button" value="스크랩"></td>
+                        <td><input type="checkbox" value=""></td>
                     </tr>
                     <tr>
                         <td style="width: 500px;"><a href="#">제목</a></td>
                         <td class="time">21/04/27</td>
-                        <td><input type="button" value="스크랩"></td>
-                    </tr>
-                    <tr>
-                        <td style="width: 500px;"><a href="#">제목</a></td>
-                        <td class="time">21/04/27</td>
-                        <td><input type="button" value="스크랩"></td>
-                    </tr>
-                    <tr>
-                        <td style="width: 500px;"><a href="#">제목</a></td>
-                        <td class="time">21/04/27</td>
-                        <td><input type="button" value="스크랩"></td>
-                    </tr>
-                    <tr>
-                        <td style="width: 500px;"><a href="#">제목</a></td>
-                        <td class="time">21/04/27</td>
-                        <td><input type="button" value="스크랩"></td>
-                    </tr>
-                    <tr>
-                        <td style="width: 500px;"><a href="#">제목</a></td>
-                        <td class="time">21/04/27</td>
-                        <td><input type="button" value="스크랩"></td>
-                    </tr>
-                                  
+                        <td><input type="checkbox" value=""></td>
+                    </tr>                               
                 </table>
             </div>
         </div>

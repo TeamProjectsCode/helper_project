@@ -125,7 +125,7 @@
             </div>
         </div>
          <div class="button">
-				<button type="submit" onclick="">뒤로가기</button>
+				<button type="submit" onclick="location.href='main.jsp'">뒤로가기</button>
 			</div>
         </div>
          <div class ="space"></div>
