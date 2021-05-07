@@ -5,6 +5,7 @@
 <head>
 <meta charset="EUC-KR">
     <link rel="stylesheet" type="text/css" href="css/login.css" />
+    <script type="text/javascript" src="checking.js" charset="utf-8"></script>
     <title>Document</title>
 </head>
 <body>
@@ -27,20 +28,20 @@
                 </div>
             </header>
             <div class = "space"></div>
-      <form action="index.html" method="post">
+      <form name = "login" action="login_ok.jsp" method="post">
 			<div class="loginForm">
 				<h1>Login</h1>
 				<div class="idForm">
-					<input type="text" class="id" placeholder="ID">
+					<input type="text" class="id" placeholder="ID" name = "id">
 				</div>
 				<div class="passForm">
-					<input type="password" class="pw" placeholder="PW">
+					<input type="password" class="pw" placeholder="PW" name = "pw">
 				</div>
-				<button type="button" class="btn" onclick="location.href='#'">로그인</button>
+				<button type="submit" class="btn" onclick="check_login()">로그인</button>
 				<button type="button" class="btn" onclick="location.href='register.jsp'">계정이 없으신가요? 가입하기</button>
 
 				<div class="bottomText">
-					<a href="#">비밀번호를 잊으셨나요?</a>
+					<a href="idpwd.jsp">비밀번호를 잊으셨나요?</a>
 				</div>
 			</div>
 		</form>
@@ -52,5 +53,6 @@
                     -1234 <br> COPYRIGHT 2019. TAMO. ALL RIGHT RESERVED.</div>
             </div>
         </div>
+        	
     </body>
 </html>

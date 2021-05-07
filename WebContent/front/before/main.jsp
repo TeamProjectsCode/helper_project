@@ -20,7 +20,26 @@
 					<li><a href="board_list.jsp">구인게시판</a></li>
 					<li><a href="shop.jsp">포인트상점</a></li>
 					<li><a href="mypage_import.jsp">마이페이지</a></li>
-					<li><a href="login.jsp">LOGIN</a></li>
+					<%
+					if(session.getAttribute("id")!=null){
+						%>
+						<li><a href="login.jsp" onclick = "logout()">LOGOUT</a></li>
+						<script>
+						function logout() {
+							alert("로그 아웃 되었습니다.");
+						}
+						<%
+						session.invalidate(); //세션 삭제
+						%>
+						</script>
+						<%
+						}else{
+						%>
+						<li><a href="login.jsp">LOGIN</a></li>
+						<%
+						}
+						%>
+					
 				</ul>
 			</div>
 			<div class="intro_text">
@@ -77,13 +96,11 @@
 				<div class="icon_img">
 					<img src="./images/writing11.png">
 				</div>
-				<div class="contents1_bold">구인 게시물 작성하기</div>
+				<div class="contents1_bold">후기 게시판</div>
 				<div class="contents2">
-					혼자 할 수 없는 일이 생겼다면?
-					<p></p>
-					내 주변의 능력자를 찾을 수 있습니다!
+					당신의 정보를 공유 해보아요!
 				</div>
-				<div class="more"><a href="board_write.jsp">MORE</a></div>
+				<div class="more"><a href="review_list.jsp">MORE</a></div>
 			</li>
 
 			<li>

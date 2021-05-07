@@ -90,15 +90,15 @@ textarea {
     flex:9;
     color: #fff;
   }
-  
 .section {
   margin-top: 10px;
 }
 .section h1{
 	margin-bottom:100px;
 }
-.title {
-  padding: 30px;
+.title{
+	width: 400px;
+	height:25px;
 }
 .import{
 	maring :20px;

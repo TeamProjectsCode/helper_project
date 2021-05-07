@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-
+ <script type="text/javascript" src="checking.js" charset="utf-8"></script>
 <link rel="stylesheet" href="./css/register1.css" />
 <title>회원가입</title>
 </head>
@@ -28,7 +28,7 @@
 			</div>
 		</header>
 		<center>
-			<form action="#" class="sign-up-form" id="form" name="form" method="post">
+			<form action="login.jsp" class="sign-up-form" id="form" name="form" method="post">
 				<div class="main">
 					<div class="title">
 						<h1>회원가입</h1>
@@ -55,13 +55,15 @@
 							<td><input type="password" placeholder="패스워드 확인"
 								name="pass2"></td>
 						</tr>
-
+						<tr>
+							<th>전화 번호</th>
+							<td><input type="text" placeholder="ex)01012345678"name="phone"></td>
+						</tr>
 						<tr>
 							<th>성별</th>
 							<td><input type="radio" name="gender" value="남">남 <input
 								type="radio" name="gender" value="여">여</td>
 						</tr>
-
 						<tr>
 							<th>생일</th>
 							<td><input type="text" name="birth_yy" maxlength="4"
@@ -102,10 +104,8 @@
 							<td colspan="2"><input type="button" onClick="goPopup();" value="팝업_domainChk"/></td>
 							</tr>
 						</tr>
-						
 						<tr>
-							<th><input type="submit" class="btn" value="신청하기"
-								onclick="location.href='#'"></th>
+							<th><input type="submit" class="btn" value="신청하기" onclick ="member_ok()"></th>
 							<td><input type="button" class="btn" value="뒤로가기"
 								onclick="location.href='login.jsp'"></td>
 						</tr>

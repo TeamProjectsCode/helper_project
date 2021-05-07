@@ -43,6 +43,7 @@ public class UserBean {
 	public void setNo(int no) {
 		this.no = no;
 	}
+	
 	public String getName() {
 		return name;
 	}
@@ -109,4 +110,5 @@ public class UserBean {
 	public void setCountry_code(int country_code) {
 		this.country_code = country_code;
 	}
+	
 }

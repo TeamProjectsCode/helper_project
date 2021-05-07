@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
- <link rel="stylesheet" href="css/mypage_myWrite.css"  type="text/css" />
+ <link rel="stylesheet" href="css/mypage_write.css"  type="text/css" />
 <title>Document</title>
 
 </head>
@@ -23,7 +23,25 @@
 					<li><a href="board_list.jsp">구인게시판</a></li>
 					<li><a href="shop.jsp">포인트상점</a></li>
 					<li><a href="mypage_import.jsp">마이페이지</a></li>
-					<li><a href="login.jsp">LOGIN</a></li>
+					<%
+					if(session.getAttribute("id")!=null){
+						%>
+						<li><a href="login.jsp" onclick = "logout()">LOGOUT</a></li>
+						<script>
+						function logout() {
+							alert("로그 아웃 되었습니다.");
+						}
+						<%
+						session.invalidate(); //세션 삭제
+						%>
+						</script>
+						<%
+						}else{
+						%>
+						<li><a href="login.jsp">LOGIN</a></li>
+						<%
+						}
+						%>
 				</ul>
 			</div>
 		</header>
@@ -36,15 +54,13 @@
 					<h3>My page</h3>
                     <button type="button" onclick="location.href='mypage_import.jsp'">회원정보 수정</button>
                     <br>
-                    <button type="button" onclick="location.href='mypage_myWrite.jsp'">내가 쓴글</button>
+                    <button type="button" onclick="location.href='mypage_write.jsp'">내가 쓴글</button>
                     <br>
                     <button type="button" onclick="location.href='mypage_apply.jsp'">지원현황</button>
                     <br>
                     <button type="button" onclick="location.href='mypage_point.jsp'">마이포인트조회</button>
                     <br>
                     <button type="button" onclick="location.href='mypageLike.jsp'">스크랩</button>
-                    <br>
-                     <button type="button" onclick="location.href='mypage_license1.jsp'">자격증 및 경력</button>
 				</div>
 					
 					<p>&nbsp;&nbsp;</p>
@@ -53,23 +69,48 @@
 					<p>&nbsp;&nbsp;</p>
 					
 				<div class="mainbox">
+				<h3>구인 게시판</h3>
+				<hr>
 					<table>
 						<tr style="height: 50px;">
 							<td>날짜</td>
 							<td style="width: 500px;">글 제목1</td>
-							<th colspan="2"><input type="submit" value="수정">
+							<th colspan="2"><input type="submit" value="수정" onclick="location.href='board_writer_fix.jsp'">
 							<input type="submit" value="삭제"></th>
 						</tr>
 						<tr style="height: 50px;">
 							<td>날짜</td>
 							<td style="width: 500px;">글 제목2</td>
-							<th><input type="submit" value="수정">
+							<th><input type="submit" value="수정" onclick="location.href='board_writer_fix.jsp'">
 							<input type="submit" value="삭제"></th>
 						</tr>
 						<tr style="height: 50px;">
 							<td>날짜</td>
 							<td style="width: 500px;">글 제목3</td>
-							<th><input type="submit" value="수정" >
+							<th><input type="submit" value="수정" onclick="location.href='board_writer_fix.jsp'">
+							<input type="submit" value="삭제"></th>
+						</tr>
+					</table>
+					<div class = "clear"></div>
+					<h3>후기 게시판</h3>
+					<hr>
+					<table>
+						<tr style="height: 50px;">
+							<td>날짜</td>
+							<td style="width: 500px;">글 제목1</td>
+							<th colspan="2"><input type="submit" value="수정" onclick="location.href='review_writer_fix.jsp'">
+							<input type="submit" value="삭제"></th>
+						</tr>
+						<tr style="height: 50px;">
+							<td>날짜</td>
+							<td style="width: 500px;">글 제목2</td>
+							<th><input type="submit" value="수정" onclick="location.href='review_writer_fix.jsp'">
+							<input type="submit" value="삭제"></th>
+						</tr>
+						<tr style="height: 50px;">
+							<td>날짜</td>
+							<td style="width: 500px;">글 제목3</td>
+							<th><input type="submit" value="수정" onclick="location.href='review_writer_fix.jsp'">
 							<input type="submit" value="삭제"></th>
 						</tr>
 					</table>

@@ -28,7 +28,7 @@
                 </div>
             </header>
             <div class = "space"></div>
-      <form name = "login" action="main.jsp" method="post">
+      <form name = "login" action="login_ok.jsp" method="post">
 			<div class="loginForm">
 				<h1>Login</h1>
 				<div class="idForm">
@@ -53,5 +53,6 @@
                     -1234 <br> COPYRIGHT 2019. TAMO. ALL RIGHT RESERVED.</div>
             </div>
         </div>
+        	
     </body>
 </html>

@@ -27,7 +27,25 @@
 					<li><a href="board_list.jsp">구인게시판</a></li>
 					<li><a href="shop.jsp">포인트상점</a></li>
 					<li><a href="mypage_import.jsp">마이페이지</a></li>
-					<li><a href="login.jsp">LOGIN</a></li>
+					<%
+					if(session.getAttribute("id")!=null){
+						%>
+						<li><a href="login.jsp" onclick = "logout()">LOGOUT</a></li>
+						<script>
+						function logout() {
+							alert("로그 아웃 되었습니다.");
+						}
+						<%
+						session.invalidate(); //세션 삭제
+						%>
+						</script>
+						<%
+						}else{
+						%>
+						<li><a href="login.jsp">LOGIN</a></li>
+						<%
+						}
+						%>
 				</ul>
             </div>
           </header>
@@ -125,7 +143,7 @@
             </div>
         </div>
          <div class="button">
-				<button type="submit" onclick="">뒤로가기</button>
+				<button type="submit" onclick="location.href='main.jsp'">뒤로가기</button>
 			</div>
         </div>
          <div class ="space"></div>
