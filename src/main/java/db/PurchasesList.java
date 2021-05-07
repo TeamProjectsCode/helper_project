@@ -1,6 +1,8 @@
-package dbBeans;
+package db;
 
 import java.util.ArrayList;
+
+import db.shopBeans.PurchaseBean;
 
 public class PurchasesList {
 	private ArrayList<PurchaseBean> purchases_list;

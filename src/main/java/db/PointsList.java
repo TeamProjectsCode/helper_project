@@ -1,6 +1,8 @@
-package dbBeans;
+package db;
 
 import java.util.ArrayList;
+
+import db.userBeans.PointBean;
 
 public class PointsList {
 	private ArrayList<PointBean> points_list;

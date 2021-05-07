@@ -1,12 +1,14 @@
-package dbBeans;
+package db;
 
 import java.util.ArrayList;
 
-public class NotifyBoardList {
+import db.notifyBoardBeans.NotifyPostBean;
+
+public class NotifyPostDAO {
 	private ArrayList<NotifyPostBean> notify_board_list;
 	
-	public NotifyBoardList() {}
-	public NotifyBoardList(ArrayList<NotifyPostBean> nbl) {
+	public NotifyPostDAO() {}
+	public NotifyPostDAO(ArrayList<NotifyPostBean> nbl) {
 		this.notify_board_list = nbl;
 	}
 	

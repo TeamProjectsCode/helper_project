@@ -1,4 +1,4 @@
-package dbBeans;
+package db.jobBoardBeans;
 
 import java.sql.Timestamp;
 

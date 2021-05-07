@@ -1,4 +1,4 @@
-package dbBeans;
+package db.volunteerBeans;
 
 /*
  * CREATE TABLE VOLUNTEERS (

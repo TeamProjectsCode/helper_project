@@ -1,4 +1,4 @@
-package dbBeans;
+package db.notifyBoardBeans;
 
 import java.sql.Timestamp;
 

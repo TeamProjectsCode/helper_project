@@ -1,12 +1,14 @@
-package dbBeans;
+package db;
 
 import java.util.ArrayList;
 
-public class ProductsList {
+import db.shopBeans.ProductBean;
+
+public class ProductsDAO {
 	private ArrayList<ProductBean> products_list;
 	
-	public ProductsList() {}
-	public ProductsList(ArrayList<ProductBean> pl) {
+	public ProductsDAO() {}
+	public ProductsDAO(ArrayList<ProductBean> pl) {
 		this.products_list = pl;
 	}
 	

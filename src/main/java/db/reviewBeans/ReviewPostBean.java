@@ -1,4 +1,4 @@
-package dbBeans;
+package db.reviewBeans;
 
 import java.sql.Timestamp;
 
