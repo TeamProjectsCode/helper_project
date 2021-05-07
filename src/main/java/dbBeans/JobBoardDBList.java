@@ -7,16 +7,45 @@ import java.util.ArrayList;
 
 public class JobBoardDBList {
 	private static JobBoardDBList instance = new JobBoardDBList();
+	private static int total_count;
+	private static int count;
 	
 	public static JobBoardDBList getInstance() {
-		return instance;
-	}
-	
-	public ArrayList<JobPostBean> getList(){
+		total_count = 0;
+		count = 1;
+		
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String query = "SELECT J.NO,"
+		String query = "SELECT COUNT(*) AS \"TOTAL_COUNT\" FROM JOB_BOARD";
+		
+		try {
+			con = DBConnection.getConnection();
+			pstmt = con.prepareStatement(query);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				total_count = rs.getInt("TOTAL_COUNT");
+			}
+		} catch (Exception e) {
+			System.out.println("JobBoardDBList getInstance() ERROR: "+e);
+		}
+		
+		return instance;
+	}	
+
+	public ArrayList<JobPostBean> getList(String key, String value){
+		
+		if(total_count<count) {
+			return null;
+		}
+		
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String query = "SELECT *"
+				+ " FROM (SELECT ROW_NUMBER() over (ORDER BY J.CREATED_AT DESC) AS \"ROWNUM\","
+				+ " J.NO,"
 				+ " J.CREATED_AT,"
 				+ " CREATOR,"
 				+ " U.NICK AS \"CREATOR_NICK\","
@@ -32,14 +61,18 @@ public class JobBoardDBList {
 				+ " JOB_DETAIL,"
 				+ " JOB_PEOPLE"
 				+ " FROM JOB_BOARD J"
-				+ " JOIN USERS U on J.CREATOR = U.NO";
+				+ " JOIN USERS U on J.CREATOR = U.NO"
+				+ " WHERE ? = ?)"
+				+ " WHERE ROWNUM BETWEEN ? AND ?";
 				
 		ArrayList<JobPostBean> jpl = new ArrayList<JobPostBean>();
-
 		try {
 			con = DBConnection.getConnection();
 			pstmt = con.prepareStatement(query);
-//			pstmt.setString(1, query);
+			pstmt.setString(1, key);
+			pstmt.setString(2, value);
+			pstmt.setInt(3, count);
+			pstmt.setInt(4, count+9);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -72,32 +105,13 @@ public class JobBoardDBList {
 				}
 				jpl.add(jp);
 			}
+			count += 10;
 			
 		} catch (Exception e) {
-			System.out.println("JobBoardDBList ERROR: "+e);
+			System.out.println("JobBoardDBList getList() ERROR: "+e);
 		}
 		
 		return jpl;
 	}
 	
-	
-	
-//	private ArrayList<JobPostBean> job_board_list;
-//	
-//	public JobBoardDBList() {}
-//	public JobBoardDBList(ArrayList<JobPostBean> jbl) {
-//		this.job_board_list = jbl;
-//	}
-//	
-//	public void add(JobPostBean jp) {
-//		this.job_board_list.add(jp);
-//	}
-//	
-//	public ArrayList<JobPostBean> getList(){
-//		return this.job_board_list;
-//	}
-//	
-//	public JobPostBean get(int index) {
-//		return this.job_board_list.get(index);
-//	}
 }

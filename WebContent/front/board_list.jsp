@@ -50,10 +50,10 @@
                   <option value="local">대구</option>
                   <option value="local">대전</option>
                 </select>&nbsp; &nbsp;
-           			<select>
-                    <option value="">인기글</option>
-                    <option value="">최신글</option>
-                  </select>&nbsp; &nbsp;
+        		<select>
+                 <option value="">인기글</option>
+                 <option value="">최신글</option>
+               </select>&nbsp; &nbsp;
               </h3>
             </ul>
         </div>
@@ -61,33 +61,72 @@
             <div class="list" id="job_board_content" style="overflow: auto; height: 400px">
                <%
                 	JobBoardDBList jbl = JobBoardDBList.getInstance();
-                	ArrayList<JobPostBean> jp = jbl.getList();
-               	%>
-               	<script type="text/javascript">
-					$('#job_board_content').scroll(function () {
-						var scrollT = $(this).scrollTop(); // 스크롤바의 상단위치
-						var scrollH = $(this).height(); // 스크롤 바가 갖는 div의 높이
-						var contentH = $('#job_board').height(); // 문서 전체 내용을 갖는 div의 높이
-						
-						if(scrollT+scrollH+1 >= contentH){
-							/* ★leni★ 요기에 jdbc 읽어오는 부분이 있으면 끝! */
-							<%
-							for(int i=0; i<jp.size(); i++) {
-							%>
-							$('#job_board').append('<tr>'+
-									'<td><a href="#"><%=jp.get(i).getJob_titile() %></td>'+
-									'<td class"time"><%=jp.get(i).getCreated_at() %></td>'+
-									'<td><input type="checkbox" value=""></td>'+
-									'</tr>');
-							<%
-							}
-							%>
-						}			
-					});
-				</script>
-				
+                	ArrayList<JobPostBean> jp = jbl.getList("1", "1");
+               	%>				
                 <table id="job_board">
+                <!-- ★leni★ database에 내용이 많아지면 이 부분은 지워도 됩니다. -->
+                <tr>
+                        <td style="width: 500px;"><a href="#">제목</a></td>
+                        <td class="time">21/04/27</td>
+                        <td><input type="checkbox" value=""></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 500px;"><a href="#">제목</a></td>
+                        <td class="time">21/04/27</td>
+                        <td><input type="checkbox" value=""></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 500px;"><a href="#">제목</a></td>
+                        <td class="time">21/04/27</td>
+                        <td><input type="checkbox" value=""></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 500px;"><a href="#">제목</a></td>
+                        <td class="time">21/04/27</td>
+                        <td><input type="checkbox" value=""></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 500px;"><a href="#">제목</a></td>
+                        <td class="time">21/04/27</td>
+                        <td><input type="checkbox" value=""></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 500px;"><a href="#">제목</a></td>
+                        <td class="time">21/04/27</td>
+                        <td><input type="checkbox" value=""></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 500px;"><a href="#">제목</a></td>
+                        <td class="time">21/04/27</td>
+                        <td><input type="checkbox" value=""></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 500px;"><a href="#">제목</a></td>
+                        <td class="time">21/04/27</td>
+                        <td><input type="checkbox" value=""></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 500px;"><a href="#">제목</a></td>
+                        <td class="time">21/04/27</td>
+                        <td><input type="checkbox" value=""></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 500px;"><a href="#">제목</a></td>
+                        <td class="time">21/04/27</td>
+                        <td><input type="checkbox" value=""></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 500px;"><a href="#">제목</a></td>
+                        <td class="time">21/04/27</td>
+                        <td><input type="checkbox" value=""></td>
+                    </tr>
+                    <tr>
+                        <td style="width: 500px;"><a href="#">제목</a></td>
+                        <td class="time">21/04/27</td>
+                        <td><input type="checkbox" value=""></td>
+                    </tr>
                 <%
+                if(jp != null){
                 	for(int i=0; i<jp.size(); i++){
                 %>
                 	<tr>
@@ -97,68 +136,33 @@
                     </tr>
                 <%
                 	}
+                }
                 %>
-                
-                    <tr>
-                        <td style="width: 500px;"><a href="#">제목</a></td>
-                        <td class="time">21/04/27</td>
-                        <td><input type="checkbox" value=""></td>
-                    </tr>
-                    <tr>
-                        <td style="width: 500px;"><a href="#">제목</a></td>
-                        <td class="time">21/04/27</td>
-                        <td><input type="checkbox" value=""></td>
-                    </tr>
-                    <tr>
-                        <td style="width: 500px;"><a href="#">제목</a></td>
-                        <td class="time">21/04/27</td>
-                        <td><input type="checkbox" value=""></td>
-                    </tr>
-                    <tr>
-                        <td style="width: 500px;"><a href="#">제목</a></td>
-                        <td class="time">21/04/27</td>
-                        <td><input type="checkbox" value=""></td>
-                    </tr>
-                    <tr>
-                        <td style="width: 500px;"><a href="#">제목</a></td>
-                        <td class="time">21/04/27</td>
-                        <td><input type="checkbox" value=""></td>
-                    </tr>
-                    <tr>
-                        <td style="width: 500px;"><a href="#">제목</a></td>
-                        <td class="time">21/04/27</td>
-                        <td><input type="checkbox" value=""></td>
-                    </tr>
-                    <tr>
-                        <td style="width: 500px;"><a href="#">제목</a></td>
-                        <td class="time">21/04/27</td>
-                        <td><input type="checkbox" value=""></td>
-                    </tr>
-                    <tr>
-                        <td style="width: 500px;"><a href="#">제목</a></td>
-                        <td class="time">21/04/27</td>
-                        <td><input type="checkbox" value=""></td>
-                    </tr>
-                    <tr>
-                        <td style="width: 500px;"><a href="#">제목</a></td>
-                        <td class="time">21/04/27</td>
-                        <td><input type="checkbox" value=""></td>
-                    </tr>
-                    <tr>
-                        <td style="width: 500px;"><a href="#">제목</a></td>
-                        <td class="time">21/04/27</td>
-                        <td><input type="checkbox" value=""></td>
-                    </tr>
-                    <tr>
-                        <td style="width: 500px;"><a href="#">제목</a></td>
-                        <td class="time">21/04/27</td>
-                        <td><input type="checkbox" value=""></td>
-                    </tr>
-                    <tr>
-                        <td style="width: 500px;"><a href="#">제목</a></td>
-                        <td class="time">21/04/27</td>
-                        <td><input type="checkbox" value=""></td>
-                    </tr>
+               <script type="text/javascript">
+					$('#job_board_content').scroll(function () {
+						var scrollT = $(this).scrollTop(); // 스크롤바의 상단위치
+						var scrollH = $(this).height(); // 스크롤 바가 갖는 div의 높이
+						var contentH = $('#job_board').height(); // 문서 전체 내용을 갖는 div의 높이
+						
+						if(scrollT+scrollH+1 >= contentH){
+							/* ★leni★ 스크롤 시 jdbc 읽어오는 부분 */
+							<%
+							jp = jbl.getList("1", "1");
+							if(jp != null){
+							for(int i=0; i<jp.size(); i++) {
+							%>
+								$('#job_board').append('<tr>'+
+										'<td><a href="#"><%=jp.get(i).getJob_titile() %></td>'+
+										'<td class"time"><%=jp.get(i).getCreated_at() %></td>'+
+										'<td><input type="checkbox" value=""></td>'+
+										'</tr>');
+								<%
+								}
+							}
+							%>
+						}			
+					});
+				</script>
                 </table>
             </div>
         </div>
