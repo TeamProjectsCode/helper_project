@@ -11,15 +11,6 @@ function check_login(){
 		history.reload
 		return;
 	}
-	if(document.login.id.value == "test" && document.login.pw.value == "1234") {
-        alert("로그인 성공");
-        console.log("로그인 성공했습니다.");
-		location.href='main.jsp'
-      } else {
-        alert("로그인 실패");
-        console.log("로그인 실패했습니다.");
-		history.reload
-      }
 	document.login.submit();
 }
 

@@ -23,7 +23,25 @@
 					<li><a href="board_list.jsp">구인게시판</a></li>
 					<li><a href="shop.jsp">포인트상점</a></li>
 					<li><a href="mypage_import.jsp">마이페이지</a></li>
-					<li><a href="login.jsp">LOGIN</a></li>
+					<%
+					if(session.getAttribute("id")!=null){
+						%>
+						<li><a href="login.jsp" onclick = "logout()">LOGOUT</a></li>
+						<script>
+						function logout() {
+							alert("로그 아웃 되었습니다.");
+						}
+						<%
+						session.invalidate(); //세션 삭제
+						%>
+						</script>
+						<%
+						}else{
+						%>
+						<li><a href="login.jsp">LOGIN</a></li>
+						<%
+						}
+						%>
 				</ul>
         </div>
     </header>
@@ -50,19 +68,19 @@
 					<table>
 						<tr style="height: 50px;">
 							<td>날짜</td>
-							<td style="width: 500px;">글 제목1</td>
+							<td style="width: 500px;"><a href ="#">글 제목1</a></td>
 							<th colspan="2">
-							<div><a href="#a"><img src="images/like1.png" alt=""></a></div></th>
+							<div><a href="#"><img src="images/like1.png" alt=""></a></div></th>
 						</tr>
 						<tr style="height: 50px;">
 							<td>날짜</td>
-							<td style="width: 500px;">글 제목2</td>
-							<th><div><a href="#a"><img src="images/like1.png" alt=""></a></div></th>
+							<td style="width: 500px;"><a href ="#">글 제목2</a></td>
+							<th><div><a href="#"><img src="images/like1.png" alt=""></a></div></th>
 						</tr>
 						<tr style="height: 50px;">
 							<td>날짜</td>
-							<td style="width: 500px;">글 제목3</td>
-							<th><div><a href="#a"><img src="images/like1.png" alt=""></a></div></th>
+							<td style="width: 500px;"><a href ="#">글 제목3</a></td>
+							<th><div><a href="#"><img src="images/like1.png" alt=""></a></div></th>
 						</tr>
 					</table>
 				</div>

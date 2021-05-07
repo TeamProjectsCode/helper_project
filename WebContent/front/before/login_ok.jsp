@@ -13,13 +13,13 @@
 	String pw = request.getParameter("pw");
 	
 	if (id.equals("test") && pw.equals("1234")){
-		session.setAttribute("id", id);
 		%>
 		<script>
-		alert("로그인 되었습니다.");
-		location.href="main.jsp";
+		alert("로그인에 성공 하셨습니다.");
 		</script>
 		<%
+		session.setAttribute("id", id);
+		response.sendRedirect("main.jsp");
 		}
 	else{
 		%>
