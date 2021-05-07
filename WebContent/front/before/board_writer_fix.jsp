@@ -53,7 +53,7 @@
 	});
 </script>
 
-<link rel="stylesheet" href="./css/board_writer.css" type="text/css" />
+<link rel="stylesheet" href="./css/board_writer_fix.css" type="text/css" />
 <title>Insert title here</title>
 </head>
 <body>
@@ -77,22 +77,21 @@
 		</header>
 		<form action="" method="POST">
 			<div class = "section">
-			<h1>구인 게시글 작성</h1>
+			<h1>구인 게시글 수정</h1>
 			<div class="date">
 				<ul>
 					<h3>
-						제목 &nbsp;&nbsp;&nbsp;<input type="text" name="title" class = "title">
+						제목 &nbsp;&nbsp;<input type="text" name="title" value = "작성했던 제목">
 					</h3>
 				</ul>
-			<hr>
 				<ul>
 					<h3>공고기간</h3>
 				</ul>
 				<ul>
 					<input type="text" name="fromDate" id="fromDate"
-						placeholder="시작날짜를 선택하세요"> &nbsp;~&nbsp;
+						placeholder="선택했던 날짜 "> &nbsp;~&nbsp;
 					<input type="text" id="toDate" id="toDate"
-						placeholder="종료날짜를 선택하세요">
+						placeholder="선택했던 날짜">
 				</ul>
 			</div>
 			<div class="detail">
@@ -144,21 +143,21 @@
 							<option value="area">경상북도</option>
 							<option value="area">해외</option>
 						</select> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						상세장소&nbsp;&nbsp;&nbsp;&nbsp; <input type="text">
+						상세장소&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" value = "작성했던 장소 ">
 					</h4>
 				</ul>
 				<ul>
 					<h4>
-						금액&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text">&nbsp;원
+						금액&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text" value ="작성했던 금액">&nbsp;원
 					</h4>
 				</ul>
 				<ul>
 					<h4>상세</h4>
-					<textarea cols="60" rows="10"></textarea>
+					<textarea cols="60" rows="10" name ="">작성한 내용</textarea>
 				</ul>
 			</div>
 			<div class="btn">
-				<button type="submit" onclick="">신청하기</button>
+				<button type="submit" onclick="">수정하기</button>
 				<span><button type="reset">다시쓰기</button></span>
 			</div>
 			</div>

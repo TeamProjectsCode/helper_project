@@ -81,7 +81,7 @@
 			<div class="date">
 				<ul>
 					<h3>
-						제목 &nbsp;&nbsp;<input type="text" name="title" value = "작성했던 제목">
+						제목 &nbsp;&nbsp;<input type="text" name="title" value = "작성했던 제목" class="title">
 					</h3>
 				</ul>
 				<ul>

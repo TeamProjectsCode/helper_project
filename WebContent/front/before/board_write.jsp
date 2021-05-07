@@ -77,14 +77,14 @@
 		</header>
 		<form action="" method="POST">
 			<div class = "section">
-			<fieldset class="title">
+			<h1>구인 게시글 작성</h1>
+			<div class="date">
 				<ul>
 					<h3>
 						제목 &nbsp;&nbsp;&nbsp;<input type="text" name="title">
 					</h3>
 				</ul>
-			</fieldset>
-			<fieldset class="date">
+			<hr>
 				<ul>
 					<h3>공고기간</h3>
 				</ul>
@@ -93,15 +93,12 @@
 						placeholder="시작날짜를 선택하세요"> &nbsp;~&nbsp;
 					<input type="text" id="toDate" id="toDate"
 						placeholder="종료날짜를 선택하세요">
-
-
 				</ul>
-			</fieldset>
-			<fieldset class="detail">
+			</div>
+			<div class="detail">
 				<ul>
 					<h3>상세공고</h3>
 				</ul>
-				<hr>
 				<ul>
 					<h4>
 						카테고리 &nbsp;&nbsp;&nbsp; <select>
@@ -157,13 +154,13 @@
 				</ul>
 				<ul>
 					<h4>상세</h4>
-					<textarea cols="120" rows="10"></textarea>
+					<textarea cols="60" rows="10"></textarea>
 				</ul>
-			</fieldset>
-			<fieldset class="btn">
+			</div>
+			<div class="btn">
 				<button type="submit" onclick="">신청하기</button>
 				<span><button type="reset">다시쓰기</button></span>
-			</fieldset>
+			</div>
 			</div>
 		</form>
 		<div class="clear"></div>

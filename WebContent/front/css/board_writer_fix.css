@@ -97,8 +97,9 @@ textarea {
 .section h1{
 	margin-bottom:100px;
 }
-.title {
-  padding: 20px;
+.title{
+	width: 400px;
+	height:25px;
 }
 .import{
 	maring :20px;

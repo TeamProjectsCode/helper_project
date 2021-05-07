@@ -22,7 +22,26 @@
 					<li><a href="board_list.jsp">구인게시판</a></li>
 					<li><a href="shop.jsp">포인트상점</a></li>
 					<li><a href="mypage_import.jsp">마이페이지</a></li>
-					<li><a href="login.jsp">LOGIN</a></li>
+					<%
+					if(session.getAttribute("id")!=null){
+						%>
+						<li><a href="login.jsp" onclick = "logout()">LOGOUT</a></li>
+						<script>
+						function logout() {
+							alert("로그 아웃 되었습니다.");
+						}
+						<%
+						session.invalidate(); //세션 삭제
+						%>
+						</script>
+						<%
+						}else{
+						%>
+						<li><a href="login.jsp">LOGIN</a></li>
+						<%
+						}
+						%>
+					
 				</ul>
 			</div>
 		</header>
@@ -46,38 +65,28 @@
 					<h1>회원 정보 변경</h1>
 					<br> <br> <br>
 					<table>
-						<caption>*표시는 필수 입력 사항입니다</caption>
 						<tr>
-							<td class="title">*아이디</td>
-							<td><input type="text" style="width: auto"></td>
-							<td class="title">*이름</td>
-							<td><input type="text" style="width: auto"></td>
+							<td class="title">아이디</td>
+							<td><input type="text" style="width: auto"  value="test" readonly></td>
+							<td class="title">이름</td>
+							<td><input type="text" style="width: auto" value = "홍길동"></td>
 						</tr>
 						<tr>
-							<td class="title">*비밀번호</td>
-							<td><input type="text" style="width: auto"></td>
-							<td class="title">*비밀번호 확인</td>
-							<td><input type="text" style="width: auto"></td>
+							<td class="title">비밀번호</td>
+							<td><input type="text" style="width: auto" ></td>
+							<td class="title">비밀번호 확인</td>
+							<td><input type="text" style="width: auto" ></td>
 						</tr>
 						<tr>
-							<td class="title">*주민번호</td>
-							<td><input type="text" style="width: auto"></td>
+							<td class="title">생년월일</td>
+							<td><input type="text" style="width: auto" value = "1994년 2월 16일" readonly></td>
 						</tr>
 						<tr>
-							<td class="title">*메일주소</td>
-							<td colspan="3" text-aling="end"><input type="email"> @ 
-								<select style="width: auto; height: 23px;">
-									<option value="naver">naver.com</option>
-									<option value="gmail.com">gmail.com</option>
-									<option value="nate.com">nate.com</option>
-							</select></td>
+							<td class="title">메일주소</td>
+							<td colspan="3" text-aling="end"><input type="email" value = "email123@naver.com" readonly></td>
 						</tr>
 						<tr>
-							<td class="title">*주소</td>
-							<td><input type="text" style="width: auto"></td>
-						</tr>
-						<tr>
-							<td class="title">*전화번호</td>
+							<td class="title">주소</td>
 							<td><input type="text" style="width: auto"></td>
 						</tr>
 					</table>
