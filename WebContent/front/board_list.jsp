@@ -1,6 +1,6 @@
-<%@page import="dbBeans.JobPostBean"%>
+<%@page import="db.jobBoardBeans.JobPostSubBean"%>
 <%@page import="java.util.ArrayList"%>
-<%@page import="dbBeans.JobBoardDBList"%>
+<%@page import="db.JobPostDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -79,8 +79,8 @@
         <!-- ★leni★ class list 사용하는지 여쭤보고 수정가능하면 수정하기 -->
             <div class="list" id="job_board_content" style="overflow: auto; height: 400px">
                <%
-                	JobBoardDBList jbl = JobBoardDBList.getInstance();
-                	ArrayList<JobPostBean> jp = jbl.getList("1", "1");
+                	JobPostDAO jbl = JobPostDAO.getInstance();
+                	ArrayList<JobPostSubBean> jp = jbl.getList("1", "1");
                	%>				
                 <table id="job_board">
                 <!-- ★leni★ database에 내용이 많아지면 이 부분은 지워도 됩니다. -->
@@ -149,7 +149,7 @@
                 	for(int i=0; i<jp.size(); i++){
                 %>
                 	<tr>
-                        <td style="width: 500px;"><a href="#"><%=jp.get(i).getJob_titile() %></a></td>
+                        <td style="width: 500px;"><a href="board_reading.jsp?no=<%=jp.get(i).getNo()%>"><%=jp.get(i).getJob_titile() %></a></td>
                         <td class="time"><%=jp.get(i).getCreated_at() %></td>
                         <td><input type="checkbox" value=""></td>
                     </tr>
@@ -171,7 +171,7 @@
 							for(int i=0; i<jp.size(); i++) {
 							%>
 								$('#job_board').append('<tr>'+
-										'<td><a href="#"><%=jp.get(i).getJob_titile() %></td>'+
+										'<td><a href="board_reading.jsp?no=<%=jp.get(i).getNo()%>"><%=jp.get(i).getJob_titile() %></td>'+
 										'<td class"time"><%=jp.get(i).getCreated_at() %></td>'+
 										'<td><input type="checkbox" value=""></td>'+
 										'</tr>');
