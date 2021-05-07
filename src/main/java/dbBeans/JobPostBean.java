@@ -30,6 +30,7 @@ public class JobPostBean {
 	private int no;
 	private Timestamp created_at;
 	private int creator;
+	private String creator_nick;
 	private int category;
 	private String job_titile;
 	private Timestamp job_time_start;
@@ -59,6 +60,12 @@ public class JobPostBean {
 	}
 	public void setCreator(int creator) {
 		this.creator = creator;
+	}
+	public String getCreator_nick() {
+		return creator_nick;
+	}
+	public void setCreator_nick(String creator_nick) {
+		this.creator_nick = creator_nick;
 	}
 	public int getCategory() {
 		return category;
