@@ -37,7 +37,6 @@ public class JobPostDAO {
 	}
 	
 	public ArrayList<JobPostSubBean> getList(String key, String value){
-//		★leni★ 리스트에 필요한 값만으로 구성되어야함, 수정 필요
 		
 		if(total_count<count) {
 			return null;
@@ -48,23 +47,19 @@ public class JobPostDAO {
 		ResultSet rs = null;
 		String query = "SELECT *"
 				+ " FROM (SELECT ROW_NUMBER() over (ORDER BY J.CREATED_AT DESC) AS \"ROWNUM\","
-				+ " J.NO,"
-				+ " J.CREATED_AT,"
-				+ " CREATOR,"
+				+ " J.NO AS \"JOB_NO\","
+				+ " L.FIRST_NAME || ' ' || L.SECOND_NAME AS \"JOB_LOCATION\","
+				+ " U.NO AS \"CREATOR_NO\","
 				+ " U.NICK AS \"CREATOR_NICK\","
-				+ " J.CATEGORY,"
 				+ " JOB_TITLE,"
-				+ " JOB_TIME_START,"
-				+ " JOB_TIME_END,"
-				+ " JOB_LOCATION_ZIP_CODE,"
-				+ " JOB_LOCATION,"
-				+ " JOB_LOCATION_DETAIL,"
 				+ " JOB_PAY,"
-				+ " JOB_NUM_OF_PEOPLE,"
-				+ " JOB_DETAIL,"
-				+ " JOB_PEOPLE"
+				+ " TO_CHAR(JOB_TIME_START, 'yy-MM-dd') AS \"JOB_DAY\","
+				+ " TO_CHAR(JOB_TIME_START, 'hh:mm') AS \"JOB_TIME_START\","
+				+ " TO_CHAR(JOB_TIME_END, 'hh:mm') AS \"JOB_TIME_END\","
+				+ " TO_CHAR(J.CREATED_AT, 'yy-MM-dd') AS \"CREATED_AT\""
 				+ " FROM JOB_BOARD J"
 				+ " JOIN USERS U on J.CREATOR = U.NO"
+				+ " JOIN LOCATIONS L on L.NO = J.JOB_LOCATION"
 				+ " WHERE ? = ?)"
 				+ " WHERE ROWNUM BETWEEN ? AND ?";
 				
@@ -81,32 +76,22 @@ public class JobPostDAO {
 			
 			while(rs.next()) {
 				JobPostSubBean jp = new JobPostSubBean();
-				jp.setNo(rs.getInt("NO"));
-				jp.setCreated_at(rs.getTimestamp("CREATED_AT"));
-				jp.setCreator(rs.getInt("CREATOR"));
-				jp.setCreator_nick(rs.getString("CREATOR_NICK"));
-				jp.setCategory(rs.getInt("CATEGORY"));
-				jp.setJob_titile(rs.getString("JOB_TITLE"));
-				jp.setJob_time_start(rs.getTimestamp("JOB_TIME_START"));
-				jp.setJob_time_end(rs.getTimestamp("JOB_TIME_END"));
-				jp.setJob_location_zip_code(rs.getInt("JOB_LOCATION_ZIP_CODE"));
-				jp.setJob_location(rs.getInt("JOB_LOCATION"));
-				jp.setJob_location_detail(rs.getString("JOB_LOCATION_DETAIL"));
-				jp.setJob_pay(rs.getInt("JOB_PAY"));
-				jp.setJob_num_of_people(rs.getInt("JOB_NUM_OF_PEOPLE"));
-				jp.setJob_detail(rs.getString("JOB_DETAIL"));
 				
-				String temp = rs.getString("JOB_PEOPLE");
-				if(temp != null) {
-					String[] people = rs.getString("JOB_PEOPLE").split(",");
-					int[] job_people = new int[jp.getJob_num_of_people()];
-					for(int index=0; index<people.length; index++) {
-						job_people[index] = Integer.valueOf(people[index]);
-					}
-					jp.setJob_people(job_people);
-				} else {
-					jp.setJob_people(null);
-				}
+				jp.setNo(rs.getInt("JOB_NO"));
+				
+				jp.setJob_location(rs.getString("JOB_LOCATION"));
+				
+				jp.setCreator_no(rs.getInt("CREATOR_NO"));
+				jp.setCreator_nick(rs.getString("CREATOR_NICK"));
+				
+				jp.setJob_titile(rs.getString("JOB_TITLE"));
+				jp.setJob_pay(rs.getInt("JOB_PAY"));
+				jp.setJob_day(rs.getString("JOB_DAY"));
+				jp.setJob_time_start(rs.getString("JOB_TIME_START"));
+				jp.setJob_time_end(rs.getString("JOB_TIME_END"));
+
+				jp.setCreated_at(rs.getString("CREATED_AT"));
+				
 				jpl.add(jp);
 			}
 			count += 10;
@@ -118,68 +103,66 @@ public class JobPostDAO {
 		return jpl;
 	}
 
-	public JobPostBean getPost(int job_post_no){
+	public JobPostBean getPost(String job_post_no){
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String query = "SELECT *"
-				+ " FROM (SELECT ROW_NUMBER() over (ORDER BY J.CREATED_AT DESC) AS \"ROWNUM\","
-				+ " J.NO,"
-				+ " J.CREATED_AT,"
-				+ " CREATOR,"
+		String query = "SELECT JOB_TITLE,"
+				+ " TO_CHAR(J.CREATED_AT, 'yy-MM-dd hh:mm') AS \"CREATED_AT\","
+				+ " CREATOR AS \"CREATOR_NO\","
 				+ " U.NICK AS \"CREATOR_NICK\","
+				+ " GRADE,"
 				+ " J.CATEGORY,"
-				+ " JOB_TITLE,"
-				+ " JOB_TIME_START,"
-				+ " JOB_TIME_END,"
-				+ " JOB_LOCATION_ZIP_CODE,"
-				+ " JOB_LOCATION,"
-				+ " JOB_LOCATION_DETAIL,"
-				+ " JOB_PAY,"
+				+ " TO_CHAR(JOB_TIME_START, 'yy-MM-dd') AS \"JOB_DAY\","
+				+ " TO_CHAR(JOB_TIME_START, 'hh:mm') AS \"JOB_TIME_START\","
+				+ " TO_CHAR(JOB_TIME_END, 'hh:mm') AS \"JOB_TIME_END\","
+				+ " L.FIRST_NAME || ' ' || L.SECOND_NAME || ' ' || J.JOB_LOCATION_DETAIL AS \"JOB_LOCATION\","
 				+ " JOB_NUM_OF_PEOPLE,"
-				+ " JOB_DETAIL,"
-				+ " JOB_PEOPLE"
+				+ " JOB_PAY,"
+				+ " JOB_DETAIL"
 				+ " FROM JOB_BOARD J"
-				+ " JOIN USERS U on J.CREATOR = U.NO)"
-				+ " WHERE NO = ?";
+				+ " JOIN USERS U on J.CREATOR = U.NO"
+				+ " JOIN LOCATIONS L on L.NO = J.JOB_LOCATION"
+				+ " WHERE J.NO = ?";
 		
 		JobPostBean jp = null;
 		
 		try {
 			con = DBConnection.getConnection();
 			pstmt = con.prepareStatement(query);
-			pstmt.setInt(1, job_post_no);
+			pstmt.setInt(1, Integer.valueOf(job_post_no));
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
 				jp = new JobPostBean();
-				jp.setNo(rs.getInt("NO"));
-				jp.setCreated_at(rs.getTimestamp("CREATED_AT"));
-				jp.setCreator(rs.getInt("CREATOR"));
-				jp.setCreator_nick(rs.getString("CREATOR_NICK"));
-				jp.setCategory(rs.getInt("CATEGORY"));
 				jp.setJob_titile(rs.getString("JOB_TITLE"));
-				jp.setJob_time_start(rs.getTimestamp("JOB_TIME_START"));
-				jp.setJob_time_end(rs.getTimestamp("JOB_TIME_END"));
-				jp.setJob_location_zip_code(rs.getInt("JOB_LOCATION_ZIP_CODE"));
-				jp.setJob_location(rs.getInt("JOB_LOCATION"));
-				jp.setJob_location_detail(rs.getString("JOB_LOCATION_DETAIL"));
-				jp.setJob_pay(rs.getInt("JOB_PAY"));
+				jp.setCreated_at(rs.getString("CREATED_AT"));
+
+				jp.setCreator_no(rs.getInt("CREATOR_NO"));
+				jp.setCreator_nick(rs.getString("CREATOR_NICK"));
+				jp.setCreator_grade(rs.getInt("GRADE"));
+				
+				jp.setCategory(rs.getInt("CATEGORY"));
+				
+				jp.setJob_day(rs.getString("JOB_DAY"));
+				jp.setJob_time(rs.getString("JOB_TIME_START"), rs.getString("JOB_TIME_END"));
+				jp.setJob_location(rs.getString("JOB_LOCATION"));
 				jp.setJob_num_of_people(rs.getInt("JOB_NUM_OF_PEOPLE"));
+				jp.setJob_pay(rs.getInt("JOB_PAY"));				
 				jp.setJob_detail(rs.getString("JOB_DETAIL"));
 				
-				String temp = rs.getString("JOB_PEOPLE");
-				if(temp != null) {
-					String[] people = rs.getString("JOB_PEOPLE").split(",");
-					int[] job_people = new int[jp.getJob_num_of_people()];
-					for(int index=0; index<people.length; index++) {
-						job_people[index] = Integer.valueOf(people[index]);
-					}
-					jp.setJob_people(job_people);
-				} else {
-					jp.setJob_people(null);
-				}
+//				String temp = rs.getString("JOB_PEOPLE");
+//				if(temp != null) {
+//					String[] people = rs.getString("JOB_PEOPLE").split(",");
+//					int[] job_people = new int[jp.getJob_num_of_people()];
+//					for(int index=0; index<people.length; index++) {
+//						job_people[index] = Integer.valueOf(people[index]);
+//					}
+//					jp.setJob_people(job_people);
+//				} else {
+//					jp.setJob_people(null);
+//				}
 			}
 			
 		} catch (Exception e) {

@@ -1,80 +1,61 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-
-
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="EUC-KR">
-<script type="text/javascript" src="script.js" charset="utf-8"></script>
-<link rel="stylesheet"
-	href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-
-<script>
-	$(function() {
-
-		//오늘 날짜를 출력
-		$("#today").text(new Date().toLocaleDateString());
-
-		//datepicker 한국어로 사용하기 위한 언어설정
-		$.datepicker.setDefaults($.datepicker.regional['ko']);
-
-		// 시작일(fromDate)은 종료일(toDate) 이후 날짜 선택 불가
-		// 종료일(toDate)은 시작일(fromDate) 이전 날짜 선택 불가
-
-		//시작일.
-		$('#fromDate').datepicker({
-			showOn : "focus", // 달력을 표시할 타이밍 (both: focus or button)
-			dateFormat : "yy-mm-dd", // 날짜의 형식
-			changeMonth : true, // 월을 이동하기 위한 선택상자 표시여부
-			//minDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이전 날짜 선택 불가)
-			onClose : function(selectedDate) {
-				// 시작일(fromDate) datepicker가 닫힐때
-				// 종료일(toDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
-				$("#toDate").datepicker("option", "minDate", selectedDate);
-			}
+	<link rel="stylesheet" href="../css/board_writer.css" type="text/css" />
+	<script type="text/javascript" src="script.js" charset="utf-8"></script>
+	<link rel="stylesheet"
+		href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	<script>
+		$(function() {
+	
+			//오늘 날짜를 출력
+			$("#today").text(new Date().toLocaleDateString());
+	
+			//datepicker 한국어로 사용하기 위한 언어설정
+			$.datepicker.setDefaults($.datepicker.regional['ko']);
+	
+			// 시작일(fromDate)은 종료일(toDate) 이후 날짜 선택 불가
+			// 종료일(toDate)은 시작일(fromDate) 이전 날짜 선택 불가
+	
+			//시작일.
+			$('#fromDate').datepicker({
+				showOn : "focus", // 달력을 표시할 타이밍 (both: focus or button)
+				dateFormat : "yy-mm-dd", // 날짜의 형식
+				changeMonth : true, // 월을 이동하기 위한 선택상자 표시여부
+				//minDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이전 날짜 선택 불가)
+				onClose : function(selectedDate) {
+					// 시작일(fromDate) datepicker가 닫힐때
+					// 종료일(toDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
+					$("#toDate").datepicker("option", "minDate", selectedDate);
+				}
+			});
+	
+			//종료일
+			$('#toDate').datepicker({
+				showOn : "focus",
+				buttonText : "날짜선택",
+				dateFormat : "yy-mm-dd",
+				changeMonth : true,
+				//minDate: 0, // 오늘 이전 날짜 선택 불가
+				onClose : function(selectedDate) {
+					// 종료일(toDate) datepicker가 닫힐때
+					// 시작일(fromDate)의 선택할수있는 최대 날짜(maxDate)를 선택한 종료일로 지정 
+					$("#fromDate").datepicker("option", "maxDate", selectedDate);
+				}
+			});
 		});
-
-		//종료일
-		$('#toDate').datepicker({
-			showOn : "focus",
-			buttonText : "날짜선택",
-			dateFormat : "yy-mm-dd",
-			changeMonth : true,
-			//minDate: 0, // 오늘 이전 날짜 선택 불가
-			onClose : function(selectedDate) {
-				// 종료일(toDate) datepicker가 닫힐때
-				// 시작일(fromDate)의 선택할수있는 최대 날짜(maxDate)를 선택한 종료일로 지정 
-				$("#fromDate").datepicker("option", "maxDate", selectedDate);
-			}
-		});
-	});
-</script>
-
-<link rel="stylesheet" href="./css/board_writer.css" type="text/css" />
-<title>Insert title here</title>
+	</script>
+	<title>구인 게시글 작성</title>
 </head>
-<body>
-	<div class="total">
-		<header class="header">
-			<div class="header_logo">
-				<h1>
-					<a href="main.jsp"> <img src="./images/logo11.png" alt="home"
-						width="200" height="100" /></a>
-				</h1>
-			</div>
-			<div class="header_gnb">
-				<ul>
-					<li><a href="main.jsp">HOME</a></li>
-					<li><a href="board_list.jsp">구인게시판</a></li>
-					<li><a href="shop.jsp">포인트상점</a></li>
-					<li><a href="mypage_import.jsp">마이페이지</a></li>
-					<li><a href="login.jsp">LOGIN</a></li>
-				</ul>
-			</div>
-		</header>
+ 
+<body class="total">
+<%@ include file="/header.jsp" %>
+
 		<form action="" method="POST">
 			<div class = "section">
 			<h1>구인 게시글 작성</h1>
@@ -164,16 +145,8 @@
 			</div>
 		</form>
 		<div class="clear"></div>
-		<div class="footer">
-			<div class="f_img">
-				<img src="images/footer.png" id="f_img">
-			</div>
-			<div class="f_info">
-				Green.co <br> Addr. 부산시 가나다동 가나다라구 2로 1234 <br> 010 - 123
-				-1234 <br> COPYRIGHT 2019. TAMO. ALL RIGHT RESERVED.
-			</div>
-		</div>
-	</div>
+		
+<%@ include file="/footer.jsp" %>
 </body>
 </html>
 
