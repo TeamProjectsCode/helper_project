@@ -12,7 +12,7 @@
 		<script type="text/javascript" src="script.js" charset="utf-8"></script>
 		<title>Insert title here</title>
 	</head>
-	<%@ include file="/headeßr.jsp" %>
+	<%@ include file="/header.jsp" %>
 	<body>
 <!-- ★leni★ 어디에 쓰이는 친구인고? -->
     <!-- <div class="total"> -->

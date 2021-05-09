@@ -46,22 +46,22 @@ public class JobPostDAO {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		String query = "SELECT *"
-				+ " FROM (SELECT ROW_NUMBER() over (ORDER BY J.CREATED_AT DESC) AS \"ROWNUM\","
+				+ " FROM (SELECT ROW_NUMBER() over (ORDER BY J.CREATED_AT DESC ) AS \"ROWNUM\","
 				+ " J.NO AS \"JOB_NO\","
 				+ " L.FIRST_NAME || ' ' || L.SECOND_NAME AS \"JOB_LOCATION\","
 				+ " U.NO AS \"CREATOR_NO\","
 				+ " U.NICK AS \"CREATOR_NICK\","
-				+ " JOB_TITLE,"
-				+ " JOB_PAY,"
-				+ " TO_CHAR(JOB_TIME_START, 'yy-MM-dd') AS \"JOB_DAY\","
-				+ " TO_CHAR(JOB_TIME_START, 'hh:mm') AS \"JOB_TIME_START\","
-				+ " TO_CHAR(JOB_TIME_END, 'hh:mm') AS \"JOB_TIME_END\","
+				+ " TITLE AS \"JOB_TITLE\","
+				+ " PAY AS \"JOB_PAY\","
+				+ " TO_CHAR(TIME_START, 'yy-MM-dd') AS \"JOB_DAY\","
+				+ " TO_CHAR(TIME_START, 'hh:mm') AS \"JOB_TIME_START\","
+				+ " TO_CHAR(TIME_END, 'hh:mm') AS \"JOB_TIME_END\","
 				+ " TO_CHAR(J.CREATED_AT, 'yy-MM-dd') AS \"CREATED_AT\""
 				+ " FROM JOB_BOARD J"
-				+ " JOIN USERS U on J.CREATOR = U.NO"
-				+ " JOIN LOCATIONS L on L.NO = J.JOB_LOCATION"
+				+ " JOIN USERS U on J.CREATOR_NO = U.NO"
+				+ " JOIN LOCATIONS L on J.LOCATION_NO = L.NO"
 				+ " WHERE ? = ?)"
-				+ " WHERE ROWNUM BETWEEN ? AND ?";
+				+ " WHERE \"ROWNUM\" BETWEEN ? AND ?";
 				
 		ArrayList<JobPostSubBean> jpl = new ArrayList<JobPostSubBean>();;
 		
@@ -108,22 +108,21 @@ public class JobPostDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String query = "SELECT JOB_TITLE,"
+		String query = "SELECT TITLE AS \"JOB_TITLE\","
 				+ " TO_CHAR(J.CREATED_AT, 'yy-MM-dd hh:mm') AS \"CREATED_AT\","
-				+ " CREATOR AS \"CREATOR_NO\","
+				+ " CREATOR_NO,"
 				+ " U.NICK AS \"CREATOR_NICK\","
 				+ " GRADE,"
-				+ " J.CATEGORY,"
-				+ " TO_CHAR(JOB_TIME_START, 'yy-MM-dd') AS \"JOB_DAY\","
-				+ " TO_CHAR(JOB_TIME_START, 'hh:mm') AS \"JOB_TIME_START\","
-				+ " TO_CHAR(JOB_TIME_END, 'hh:mm') AS \"JOB_TIME_END\","
-				+ " L.FIRST_NAME || ' ' || L.SECOND_NAME || ' ' || J.JOB_LOCATION_DETAIL AS \"JOB_LOCATION\","
-				+ " JOB_NUM_OF_PEOPLE,"
-				+ " JOB_PAY,"
-				+ " JOB_DETAIL"
+				+ " TO_CHAR(TIME_START, 'yy-MM-dd') AS \"JOB_DAY\","
+				+ " TO_CHAR(TIME_START, 'hh:mm') AS \"JOB_TIME_START\","
+				+ " TO_CHAR(TIME_END, 'hh:mm') AS \"JOB_TIME_END\","
+				+ " L.FIRST_NAME || ' ' || L.SECOND_NAME || ' ' || J.LOCATION_DETAIL AS \"JOB_LOCATION\","
+				+ " NUM_OF_PEOPLE AS \"JOB_NUM_OF_PEOPLE\","
+				+ " PAY AS \"JOB_PAY\","
+				+ " DETAIL AS \"JOB_DETAIL\""
 				+ " FROM JOB_BOARD J"
-				+ " JOIN USERS U on J.CREATOR = U.NO"
-				+ " JOIN LOCATIONS L on L.NO = J.JOB_LOCATION"
+				+ " JOIN USERS U on J.CREATOR_NO = U.NO"
+				+ " JOIN LOCATIONS L on J.LOCATION_NO = L.NO"
 				+ " WHERE J.NO = ?";
 		
 		JobPostBean jp = null;
@@ -143,7 +142,7 @@ public class JobPostDAO {
 				jp.setCreator_nick(rs.getString("CREATOR_NICK"));
 				jp.setCreator_grade(rs.getInt("GRADE"));
 				
-				jp.setCategory(rs.getInt("CATEGORY"));
+//				jp.setCategory(rs.getInt("CATEGORY"));
 				
 				jp.setJob_day(rs.getString("JOB_DAY"));
 				jp.setJob_time(rs.getString("JOB_TIME_START"), rs.getString("JOB_TIME_END"));
