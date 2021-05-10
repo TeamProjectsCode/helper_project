@@ -73,8 +73,8 @@
 						</tr>
 						<tr>
 							<th>성별</th>
-							<td><input type="radio" name="gender" value="남">남 <input
-								type="radio" name="gender" value="여">여</td>
+							<td><input type="radio" name="gender" value="0">남 <input
+								type="radio" name="gender" value="1">여</td>
 						</tr>
 						<tr>
 							<th>생일</th>
@@ -108,11 +108,11 @@
 							<th>주소</th>
 							<tr>
 								<th>도로명주소</th>
-								<td><input type="text"  style="width:300px;" id="roadAddrPart1"  name="roadAddrPart1" ></td>
+								<td><input type="text"  style="width:300px;" id="roadAddrPart1"  name="location_no" ></td>
 							</tr>
 							<tr>
 								<th>고객입력 상세주소</th>
-								<td><input type="text"  style="width:300px;" id="addrDetail"  name="addrDetail" /></td>
+								<td><input type="text"  style="width:300px;" id="addrDetail"  name="location_detail" /></td>
 							<td colspan="2"><input type="button" onClick="goPopup();" value="팝업_domainChk"/></td>
 							</tr>
 						</tr>
