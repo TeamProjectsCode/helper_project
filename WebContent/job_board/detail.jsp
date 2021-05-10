@@ -6,7 +6,7 @@
 <html>
   <head>
     <meta charset="EUC-KR" />
-    <link rel="stylesheet" href="../css/post_detail.css" type="text/css" />
+    <link rel="stylesheet" href="/helper_project/css/post_detail.css" type="text/css" />
     <script type="text/javascript" src="script.js" charset="utf-8"></script>
     <%
     String job_post_no = request.getParameter("no");

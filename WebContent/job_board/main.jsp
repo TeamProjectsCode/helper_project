@@ -7,14 +7,13 @@
 <html>
 	<head>
 		<meta charset="EUC-KR" />
-		<link rel="stylesheet" href="../css/board_list.css" type="text/css" />
+		<link rel="stylesheet" href="/helper_project/css/board_list.css" type="text/css" />
 		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 		<script type="text/javascript" src="script.js" charset="utf-8"></script>
 		<title>Insert title here</title>
 	</head>
 	<%@ include file="/header.jsp" %>
 	<body>
-<!-- ★leni★ 어디에 쓰이는 친구인고? -->
     <!-- <div class="total"> -->
 		<div class="main_content">
 			<div class="job_board_session">

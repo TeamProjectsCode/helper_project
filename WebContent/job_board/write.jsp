@@ -4,7 +4,7 @@
 <html>
 	<head>
 		<meta charset="EUC-KR">
-		<link rel="stylesheet" href="../css/board_writer.css" type="text/css" />
+		<link rel="stylesheet" href="/helper_project/css/board_writer.css" type="text/css" />
 		<script type="text/javascript" src="script.js" charset="utf-8"></script>
 		<link rel="stylesheet"
 			href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
