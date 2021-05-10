@@ -25,16 +25,9 @@
 					<li><a href="mypage_import.jsp">마이페이지</a></li>
 					<%
 					if(session.getAttribute("id")!=null){
+						String id = (String)session.getAttribute("id");
 						%>
-						<li><a href="login.jsp" onclick = "logout()">LOGOUT</a></li>
-						<script>
-						function logout() {
-							alert("로그 아웃 되었습니다.");
-						}
-						<%
-						session.invalidate(); //세션 삭제
-						%>
-						</script>
+						<li><a href="logout.jsp">LOGOUT</a></li>
 						<%
 						}else{
 						%>
@@ -54,7 +47,7 @@
 					<h3>My page</h3>
                     <button type="button" onclick="location.href='mypage_import.jsp'">회원정보 수정</button>
                     <br>
-                    <button type="button" onclick="location.href='mypage_write.jsp'">내가 쓴글</button>
+                    <button type="button" onclick="location.href='mp_write.jsp'">내가 쓴글</button>
                     <br>
                     <button type="button" onclick="location.href='mypage_apply.jsp'">지원현황</button>
                     <br>

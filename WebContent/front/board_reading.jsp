@@ -4,16 +4,16 @@
 <html>
   <head>
     <meta charset="EUC-KR" />
-    <link rel="stylesheet" href="css/review_reading.css" type="text/css" />
+    <link rel="stylesheet" href="css/board_reading.css" type="text/css" />
     <title>Insert title here</title>
     <script type="text/javascript" src="script.js" charset="utf-8"></script>
   </head>
-  <body>
-    <div class="total">
-      <header class="header">
+      <body>
+        <div class="total">
+          <header class="header">
             <div class="header_logo">
               <h1>
-                <a href="#">
+                <a href="main.jsp">
                 <img
                     src="images/logo11.png"
                     alt="home"
@@ -22,11 +22,11 @@
               </h1>
             </div>
             <div class="header_gnb">
-              <ul>
+      		  <ul>
 					<li><a href="main.jsp">HOME</a></li>
 					<li><a href="board_list.jsp">구인게시판</a></li>
 					<li><a href="shop.jsp">포인트상점</a></li>
-						<li><%
+					<li><%
         				if(session.getAttribute("id")==null){
         				%>
                			 <a href = "login_check.jsp">마이페이지</a>
@@ -38,7 +38,7 @@
 						}        		
         				%>
         				</li>
-						<%
+					<%
 					if(session.getAttribute("id")!=null){
 						String id = (String)session.getAttribute("id");
 						%>
@@ -53,36 +53,39 @@
 				</ul>
             </div>
           </header>
-      <form action="" method="POST">
-        <h1>후 기</h1>
-        <div class="section">
-          <ul>
-            <div class="title">
-              <h3>친절한 초읍동 주민들 &nbsp;&nbsp;&nbsp;</h3>
-              <div class="time">조회수 : 00</div>
+          <form action="" method="POST">
+            <h1>구인 게시판</h1>
+            <div class="section">
+                <ul>
+                    <div class="title">
+                        <h3>구인 제목</h3>
+                    </div>
+                </ul>
+                <ul>
+                    <div class="local">
+                   <img src="images/img.jpg" style="width: 100px ;height: 100px">
+                    <h3>작성자</h3>
+                    <h5>신뢰등급 : 1급</h5><br>
+                    <h3>장소 : </h3><br>
+                    <h3>시간 : </h3><br>
+                    <h3>인원수 : </h3><br>
+                    <h3>PAY : </h3>
+                </div>
+              </ul>
+              <ul>
+                <div class="content">
+                  <h3>상세 설명</h3>
+                  <br />
+                  <div style="width: auto; height: 400px">간단한 일</div>
+                </div>
+              </ul>
             </div>
-        </ul>
-        <ul>
-            <div class="list">
-                <h3>지원 했던 공고 &nbsp; &nbsp;</h3>
-                <a href="#">초읍동 선착순 1명 꿀알바</a>
-                <div class="time">21/04/27</div>
+            <div class="botton">
+              <button type="submit" onclick="">신청하기</button>
+              <span><button type="submit" onclick="">뒤로 가기</button></span>
             </div>
-          </ul>
-          <ul>
-            <div class="content">
-              <h3>후기</h3>
-              <br />
-              <div style="width: auto; height: 400px">양봉장</div>
-            </div>
-          </ul>
-        	<div class="button">
-            <button type="button" value = "뒤로가기" onclick="location.href='review_list.jsp'">뒤로가기</button>
-       		</div>
-        </div>
-      </form>
-       <div class ="space"></div>
-      <div class="footer">
+          </form>
+          <div class="footer">
             <div class="f_img"><img src="images/footer.png" id="f_img"></div>
             <div>
               Green.co <br>
