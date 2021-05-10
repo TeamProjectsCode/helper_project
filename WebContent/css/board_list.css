@@ -50,16 +50,33 @@
 	letter-spacing: 1px;
 }
 
+.main_content {
+	height: 600px;
+}
+
+/* ★leni★ div 공간 잡기 */
+.job_board_session{
+    width: 70%;
+    margin: 0px;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+}
+
+.first {
+    flex:0.4;
+    box-sizing: border-box;
+}
+
+.second{
+    flex: 1;
+    margin-left: 5%;
+    box-sizing: border-box;
+}
+
 ul {
 	margin: 10px;
 	margin-left: 20px;
-}
-
-form {
-	width: 1000px;
-	margin: 0px;
-	margin-left: auto;
-	margin-right: auto;
 }
 
 .title input {
@@ -88,19 +105,18 @@ textarea {
 	margin-top: 10px;
 }
 
-.serch {
-	padding: 30px;
-	border-bottom: 2px solid #3E3DB0;
+/* ★leni★ serch -> searchBox 로 이름 변경 */
+.searchBox {
+	border: 1px solid #3E3DB0;
 }
 
 .botton {
 	margin: 10px;
 }
 
+/* ★leni★ 속성 수정 */
 .list {
-	margin-left: 50px;
-	margin: 30px;
-	padding: 30px;
+	margin: 5px;
 }
 
 .list table tr {
@@ -110,6 +126,24 @@ textarea {
 .list table tr td {
 	padding: 10px;
 	border-bottom: 1px solid black;
+	font-size: smaller;
+}
+
+/* ★leni★ job_title, job_time 추가 */
+.list #job_location{
+	width: 140px;
+}
+.list #job_title {
+	width: 300px;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 300px;
+	overflow: hidden;
+	font-size: unset;
+}
+
+.list #job_time {
+    text-align: center;
 }
 
 .hit {

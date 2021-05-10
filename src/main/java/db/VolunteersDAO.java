@@ -1,13 +1,15 @@
-package dbBeans;
+package db;
 
 import java.util.ArrayList;
 
-public class VolunteersList {
+import db.volunteerBeans.VolunteerBean;
+
+public class VolunteersDAO {
 	private ArrayList<VolunteerBean> volunteers_list;
 	
 	
-	public VolunteersList() {}
-	public VolunteersList(ArrayList<VolunteerBean> vl) {
+	public VolunteersDAO() {}
+	public VolunteersDAO(ArrayList<VolunteerBean> vl) {
 		this.volunteers_list = vl;
 	}
 	

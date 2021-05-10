@@ -1,12 +1,14 @@
-package dbBeans;
+package db;
 
 import java.util.ArrayList;
 
-public class ReviewBoardList {
+import db.reviewBeans.ReviewPostBean;
+
+public class ReviewBoardDAO {
 	private ArrayList<ReviewPostBean> review_board_list;
 	
-	public ReviewBoardList() {}
-	public ReviewBoardList(ArrayList<ReviewPostBean> rbl) {
+	public ReviewBoardDAO() {}
+	public ReviewBoardDAO(ArrayList<ReviewPostBean> rbl) {
 		this.review_board_list = rbl;
 	}
 	

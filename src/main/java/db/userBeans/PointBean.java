@@ -1,4 +1,4 @@
-package dbBeans;
+package db.userBeans;
 
 import java.sql.Timestamp;
 
