@@ -6,12 +6,13 @@
       <form action=""method="post">
 		  <label>
 			  <h3>지역</h3>
-				<select>
-				  <option value="0">전체</option>
-				  <option value="02">서울</option>
-				  <option value="051">부산</option>
+				<select name="location" id="location">
+				  <option value="전체">전체</option>
+				  <option value="서울">서울</option>
+				  <option value="부산">부산</option>
 				</select>
 		  </label>
+
 		</form>
 	</div>
 </html>
