@@ -19,19 +19,23 @@
 					<li><a href="main.jsp">HOME</a></li>
 					<li><a href="board_list.jsp">구인게시판</a></li>
 					<li><a href="shop.jsp">포인트상점</a></li>
-					<li><a href="mypage_import.jsp">마이페이지</a></li>
+						<li><%
+        				if(session.getAttribute("id")==null){
+        				%>
+               			 <a href = "login_check.jsp">마이페이지</a>
+        				<%
+						}else{
+        				%>
+        				 <a href = "mypage_import.jsp">마이페이지</a>
+        				<%
+						}        		
+        				%>
+        				</li>
 					<%
 					if(session.getAttribute("id")!=null){
+						String id = (String)session.getAttribute("id");
 						%>
-						<li><a href="login.jsp" onclick = "logout()">LOGOUT</a></li>
-						<script>
-						function logout() {
-							alert("로그 아웃 되었습니다.");
-						}
-						<%
-						session.invalidate(); //세션 삭제
-						%>
-						</script>
+						<li><a href="logout.jsp">LOGOUT</a></li>
 						<%
 						}else{
 						%>
@@ -39,7 +43,6 @@
 						<%
 						}
 						%>
-					
 				</ul>
 			</div>
 			<div class="intro_text">

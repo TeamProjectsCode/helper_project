@@ -24,16 +24,9 @@
 					<li><a href="mypage_import.jsp">마이페이지</a></li>
 					<%
 					if(session.getAttribute("id")!=null){
+						String id = (String)session.getAttribute("id");
 						%>
-						<li><a href="login.jsp" onclick = "logout()">LOGOUT</a></li>
-						<script>
-						function logout() {
-							alert("로그 아웃 되었습니다.");
-						}
-						<%
-						session.invalidate(); //세션 삭제
-						%>
-						</script>
+						<li><a href="logout.jsp">LOGOUT</a></li>
 						<%
 						}else{
 						%>
@@ -52,7 +45,7 @@
 					<button type="button" onclick="location.href='mypage_import.jsp'">회원정보
 						수정</button>
 					<br>
-					<button type="button" onclick="location.href='mypage_write.jsp'">내가
+					<button type="button" onclick="location.href='mp_write.jsp'">내가
 						쓴글</button>
 					<br>
 					<button type="button" onclick="location.href='mypage_apply.jsp'">지원현황</button>
@@ -69,7 +62,7 @@
 							<td class="title">아이디</td>
 							<td><input type="text" style="width: auto"  value="test" readonly></td>
 							<td class="title">이름</td>
-							<td><input type="text" style="width: auto" value = "홍길동"></td>
+							<td><input type="text" style="width: auto" value = "홍길동" readonly></td>
 						</tr>
 						<tr>
 							<td class="title">비밀번호</td>
@@ -93,7 +86,20 @@
 					<br>
 					<br>
 					<div class="button">
-						<button type="submit" onclick="">완 료</button>
+						<button type="submit" onclick="update()">수정 완료</button>
+						 <script>
+						 function update(){
+							 
+      						var age = prompt("비밀번호를 입력해주세요.", "");
+
+     						 if (age == <%="1234"%>) {
+        					alert("수정완료 되었습니다.");
+        					history.reload();
+     						} else {
+     						alert("비밀 번호가 다릅니다.");
+     						}
+						 }
+   						</script>
 						<button onclick="member_delete()">회원 탈퇴</button>
 						<script>
 							function member_delete() {

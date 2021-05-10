@@ -26,19 +26,23 @@
 					<li><a href="main.jsp">HOME</a></li>
 					<li><a href="board_list.jsp">구인게시판</a></li>
 					<li><a href="shop.jsp">포인트상점</a></li>
-					<li><a href="mypage_import.jsp">마이페이지</a></li>
-					<%
-					if(session.getAttribute("id")!=null){
-						%>
-						<li><a href="login.jsp" onclick = "logout()">LOGOUT</a></li>
-						<script>
-						function logout() {
-							alert("로그 아웃 되었습니다.");
-						}
+					<li><%
+        				if(session.getAttribute("id")==null){
+        				%>
+               			 <a href = "login_check.jsp">마이페이지</a>
+        				<%
+						}else{
+        				%>
+        				 <a href = "mypage_import.jsp">마이페이지</a>
+        				<%
+						}        		
+        				%>
+        				</li>
 						<%
-						session.invalidate(); //세션 삭제
+					if(session.getAttribute("id")!=null){
+						String id = (String)session.getAttribute("id");
 						%>
-						</script>
+						<li><a href="logout.jsp">LOGOUT</a></li>
 						<%
 						}else{
 						%>
@@ -53,6 +57,13 @@
         <h1>공지 사항</h1>
         <div class="section">
         <div class = "serch">
+           <%
+        	if(session.getAttribute("id")!=null){
+        		%>
+                <a href = "login_check.jsp"><h4>글쓰기</h4></a>
+        		<%
+			}
+                     %>
               <h3>검색 <input type= "text" value=""> &nbsp; &nbsp;</h3>
         </div>
             <div class="list" style="overflow: auto; height: 400px">

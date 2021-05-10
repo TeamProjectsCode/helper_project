@@ -6,7 +6,7 @@
 <meta charset="EUC-KR">
  <script type="text/javascript" src="checking.js" charset="utf-8"></script>
 <link rel="stylesheet" href="./css/register1.css" />
-<title>회원가입</title>
+<title>document</title>
 </head>
 <body>
 	<div class="total">
@@ -22,13 +22,24 @@
 					<li><a href="main.jsp">HOME</a></li>
 					<li><a href="board_list.jsp">구인게시판</a></li>
 					<li><a href="shop.jsp">포인트상점</a></li>
-					<li><a href="mypage_import.jsp">마이페이지</a></li>
+						<li><%
+        				if(session.getAttribute("id")==null){
+        				%>
+               			 <a href = "login_check.jsp">마이페이지</a>
+        				<%
+						}else{
+        				%>
+        				 <a href = "mypage_import.jsp">마이페이지</a>
+        				<%
+						}        		
+        				%>
+        				</li>
 					<li><a href="login.jsp">LOGIN</a></li>
 				</ul>
 			</div>
 		</header>
 		<center>
-			<form action="login.jsp" class="sign-up-form" id="form" name="form" method="post">
+			<form action="register_ok.jsp" class="sign-up-form" id="form" name="form" method="post">
 				<div class="main">
 					<div class="title">
 						<h1>회원가입</h1>
@@ -40,6 +51,7 @@
 						<tr>
 							<th>아이디</th>
 							<td><input type="text" placeholder="아이디" name="id"></td>
+							<td><input type="button" value="중복확인" onclick ""><td>
 						</tr>
 						<tr>
 							<th>이름</th>
@@ -96,11 +108,11 @@
 							<th>주소</th>
 							<tr>
 								<th>도로명주소</th>
-								<td><input type="text"  style="width:500px;" id="roadAddrPart1"  name="roadAddrPart1" ></td>
+								<td><input type="text"  style="width:300px;" id="roadAddrPart1"  name="roadAddrPart1" ></td>
 							</tr>
 							<tr>
 								<th>고객입력 상세주소</th>
-								<td><input type="text"  style="width:500px;" id="addrDetail"  name="addrDetail" /></td>
+								<td><input type="text"  style="width:300px;" id="addrDetail"  name="addrDetail" /></td>
 							<td colspan="2"><input type="button" onClick="goPopup();" value="팝업_domainChk"/></td>
 							</tr>
 						</tr>
