@@ -29,7 +29,7 @@ public class JobPostBean {
 	private String created_at;
 	private int creator_no;
 	private String creator_nick;
-	private int creator_grade;
+	private String creator_grade;	
 	/* category String으로 받아와야 할듯한대에ㅔㅔ */
 	private int category;
 	private String job_day;
@@ -52,7 +52,7 @@ public class JobPostBean {
 	public String getCreator_nick() {
 		return creator_nick;
 	}
-	public int getCreator_grade() {
+	public String getCreator_grade() {
 		return creator_grade;
 	}
 	public int getCategory() {
@@ -88,7 +88,7 @@ public class JobPostBean {
 	public void setCreator_nick(String creator_nick) {
 		this.creator_nick = creator_nick;
 	}
-	public void setCreator_grade(int creator_grade) {
+	public void setCreator_grade(String creator_grade) {
 		this.creator_grade = creator_grade;
 	}
 	public void setCategory(int category) {
@@ -112,4 +112,5 @@ public class JobPostBean {
 	public void setJob_detail(String job_detail) {
 		this.job_detail = job_detail;
 	}
+
 }
