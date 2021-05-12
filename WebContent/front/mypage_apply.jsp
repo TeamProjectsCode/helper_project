@@ -65,7 +65,7 @@
 					<h1>&nbsp;&nbsp;지원 현황</h1>
 					<p>&nbsp;&nbsp;</p>
 					<p>&nbsp;&nbsp;</p>
-					<table border="1" cellspacing="0">
+					<table>
 						<tr style="height: 50px;">
 							<th width = "70px;">일 자</th>
 							<th width = "70px;">시 간</th>
