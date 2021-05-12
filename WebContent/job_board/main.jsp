@@ -1,3 +1,4 @@
+<%@page import="java.net.URLDecoder"%>
 <%@page import="db.jobBoardBeans.JobPostSubBean"%>
 <%@page import="java.util.ArrayList"%>
 <%@page import="db.JobPostDAO"%>
@@ -28,9 +29,7 @@
 					<jsp:include page="search_bar.jsp"/>
 				</div>
 				<div class="second">
-					<jsp:include page="list.jsp">
-						<jsp:param name="location" value="051"/>
-					</jsp:include>
+					<jsp:include page="list.jsp"/>
 				</div>
 				
 		<%--         ★leni★ 두 개 차이점이 존재 할 듯 확인 해 봐야 한다.

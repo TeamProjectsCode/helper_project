@@ -2,16 +2,16 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="db.JobPostDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    %>
 <!DOCTYPE html>
 <html>
         <!-- ★leni★ class list 사용하는지 여쭤보고 수정가능하면 수정하기 -->
     <div class="list" id="job_board_content" style="overflow: auto; height: 400px">
         <%
         String location = request.getParameter("location");
-        System.out.println("location:"+location);
         JobPostDAO jpDAO = JobPostDAO.getInstance();
-        ArrayList<JobPostSubBean> jpsl = jpDAO.getList("1", "1");
+        jpDAO.setCount(location);
+        ArrayList<JobPostSubBean> jpsl = jpDAO.getList("LOCATION_NO", location);
         %>
         <table id="job_board">
         <!-- ★leni★ database에 내용이 많아지면 이 부분은 지워도 됩니다. -->
@@ -106,7 +106,7 @@
                 <td>등록일</td>
             </tr>
                           
-        <%
+		<%
         if(jpsl != null){
             for(int i=0; i<jpsl.size(); i++){
         %>
@@ -125,15 +125,6 @@
         %>
 
         <script type="text/javascript">
-/*         
-        $(function(){
-        	
-        }); */
-        $('#location').change(function(){
-    		
-    		$('#job_board_content').empty();		 
-    		alert(this.value+'삭제실행 action_list.js');
-    	});  
         
          $('#job_board_content').scroll(function () {
              var scrollT = $(this).scrollTop(); // 스크롤바의 상단위치
@@ -143,7 +134,7 @@
              if(scrollT+scrollH+1 >= contentH){
                  /* ★leni★ 스크롤 시 jdbc 읽어오는 부분 */
                  <%
-                 /* jpsl = jpDAO.getList("1", "1"); */
+                 jpsl = jpDAO.getList("LOCATION_NO", location);
                  if(jpsl != null){
                  	for(int i=0; i<jpsl.size(); i++) {
                  %>
@@ -159,6 +150,7 @@
                      <%
                      }
                  }
+                 jpsl = null;
                  %>
              }			
          });

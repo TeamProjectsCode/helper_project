@@ -13,13 +13,25 @@ public class JobPostDAO {
 	private static int count;
 	
 	public static JobPostDAO getInstance() {
+		return instance;
+	}
+	
+	public void setCount(String location) {
+		
 		total_count = 0;
 		count = 1;
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String query = "SELECT COUNT(*) AS \"TOTAL_COUNT\" FROM JOB_BOARD";
+		
+		String query;
+		if(location == null) {
+			query = "SELECT COUNT(*) AS \"TOTAL_COUNT\" FROM JOB_BOARD";
+		}
+		else {
+			query = "SELECT COUNT(*) AS \"TOTAL_COUNT\" FROM JOB_BOARD WHERE LOCATION_NO="+location;
+		}
 		
 		try {
 			con = DBConnection.getConnection();
@@ -30,14 +42,22 @@ public class JobPostDAO {
 				total_count = rs.getInt("TOTAL_COUNT");
 			}
 		} catch (Exception e) {
-			System.out.println("JobPostDAO getInstance() ERROR: "+e);
+			System.out.println("JobPostDAO setCount() ERROR: "+e);
 		}
 		
-		return instance;
 	}
 	
 	public ArrayList<JobPostSubBean> getList(String key, String value){
 		
+		String where;
+		if(value == null) {
+			where= " WHERE 1 = ?)";
+			value = "1";
+		}
+		else {
+			where = " WHERE J.LOCATION_NO = ?)";
+		}
+
 		if(total_count<count) {
 			return null;
 		}
@@ -60,18 +80,17 @@ public class JobPostDAO {
 				+ " FROM JOB_BOARD J"
 				+ " JOIN USERS U on J.CREATOR_NO = U.NO"
 				+ " JOIN LOCATIONS L on J.LOCATION_NO = L.NO"
-				+ " WHERE ? = ?)"
+				+ where
 				+ " WHERE \"ROWNUM\" BETWEEN ? AND ?";
 				
-		ArrayList<JobPostSubBean> jpl = new ArrayList<JobPostSubBean>();;
+		ArrayList<JobPostSubBean> jpl = new ArrayList<JobPostSubBean>();
 		
 		try {
 			con = DBConnection.getConnection();
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, key);
-			pstmt.setString(2, value);
-			pstmt.setInt(3, count);
-			pstmt.setInt(4, count+9);
+			pstmt.setString(1, value);
+			pstmt.setInt(2, count);
+			pstmt.setInt(3, count+9);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -140,7 +159,7 @@ public class JobPostDAO {
 
 				jp.setCreator_no(rs.getInt("CREATOR_NO"));
 				jp.setCreator_nick(rs.getString("CREATOR_NICK"));
-				jp.setCreator_grade(rs.getInt("GRADE"));
+				jp.setCreator_grade(rs.getString("GRADE"));
 				
 //				jp.setCategory(rs.getInt("CATEGORY"));
 				
@@ -165,7 +184,7 @@ public class JobPostDAO {
 			}
 			
 		} catch (Exception e) {
-			System.out.println("JobPostDAO getList() ERROR: "+e);
+			System.out.println("JobPostDAO getPost() ERROR: "+e);
 		}
 		
 		return jp;
