@@ -68,20 +68,50 @@
 						<tr style="height: 50px;">
 							<td>날짜</td>
 							<td style="width: 500px;">글 제목1</td>
-							<th colspan="2"><input type="submit" value="수정" onclick="location.href='board_writer_fix.jsp'">
-							<input type="submit" value="삭제"></th>
+							<th colspan="2"><input type="button" value="수정" onclick="location.href='board_writer_fix.jsp'">
+							<input type="button"  value="삭제" onclick="delete_check()"></th>
+							<script>
+								function delete_check(){
+									
+									if (!confirm("정말로 삭제 하시겠습니까??")) {
+										alert("취소 되었습니다.");
+									} else {
+										alert("삭제 되었습니다.");
+									}
+								}
+							</script>
 						</tr>
 						<tr style="height: 50px;">
 							<td>날짜</td>
-							<td style="width: 500px;">글 제목2</td>
-							<th><input type="submit" value="수정" onclick="location.href='board_writer_fix.jsp'">
-							<input type="submit" value="삭제"></th>
+							<td style="width: 500px;">글 제목1</td>
+							<th colspan="2"><input type="button" value="수정" onclick="location.href='board_writer_fix.jsp'">
+							<input type="button"  value="삭제" onclick="delete_check()"></th>
+							<script>
+								function delete_check(){
+									
+									if (!confirm("정말로 삭제 하시겠습니까??")) {
+										alert("취소 되었습니다.");
+									} else {
+										alert("삭제 되었습니다.");
+									}
+								}
+							</script>
 						</tr>
 						<tr style="height: 50px;">
 							<td>날짜</td>
-							<td style="width: 500px;">글 제목3</td>
-							<th><input type="submit" value="수정" onclick="location.href='board_writer_fix.jsp'">
-							<input type="submit" value="삭제"></th>
+							<td style="width: 500px;">글 제목1</td>
+							<th colspan="2"><input type="button" value="수정" onclick="location.href='board_writer_fix.jsp'">
+							<input type="button"  value="삭제" onclick="delete_check()"></th>
+							<script>
+								function delete_check(){
+									
+									if (!confirm("정말로 삭제 하시겠습니까??")) {
+										alert("취소 되었습니다.");
+									} else {
+										alert("삭제 되었습니다.");
+									}
+								}
+							</script>
 						</tr>
 					</table>
 					<div class = "clear"></div>
@@ -91,20 +121,50 @@
 						<tr style="height: 50px;">
 							<td>날짜</td>
 							<td style="width: 500px;">글 제목1</td>
-							<th colspan="2"><input type="submit" value="수정" onclick="location.href='review_writer_fix.jsp'">
-							<input type="submit" value="삭제"></th>
+							<th colspan="2"><input type="button" value="수정" onclick="location.href='review_writer_fix.jsp'">
+							<input type="button"  value="삭제" onclick="delete_check()"></th>
+							<script>
+								function delete_check(){
+									
+									if (!confirm("정말로 삭제 하시겠습니까??")) {
+										alert("취소 되었습니다.");
+									} else {
+										alert("삭제 되었습니다.");
+									}
+								}
+							</script>
 						</tr>
 						<tr style="height: 50px;">
 							<td>날짜</td>
 							<td style="width: 500px;">글 제목2</td>
-							<th><input type="submit" value="수정" onclick="location.href='review_writer_fix.jsp'">
-							<input type="submit" value="삭제"></th>
+							<th><input type="button"  value="수정" onclick="location.href='review_writer_fix.jsp'">
+							<input type="button"  value="삭제" onclick="delete_check()"></th>
+							<script>
+								function delete_check(){
+									
+									if (!confirm("정말로 삭제 하시겠습니까??")) {
+										alert("취소 되었습니다.");
+									} else {
+										alert("삭제 되었습니다.");
+									}
+								}
+							</script>
 						</tr>
 						<tr style="height: 50px;">
 							<td>날짜</td>
 							<td style="width: 500px;">글 제목3</td>
-							<th><input type="submit" value="수정" onclick="location.href='review_writer_fix.jsp'">
-							<input type="submit" value="삭제"></th>
+							<th><input type="button" value="수정" onclick="location.href='review_writer_fix.jsp'">
+							<input type="button"  value="삭제" onclick="delete_check()"></th>
+							<script>
+								function delete_check(){
+									
+									if (!confirm("정말로 삭제 하시겠습니까??")) {
+										alert("취소 되었습니다.");
+									} else {
+										alert("삭제 되었습니다.");
+									}
+								}
+							</script>
 						</tr>
 					</table>
 				</div>

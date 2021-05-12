@@ -43,7 +43,6 @@
             </div>
           </header>
       <form>
-      
         <h1 align="center">ID PW 찾기</h1>
         <div class="id_section">
 			<h3>아이디 찾기</h3>
@@ -58,7 +57,7 @@
 				</tr>
 			</table>
             <div class="button">
-				<button type="submit" onclick="">찾기</button>
+				<button type="submit" onclick="location.href='findIdAction.jsp'">찾기</button>
 			</div>
         </div>
         
@@ -67,19 +66,19 @@
 			<table>
 				<tr>
 					<td>가입한 아이디를 입력하세요.</td>
-					<td><input type = "text"></td>
+					<td><input type = "text" name = "id"></td>
 				</tr>
 				<tr>
 					<td>가입한 이메일을 입력하세요.</td>
-					<td><input type = "text"></td>
+					<td><input type = "text" name = "email"></td>
 				</tr>
 				<tr>
 					<td>전화 번호를 입력하세요.</td>
-					<td><input type = "text" placeholder="ex)01093468751"></td>
+					<td><input type = "text" placeholder="ex)01093468751" name = "phonenumber"></td>
 				</tr>
 			</table>
             <div class="button">
-				<button type="submit" onclick="">찾기</button>
+				<button type="submit" onclick="location.href='findPwAction.jsp'">찾기</button>
 			</div>
         </div>
       </form>

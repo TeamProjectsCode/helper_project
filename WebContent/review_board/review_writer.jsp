@@ -1,5 +1,11 @@
+<%@page import="db.reviewBeans.ReviewPostBean"%>
+<%@page import="db.ReviewPostDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%
+	ReviewPostDAO manager = ReviewPostDAO.getInstance();
+	//ReviewPostBean pb = manager.ge
+%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -31,7 +37,7 @@
 				</ul>
             </div>
           </header>
-      <form action="" method="POST">
+      <form action="review_writer_ok.jsp" method="POST">
         <h1>후기작성</h1>
         <div class="section">
           <ul>
@@ -45,7 +51,7 @@
               <textarea
                  style="overflow: auto; height: 400px"
                 cols="70"
-                rows="auto"
+                rows="auto" name="review"
               ></textarea>
             </div>
           </ul>
