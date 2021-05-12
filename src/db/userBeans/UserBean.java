@@ -30,10 +30,15 @@ public class UserBean {
 	private String id;
 	private String pw;
 	private int gender;
-	private Timestamp birthday;
+	private int birth_yy;
+	private int birth_mm;
+	private int birth_dd;
 	private String email;
 	private int point;
-	private int grade;
+	private String grade;
+	private int location_zip_code;
+	private int location_no;
+	private String location_detail;
 	private Timestamp created_at;
 	private int country_code;
 	
@@ -74,11 +79,45 @@ public class UserBean {
 	public void setGender(int gender) {
 		this.gender = gender;
 	}
-	public Timestamp getBirthday() {
-		return birthday;
+	
+	public int getBirth_yy() {
+		return birth_yy;
 	}
-	public void setBirthday(Timestamp birthday) {
-		this.birthday = birthday;
+	public void setBirth_yy(int birth_yy) {
+		this.birth_yy = birth_yy;
+	}
+	public int getBirth_mm() {
+		return birth_mm;
+	}
+	public void setBirth_mm(int birth_mm) {
+		this.birth_mm = birth_mm;
+	}
+	public int getBirth_dd() {
+		return birth_dd;
+	}
+	public void setBirth_dd(int birth_dd) {
+		this.birth_dd = birth_dd;
+	}
+	public int getLocation_zip_code() {
+		return location_zip_code;
+	}
+	public void setLocation_zip_code(int location_zip_code) {
+		this.location_zip_code = location_zip_code;
+	}
+	public int getLocation_no() {
+		return location_no;
+	}
+	public void setLocation_no(int location_no) {
+		this.location_no = location_no;
+	}
+	public String getLocation_detail() {
+		return location_detail;
+	}
+	public void setLocation_detail(String location_detail) {
+		this.location_detail = location_detail;
+	}
+	public void setGrade(String grade) {
+		this.grade = grade;
 	}
 	public String getEmail() {
 		return email;
@@ -92,11 +131,9 @@ public class UserBean {
 	public void setPoint(int point) {
 		this.point = point;
 	}
-	public int getGrade() {
+	
+	public String getGrade() {
 		return grade;
-	}
-	public void setGrade(int grade) {
-		this.grade = grade;
 	}
 	public Timestamp getCreated_at() {
 		return created_at;

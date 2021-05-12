@@ -27,7 +27,7 @@ public class UserDAO {
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		int re=-1;
-		String sql = "INSERT INTO USER VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "INSERT INTO USER VALUES(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -37,12 +37,16 @@ public class UserDAO {
 			pstmt.setString(4, user.getId());
 			pstmt.setString(5, user.getPw());
 			pstmt.setInt(6, user.getGender());
-			pstmt.setTimestamp(7, user.getBirthday());
-			pstmt.setString(8, user.getEmail());
-			pstmt.setInt(9, user.getPoint());
-			pstmt.setInt(10, user.getGrade());
-			pstmt.setTimestamp(11, user.getCreated_at());
-			pstmt.setInt(12, user.getCountry_code());
+			pstmt.setInt(7, user.getBirth_yy());
+			pstmt.setInt(8, user.getBirth_mm());
+			pstmt.setInt(9, user.getBirth_dd());
+			pstmt.setString(10, user.getEmail());
+			pstmt.setInt(11, user.getPoint());
+			pstmt.setString(12, user.getGrade());
+			pstmt.setInt(13, user.getLocation_no());
+			pstmt.setString(14, user.getLocation_detail());
+			pstmt.setTimestamp(15, user.getCreated_at());
+			pstmt.setInt(16, user.getCountry_code());
 
 		 pstmt.executeUpdate();
 		 re=1;
@@ -136,12 +140,17 @@ public class UserDAO {
 				user.setId(rs.getString(4));
 				user.setPw(rs.getString(5));
 				user.setGender(rs.getInt(6));
-				user.setBirthday(rs.getTimestamp(7));
-				user.setEmail(rs.getString(8));
-				user.setPoint(rs.getInt(9));
-				user.setGrade(rs.getInt(10));
-				user.setCreated_at(rs.getTimestamp(11));
-				user.setCountry_code(rs.getInt(12));
+				user.setBirth_yy(rs.getInt(7));
+				user.setBirth_mm(rs.getInt(8));
+				user.setBirth_dd(rs.getInt(9));
+				user.setEmail(rs.getString(10));
+				user.setPoint(rs.getInt(11));
+				user.setGrade(rs.getString(12));
+				user.setLocation_zip_code(rs.getInt(13));
+				user.setLocation_no(rs.getInt(14));
+				user.setLocation_detail(rs.getString(15));
+				user.setCreated_at(rs.getTimestamp(16));
+				user.setCountry_code(rs.getInt(17));
 			}
 			
 		}catch (Exception e) {

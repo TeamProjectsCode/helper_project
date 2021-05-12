@@ -68,10 +68,6 @@
 								name="pass2"></td>
 						</tr>
 						<tr>
-							<th>전화 번호</th>
-							<td><input type="text" placeholder="ex)01012345678"name="phone"></td>
-						</tr>
-						<tr>
 							<th>성별</th>
 							<td><input type="radio" name="gender" value="남">남 <input
 								type="radio" name="gender" value="여">여</td>
