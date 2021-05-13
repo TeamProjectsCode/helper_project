@@ -15,7 +15,7 @@
     %>
     <title><%=jp.getJob_titile() %></title>
   </head>
-  <%@ include file="/header.jsp" %>
+  <%@ include file="../header.jsp" %>
   <body>
     <div class="main_content">
       <!-- form 태그 필요 없을 듯? 있나..? -->

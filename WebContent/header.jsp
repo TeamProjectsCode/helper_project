@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" type="text/css" href="../css/header.css">
 	<header class="header">
 		<div class="header_logo">
 			<h1>
@@ -14,31 +15,36 @@
 			</h1>
 		</div>
 		<div class="header_gnb">
-			<ul>
-				<li><a href="/helper_project/main.jsp">HOME</a></li>
-				<li><a href="/helper_project/job_board/main.jsp">구인게시판</a></li>
-				<li><a href="shop.jsp">포인트상점</a></li>
-				<li><a href="mypage_import.jsp">마이페이지</a></li>
-				<%
-				if(session.getAttribute("id")!=null){
-				%>
-				<li><a href="login.jsp" onclick = "logout()">LOGOUT</a></li>
-				<script>
-				function logout() {
-					alert("로그 아웃 되었습니다.");
-				}
-				<%
-				session.invalidate(); //세션 삭제
-				%>
-				</script>
-				<%
-				}else{
-				%>
-				<li><a href="login.jsp">LOGIN</a></li>
-				<%
-				}
-				%>
-			</ul>
+			<ul class = "nav">
+					<li><a href="main.jsp">HOME</a></li>
+					<li><a href="board_list.jsp">구인게시판</a></li>
+					<li><a href="shop.jsp">포인트상점</a></li>
+					<li><%
+        				if(session.getAttribute("id")==null){
+        				%>
+               			 <a href = "login_check.jsp">마이페이지</a>
+        				<%
+						}else{
+        				%>
+        				 <a href = "mypage_import.jsp">마이페이지</a>
+        				<%
+						}        		
+        				%>
+        				</li>
+					<%
+					if(session.getAttribute("id")!=null){
+						String id = (String)session.getAttribute("id");
+						%>
+						<li><a href="logout.jsp">LOGOUT</a></li>
+						<%
+						}else{
+						%>
+						<li><a href="login.jsp">LOGIN</a></li>
+						<%
+						}
+						%>
+					</script>
+				</ul>
 		</div>
 	</header>
 </html>

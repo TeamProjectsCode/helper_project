@@ -1,11 +1,5 @@
-<%@page import="db.reviewBeans.ReviewPostBean"%>
-<%@page import="db.ReviewPostDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%
-	ReviewPostDAO manager = ReviewPostDAO.getInstance();
-	//ReviewPostBean pb = manager.ge
-%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -17,12 +11,12 @@
   <body>
     <div class="total">
     <%@ include file="/header.jsp" %>
-      <form action="review_writer_ok.jsp" method="POST">
-        <h1>후기작성</h1>
+      <form action="" method="POST">
+        <h1>후기작성 수정</h1>
         <div class="section">
           <ul>
             <div class="title">
-              <h3>제목 &nbsp;&nbsp;&nbsp;<input type="text" name="title" /></h3>
+              <h3>제목 &nbsp;&nbsp;&nbsp;<input type="text" name="title" value = "작성한 제목"/></h3>
             </div>
           </ul>
           <ul>
@@ -31,19 +25,18 @@
               <textarea
                  style="overflow: auto; height: 400px"
                 cols="70"
-                rows="auto" name="review"
-              ></textarea>
+                rows="auto">작성한 내용</textarea>
             </div>
           </ul>
           <div class="botton">
-            <button type="submit" onclick="">글 올리기</button>
+            <button type="submit" onclick="">글 수정</button>
             <button type="reset">다시쓰기</button>
-            <span><button type="button" value = "뒤로가기" onclick="location.href='review_list.jsp'">뒤로가기</button></span>
+            <span><button type="button" value = "뒤로가기" onclick="location.href='mypage_write.jsp'">뒤로가기</button></span>
           </div>
         </div>
       </form>
       <div class ="clear"></div>
-    <%@ include file="/footer.jsp" %>
+       <%@ include file="/footer.jsp" %>
     </div>
   </body>
 </html>

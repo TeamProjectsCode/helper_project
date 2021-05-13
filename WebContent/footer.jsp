@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
+<link rel="stylesheet" type="text/css" href="../css/footer.css">
   <footer class="footer">
     <div class="f_img"><img src="../images/footer.png" id="f_img"></div>
     <div>
