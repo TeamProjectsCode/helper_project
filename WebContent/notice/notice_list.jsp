@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <jsp:useBean id="admin" class="db.UserDAO"/>
 <!DOCTYPE html>
 <html>
   <head>
@@ -15,10 +16,15 @@
         <h1>공지 사항</h1>
         <div class="section">
         <div class = "serch">
-           <%
-        	if(session.getAttribute("id")!=null){
-        		%>
-                <a href = "login_check.jsp"><h4>글쓰기</h4></a>
+          <%
+			String admin_id = request.getParameter("id");
+			String admin_pass = request.getParameter("pass");
+			boolean b = admin.admin_login(admin_id, admin_pass);
+			
+			if(b){
+				session.setAttribute("adminOk", admin_id);
+			%>
+                <a href = "notice_write.jsp"><h4>글쓰기</h4></a>
         		<%
 			}
                      %>
@@ -86,6 +92,10 @@
                 </table>
             </div>
             <div class="button">
+           <!--  <% if(session.getAttribute("sessionId").equals("admin")){ %>
+				<button type="button" onclick="notice_write.jsp">글쓰기</button>
+			<% } %> 
+			-->
 				<button type="submit" onclick="">뒤로가기</button>
 			</div>
         </div>

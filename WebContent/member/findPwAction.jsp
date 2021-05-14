@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <jsp:useBean id="user" class="helper.UserBean" />
-	<jsp:useBean id="dao" class="helper.UserDAO" />
+    <jsp:useBean id="user" class="db.userBeans.UserBean" />
+	<jsp:useBean id="dao" class="db.UserDAO" />
 	<jsp:setProperty property="*" name="user" />
 <!DOCTYPE html>
 <html>

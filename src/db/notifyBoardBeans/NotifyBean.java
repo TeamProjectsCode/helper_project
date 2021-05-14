@@ -4,24 +4,33 @@ import java.sql.Timestamp;
 
 /*
  * CREATE TABLE NOTIFY_BOARD (
-	    "NO" NUMBER PRIMARY KEY,
+	"NO" NUMBER PRIMARY KEY,
 	    "CREATED_AT" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        "CATEGORY" NUMBER,
 	    "CREATOR" NUMBER NOT NULL,
 	    "NOTIFY_TITLE" VARCHAR2(200 BYTE) NOT NULL,
-	    "NOTIFY_HITS" NUMBER(6) DEFAULT 0,
-	    "NOTIFY_DETAIL" CLOB,
+        "NOTIFY_DETAIL" CLOB,
+	    "NOTIFY_HITS" NUMBER(6) DEFAULT 0
+	    CONSTRAINT CATEGORY_CK CHECK("CATEGORY" IN(0,1,2))
 
 	    FOREIGN KEY (CREATOR) REFERENCES USERS(NO)
 	);*/
 
-public class NotifyPostBean {
+public class NotifyBean {
 	private int no;
 	private Timestamp created_at;
-	private int creator;
+	private int category;
+	private String creator_nick;
 	private String notify_title;
 	private int notify_hits;
 	private String notify_detail;
 	
+	public int getCategory() {
+		return category;
+	}
+	public void setCategory(int category) {
+		this.category = category;
+	}
 	public int getNo() {
 		return no;
 	}
@@ -34,11 +43,11 @@ public class NotifyPostBean {
 	public void setCreated_at(Timestamp created_at) {
 		this.created_at = created_at;
 	}
-	public int getCreator() {
-		return creator;
+	public String getCreator() {
+		return creator_nick;
 	}
-	public void setCreator(int creator) {
-		this.creator = creator;
+	public void setCreator(String creator) {
+		this.creator_nick = creator;
 	}
 	public String getNotify_title() {
 		return notify_title;
