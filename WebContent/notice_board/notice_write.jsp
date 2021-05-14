@@ -18,7 +18,7 @@ function check() {
 		write_form.title.focus();
 	} else if (write_form.notify_detail.value == "") {
 		alert("내용을 입력하세요");
-		write_form.cont.focus();
+		write_form.cont.focus();IdeConnections%2523local-scott//SCOTT/OPERATOR
 	} else
 		write_form.submit();
 }
