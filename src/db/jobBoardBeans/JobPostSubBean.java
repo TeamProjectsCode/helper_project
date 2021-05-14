@@ -17,6 +17,10 @@ public class JobPostSubBean {
 	// location 부산광역시 해운대구 (까지 나오게 설정)
 	private String created_at;
 	
+	public String getTime() {
+		return job_time_start + " ~ " + job_time_end;
+	}
+	
 	public int getNo() {
 		return no;
 	}

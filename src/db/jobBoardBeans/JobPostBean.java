@@ -25,7 +25,7 @@ package db.jobBoardBeans;
 	);*/
 
 public class JobPostBean {
-	private String job_titile;
+	private String job_title;
 	private String created_at;
 	private int creator_no;
 	private String creator_nick;
@@ -33,15 +33,26 @@ public class JobPostBean {
 	/* category String으로 받아와야 할듯한대에ㅔㅔ */
 	private int category;
 	private String job_day;
-	private String job_time;
-	private String job_location;
+	private String job_time_start;
+	private String job_time_end;
+	private String job_location_first_name;
+	private String job_location_second_name;
+	private String job_location_detail;
 	private int job_num_of_people;
 	private int job_pay;
 	private String job_detail;
-//	private int[] job_people;
+	private String job_people;
 	
-	public String getJob_titile() {
-		return job_titile;
+	public String getTime() {
+		return job_time_start + " ~ " + job_time_end;
+	}
+	
+	public String getLocation() {
+		return String.format("%s %s, %s", job_location_first_name, job_location_second_name, job_location_detail);
+	}
+	
+	public String getJob_title() {
+		return job_title;
 	}
 	public String getCreated_at() {
 		return created_at;
@@ -61,11 +72,20 @@ public class JobPostBean {
 	public String getJob_day() {
 		return job_day;
 	}
-	public String getJob_time() {
-		return job_time;
+	public String getJob_time_start() {
+		return job_time_start;
 	}
-	public String getJob_location() {
-		return job_location;
+	public String getJob_time_end() {
+		return job_time_end;
+	}
+	public String getJob_location_first_name() {
+		return job_location_first_name;
+	}
+	public String getJob_location_second_name() {
+		return job_location_second_name;
+	}
+	public String getJob_location_detail() {
+		return job_location_detail;
 	}
 	public int getJob_num_of_people() {
 		return job_num_of_people;
@@ -76,8 +96,12 @@ public class JobPostBean {
 	public String getJob_detail() {
 		return job_detail;
 	}
-	public void setJob_titile(String job_titile) {
-		this.job_titile = job_titile;
+	public String getJob_people() {
+		return job_people;
+	}
+	
+	public void setJob_title(String job_title) {
+		this.job_title = job_title;
 	}
 	public void setCreated_at(String created_at) {
 		this.created_at = created_at;
@@ -97,11 +121,20 @@ public class JobPostBean {
 	public void setJob_day(String job_day) {
 		this.job_day = job_day;
 	}
-	public void setJob_time(String job_time_start, String job_time_end) {
-		this.job_time = job_time_start + " ~ " + job_time_end;
+	public void setJob_time_start(String job_time_start) {
+		this.job_time_start = job_time_start;
 	}
-	public void setJob_location(String job_location) {
-		this.job_location = job_location;
+	public void setJob_time_end(String job_time_end) {
+		this.job_time_end = job_time_end;
+	}
+	public void setJob_location_first_name(String job_location_first_name) {
+		this.job_location_first_name = job_location_first_name;
+	}
+	public void setJob_location_second_name(String job_location_second_name) {
+		this.job_location_second_name = job_location_second_name;
+	}
+	public void setJob_location_detail(String job_location_detail) {
+		this.job_location_detail = job_location_detail;
 	}
 	public void setJob_num_of_people(int job_num_of_people) {
 		this.job_num_of_people = job_num_of_people;
@@ -111,6 +144,9 @@ public class JobPostBean {
 	}
 	public void setJob_detail(String job_detail) {
 		this.job_detail = job_detail;
+	}
+	public void setJob_people(String job_people) {
+		this.job_people = job_people;
 	}
 
 }

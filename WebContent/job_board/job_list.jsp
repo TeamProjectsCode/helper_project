@@ -13,6 +13,7 @@
         jpDAO.setCount(location);
         ArrayList<JobPostSubBean> jpsl = jpDAO.getList("LOCATION_NO", location);
         %>
+        <from>
         <table id="job_board">
         <!-- ★leni★ database에 내용이 많아지면 이 부분은 지워도 됩니다. -->
             <tr>
@@ -113,16 +114,18 @@
             <tr>
                 <td><input type="checkbox" value=""></td>
                 <td id="job_location"><%=jpsl.get(i).getJob_location() %></td>
-                <td id="job_title"><a href="detail.jsp?no=<%=jpsl.get(i).getNo()%>"><%=jpsl.get(i).getJob_titile() %></a></td>
+                <td id="job_title"><a href="job_detail.jsp?no=<%=jpsl.get(i).getNo()%>"><%=jpsl.get(i).getJob_titile() %></a></td>
                 <td><%=jpsl.get(i).getJob_pay() %></td>
                 <td ><%=jpsl.get(i).getJob_day() %></td>
-                <td id="job_time"><%=jpsl.get(i).getJob_time_start() %> ~ <%=jpsl.get(i).getJob_time_end() %></td>
+                <td id="job_time"><%=jpsl.get(i).getTime() %></td>
                 <td><%=jpsl.get(i).getCreated_at() %></td>
             </tr>
         <%
             }
         }
         %>
+        </from>
+        </table>
 
         <script type="text/javascript">
         
@@ -141,10 +144,10 @@
                      $('#job_board').append('<tr>'+
                              '<td><input type="checkbox" value=""></td>'+
                              '<td id="job_location"><%=jpsl.get(i).getJob_location() %></td>'+
-                             '<td id="job_title"><a href="detail.jsp?no=<%=jpsl.get(i).getNo()%>"><%=jpsl.get(i).getJob_titile() %></td>'+
+                             '<td id="job_title"><a href="job_detail.jsp?no=<%=jpsl.get(i).getNo()%>"><%=jpsl.get(i).getJob_titile() %></td>'+
                              '<td><%=jpsl.get(i).getJob_pay() %></td>'+
                              '<td><%=jpsl.get(i).getJob_day() %></td>'+
-                             '<td id="job_time"><%=jpsl.get(i).getJob_time_start() %> ~ <%=jpsl.get(i).getJob_time_end() %></td>'+
+                             '<td id="job_time"><%=jpsl.get(i).getTime() %></td>'+
                              '<td><%=jpsl.get(i).getCreated_at() %></td>'+
                              '</tr>');
                      <%
@@ -155,7 +158,7 @@
              }			
          });
         </script>
-        </table>
+        
     </div>
 </html>
 

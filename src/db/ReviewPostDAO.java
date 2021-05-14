@@ -43,12 +43,12 @@ public class ReviewPostDAO {
 		return instance;
 	}
 	
-	public Connection getConnection() throws Exception{
-		Context ctx=new InitialContext();
-		DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/oracle");
-		return ds.getConnection();
-	}
-	public int insertReview(ReviewPostBean rb) throws Exception {
+//	public Connection getConnection() throws Exception{
+//		Context ctx=new InitialContext();
+//		DataSource ds = (DataSource)ctx.lookup("java:comp/env/jdbc/oracle");
+//		return ds.getConnection();
+//	}
+	public int insertReview(String title, String detail){
 		UserBean ub = new UserBean();
 		JobPostBean jpb = new JobPostBean();
 //		ReviewPostBean rpb = new ReviewPostBean();
@@ -57,41 +57,22 @@ public class ReviewPostDAO {
 //		Date createdAt= Date.valueOf(ss);
 		Connection con=null;
 		PreparedStatement pstmt=null;
-		ResultSet rs=null;
-//		String sql="INSERT INTO JOB_BOARD(NO, CREATED_AT, CREATOR, REVIEW_TITLE, REVIEW_DETAIL, JOB_POST)"
-//				+ " VALUES(?, ?, ?, ?, ?, ?)";
 		String sql="";
 		int re = -1;
 
-		int reviewNo;
 		
 		try {
-			con = getConnection();
-			sql="SELECT MAX(NO) FROM REVIEW_BOARD";
-			pstmt = con.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			
+			con = DBConnection.getConnection();
+			System.out.println(title);
+			System.out.println(detail);
 
-			if(rs.next()) {
-				reviewNo=rs.getInt(1)+1;
-				System.out.println(reviewNo);
-			}else {
-				reviewNo=1;
-			}
-			sql="INSERT INTO REVIEW_BOARD(NO, CREATOR, REVIEW_TITLE, REVIEW_DETAIL, JOB_POST) VALUES(REVIEW_BOARD_NO_SEQ.nextval, ?, ?, ?, ?)";
+			sql="INSERT INTO REVIEW_BOARD(NO, CREATOR_NO, TITLE, DETAIL, JOB_POST_NO) VALUES(REVIEW_BOARD_NO_SEQ.nextval, ?, ?, ?, ?)";
 			
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, 1);
-			pstmt.setString(2, HanConv.toKor(rb.getReview_titile()));
-			pstmt.setString(3, HanConv.toKor(rb.getReview_detail()));
+			pstmt.setString(2, title);
+			pstmt.setString(3, detail);
 			pstmt.setInt(4, 1);
-			
-			
-//			pstmt.setDate(2, createdAt);
-//			pstmt.setInt(3, 1);
-//			pstmt.setString(4, title);
-//			pstmt.setString(5, review);
-//			pstmt.setInt(6, 1);
 			
 			pstmt.executeUpdate();
 			re=1;
