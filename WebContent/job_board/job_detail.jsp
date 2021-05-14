@@ -8,22 +8,23 @@
     <meta charset="EUC-KR" />
     <link rel="stylesheet" href="/helper_project/css/post_detail.css" type="text/css" />
     <script type="text/javascript" src="script.js" charset="utf-8"></script>
+
     <%
     String job_post_no = request.getParameter("no");
     JobPostDAO  jpDAO = JobPostDAO.getInstance();
     JobPostBean jp = jpDAO.getPost(job_post_no);
     %>
-    <title><%=jp.getJob_titile() %></title>
+    <title><%=jp.getJob_title() %></title>
   </head>
   <%@ include file="/header.jsp" %>
   <body>
     <div class="main_content">
       <!-- form 태그 필요 없을 듯? 있나..? -->
-      <form action="" method="POST">
+      <form action="job_write_fix.jsp?no=<%=job_post_no %>" method="POST">
         <div class="section">
           <ul>
               <div class="title">
-                  <h3><%=jp.getJob_titile() %></h3>
+                  <h3><%=jp.getJob_title() %></h3>
               </div>
           </ul>
           <ul>
@@ -31,8 +32,8 @@
               <img src="../images/img.jpg" style="width: 100px ;height: 100px">
               <h3><%=jp.getCreator_nick() %></h3>
               <h5>신뢰등급 : <%=jp.getCreator_grade() %></h5><br>
-              <h3>장소 : <%=jp.getJob_location() %></h3><br>
-              <h3>시간 : <%=jp.getJob_day() %> <%=jp.getJob_time() %></h3><br>
+              <h3>장소 : <%=jp.getLocation() %></h3><br>
+              <h3>시간 : <%=jp.getJob_day() %> <%=jp.getTime() %></h3><br>
               <h3>인원수 : <%=jp.getJob_num_of_people() %></h3><br>
               <h3>PAY : <%=jp.getJob_pay() %></h3>
             </div>
@@ -46,7 +47,16 @@
           </ul>
         </div>
         <div class="botton">
-          <button type="submit" onclick="">신청하기</button>
+          <button type="button" onclick="">신청하기</button>
+          <button type="submit" >수정하기</button>
+          <button type="button" onclick="removeCheck()">삭제하기</button>
+          <script>
+          function removeCheck(){
+        	  if(confirm("정말 삭제하겠습니까?") == true){
+        		  document.location.href="/helper_project/job_board/job_delete.jsp?no=<%=job_post_no%>"
+        	  }
+          }
+          </script>
           <!-- 수정하기 버튼도 여기 만들기 세션이용해서 구분하면 됨 -->
         </div>
       </form>

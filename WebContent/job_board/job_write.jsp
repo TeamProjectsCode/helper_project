@@ -54,13 +54,14 @@
 	</head>
 	<%@ include file="/header.jsp" %>
 	<body class="total">
-		<form action="" method="POST">
+		<form action="job_write_ok.jsp" method="POST">
 			<div class = "section">
 				<h1>구인 게시글 작성</h1>
 				<div class="date">
 					<ul>
 						<h3>
-							제목 &nbsp;&nbsp;&nbsp;<input type="text" name="title" class = "title">
+							제목 &nbsp;&nbsp;&nbsp;
+							<input type="text" name="job_title" class ="title">
 						</h3>
 					</ul>
 				<hr>
@@ -68,9 +69,9 @@
 						<h3>공고기간</h3>
 					</ul>
 					<ul>
-						<input type="text" name="fromDate" id="fromDate"
+						<input type="text" name="job_time_start" id="fromDate"
 							placeholder="시작날짜를 선택하세요"> &nbsp;~&nbsp;
-						<input type="text" id="toDate" id="toDate"
+						<input type="text" name="job_time_end" id="toDate"
 							placeholder="종료날짜를 선택하세요">
 					</ul>
 				</div>
@@ -80,64 +81,70 @@
 					</ul>
 					<ul>
 						<h4>
-							카테고리 &nbsp;&nbsp;&nbsp; <select>
-								<option value="job">가사도우미</option>
-								<option value="job">청소도우미</option>
-								<option value="job">등하원도우미</option>
-								<option value="job">요리도우미</option>
-								<option value="job">산후도우미</option>
-								<option value="job">식당도우미</option>
-								<option value="job">육아도우미</option>
-								<option value="job">펫시터</option>
-								<option value="job">베이비시터</option>
-								<option value="job">요양보호사</option>
-								<option value="job">대리티켓구매</option>
-								<option value="job">직구대행</option>
+							카테고리 &nbsp;&nbsp;&nbsp; 
+							<select name="category" id="category">
+								<option value=0>선택안함</option>
+								<option value=1>가사도우미</option>
+								<option value=2>청소도우미</option>
+								<option value=3>등하원도우미</option>
+								<option value=4>요리도우미</option>
+								<option value=5>산후도우미</option>
+								<option value=6>식당도우미</option>
+								<option value=7>육아도우미</option>
+								<option value=8>펫시터</option>
+								<option value=9>베이비시터</option>
+								<option value=10>요양보호사</option>
+								<option value=11>대리티켓구매</option>
+								<option value=12>직구대행</option>
+								<option value=13>기타</option>
 							</select>
 						</h4>
 					</ul>
 					<ul>
 						<h4>
-							인원수&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="number" value="1"
-								min="1">
+							인원수&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="number" value="1" min="1" max="5" name="job_num_of_people">
 						</h4>
 					</ul>
 					<ul>
 						<h4>
-							지역 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <select>
-								<option value="area">서울</option>
-								<option value="area">부산</option>
-								<option value="area">인천</option>
-								<option value="area">대전</option>
-								<option value="area">대구</option>
-								<option value="area">광주</option>
-								<option value="area">세종시</option>
-								<option value="area">제주도</option>
-								<option value="area">경기도</option>
-								<option value="area">강원도</option>
-								<option value="area">충청북도</option>
-								<option value="area">충청남도</option>
-								<option value="area">전라북도</option>
-								<option value="area">전라남도</option>
-								<option value="area">경상남도</option>
-								<option value="area">경상북도</option>
-								<option value="area">해외</option>
+							지역 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+							<select name="job_location_first_name">
+								<option value="서울">서울</option>
+								<option value="부산">부산</option>
+								<option value="인천">인천</option>
+								<option value="대전">대전</option>
+								<option value="대구">대구</option>
+								<option value="광주">광주</option>
+								<option value="세종시">세종시</option>
+								<option value="제주도">제주도</option>
+								<option value="경기도">경기도</option>
+								<option value="강원도">강원도</option>
+								<option value="충청북도">충청북도</option>
+								<option value="충청남도">충청남도</option>
+								<option value="전라북도">전라북도</option>
+								<option value="전라남도">전라남도</option>
+								<option value="경상남도">경상남도</option>
+								<option value="경상북도">경상북도</option>
+								<option value="해외">해외</option>
 							</select> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							상세장소&nbsp;&nbsp;&nbsp;&nbsp; <input type="text">
+							상세장소&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="text" name="job_location_detail">
 						</h4>
 					</ul>
 					<ul>
 						<h4>
-							금액&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <input type="text">&nbsp;원
+							금액&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+							<input type="number" name="job_pay">&nbsp;원
 						</h4>
 					</ul>
 					<ul>
 						<h4>상세</h4>
-						<textarea cols="60" rows="10"></textarea>
+						<textarea cols="60" rows="10" name="job_detail"></textarea>
 					</ul>
 				</div>
 				<div class="btn">
-					<button type="submit" onclick="">신청하기</button>
+					<button type="submit">신청하기</button>
 					<span><button type="reset">다시쓰기</button></span>
 				</div>
 			</div>
