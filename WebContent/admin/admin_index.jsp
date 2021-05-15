@@ -15,35 +15,8 @@
 						<input type="search" placeholder="search"> <span>검색</span>
 					</form>
 				</div>
-				<ul class = "nav">
-					<li><a href="main.jsp">HOME</a></li>
-					<li><a href="job_board/board_list.jsp">구인게시판</a></li>
-					<li><a href="shop/shop.jsp">포인트상점</a></li>
-						<li><%
-        				if(session.getAttribute("id")==null){
-        				%>
-               			 <a href = "/helper_project/util/login_check.jsp">마이페이지</a>
-        				<%
-						}else{
-        				%>
-        				 <a href = "/helper_project/mypage/mypage_import.jsp">마이페이지</a>
-        				<%
-						}      
-        				%>
-        				</li>
-					<%
-					if(session.getAttribute("id")!=null){
-						String id = (String)session.getAttribute("id");
-						%>
-						<li><a href="/helper_project/util/logout.jsp">LOGOUT</a></li>
-						<%
-						}else{
-						%>
-						<li><a href="/helper_project/member/login.jsp">LOGIN</a></li>
-						<%
-						}
-						%>
-				</ul>
+<!-- include header page -->
+	<%@ include file="admin_header.jsp" %>
 			</div>
 			<div class="intro_text">
 				<h1>The Helper</h1>
@@ -92,7 +65,7 @@
 				</div>
 				<div class="contents1_bold">구인 게시판</div>
 				<div class="contents2">내가 잘하는 일로 이웃도 돕고 돈도 벌고 이석이조!</div>
-				<div class="more"><a href="jop_board/board_list.jsp">MORE</a></div>
+				<div class="more"><a href="board_list.jsp">MORE</a></div>
 			</li>
 
 			<li>
@@ -103,7 +76,7 @@
 				<div class="contents2">
 					당신의 정보를 공유 해보아요!
 				</div>
-				<div class="more"><a href="review_board/review_list.jsp">MORE</a></div>
+				<div class="more"><a href="review_list.jsp">MORE</a></div>
 			</li>
 
 			<li>
@@ -113,7 +86,7 @@
 				<div class="contents1_bold">포인트 마켓</div>
 				<div class="contents2">열심히 활동한 주민은 포인트로 다양한 기프티콘을 구매하실 수 있습니다
 				</div>
-				<div class="more"><a href="shop/shop.jsp">MORE</a></div>
+				<div class="more"><a href="shop.jsp">MORE</a></div>
 			</li>
 		</ul>
 	</div>
@@ -151,6 +124,6 @@
 			<li></li>
 		</ul>
 	</div>
-	 <%@ include file="/footer.jsp" %>
+	 <%@ include file="admin_footer.jsp" %>
 </body>
 </html>

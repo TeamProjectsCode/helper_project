@@ -2,25 +2,25 @@ package db;
 
 import java.util.ArrayList;
 
-import db.notifyBoardBeans.NotifyPostBean;
+import db.notifyBoardBeans.NotifyBean;
 
 public class NotifyPostDAO {
-	private ArrayList<NotifyPostBean> notify_board_list;
+	private ArrayList<NotifyBean> notify_board_list;
 	
 	public NotifyPostDAO() {}
-	public NotifyPostDAO(ArrayList<NotifyPostBean> nbl) {
+	public NotifyPostDAO(ArrayList<NotifyBean> nbl) {
 		this.notify_board_list = nbl;
 	}
 	
-	public void add(NotifyPostBean np) {
+	public void add(NotifyBean np) {
 		this.notify_board_list.add(np);
 	}
 	
-	public ArrayList<NotifyPostBean> getList(){
+	public ArrayList<NotifyBean> getList(){
 		return this.notify_board_list;
 	}
 	
-	public NotifyPostBean get(int index) {
+	public NotifyBean get(int index) {
 		return this.notify_board_list.get(index);
 	}
 }

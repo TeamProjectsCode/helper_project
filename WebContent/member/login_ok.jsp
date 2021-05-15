@@ -17,7 +17,7 @@
 		%>
 		<script>
 		alert("로그인 되었습니다.");
-		location.href="main.jsp";
+		location.href="../main.jsp";
 		</script>
 		<%
 		}

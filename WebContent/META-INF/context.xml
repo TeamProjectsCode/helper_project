@@ -32,7 +32,7 @@
 <Resource removeAbandonedOnBorrow="true" removeAbandonedTimeout="10" logAbandoned="true" name="jdbc/oracle"
             auth="Container"
             type="javax.sql.DataSource"
-            username="hr"
+            username="sc"
             password="hr"
             driverClassName="oracle.jdbc.OracleDriver"
             url="jdbc:oracle:thin:@localhost:1521:xe"

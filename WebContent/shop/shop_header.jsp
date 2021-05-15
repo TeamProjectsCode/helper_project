@@ -24,11 +24,11 @@
 						<li><%
         				if(session.getAttribute("id")==null){
         				%>
-               			 <a href = "/project0408_workSpace/login_check.jsp">마이페이지</a>
+               			 <a href = "/helper_project/member/login_check.jsp">마이페이지</a>
         				<%
 						}else{
         				%>
-        				 <a href = "/project0408_workSpace/mypage/mypage_import.jsp">마이페이지</a>
+        				 <a href = "/helper_project/mypage/mypage_import.jsp">마이페이지</a>
         				<%
 						}        		
         				%>
@@ -37,11 +37,11 @@
 					if(session.getAttribute("id")!=null){
 						String id = (String)session.getAttribute("id");
 						%>
-						<li><a href="/project0408_workSpace/logout.jsp">LOGOUT</a></li>
+						<li><a href="/helper_project/member/logout.jsp">LOGOUT</a></li>
 						<%
 						}else{
 						%>
-						<li><a href="/project0408_workSpace/login.jsp">LOGIN</a></li>
+						<li><a href="/helper_project/member/login.jsp">LOGIN</a></li>
 						<%
 						}
 						%>
