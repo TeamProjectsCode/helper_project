@@ -29,8 +29,7 @@ public class JobPostBean {
 	private String created_at;
 	private int creator_no;
 	private String creator_nick;
-	private String creator_grade;	
-	/* category String으로 받아와야 할듯한대에ㅔㅔ */
+	private String creator_grade;
 	private int category;
 	private String job_day;
 	private String job_time_start;
