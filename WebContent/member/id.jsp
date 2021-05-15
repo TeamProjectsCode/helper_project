@@ -21,7 +21,7 @@
 				</tr>
 			</table>
             <div class="button">
-				<button type="button" onclick="location.href='../login.jsp'">로그인 화면으로</button>
+				<button type="button" onclick="location.href='../member/login.jsp'">로그인 화면으로</button>
 				<button type="button" onclick="location.href='idpwd.jsp'">비밀 번호 찾으러 가기</button>
 			</div>
         </div>

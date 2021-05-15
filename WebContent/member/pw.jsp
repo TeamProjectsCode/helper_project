@@ -21,7 +21,7 @@
 				</tr>
 			</table>
             <div class="button">
-				<button type="button" onclick="location.href='../login.jsp'">로그인 화면으로</button>
+				<button type="button" onclick="location.href='../member/login.jsp'">로그인 화면으로</button>
 			</div>
         </div>
       </form>

@@ -22,11 +22,11 @@
 						<li><%
         				if(session.getAttribute("id")==null){
         				%>
-               			 <a href = "/project0408_workSpace/login_check.jsp">마이페이지</a>
+               			 <a href = "/helper_project/util/login_check.jsp">마이페이지</a>
         				<%
 						}else{
         				%>
-        				 <a href = "/project0408_workSpace/mypage/mypage_import.jsp">마이페이지</a>
+        				 <a href = "/helper_project/mypage/mypage_import.jsp">마이페이지</a>
         				<%
 						}      
         				%>
@@ -35,11 +35,11 @@
 					if(session.getAttribute("id")!=null){
 						String id = (String)session.getAttribute("id");
 						%>
-						<li><a href="/project0408_workSpace/logout.jsp">LOGOUT</a></li>
+						<li><a href="/helper_project/util/logout.jsp">LOGOUT</a></li>
 						<%
 						}else{
 						%>
-						<li><a href="/project0408_workSpace/login.jsp">LOGIN</a></li>
+						<li><a href="/helper_project/member/login.jsp">LOGIN</a></li>
 						<%
 						}
 						%>
@@ -92,7 +92,7 @@
 				</div>
 				<div class="contents1_bold">구인 게시판</div>
 				<div class="contents2">내가 잘하는 일로 이웃도 돕고 돈도 벌고 이석이조!</div>
-				<div class="more"><a href="board_list.jsp">MORE</a></div>
+				<div class="more"><a href="jop_board/board_list.jsp">MORE</a></div>
 			</li>
 
 			<li>
@@ -103,7 +103,7 @@
 				<div class="contents2">
 					당신의 정보를 공유 해보아요!
 				</div>
-				<div class="more"><a href="review_list.jsp">MORE</a></div>
+				<div class="more"><a href="review_board/review_list.jsp">MORE</a></div>
 			</li>
 
 			<li>
@@ -113,7 +113,7 @@
 				<div class="contents1_bold">포인트 마켓</div>
 				<div class="contents2">열심히 활동한 주민은 포인트로 다양한 기프티콘을 구매하실 수 있습니다
 				</div>
-				<div class="more"><a href="shop.jsp">MORE</a></div>
+				<div class="more"><a href="shop/shop.jsp">MORE</a></div>
 			</li>
 		</ul>
 	</div>

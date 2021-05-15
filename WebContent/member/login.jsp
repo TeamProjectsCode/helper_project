@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="EUC-KR">
-    <link rel="stylesheet" type="text/css" href="css/login.css" />
+    <link rel="stylesheet" type="text/css" href="../css/login.css" />
     <script type="text/javascript" src="checking.js" charset="utf-8"></script>
     <title>Document</title>
 </head>

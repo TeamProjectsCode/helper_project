@@ -88,7 +88,7 @@
 						<tr>
 							<th><input type="submit" class="btn" value="신청하기" onclick ="member_ok()"></th>
 							<td><input type="button" class="btn" value="뒤로가기"
-								onclick="location.href='../login.jsp'"></td>
+								onclick="location.href='../member/login.jsp'"></td>
 						</tr>
 					</table>
 				</div>
