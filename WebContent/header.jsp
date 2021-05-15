@@ -6,7 +6,7 @@
 	<header class="header">
 		<div class="header_logo">
 			<h1>
-				<a href="main.jsp">
+				<a href="/helper_project/main.jsp">
 					<img src="/helper_project/images/logo11.png"
 						alt="home"
 						width="200"
