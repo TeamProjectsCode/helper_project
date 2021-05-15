@@ -113,7 +113,7 @@
         %>
             <tr>
                 <td><input type="checkbox" value=""></td>
-                <td id="job_location"><%=jpsl.get(i).getJob_location() %></td>
+                <td id="job_location"><%=jpsl.get(i).getLocation() %></td>
                 <td id="job_title"><a href="job_detail.jsp?no=<%=jpsl.get(i).getNo()%>"><%=jpsl.get(i).getJob_titile() %></a></td>
                 <td><%=jpsl.get(i).getJob_pay() %></td>
                 <td ><%=jpsl.get(i).getJob_day() %></td>
@@ -143,7 +143,7 @@
                  %>
                      $('#job_board').append('<tr>'+
                              '<td><input type="checkbox" value=""></td>'+
-                             '<td id="job_location"><%=jpsl.get(i).getJob_location() %></td>'+
+                             '<td id="job_location"><%=jpsl.get(i).getLocation() %></td>'+
                              '<td id="job_title"><a href="job_detail.jsp?no=<%=jpsl.get(i).getNo()%>"><%=jpsl.get(i).getJob_titile() %></td>'+
                              '<td><%=jpsl.get(i).getJob_pay() %></td>'+
                              '<td><%=jpsl.get(i).getJob_day() %></td>'+

@@ -4,8 +4,6 @@ public class JobPostSubBean {
 	
 	private int no;
 	
-	private String job_location;
-	
 	private int creator_no;
 	private String creator_nick;
 	
@@ -14,18 +12,19 @@ public class JobPostSubBean {
 	private String job_day;
 	private String job_time_start;
 	private String job_time_end;
-	// location 부산광역시 해운대구 (까지 나오게 설정)
+	private String job_location_first_name;
+	private String job_location_second_name;
 	private String created_at;
 	
 	public String getTime() {
-		return job_time_start + " ~ " + job_time_end;
+		return String.format("%s ~ %s", job_time_start, job_time_end);
+	}
+	public String getLocation() {
+		return String.format("%s %s", job_location_first_name, job_location_second_name);
 	}
 	
 	public int getNo() {
 		return no;
-	}
-	public String getJob_location() {
-		return job_location;
 	}
 	public int getCreator_no() {
 		return creator_no;
@@ -48,14 +47,17 @@ public class JobPostSubBean {
 	public String getJob_time_end() {
 		return job_time_end;
 	}
+	public String getJob_location_first_name() {
+		return job_location_first_name;
+	}
+	public String getJob_location_second_name() {
+		return job_location_second_name;
+	}
 	public String getCreated_at() {
 		return created_at;
 	}
 	public void setNo(int no) {
 		this.no = no;
-	}
-	public void setJob_location(String job_location) {
-		this.job_location = job_location;
 	}
 	public void setCreator_no(int creator_no) {
 		this.creator_no = creator_no;
@@ -77,6 +79,12 @@ public class JobPostSubBean {
 	}
 	public void setJob_time_end(String job_time_end) {
 		this.job_time_end = job_time_end;
+	}
+	public void setJob_location_first_name(String job_location_first_name) {
+		this.job_location_first_name = job_location_first_name;
+	}
+	public void setJob_location_second_name(String job_location_second_name) {
+		this.job_location_second_name = job_location_second_name;
 	}
 	public void setCreated_at(String created_at) {
 		this.created_at = created_at;

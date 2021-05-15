@@ -61,11 +61,11 @@ public class JobPostDAO {
 		
 		String where;
 		if(value == null) {
-			where= " WHERE 1 = ?)";
+			where= " WHERE 1 = ?";
 			value = "1";
 		}
 		else {
-			where = " WHERE J.LOCATION_NO = ?)";
+			where = " WHERE JOB_LOCATION_NO = ?";
 		}
 
 		if(total_count<count) {
@@ -75,23 +75,11 @@ public class JobPostDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String query = "SELECT *"
-				+ " FROM (SELECT ROW_NUMBER() over (ORDER BY J.CREATED_AT DESC ) AS \"ROWNUM\","
-				+ " J.NO AS \"JOB_NO\","
-				+ " L.FIRST_NAME || ' ' || L.SECOND_NAME AS \"JOB_LOCATION\","
-				+ " U.NO AS \"CREATOR_NO\","
-				+ " U.NICK AS \"CREATOR_NICK\","
-				+ " TITLE AS \"JOB_TITLE\","
-				+ " PAY AS \"JOB_PAY\","
-				+ " TO_CHAR(TIME_START, 'yy-MM-dd') AS \"JOB_DAY\","
-				+ " TO_CHAR(TIME_START, 'hh:mm') AS \"JOB_TIME_START\","
-				+ " TO_CHAR(TIME_END, 'hh:mm') AS \"JOB_TIME_END\","
-				+ " TO_CHAR(J.CREATED_AT, 'yy-MM-dd') AS \"CREATED_AT\""
-				+ " FROM JOB_BOARD J"
-				+ " JOIN USERS U on J.CREATOR_NO = U.NO"
-				+ " JOIN LOCATIONS L on J.LOCATION_NO = L.NO"
+		String query = "SELECT ROW_NUMBER() over (ORDER BY J.CREATED_AT DESC ) AS \"ROWNUM\","
+				+ " J.*"
+				+ " FROM GET_SUB_LIST J"
 				+ where
-				+ " WHERE \"ROWNUM\" BETWEEN ? AND ?";
+				+ " AND ROWNUM BETWEEN ? AND ?";
 				
 		ArrayList<JobPostSubBean> jpl = new ArrayList<JobPostSubBean>();
 		
@@ -108,7 +96,8 @@ public class JobPostDAO {
 				
 				jp.setNo(rs.getInt("JOB_NO"));
 				
-				jp.setJob_location(rs.getString("JOB_LOCATION"));
+				jp.setJob_location_first_name(rs.getString("JOB_LOCATION_FIRST_NAME"));
+				jp.setJob_location_second_name(rs.getString("JOB_LOCATION_SECOND_NAME"));
 				
 				jp.setCreator_no(rs.getInt("CREATOR_NO"));
 				jp.setCreator_nick(rs.getString("CREATOR_NICK"));
@@ -145,25 +134,7 @@ public class JobPostDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String query = "SELECT TITLE AS \"JOB_TITLE\","
-				+ " TO_CHAR(J.CREATED_AT, 'yy-MM-dd hh:mm') AS \"CREATED_AT\","
-				+ " CREATOR_NO,"
-				+ " U.NICK AS \"CREATOR_NICK\","
-				+ " CATEGORY,"
-				+ " GRADE,"
-				+ " TO_CHAR(TIME_START, 'yy-MM-dd') AS \"JOB_DAY\","
-				+ " TO_CHAR(TIME_START, 'hh:mm') AS \"JOB_TIME_START\","
-				+ " TO_CHAR(TIME_END, 'hh:mm') AS \"JOB_TIME_END\","
-				+ " L.FIRST_NAME AS \"JOB_LOCATION_FIRST_NAME\","
-				+ " L.SECOND_NAME AS \"JOB_LOCATION_SECOND_NAME\","
-				+ " J.LOCATION_DETAIL AS \"JOB_LOCATION_DETAIL\","
-				+ " NUM_OF_PEOPLE AS \"JOB_NUM_OF_PEOPLE\","
-				+ " PAY AS \"JOB_PAY\","
-				+ " DETAIL AS \"JOB_DETAIL\""
-				+ " FROM JOB_BOARD J"
-				+ " JOIN USERS U on J.CREATOR_NO = U.NO"
-				+ " JOIN LOCATIONS L on J.LOCATION_NO = L.NO"
-				+ " WHERE J.NO = ?";
+		String query = "SELECT * FROM GET_POST WHERE JOB_NO = ?";
 		
 		JobPostBean jp = null;
 		
@@ -179,10 +150,9 @@ public class JobPostDAO {
 				jp.setCreated_at(rs.getString("CREATED_AT"));
 
 				jp.setCreator_no(rs.getInt("CREATOR_NO"));
+				jp.setCategory(rs.getInt("CATEGORY"));
 				jp.setCreator_nick(rs.getString("CREATOR_NICK"));
 				jp.setCreator_grade(rs.getString("GRADE"));
-				
-//				jp.setCategory(rs.getInt("CATEGORY"));
 				
 				jp.setJob_day(rs.getString("JOB_DAY"));
 				
@@ -196,9 +166,9 @@ public class JobPostDAO {
 				jp.setJob_pay(rs.getInt("JOB_PAY"));				
 				jp.setJob_detail(rs.getString("JOB_DETAIL"));
 				
-//				String temp = rs.getString("JOB_PEOPLE");
+//				String temp = rs.getString("JOB_PART_TIME_LIST");
 //				if(temp != null) {
-//					String[] people = rs.getString("JOB_PEOPLE").split(",");
+//					String[] people = rs.getString("JOB_PART_TIME_LIST").split(",");
 //					int[] job_people = new int[jp.getJob_num_of_people()];
 //					for(int index=0; index<people.length; index++) {
 //						job_people[index] = Integer.valueOf(people[index]);
@@ -208,8 +178,6 @@ public class JobPostDAO {
 //					jp.setJob_people(null);
 //				}
 			}
-			
-			
 
 		} catch (Exception e) {
 			System.out.println("JobPostDAO getPost() ERROR: "+e);
@@ -232,31 +200,24 @@ public class JobPostDAO {
 		
 		Connection con = null;
 		PreparedStatement pstmt = null;
-
-		String query="INSERT INTO JOB_BOARD (NO, CREATOR_NO, CATEGORY, TITLE, TIME_START, TIME_END, LOCATION_NO,"
-				+ " LOCATION_DETAIL, PAY, NUM_OF_PEOPLE, DETAIL)"
-				+ " VALUES (JOB_BOARD_NO_SEQ.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
+		String query = "CALL INSERT_JOB_POST(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try {
 			con = DBConnection.getConnection();
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, jp.getCreator_no());
-			/* pstmt.setInt(2, jp.getCategory()); */
-			/* ★ leni ★ 카테고리 테이블이랑 동일하게 만들어야함 */
-			pstmt.setString(2, null); 
+			pstmt.setInt(2, jp.getCategory());
 			pstmt.setString(3, jp.getJob_title());
-			/*
-			 * pstmt.setTimestamp(4, Timestamp.valueOf(jp.getJob_time_start()));
-			 * pstmt.setTimestamp(5, Timestamp.valueOf(jp.getJob_time_end()));
-			 */
-			pstmt.setString(4, jp.getJob_time_start());
-			pstmt.setString(5, jp.getJob_time_end());
-			pstmt.setInt(6, 1);
-			/* ★ leni ★ 수정해야함, 함수로해서!! */
-			pstmt.setString(7, jp.getJob_location_detail());
-			pstmt.setInt(8, jp.getJob_pay());
-			pstmt.setInt(9, jp.getJob_num_of_people());
-			pstmt.setString(10, jp.getJob_detail());
+			pstmt.setString(4, jp.getJob_day());
+			pstmt.setString(5, jp.getJob_time_start());
+			pstmt.setString(6, jp.getJob_time_end());
+			pstmt.setString(7, jp.getJob_location_first_name());
+			pstmt.setString(8, jp.getJob_location_second_name());
+			pstmt.setString(9, jp.getJob_location_detail());
+			pstmt.setInt(10, jp.getJob_pay());
+			pstmt.setInt(11, jp.getJob_num_of_people());
+			pstmt.setString(12, jp.getJob_detail());
 			
 			if(pstmt.executeUpdate() != 0) {
 				isSuccess = true;
@@ -283,8 +244,7 @@ public class JobPostDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
-		String query = "DELETE FROM JOB_BOARD"
-				+ " WHERE NO = ?";
+		String query = "DELETE FROM JOB_BOARD WHERE NO = ?";
 		
 		try {
 			con = DBConnection.getConnection();
@@ -315,40 +275,23 @@ public class JobPostDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
-		String query = "UPDATE JOB_BOARD"
-				+ " SET CATEGORY = ?,"
-				+ " TITLE = ?,"
-				+ " TIME_START = TO_TIMESTAMP(?, 'HH24-MI'),"
-				+ " TIME_END = TO_TIMESTAMP(?, 'HH24-MI'),"
-				+ " LOCATION_NO = ?,"
-				+ " LOCATION_DETAIL = ?,"
-				+ " PAY = ?,"
-				+ " NUM_OF_PEOPLE = ?,"
-				+ " DETAIL = ?,"
-				+ " PART_TIMER_LIST = ?"
-				+ " WHERE NO = ?";
+		String query = "CALL MODIFY_JOB_POST(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try {
 			con = DBConnection.getConnection();
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, null);
-			/* pstmt.setInt(1, jp.getCategory()); */
-			/* ★ leni ★ 카테고리 테이블이랑 동일하게 만들어야함 */
+			pstmt.setInt(1, jp.getCategory());
 			pstmt.setString(2, jp.getJob_title());
-			/*
-			 * pstmt.setTimestamp(4, Timestamp.valueOf(jp.getJob_time_start()));
-			 * pstmt.setTimestamp(5, Timestamp.valueOf(jp.getJob_time_end()));
-			 */
-			pstmt.setString(3, jp.getJob_time_start());
-			pstmt.setString(4, jp.getJob_time_end());
-			pstmt.setInt(5, 1);
-			/* ★ leni ★ 수정해야함, 함수로해서!! */
-			pstmt.setString(6, jp.getJob_location_detail());
-			pstmt.setInt(7, jp.getJob_pay());
-			pstmt.setInt(8, jp.getJob_num_of_people());
-			pstmt.setString(9, jp.getJob_detail());
-			pstmt.setString(10, null);
-			pstmt.setString(11, job_post_no);
+			pstmt.setString(3, jp.getJob_day());
+			pstmt.setString(4, jp.getJob_time_start());
+			pstmt.setString(5, jp.getJob_time_end());
+			pstmt.setString(6, jp.getJob_location_first_name());
+			pstmt.setString(7, jp.getJob_location_second_name());
+			pstmt.setString(8, jp.getJob_location_detail());
+			pstmt.setInt(9, jp.getJob_pay());
+			pstmt.setInt(10, jp.getJob_num_of_people());
+			pstmt.setString(11, jp.getJob_detail());
+			pstmt.setString(12, job_post_no);
 			
 			if(pstmt.executeUpdate() != 0) {
 				isSuccess = true;
