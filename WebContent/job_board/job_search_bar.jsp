@@ -34,7 +34,7 @@
     		}
     	}
     	%> --%>
-		location.href="./main.jsp?location="+this.value;
+		location.href="./job_main.jsp?location="+this.value;
    	});  
 	</script>
 </html>

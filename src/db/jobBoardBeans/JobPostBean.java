@@ -44,7 +44,7 @@ public class JobPostBean {
 	private String job_people;
 	
 	public String getTime() {
-		return job_time_start + " ~ " + job_time_end;
+		return String.format("%s ~ %s", job_time_start, job_time_end);
 	}
 	
 	public String getLocation() {
