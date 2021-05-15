@@ -12,14 +12,14 @@
 		<header class="header">
 			<div class="header_logo">
 				<h1>
-					<a href="main.jsp"> <img src="../images/logo11.png" alt="home"
+					<a href="/helper_project/main.jsp"> <img src="/helper_project/images/logo11.png" alt="home"
 						width="200" height="100" /></a>
 				</h1>
 			</div>
 			<div class="header_gnb">
 				<ul>
-					<li><a href="../main.jsp">HOME</a></li>
-					<li><a href="../job_board/board_list.jsp">구인게시판</a></li>
+					<li><a href="/helper_project/main.jsp">HOME</a></li>
+					<li><a href="/helper_project/job_board/job_main.jsp">구인게시판</a></li>
 					<li><a href="shop.jsp">포인트상점</a></li>
 						<li><%
         				if(session.getAttribute("id")==null){

@@ -17,12 +17,12 @@
 				</div>
 				<ul class = "nav">
 					<li><a href="main.jsp">HOME</a></li>
-					<li><a href="job_board/board_list.jsp">구인게시판</a></li>
+					<li><a href="job_board/job_main.jsp">구인게시판</a></li>
 					<li><a href="shop/shop.jsp">포인트상점</a></li>
 						<li><%
         				if(session.getAttribute("id")==null){
         				%>
-               			 <a href = "/helper_project/util/login_check.jsp">마이페이지</a>
+               			 <a href = "/helper_project/member/login_check.jsp">마이페이지</a>
         				<%
 						}else{
         				%>
@@ -35,7 +35,7 @@
 					if(session.getAttribute("id")!=null){
 						String id = (String)session.getAttribute("id");
 						%>
-						<li><a href="/helper_project/util/logout.jsp">LOGOUT</a></li>
+						<li><a href="/helper_project/member/logout.jsp">LOGOUT</a></li>
 						<%
 						}else{
 						%>
