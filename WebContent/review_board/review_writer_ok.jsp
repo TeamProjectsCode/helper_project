@@ -1,29 +1,31 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@page import="myUtil.HanConv"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
 <%@ page import="db.reviewBeans.ReviewPostBean" %>
 <%@ page import="db.ReviewPostDAO" %>
 <jsp:useBean id="rb" class="db.reviewBeans.ReviewPostBean"></jsp:useBean>
 <jsp:setProperty property="*" name="rb"/>
 <%
 	ReviewPostDAO manager = ReviewPostDAO.getInstance();
-	rb.setReview_titile(request.getParameter("title"));
-	rb.setReview_detail(request.getParameter("review"));
+
+	rb.setReview_titile(HanConv.toKor(request.getParameter("title")));
+	rb.setReview_detail(HanConv.toKor(request.getParameter("review")));
 	String titleOk = rb.getReview_titile();
 	String detailOk = rb.getReview_detail();
 	System.out.println(titleOk + "\n" + detailOk);
 	
-	int insertReview = manager.insertReview(rb);
+	int insertReview = manager.insertReview(titleOk,detailOk);
 	
 	if(insertReview == -1){
 %>
 	<script>
-		alert("³»¿ëÀ» ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+		alert("ë‚´ìš©ì„ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 	</script>
 <%
 	}else{
 %>
 	<script>
-		alert("¸®ºä°¡ µî·ÏµÇ¾ú½À´Ï´Ù.");
+		alert("ë¦¬ë·°ê°€ ë“±ë¡ë˜ì—ˆìŠµë‹ˆë‹¤.");
 		document.location.href="review_list.jsp"
 	</script>	
 <%

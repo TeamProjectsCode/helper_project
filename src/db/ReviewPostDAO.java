@@ -69,10 +69,10 @@ public class ReviewPostDAO {
 			sql="INSERT INTO REVIEW_BOARD(NO, CREATOR_NO, TITLE, DETAIL, JOB_POST_NO) VALUES(REVIEW_BOARD_NO_SEQ.nextval, ?, ?, ?, ?)";
 			
 			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, 1);
+			pstmt.setInt(1, 2);
 			pstmt.setString(2, title);
 			pstmt.setString(3, detail);
-			pstmt.setInt(4, 1);
+			pstmt.setInt(4, 4);
 			
 			pstmt.executeUpdate();
 			re=1;

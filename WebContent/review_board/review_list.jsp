@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="EUC-KR" />
+    <meta charset="UTF-8" />
     <link rel="stylesheet" href="../css/review_list.css" type="text/css" />
     <title>Insert title here</title>
     <script type="text/javascript" src="script.js" charset="utf-8"></script>
@@ -11,18 +11,18 @@
   <body>
     <div class="total">
      <%@ include file="/header.jsp" %>
-      <form action=""method="POST" >
+      <form>
         <h1>후기 게시판</h1>
         <div class="section">
         <div class="serch">
                 <%
         	if(session.getAttribute("id")==null){
         		%>
-                <a href = "../login_check.jsp"><h4>글쓰기</h4></a>
+                <a href = "/project_hepler/member/login_check.jsp"><h4>글쓰기</h4></a>
         		<%
 			}else{
         		%>
-        		 <a href = "review_write.jsp"><h4>글쓰기</h4></a>
+        		 <a href = "review_writer.jsp"><h4>글쓰기</h4></a>
         		<%
 			}        		
         		%>
