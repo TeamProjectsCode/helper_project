@@ -206,7 +206,7 @@ public class JobPostDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
-		String query = "CALL INSERT_JOB_POST(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String query = "CALL INSERT_JOB_POST(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try {
 			con = DBConnection.getConnection();
@@ -224,7 +224,7 @@ public class JobPostDAO {
 			pstmt.setInt(11, jp.getJob_num_of_people());
 			pstmt.setString(12, jp.getJob_detail());
 			
-			if(pstmt.executeUpdate() != 0) {
+			if(pstmt.executeUpdate() == 0) {
 				isSuccess = true;
 			}
 			
@@ -295,10 +295,11 @@ public class JobPostDAO {
 			pstmt.setString(8, jp.getJob_location_detail());
 			pstmt.setInt(9, jp.getJob_pay());
 			pstmt.setInt(10, jp.getJob_num_of_people());
-			pstmt.setString(11, jp.getJob_detail());
-			pstmt.setString(12, job_post_no);
+			pstmt.setString(11,	jp.getJob_people());
+			pstmt.setString(12, jp.getJob_detail());
+			pstmt.setString(13, job_post_no);
 			
-			if(pstmt.executeUpdate() != 0) {
+			if(pstmt.executeUpdate() == 0) {
 				isSuccess = true;
 			}
 			

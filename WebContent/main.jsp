@@ -1,3 +1,4 @@
+<%@page import="db.DBConnection"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.DriverManager"%>
 <%@page import="java.sql.Connection"%>
@@ -66,10 +67,7 @@
 	Connection conn = null;
 	Statement stmt = null;
 	ResultSet rs = null;
-	String driverName = "oracle.jdbc.driver.OracleDriver";
-    String dbURL = "jdbc:oracle:thin:@localhost:1521:XE";
-    conn = DriverManager.getConnection(dbURL, "scott3", "tiger");
-    
+    conn = DBConnection.getConnection();
     stmt = conn.createStatement();
     String sql = "SELECT COUNT(NO) FROM JOB_BOARD WHERE (TO_CHAR(CREATED_AT, 'YYYY/MM/DD')) = (TO_CHAR(SYSTIMESTAMP, 'YYYY/MM/DD'))";
     rs = stmt.executeQuery(sql);
@@ -120,7 +118,7 @@
 			<div>
 				<div class="contents1">오늘 방문자 수</div>
 				<div class="result">
-<%
+<%-- <%
 	stmt = conn.createStatement();
 	sql = "UPDATE HITS SET BOARD_HITS = BOARD_HITS + 1 WHERE NO = 1";
 	stmt.executeUpdate(sql);
@@ -132,7 +130,7 @@
 				<%=rs.getInt(1) %>
 		<%
 	}
-%>
+%> --%>
 				</div>
 			</div>
 		</li>

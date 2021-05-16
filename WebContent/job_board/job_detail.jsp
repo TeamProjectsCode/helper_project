@@ -11,6 +11,7 @@
 
     <%
     String job_post_no = request.getParameter("no");
+    int user_no = Integer.valueOf((String)session.getAttribute("no"));
     JobPostDAO  jpDAO = JobPostDAO.getInstance();
     JobPostBean jp = jpDAO.getPost(job_post_no);
     %>
@@ -47,9 +48,18 @@
           </ul>
         </div>
         <div class="botton">
-          <button type="button" onclick="">신청하기</button>
+          <%   
+          if(user_no == jp.getCreator_no()){
+          %>
           <button type="submit" >수정하기</button>
           <button type="button" onclick="removeCheck()">삭제하기</button>
+          <%
+          } else {
+          %>
+          	<button type="button" onclick="">신청하기</button>
+          <%
+          }
+          %>
           <script>
           function removeCheck(){
         	  if(confirm("정말 삭제하겠습니까?") == true){

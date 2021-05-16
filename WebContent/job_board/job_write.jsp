@@ -6,50 +6,7 @@
 		<meta charset="EUC-KR">
 		<link rel="stylesheet" href="/helper_project/css/board_writer.css" type="text/css" />
 		<script type="text/javascript" src="script.js" charset="utf-8"></script>
-		<!-- <link rel="stylesheet"
-			href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
-		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
-<!-- 		<script>
-		$(function() {
-	
-			//오늘 날짜를 출력
-			$("#timeDay").text(new Date().toLocaleDateString());
-	
-			//datepicker 한국어로 사용하기 위한 언어설정
-			$.datepicker.setDefaults($.datepicker.regional['ko']);
-	
-			// 시작일(fromDate)은 종료일(toDate) 이후 날짜 선택 불가
-			// 종료일(toDate)은 시작일(fromDate) 이전 날짜 선택 불가
-	
-			//시작일.
-			$('#fromDate').datepicker({
-				showOn : "focus", // 달력을 표시할 타이밍 (both: focus or button)
-				dateFormat : "YY-mm-dd", // 날짜의 형식
-				changeMonth : true, // 월을 이동하기 위한 선택상자 표시여부
-				minDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이전 날짜 선택 불가)
-				onClose : function(selectedDate) {
-					// 시작일(fromDate) datepicker가 닫힐때
-					// 종료일(toDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
-					$("#toDate").datepicker("option", "minDate", selectedDate);
-				}
-			});
-		
-				//종료일
-			$('#toDate').datepicker({
-				showOn : "focus",
-				buttonText : "날짜선택",
-				dateFormat : "yy-mm-dd",
-				changeMonth : true,
-				//minDate: 0, // 오늘 이전 날짜 선택 불가
-				onClose : function(selectedDate) {
-					// 종료일(toDate) datepicker가 닫힐때
-					// 시작일(fromDate)의 선택할수있는 최대 날짜(maxDate)를 선택한 종료일로 지정 
-					$("#fromDate").datepicker("option", "maxDate", selectedDate);
-				}
-			});
-		});
-		</script> -->
+
 		<title>구인 게시글 작성</title>
 	</head>
 	<%@ include file="/header.jsp" %>
@@ -81,20 +38,20 @@
 						<h4>
 							카테고리 &nbsp;&nbsp;&nbsp; 
 							<select name="category" id="category">
-								<option value=0>선택안함</option>
-								<option value=1>가사도우미</option>
-								<option value=2>청소도우미</option>
-								<option value=3>등하원도우미</option>
-								<option value=4>요리도우미</option>
-								<option value=5>산후도우미</option>
-								<option value=6>식당도우미</option>
-								<option value=7>육아도우미</option>
-								<option value=8>펫시터</option>
-								<option value=9>베이비시터</option>
-								<option value=10>요양보호사</option>
-								<option value=11>대리티켓구매</option>
-								<option value=12>직구대행</option>
-								<option value=13>기타</option>
+								<option value=4>선택안함</option>
+								<option value=5>가사도우미</option>
+								<option value=6>청소도우미</option>
+								<option value=7>등하원도우미</option>
+								<option value=8>요리도우미</option>
+								<option value=9>산후도우미</option>
+								<option value=10>식당도우미</option>
+								<option value=11>육아도우미</option>
+								<option value=12>펫시터</option>
+								<option value=13>베이비시터</option>
+								<option value=14>요양보호사</option>
+								<option value=15>대리티켓구매</option>
+								<option value=16>직구대행</option>
+								<option value=17>기타</option>
 							</select>
 						</h4>
 					</ul>
@@ -106,19 +63,19 @@
 					</ul>
 					<ul>
 					<!-- 주소 입력 -->
-					<script type="text/javascript" src="/helper_project/util/juso.js" ></script>
+<!-- 					<script type="text/javascript" src="/helper_project/util/juso.js" ></script>
 					도로명주소
 					<input type="text"  style="width:300px;" id="roadAddrPart1"  name="roadAddrPart1" >
 					<br>
 					고객입력 상세주소
 					<input type="text"  style="width:300px;" id="addrDetail"  name="addrDetail" />
-					<input type="button" onClick="goPopup();" value="주소 찾기"/>
+					<input type="button" onClick="goPopup();" value="주소 찾기"/> -->
 						<h4>
 							지역 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 							<select name="job_location_first_name">
 								<option value="서울">서울</option>
 								<option value="부산">부산</option>
-								<option value="인천">인천</option>
+			<!-- 					<option value="인천">인천</option>
 								<option value="대전">대전</option>
 								<option value="대구">대구</option>
 								<option value="광주">광주</option>
@@ -132,10 +89,15 @@
 								<option value="전라남도">전라남도</option>
 								<option value="경상남도">경상남도</option>
 								<option value="경상북도">경상북도</option>
-								<option value="해외">해외</option>
+								<option value="해외">해외</option> -->
 							</select> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							상세장소&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="text" name="job_location_detail">
+							<select name="job_location_second_name">
+								<option value="해운대구">해운대구</option>
+								<option value="진구">진구</option>
+
+							</select>
+							<br>
+							상세 주소 <input type="text" name="job_location_detail">
 						</h4>
 					</ul>
 					<ul>
