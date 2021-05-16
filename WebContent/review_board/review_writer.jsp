@@ -17,12 +17,12 @@
   <body>
     <div class="total">
     <%@ include file="/header.jsp" %>
-      <form action="review_writer_ok.jsp" method="POST">
+      <form action="review_writer_ok.jsp" method="post">
         <h1>후기작성</h1>
         <div class="section">
           <ul>
             <div class="title">
-              <h3>제목 &nbsp;&nbsp;&nbsp;<input type="text" name="title" /></h3>
+              <h3>제목 &nbsp;&nbsp;&nbsp;<input type="text" name="title"/></h3>
             </div>
           </ul>
           <ul>
@@ -31,8 +31,7 @@
               <textarea
                  style="overflow: auto; height: 400px"
                 cols="70"
-                rows="auto" name="review"
-              ></textarea>
+                rows="auto" name="review"></textarea>
             </div>
           </ul>
           <div class="botton">

@@ -245,7 +245,6 @@ public class JobPostDAO {
 	public boolean deletePost(String job_post_no) {
 		
 		boolean isSuccess = false;
-		
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
@@ -255,8 +254,8 @@ public class JobPostDAO {
 			con = DBConnection.getConnection();
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, job_post_no);
-			
-			if(pstmt.executeUpdate() != 0) {
+			pstmt.executeQuery();
+			if(pstmt.executeUpdate() == 0) {
 				isSuccess = true;
 			}
 			
