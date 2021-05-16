@@ -12,7 +12,7 @@
 	<div class="total">
 		 <%@ include file="/header.jsp" %>
 		<center>
-			<form action="register_ok.jsp" class="sign-up-form" id="form" name="form" method="post">
+			<form action="joinAction.jsp" class="sign-up-form" id="form" name="form" method="post">
 				<div class="main">
 					<div class="title">
 						<h1>회원가입</h1>
@@ -31,8 +31,12 @@
 							<td><input type="text" placeholder="이름" name="name"></td>
 						</tr>
 						<tr>
+							<th>닉네임</th>
+							<td><input type="text" placeholder="닉네임" name="nick"></td>
+						</tr>
+						<tr>
 							<th>패스워드</th>
-							<td><input type="password" placeholder="패스워드" name="pass"></td>
+							<td><input type="password" placeholder="패스워드" name="pw"></td>
 						</tr>
 
 						<tr>
@@ -42,8 +46,8 @@
 						</tr>
 						<tr>
 							<th>성별</th>
-							<td><input type="radio" name="gender" value="남">남 <input
-								type="radio" name="gender" value="여">여</td>
+							<td><input type="radio" name="gender" value=0>남 <input
+								type="radio" name="gender" value=1>여</td>
 						</tr>
 						<tr>
 							<th>생일</th>
@@ -68,7 +72,7 @@
 
 						<tr>
 							<th>이메일</th>
-							<td><input type="email" placeholder="이메일" name="email1"></td>
+							<td><input type="email" placeholder="이메일" name="email"></td>
 						</tr>
 
 						<!-- 주소 입력 넣을 부분 -->

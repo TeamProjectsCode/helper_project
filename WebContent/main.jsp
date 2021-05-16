@@ -1,3 +1,7 @@
+<%@page import="java.sql.ResultSet"%>
+<%@page import="java.sql.DriverManager"%>
+<%@page import="java.sql.Connection"%>
+<%@page import="java.sql.Statement"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -34,8 +38,9 @@
 					<%
 					if(session.getAttribute("id")!=null){
 						String id = (String)session.getAttribute("id");
+						String no = (String)session.getAttribute("no");
 						%>
-						<li><a href="/helper_project/member/logout.jsp">LOGOUT</a></li>
+						<li><a href="/helper_project/member/logout.jsp"><%=no %></a></li>
 						<%
 						}else{
 						%>
@@ -56,25 +61,79 @@
 		<li>
 			<div>
 				<div class="contents1">오늘 업데이트된 구인 글 수</div>
-				<div class="result">128,021</div>
+				<div class="result">
+<%
+	Connection conn = null;
+	Statement stmt = null;
+	ResultSet rs = null;
+	String driverName = "oracle.jdbc.driver.OracleDriver";
+    String dbURL = "jdbc:oracle:thin:@localhost:1521:XE";
+    conn = DriverManager.getConnection(dbURL, "scott3", "tiger");
+    
+    stmt = conn.createStatement();
+    String sql = "SELECT COUNT(NO) FROM JOB_BOARD WHERE (TO_CHAR(CREATED_AT, 'YYYY/MM/DD')) = (TO_CHAR(SYSTIMESTAMP, 'YYYY/MM/DD'))";
+    rs = stmt.executeQuery(sql);
+    while(rs.next()){
+        %>
+            	<%=rs.getInt(1)%>
+        <%
+    }
+
+%>
+				</div>
 			</div>
 		</li>
 		<li>
 			<div>
 				<div class="contents1">전체 회원 수</div>
-				<div class="result">93,234</div>
+				<div class="result">
+<%
+	sql = "SELECT COUNT(NO) FROM USERS";
+	stmt = conn.createStatement();
+	rs = stmt.executeQuery(sql);
+	while(rs.next()){
+		%>
+				<%=rs.getInt(1) %>
+		<%
+	}
+%>
+				</div>
 			</div>
 		</li>
 		<li>
 			<div>
 				<div class="contents1">오늘의 포인트 왕</div>
-				<div class="result">hello 님</div>
+				<div class="result">
+<%
+	sql = "SELECT NAME FROM USERS WHERE POINT = (SELECT MAX(POINT) FROM USERS)";
+	stmt = conn.createStatement();
+	rs = stmt.executeQuery(sql);
+	while(rs.next()){
+		%>
+				<%=rs.getString(1) %>
+		<%
+	}
+%>				 님</div>
 			</div>
 		</li>
 		<li>
 			<div>
 				<div class="contents1">오늘 방문자 수</div>
-				<div class="result">21,084</div>
+				<div class="result">
+<%
+	stmt = conn.createStatement();
+	sql = "UPDATE HITS SET BOARD_HITS = BOARD_HITS + 1 WHERE NO = 1";
+	stmt.executeUpdate(sql);
+	stmt = conn.createStatement();
+	sql = "SELECT BOARD_HITS FROM HITS";
+	rs = stmt.executeQuery(sql);
+	while(rs.next()){
+		%>
+				<%=rs.getInt(1) %>
+		<%
+	}
+%>
+				</div>
 			</div>
 		</li>
 	</ul>

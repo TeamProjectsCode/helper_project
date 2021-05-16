@@ -12,7 +12,7 @@
         <div class="total">
            <%@ include file="/header.jsp" %>
             <div class = "space"></div>
-      <form name = "login" action="login_ok.jsp" method="post">
+      <form name = "login" action="loginAction.jsp" method="post">
 			<div class="loginForm">
 				<h1>Login</h1>
 				<div class="idForm">

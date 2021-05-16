@@ -115,7 +115,6 @@ public class NotifyDAO{
 					dto.setCategory(rs.getInt("category"));
 					dto.setCreator(rs.getString("creator"));
 					dto.setNotify_title(rs.getString("notify_title"));
-					dto.setNotify_detail(rs.getString("notify_detail"));
 					dto.setNotify_hits(rs.getInt("notify_hits"));
 					list.add(dto);
 				}
@@ -132,8 +131,102 @@ public class NotifyDAO{
 			}
 			return list;
 		}
-
-	}
+		public NotifyDTO getData(int num){
+			NotifyDTO dto = null;
+			try {
+				conn = ds.getConnection();
+				String sql = "select * from notify_board where no=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, num);
+				rs = pstmt.executeQuery();
+				if(rs.next()){
+					dto = new NotifyDTO();
+					dto.setNo(rs.getInt("no"));
+					dto.setCreated_at(rs.getTimestamp("created_at"));
+					dto.setCategory(rs.getInt("category"));
+					dto.setCreator(rs.getString("creator"));
+					dto.setNotify_title(rs.getString("notify_title"));
+					dto.setNotify_hits(rs.getInt("notify_hits"));
+					dto.setNotify_detail(rs.getString("notify_detail"));
+				
+				}
+			} catch (Exception e) {
+				System.out.println("getData err : " + e);
+			} finally {
+				try {
+					if(rs != null) rs.close();
+					if(pstmt != null) pstmt.close();
+					if(conn != null) conn.close();
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
+			}
+			return dto;
+		}
+		
+		public void updateData(NotifyBean bean){//수정
+			try {
+				String sql = "update notify_board set notify_title=?, notify_detail=? where no=?";
+				conn = ds.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, bean.getNotify_title());
+				pstmt.setString(2, bean.getNotify_detail());
+				pstmt.setInt(3, bean.getNo());
+				
+				pstmt.executeUpdate();
+			
+			} catch (Exception e) {
+				System.out.println("updateData err : " + e);
+			} finally {
+				try {
+					if(rs != null) rs.close();
+					if(pstmt != null) pstmt.close();
+					if(conn != null) conn.close();
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
+			}
+		}
+		
+		public void deleteData(int no){//삭제
+			try {
+				String sql = "delete from notify_board where no=?";
+				conn = ds.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, no);
+				pstmt.executeQuery();
+			} catch (Exception e) {
+				System.out.println("deleteData err : " + e);
+			} finally {
+				try {
+					if(rs != null) rs.close();
+					if(pstmt != null) pstmt.close();
+					if(conn != null) conn.close();
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
+			}
+		}
+		public void updateNotify_hits(int no){//조회수처리
+			try {
+				String sql = "update notify_board set notify_hits=notify_hits+1 where no=?";
+				conn = ds.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, no);
+				pstmt.executeQuery();
+			} catch (Exception e) {
+				System.out.println("updateNotify_hits err : " + e);
+			} finally {
+				try {
+					if(rs != null) rs.close();
+					if(pstmt != null) pstmt.close();
+					if(conn != null) conn.close();
+				} catch (Exception e2) {
+					// TODO: handle exception
+				}
+			}
+		}
+}
 	
 
 	

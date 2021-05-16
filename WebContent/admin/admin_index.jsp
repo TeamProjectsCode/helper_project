@@ -61,7 +61,7 @@
 		<ul class="icons">
 			<li>
 				<div class="icon_img">
-					<img src="./images/job11.png">
+					<img src="../images/job11.png">
 				</div>
 				<div class="contents1_bold">구인 게시판</div>
 				<div class="contents2">내가 잘하는 일로 이웃도 돕고 돈도 벌고 이석이조!</div>
@@ -70,7 +70,7 @@
 
 			<li>
 				<div class="icon_img">
-					<img src="./images/writing11.png">
+					<img src="../images/writing11.png">
 				</div>
 				<div class="contents1_bold">후기 게시판</div>
 				<div class="contents2">
@@ -81,7 +81,7 @@
 
 			<li>
 				<div class="icon_img">
-					<img src="./images/shopping11.png">
+					<img src="../images/shopping11.png">
 				</div>
 				<div class="contents1_bold">포인트 마켓</div>
 				<div class="contents2">열심히 활동한 주민은 포인트로 다양한 기프티콘을 구매하실 수 있습니다
@@ -96,7 +96,7 @@
 		<div class="contents1">당신의 시간을 삽니다</div>
 		<div class="service">
 			<div class="food_photo">
-				<img src="./images/sec.png">
+				<img src="../images/sec.png">
 			</div>
 			<div class="contents2">
 				<h2>가나다라마바사아자차카타파하</h2>
