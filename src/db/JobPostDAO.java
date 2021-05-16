@@ -3,7 +3,6 @@ package db;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.Timestamp;
 import java.util.ArrayList;
 
 import db.jobBoardBeans.*;
@@ -17,7 +16,7 @@ public class JobPostDAO {
 		return instance;
 	}
 	
-	public void setCount(String location) {
+	public void setCount(String location_first, String location_second) {
 		
 		total_count = 0;
 		count = 1;
@@ -27,16 +26,20 @@ public class JobPostDAO {
 		ResultSet rs = null;
 		
 		String query;
-		if(location == null) {
-			query = "SELECT COUNT(*) AS \"TOTAL_COUNT\" FROM JOB_BOARD";
+		if(location_first == null) {
+			query = "SELECT COUNT(*) AS \"TOTAL_COUNT\" FROM JOB_BOARD WHERE ? = ?";
+			location_first = "1";
+			location_second = "1";
 		}
 		else {
-			query = "SELECT COUNT(*) AS \"TOTAL_COUNT\" FROM JOB_BOARD WHERE LOCATION_NO="+location;
+			query = "SELECT COUNT(*) AS \"TOTAL_COUNT\" FROM JOB_BOARD WHERE LOCATION_NO = GET_LOCATION_NO(?, ?)";
 		}
 		
 		try {
 			con = DBConnection.getConnection();
 			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, location_first);
+			pstmt.setString(2, location_second);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
@@ -57,15 +60,16 @@ public class JobPostDAO {
 		
 	}
 	
-	public ArrayList<JobPostSubBean> getList(String key, String value){
+	public ArrayList<JobPostSubBean> getList(String location_first, String location_second){
 		
 		String where;
-		if(value == null) {
-			where= " WHERE 1 = ?";
-			value = "1";
+		if(location_first == null) {
+			where= " WHERE ? = ?";
+			location_first = "1";
+			location_second = "1";
 		}
 		else {
-			where = " WHERE JOB_LOCATION_NO = ?";
+			where = " WHERE JOB_LOCATION_NO = GET_LOCATION_NO(?, ?)";
 		}
 
 		if(total_count<count) {
@@ -86,9 +90,10 @@ public class JobPostDAO {
 		try {
 			con = DBConnection.getConnection();
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, value);
-			pstmt.setInt(2, count);
-			pstmt.setInt(3, count+9);
+			pstmt.setString(1, location_first);
+			pstmt.setString(2, location_second);
+			pstmt.setInt(3, count);
+			pstmt.setInt(4, count+9);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {

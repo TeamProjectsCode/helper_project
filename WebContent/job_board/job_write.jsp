@@ -6,15 +6,15 @@
 		<meta charset="EUC-KR">
 		<link rel="stylesheet" href="/helper_project/css/board_writer.css" type="text/css" />
 		<script type="text/javascript" src="script.js" charset="utf-8"></script>
-		<link rel="stylesheet"
+		<!-- <link rel="stylesheet"
 			href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 		<script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-		<script>
+		<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+<!-- 		<script>
 		$(function() {
 	
 			//오늘 날짜를 출력
-			$("#today").text(new Date().toLocaleDateString());
+			$("#timeDay").text(new Date().toLocaleDateString());
 	
 			//datepicker 한국어로 사용하기 위한 언어설정
 			$.datepicker.setDefaults($.datepicker.regional['ko']);
@@ -25,9 +25,9 @@
 			//시작일.
 			$('#fromDate').datepicker({
 				showOn : "focus", // 달력을 표시할 타이밍 (both: focus or button)
-				dateFormat : "yy-mm-dd", // 날짜의 형식
+				dateFormat : "YY-mm-dd", // 날짜의 형식
 				changeMonth : true, // 월을 이동하기 위한 선택상자 표시여부
-				//minDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이전 날짜 선택 불가)
+				minDate: 0,                       // 선택할수있는 최소날짜, ( 0 : 오늘 이전 날짜 선택 불가)
 				onClose : function(selectedDate) {
 					// 시작일(fromDate) datepicker가 닫힐때
 					// 종료일(toDate)의 선택할수있는 최소 날짜(minDate)를 선택한 시작일로 지정
@@ -49,7 +49,7 @@
 				}
 			});
 		});
-		</script>
+		</script> -->
 		<title>구인 게시글 작성</title>
 	</head>
 	<%@ include file="/header.jsp" %>
@@ -69,10 +69,8 @@
 						<h3>공고기간</h3>
 					</ul>
 					<ul>
-						<input type="text" name="job_time_start" id="fromDate"
-							placeholder="시작날짜를 선택하세요"> &nbsp;~&nbsp;
-						<input type="text" name="job_time_end" id="toDate"
-							placeholder="종료날짜를 선택하세요">
+					<!-- 데이, 타임 입력 -->
+					<jsp:include page="../util/datepicker.jsp"></jsp:include>
 					</ul>
 				</div>
 				<div class="detail">
@@ -107,6 +105,14 @@
 						</h4>
 					</ul>
 					<ul>
+					<!-- 주소 입력 -->
+					<script type="text/javascript" src="/helper_project/util/juso.js" ></script>
+					도로명주소
+					<input type="text"  style="width:300px;" id="roadAddrPart1"  name="roadAddrPart1" >
+					<br>
+					고객입력 상세주소
+					<input type="text"  style="width:300px;" id="addrDetail"  name="addrDetail" />
+					<input type="button" onClick="goPopup();" value="주소 찾기"/>
 						<h4>
 							지역 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 							<select name="job_location_first_name">

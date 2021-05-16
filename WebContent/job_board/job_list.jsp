@@ -8,10 +8,11 @@
         <!-- ★leni★ class list 사용하는지 여쭤보고 수정가능하면 수정하기 -->
     <div class="list" id="job_board_content" style="overflow: auto; height: 400px">
         <%
-        String location = request.getParameter("location");
+        String location_first = request.getParameter("location_first");
+        String location_second = request.getParameter("location_second");
         JobPostDAO jpDAO = JobPostDAO.getInstance();
-        jpDAO.setCount(location);
-        ArrayList<JobPostSubBean> jpsl = jpDAO.getList("LOCATION_NO", location);
+        jpDAO.setCount(location_first, location_second);
+        ArrayList<JobPostSubBean> jpsl = jpDAO.getList(location_first, location_second);
         %>
         <from>
         <table id="job_board">
@@ -137,7 +138,7 @@
              if(scrollT+scrollH+1 >= contentH){
                  /* ★leni★ 스크롤 시 jdbc 읽어오는 부분 */
                  <%
-                 jpsl = jpDAO.getList("LOCATION_NO", location);
+                 jpsl = jpDAO.getList(location_first, location_second);
                  if(jpsl != null){
                  	for(int i=0; i<jpsl.size(); i++) {
                  %>
