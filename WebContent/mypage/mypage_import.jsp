@@ -72,13 +72,13 @@
      						}
 						 }
    						</script>
-						<button onclick="member_delete()">회원 탈퇴</button>
+						<button type="button" onclick="member_delete()">회원 탈퇴</button>
 						<script>
 							function member_delete() {
-								if (!confirm("정말로 탈퇴 하시겠습니까?? 한번 탈퇴 하면 되돌릴 수 없습니다")) {
-									alert("취소 되었습니다.");
+								if (confirm("정말로 탈퇴 하시겠습니까?? 한번 탈퇴 하면 되돌릴 수 없습니다") == true) {
+									document.location.href="/helper_project/mypage/member_delete_ok.jsp"
 								} else {
-									alert("탈퇴가 완료 되었습니다.");
+									alert("취소 되었습니다.");
 								}
 							}
 						</script>
