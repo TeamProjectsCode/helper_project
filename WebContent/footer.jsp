@@ -14,7 +14,7 @@
 		<a href="#" onclick="window.open(
 			'admin/admin_login.jsp',
 			'',
-			'width=300,height=150,top=200,left=300')">
+			'width=500,height=300,top=200,left=300')">
 			관리자
 		</a>
 	 </td>

@@ -38,8 +38,9 @@
 					<%
 					if(session.getAttribute("id")!=null){
 						String id = (String)session.getAttribute("id");
+						String no = (String)session.getAttribute("no");
 						%>
-						<li><a href="/helper_project/member/logout.jsp">LOGOUT</a></li>
+						<li><a href="/helper_project/member/logout.jsp"><%=no %></a></li>
 						<%
 						}else{
 						%>

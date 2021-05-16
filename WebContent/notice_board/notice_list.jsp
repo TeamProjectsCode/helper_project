@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
  <jsp:useBean id="admin" class="db.UserDAO"/>
 <!DOCTYPE html>
 <html>
@@ -16,7 +17,37 @@
         <h1>공지 사항</h1>
         <div class="section">
         <div class = "serch">
-          <%
+              <h3>검색 <input type= "text" value=""> &nbsp; &nbsp;</h3>
+        </div>
+            <div class="list" style="overflow: auto; height: 400px">
+                <table>
+                    <tr>
+                        <th>글번호</th>
+                        <th>카테고리</th>
+                        <th style="width: 500px;"><a href="#">제목</a></th>
+                        <th>게시일</th>
+                        <th>작성자</th>
+                        <th>조회수 </th>
+                    
+                    <!-- list 변수에 목록 데이터를 삽입 -->
+					<c:set var="list" value="${NotifyDAO.getDataAll()}"/>
+					
+					<!-- list 변수로부터 한줄한줄 출력 -->
+					<c:forEach var="data" items="${list }">
+						<tr>
+							<td>${data.no}</td>
+							<td>${data.category}</td>
+							<td><a href="notice_reading.jsp?no=${data.no}">${data.notify_title }</a></td>
+							<td>${data.created_at}</td>
+							<td>${data.creator}</td>
+							<td>${notify_hits}</td>
+						</tr>
+					</c:forEach>
+					</tr>
+                </table>
+            </div>
+            <div class="button">
+             <%
 			String admin_id = request.getParameter("id");
 			String admin_pass = request.getParameter("pass");
 			boolean b = admin.admin_login(admin_id, admin_pass);
@@ -24,78 +55,11 @@
 			if(b){
 				session.setAttribute("adminOk", admin_id);
 			%>
-                <a href = "notice_write.jsp"><h4>글쓰기</h4></a>
+			<button type="submit" onclick="notice_write.jsp">글쓰기</button>
+			
         		<%
 			}
                      %>
-              <h3>검색 <input type= "text" value=""> &nbsp; &nbsp;</h3>
-        </div>
-            <div class="list" style="overflow: auto; height: 400px">
-                <table>
-                    <tr>
-                        <td style="width: 500px;"><a href="#">[필독사항] 홈페이지 업데이트 예정</a></td>
-                        <td>21/04/27</td>
-                        <td>조회수 : 00 </td>
-                      
-                    </tr>
-                    <tr>
-                        <td style="width: 500px;"><a href="#">[필독사항] 욕설 유저 가만 안둠</a></td>
-                        <td>21/04/27</td>
-                        <td>조회수 : 00 </td>
-                        
-                    </tr>
-                    <tr>
-                        <td style="width: 500px;"><a href="#">[필독사항] 사기 먹튀 유저는 경찰서에 갈 수 있습니다.</a></td>
-                        <td>21/04/27</td>
-                        <td>조회수 : 00 </td>
-                 
-                    </tr>
-                    <tr>
-                        <td style="width: 500px;"><a href="#">[이벤트] 추첨을 통해 ...</a></td>
-                        <td class="time">21/04/27</td>
-                        <td class="hit">조회수 : 00 </td>
-                    <tr>
-                        <td><a href="#">제목</a></td>
-                        <td>21/04/27</td>
-                        <td>조회수 : 00 </td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">제목</a></td>
-                        <td>21/04/27</td>
-                        <td>조회수 : 00 </td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">제목</a></td>
-                        <td>21/04/27</td>
-                        <td>조회수 : 00 </td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">제목</a></td>
-                        <td>21/04/27</td>
-                        <td>조회수 : 00 </td>
-                    </tr>
-                    <tr>
-                        <td><a href="#">제목</a></td>
-                        <td>21/04/27</td>
-                        <td>조회수 : 00 </td>
-                    </tr>          
-                    <tr>
-                        <td><a href="#">제목</a></td>
-                        <td>21/04/27</td>
-                        <td>조회수 : 00 </td>
-                    </tr>          
-                    <tr>
-                        <td><a href="#">제목</a></td>
-                        <td>21/04/27</td>
-                        <td>조회수 : 00 </td>
-                    </tr>          
-                </table>
-            </div>
-            <div class="button">
-           <!--  <% if(session.getAttribute("sessionId").equals("admin")){ %>
-				<button type="button" onclick="notice_write.jsp">글쓰기</button>
-			<% } %> 
-			-->
 				<button type="submit" onclick="">뒤로가기</button>
 			</div>
         </div>

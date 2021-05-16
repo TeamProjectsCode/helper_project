@@ -12,13 +12,13 @@
 </head>
 <script type="text/javascript">
 //입력 자료 검사
-function check() {
+function notice_check() {
 	if (write_form.notify_title.value == "") {
 		alert("제목을 입력하세요");
 		write_form.title.focus();
 	} else if (write_form.notify_detail.value == "") {
 		alert("내용을 입력하세요");
-		write_form.cont.focus();IdeConnections%2523local-scott//SCOTT/OPERATOR
+		write_form.cont.focus();
 	} else
 		write_form.submit();
 }
@@ -26,7 +26,7 @@ function check() {
 <body>
 	<div class="total">
 		 <%@ include file="/header.jsp" %>
-		<form action="write_action.jsp" method="POST" name="write_form">
+		<form action="notice_write_action.jsp" method="POST" name="write_form">
 			<div class = "section">
 			<div class="detail">
 				<ul>
@@ -49,7 +49,7 @@ function check() {
 					<textarea cols="60" rows="10" name="notify_detail"></textarea>
 					</ul>
 			<div class="btn">
-				<button type="submit" onclick="check()">작성하기</button>
+				<button type="submit" onclick="notice_check()">작성하기</button>
 				<span><button type="reset">다시쓰기</button></span>
 			</div>
 			</div>

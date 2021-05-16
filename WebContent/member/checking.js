@@ -31,12 +31,12 @@ function member_ok(){
 		document.form.name.focus();
 		return;	
 	}
-	else if(document.form.pass.value.length == 0){
+	else if(document.form.pw.value.length == 0){
 		alert("패스워드는 반드시 입력해야합니다.");
 		document.form.pw.focus();
 		return;
 	}
-	else if(document.form.pass.value != document.form.pass2.value){
+	else if(document.form.pw.value != document.form.pass2.value){
 		alert("패스워드가 일치하지 않습니다.");
 		document.form.pass2.focus();
 		return;
@@ -56,12 +56,12 @@ function member_ok(){
 		document.form.birth_yy.focus();
 		return;
 	}
-	else if(document.form.email1.value.length == 0){
+	else if(document.form.email.value.length == 0){
 		alert("Email을 써주세요.");
 		document.form.email1.focus();
 		return;
 	}
-	else if(document.form.roadAddrPart1.value.length == 0){
+	else if(document.form.addrDetail.value.length == 0){
 		alert("주소를 써주세요.");
 		document.form.roadAddrPart1.focus();
 		return;

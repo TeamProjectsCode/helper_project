@@ -30,7 +30,7 @@
 		<div class="header_gnb">
 			<ul class = "nav">
 					<li><a href="admin_index.jsp">HOME</a></li>
-					<li><a href="notice_manager.jsp">공지게시판</a></li>
+					<li><a href="/helper_project/notice_board/notice_list.jsp">공지게시판</a></li>
 					<li><a href="productmanager.jsp">상품관리</a></li>
 					<li><a href ="">회원관리</a></li>
 				    <li><a href="admin_login_out.jsp">LOGOUT</a></li>

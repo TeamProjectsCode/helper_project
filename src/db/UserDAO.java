@@ -93,8 +93,8 @@ public class UserDAO {
 				number = 1;
 			}
 
-			sql = "insert into users(no, name, nick, id, pw, gender, birth_yy, birth_mm, birth_dd, email" + ",location_no,location_detail) "
-					+ "values(?,?,?,?,?,?,?,?,?,?,?)";
+			sql = "insert into users(no, name,nick,id, pw, gender, birth_yy, birth_mm, birth_dd, email" + ",location_no,location_detail) "
+					+ "values(?,?,?,?,?,?,?,?,?,?,?,?)";
 
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, number);
@@ -127,18 +127,18 @@ public class UserDAO {
 				e.printStackTrace();
 			}
 		}
-		return -1;// db오류
+		return 1;// db오류
 	}
 
 	public int login(String id, String pw) {//로그인
-		String sql = "select pw from users where id=?";
+		String sql = "select pw,no from users where id=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				if (rs.getString(1).equals(pw))
-					return 1;// 로그인성공
+					return rs.getInt("no");// 로그인성공
 				else
 					return 0;// 비밀번호 불일치
 			}

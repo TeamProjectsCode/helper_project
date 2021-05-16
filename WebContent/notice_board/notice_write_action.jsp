@@ -13,7 +13,7 @@
 <jsp:useBean id="notifyDAO" class="db.notifyBoardBeans.NotifyDAO"/>
 
 <%
-;
+
 	
 	//게시물을 삽입할 번호 구하기
 	int insert_num = notifyDAO.getCurrentNum()+1;
@@ -23,7 +23,6 @@
 	notifyDAO.insertData(bean);
 	
 	//데이터 삽입 후 목록으로 돌아가기
-	response.sendRedirect("boardlist.jsp?page=1");
+	response.sendRedirect("notice_list.jsp");
 
 %>
-s

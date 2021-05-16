@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <%@ page import="helper.UserDAO" %>
+    <%@ page import="db.UserDAO" %>
     <%@ page import="java.io.PrintWriter" %>
     <% request.setCharacterEncoding("UTF-8"); %>
-    <jsp:useBean id="user" class="helper.UserBean" scope="page"></jsp:useBean>
+    <jsp:useBean id="user" class="db.userBeans.UserBean" scope="page"></jsp:useBean>
     <jsp:setProperty property="id" name="user"/>
     <jsp:setProperty property="pw" name="user"/>
     
@@ -23,16 +23,17 @@
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
 		script.println("alert('이미 로그인이 되어있습니다.')");
-		script.println("location.href ='main.jsp'");
+		script.println("location.href ='../main.jsp'");
 		script.println("</script>");
 	}
 	UserDAO userDAO = new UserDAO();
 	int result = userDAO.login(user.getId(),user.getPw());
-	 if(result == 1){
+	 if(result > 0){
+		session.setAttribute("no", String.valueOf(result));
 		session.setAttribute("id", user.getId());
 		PrintWriter script = response.getWriter();
 		script.println("<script>");
-		script.println("location.href ='main.jsp'");
+		script.println("location.href ='../main.jsp'");
 		script.println("</script>");
 	}
 	else if(result == 0 || result == -1){
