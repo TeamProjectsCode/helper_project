@@ -2,6 +2,7 @@
 <%@page import="db.JobPostDAO"%>
 <%
 request.setCharacterEncoding("UTF-8");
+String user_no = (String)session.getAttribute("no");
 %>
 <jsp:useBean id="jp" class="db.jobBoardBeans.JobPostBean"></jsp:useBean>
 <jsp:setProperty property="*" name="jp"/>
@@ -9,8 +10,9 @@ request.setCharacterEncoding("UTF-8");
 <!-- String no = session.getAttribute("no").toString(); -->
 <%
 /* System.out.println("-----------------------------------------");
-System.out.println(no); 
+System.out.println("user no: "+user_no); 
 System.out.println("title: "+jp.getJob_title());
+System.out.println("time day: "+jp.getJob_day());
 System.out.println("time start: "+jp.getJob_time_start());
 System.out.println("time end: "+jp.getJob_time_end());
 System.out.println("category: "+jp.getCategory());
@@ -20,10 +22,10 @@ System.out.println("location detail: "+jp.getJob_location_detail());
 System.out.println("pay: "+jp.getJob_pay());
 System.out.println("detail: "+jp.getJob_detail()); */
 
-jp.setCreator_no(1);
+jp.setCreator_no(Integer.valueOf(user_no));
 
 JobPostDAO jpDAO = JobPostDAO.getInstance();
-if(jpDAO.addPost(jp)){
+if(jpDAO.addPost(jp) == true ){
 	response.sendRedirect("/helper_project/job_board/job_main.jsp");
 }
 %>

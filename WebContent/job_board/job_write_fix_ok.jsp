@@ -25,5 +25,5 @@ if(jpDAO.modifyPost(jp, job_post_no)){
 }
 %>
 <script>
-document.location.href="/helper_project/job_board/job_main.jsp";
+document.location.href="/helper_project/job_board/job_detail.jsp?no=<%=job_post_no%>";
 </script>
