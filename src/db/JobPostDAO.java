@@ -254,11 +254,10 @@ public class JobPostDAO {
 			con = DBConnection.getConnection();
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, job_post_no);
-			pstmt.executeQuery();
+			
 			if(pstmt.executeUpdate() == 0) {
 				isSuccess = true;
 			}
-			
 		} catch (Exception e) {
 			System.out.println("JobPostDAO deletePost() ERROR: "+e);
 		} finally {
