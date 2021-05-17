@@ -3,6 +3,7 @@
 <%
 request.setCharacterEncoding("UTF-8");
 String user_no = (String)session.getAttribute("no");
+String p_helper_path = request.getContextPath();
 %>
 <jsp:useBean id="jp" class="db.jobBoardBeans.JobPostBean"></jsp:useBean>
 <jsp:setProperty property="*" name="jp"/>
@@ -26,6 +27,6 @@ jp.setCreator_no(Integer.valueOf(user_no));
 
 JobPostDAO jpDAO = JobPostDAO.getInstance();
 if(jpDAO.addPost(jp) == true ){
-	response.sendRedirect("/helper_project/job_board/job_main.jsp");
+	response.sendRedirect(p_helper_path+"/job_board/job_main.jsp");
 }
 %>

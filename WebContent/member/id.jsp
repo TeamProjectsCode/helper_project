@@ -3,14 +3,14 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <%@ include file="/header.jsp" %>
     <meta charset="EUC-KR" />
-    <link rel="stylesheet" href="../css/id.css" type="text/css" />
+    <link rel="stylesheet" href="<%=p_helper_path %>/css/id.css" type="text/css" />
     <title>Insert title here</title>
     <script type="text/javascript" src="script.js" charset="utf-8"></script>
   </head>
  <body>
     <div class="total">
-    <%@ include file="/header.jsp" %>
       <form>
         <h1 align="center">ID 찾기</h1>
         <div class="id_section">
@@ -28,8 +28,8 @@
       </form>
       
       <div class ="space"></div>
-      <%@ include file="/footer.jsp" %>
     </div>
   </body>
+      <%@ include file="/footer.jsp" %>
 </html>
 <script type="text/javascript" src="resources/js/notice-write.js"></script>

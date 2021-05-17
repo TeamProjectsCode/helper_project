@@ -4,13 +4,14 @@
 <html>
   <head>
     <meta charset="UTF-8" />
-    <link rel="stylesheet" href="../css/review_list.css" type="text/css" />
+     <%@ include file="/header.jsp" %>
+    <link rel="stylesheet" href="<%=p_helper_path %> %>/css/review_list.css" type="text/css" />
+
     <title>Insert title here</title>
     <script type="text/javascript" src="script.js" charset="utf-8"></script>
   </head>
   <body>
     <div class="total">
-     <%@ include file="/header.jsp" %>
       <form>
         <h1>후기 게시판</h1>
         <div class="section">
@@ -18,7 +19,7 @@
                 <%
         	if(session.getAttribute("id")==null){
         		%>
-                <a href = "/project_hepler/member/login_check.jsp"><h4>글쓰기</h4></a>
+                <a href = "<%=p_helper_path %>/member/login_check.jsp"><h4>글쓰기</h4></a>
         		<%
 			}else{
         		%>

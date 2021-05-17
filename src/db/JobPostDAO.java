@@ -82,8 +82,8 @@ public class JobPostDAO {
 		String query = "SELECT ROW_NUMBER() over (ORDER BY J.CREATED_AT DESC ) AS \"ROWNUM\","
 				+ " J.*"
 				+ " FROM GET_SUB_LIST J"
-				+ where
-				+ " AND ROWNUM BETWEEN ? AND ?";
+				+ where;
+				/*+ " AND ROWNUM BETWEEN ? AND ?";*/
 				
 		ArrayList<JobPostSubBean> jpl = new ArrayList<JobPostSubBean>();
 		
@@ -92,8 +92,8 @@ public class JobPostDAO {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, location_first);
 			pstmt.setString(2, location_second);
-			pstmt.setInt(3, count);
-			pstmt.setInt(4, count+9);
+//			pstmt.setInt(3, count);
+//			pstmt.setInt(4, count+9);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {

@@ -4,12 +4,22 @@
 <html>
 	<head>
 		<meta charset="EUC-KR">
-		<link rel="stylesheet" href="/helper_project/css/board_writer.css" type="text/css" />
+		<%@ include file="/header.jsp" %>
+		<link rel="stylesheet" href="<%=p_helper_path %>css/board_writer.css" type="text/css" />
 		<script type="text/javascript" src="script.js" charset="utf-8"></script>
-
+		<%
+		String user_no = (String)session.getAttribute("no");
+		if(user_no == null){
+		%>
+		<script>
+			alert("로그인 먼저 하세요.");
+			location.href="<%=p_helper_path %>/member/login.jsp";
+		</script>
+		<%	
+		}
+		%>
 		<title>구인 게시글 작성</title>
 	</head>
-	<%@ include file="/header.jsp" %>
 	<body class="total">
 		<form action="job_write_ok.jsp" method="POST">
 			<div class = "section">

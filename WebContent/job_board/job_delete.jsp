@@ -2,6 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@page import="db.JobPostDAO"%>
 <%
+String p_helper_path = request.getContextPath();
 String job_post_no = request.getParameter("no");
 JobPostDAO  jpDAO = JobPostDAO.getInstance();
 if(jpDAO.deletePost(job_post_no)){
@@ -9,5 +10,5 @@ if(jpDAO.deletePost(job_post_no)){
 }
 %>
 <script>
-document.location.href="/helper_project/job_board/job_main.jsp";
+document.location.href="<%=p_helper_path%>/job_board/job_main.jsp";
 </script>

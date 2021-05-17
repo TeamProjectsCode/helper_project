@@ -82,11 +82,12 @@ public class JobPostSubBean {
 	}
 	public void setJob_location_first_name(String job_location_first_name) {
 		this.job_location_first_name = job_location_first_name;
-	}
+	}	
 	public void setJob_location_second_name(String job_location_second_name) {
 		this.job_location_second_name = job_location_second_name;
 	}
 	public void setCreated_at(String created_at) {
 		this.created_at = created_at;
-	}	
+	}
+	
 }
