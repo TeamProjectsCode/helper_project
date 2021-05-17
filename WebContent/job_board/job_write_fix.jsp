@@ -25,10 +25,10 @@ System.out.println(jp.getJob_detail()); */
 <head>
 <meta charset="EUC-KR">
 <script type="text/javascript" src="script.js" charset="utf-8"></script>
-<link rel="stylesheet" href="/helper_project/css/board_writer_fix.css" type="text/css" />
+<%@ include file="/header.jsp" %>
+<link rel="stylesheet" href="<%=p_helper_path %>/css/board_writer_fix.css" type="text/css" />
 <title>구인 게시글 수정</title>
 </head>
-<%@ include file="/header.jsp" %>
 <body>
 
 	<div class="total">
@@ -136,7 +136,8 @@ System.out.println(jp.getJob_detail()); */
 			</div>
 		</form>
 		<div class="clear"></div>
-		<div class="footer">
+		<%@ include file="/footer.jsp" %>
+		<!-- <div class="footer">
 			<div class="f_img">
 				<img src="images/footer.png" id="f_img">
 			</div>
@@ -144,7 +145,7 @@ System.out.println(jp.getJob_detail()); */
 				Green.co <br> Addr. 부산시 가나다동 가나다라구 2로 1234 <br> 010 - 123
 				-1234 <br> COPYRIGHT 2019. TAMO. ALL RIGHT RESERVED.
 			</div>
-		</div>
+		</div> -->
 	</div>
 </body>
 </html>

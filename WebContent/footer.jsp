@@ -4,7 +4,7 @@
 <html>
 <link rel="stylesheet" type="text/css" href="./css/footer.css">
   <footer class="footer">
-    <div class="f_img"><img src="/helper_project/images/footer.png" id="f_img"></div>
+    <div class="f_img"><img src="<%=request.getContextPath() %>/images/footer.png" id="f_img"></div>
     <div>
       Green.co <br>
       Addr. 부산시 가나다동 가나다라구 2로 1234 <br>

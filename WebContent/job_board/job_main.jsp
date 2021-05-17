@@ -8,12 +8,12 @@
 <html>
 	<head>
 		<meta charset="EUC-KR" />
-		<link rel="stylesheet" href="/helper_project/css/board_list.css" type="text/css" />
+		<%@ include file="/header.jsp" %>
+		<link rel="stylesheet" href="<%=p_helper_path %>/css/board_list.css" type="text/css" />
 		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 		<script type="text/javascript" src="script.js" charset="utf-8"></script>
 		<title>Insert title here</title>
 	</head>
-	<%@ include file="/header.jsp" %>
 	<body>
     <!-- <div class="total"> -->
 		<div class="main_content">

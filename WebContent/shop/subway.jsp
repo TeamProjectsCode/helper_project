@@ -9,7 +9,7 @@
 </head>
 <body>
     <div class="total">
-        <%@ include file="shop_header.jsp" %>
+    <%@ include file="shop_header.jsp" %>
 	<div class = "space"></div>
 	<div class="product_view">
 		<h2>[서브웨이]1만원권</h2>

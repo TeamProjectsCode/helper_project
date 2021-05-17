@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html>
         <!-- ★leni★ class list 사용하는지 여쭤보고 수정가능하면 수정하기 -->
-    <div class="list" id="job_board_content" style="overflow: auto; height: 400px">
+    	<div class="list" id="job_board_content" style="overflow: auto; height: 400px">
         <%
         String location_first = request.getParameter("location_first");
         String location_second = request.getParameter("location_second");
@@ -14,6 +14,7 @@
         jpDAO.setCount(location_first, location_second);
         ArrayList<JobPostSubBean> jpsl = jpDAO.getList(location_first, location_second);
         %>
+
         <from>
         <table id="job_board">
         <!-- ★leni★ database에 내용이 많아지면 이 부분은 지워도 됩니다. -->
