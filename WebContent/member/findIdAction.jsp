@@ -27,7 +27,7 @@
 		%>
 		<script type="text/javascript">
 			alert("찾으시는 계정은 <%=id%>입니다.");
-			location.href = "../id.jsp";
+			location.href = "<%=request.getContextPath()%>/id.jsp";
 		</script>
 		<%
 			}

@@ -3,6 +3,7 @@
 <%@page import="db.JobPostDAO"%>
 <%
 request.setCharacterEncoding("UTF-8");
+String p_helper_path = request.getContextPath();
 %>
 <jsp:useBean id="jp" class="db.jobBoardBeans.JobPostBean"></jsp:useBean>
 <jsp:setProperty property="*" name="jp"/>
@@ -25,5 +26,5 @@ if(jpDAO.modifyPost(jp, job_post_no)){
 }
 %>
 <script>
-document.location.href="/helper_project/job_board/job_detail.jsp?no=<%=job_post_no%>";
+document.location.href="<%=p_helper_path%>/job_board/job_detail.jsp?no=<%=job_post_no%>";
 </script>

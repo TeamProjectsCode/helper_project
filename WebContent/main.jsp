@@ -10,6 +10,9 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" type="text/css" href="css/main.css">
+<%
+String p_helper_path = request.getContextPath();
+%>
 </head>
 <body>
 	<div class="wrap">
@@ -27,11 +30,11 @@
 						<li><%
         				if(session.getAttribute("id")==null){
         				%>
-               			 <a href = "/helper_project/member/login_check.jsp">마이페이지</a>
+               			 <a href = "<%=p_helper_path%>/member/login_check.jsp">마이페이지</a>
         				<%
 						}else{
         				%>
-        				 <a href = "/helper_project/mypage/mypage_import.jsp">마이페이지</a>
+        				 <a href = "<%=p_helper_path%>/mypage/mypage_import.jsp">마이페이지</a>
         				<%
 						}      
         				%>
@@ -41,11 +44,11 @@
 						String id = (String)session.getAttribute("id");
 						String no = (String)session.getAttribute("no");
 						%>
-						<li><a href="/helper_project/member/logout.jsp"><%=no %></a></li>
+						<li><a href="<%=p_helper_path%>/member/logout.jsp">LOGOUT</a></li>
 						<%
 						}else{
 						%>
-						<li><a href="/helper_project/member/login.jsp">LOGIN</a></li>
+						<li><a href="<%=p_helper_path%>/member/login.jsp">LOGIN</a></li>
 						<%
 						}
 						%>

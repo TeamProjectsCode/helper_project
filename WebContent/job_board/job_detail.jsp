@@ -6,7 +6,8 @@
 <html>
   <head>
     <meta charset="EUC-KR" />
-    <link rel="stylesheet" href="/helper_project/css/post_detail.css" type="text/css" />
+  <%@ include file="/header.jsp" %>
+    <link rel="stylesheet" href="<%=p_helper_path %>/css/post_detail.css" type="text/css" />
     <script type="text/javascript" src="script.js" charset="utf-8"></script>
 
     <%
@@ -17,7 +18,6 @@
     %>
     <title><%=jp.getJob_title() %></title>
   </head>
-  <%@ include file="../header.jsp" %>
   <body>
     <div class="main_content">
       <!-- form 태그 필요 없을 듯? 있나..? -->
@@ -30,7 +30,7 @@
           </ul>
           <ul>
             <div class="local">
-              <img src="../images/img.jpg" style="width: 100px ;height: 100px">
+              <img src="<%=p_helper_path %>/images/img.jpg" style="width: 100px ;height: 100px">
               <h3><%=jp.getCreator_nick() %></h3>
               <h5>신뢰등급 : <%=jp.getCreator_grade() %></h5><br>
               <h3>장소 : <%=jp.getLocation() %></h3><br>
@@ -60,10 +60,11 @@
           <%
           }
           %>
+
           <script>
           function removeCheck(){
         	  if(confirm("정말 삭제하겠습니까?") == true){
-        		  document.location.href="/helper_project/job_board/job_delete.jsp?no=<%=job_post_no%>"
+        		  document.location.href="<%=p_helper_path%>/job_board/job_delete.jsp?no=<%=job_post_no%>"
         	  }
           }
           </script>
