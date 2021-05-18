@@ -38,7 +38,7 @@ System.out.println(jp.getJob_detail()); */
 			<div class="date">
 				<ul>
 					<h3>
-						제목 &nbsp;&nbsp;<input type="text" name="job_title" value = "<%=jp.getJob_title()%>" class="title">
+						제목 &nbsp;&nbsp;<input type="text" name="job_title" value = "<%=jp.getJob_title()%>"class="title">
 					</h3>
 				</ul>
 				<ul>
@@ -46,7 +46,7 @@ System.out.println(jp.getJob_detail()); */
 				</ul>
 				<ul>
 					<!-- 데이, 타임 입력 -->
-					<jsp:include page="../util/datepicker.jsp"></jsp:include>
+					<jsp:include page="../util/datepicker_pix.jsp"></jsp:include>
 <%-- 					<script>
 					$(function(){
 						$('#timeDay').datepicker('setDate', '<%=jp.getJob_day()%>');
@@ -63,7 +63,7 @@ System.out.println(jp.getJob_detail()); */
 				<ul>
 					<h4>
 						카테고리 &nbsp;&nbsp;&nbsp; 
-						<select name="category" id="category" selected="<%=jp.getCategory() %>">
+						<select name="category" id="category" value="<%=jp.getCategory() %>">
 								<option value=4>선택안함</option>
 								<option value=5>가사도우미</option>
 								<option value=6>청소도우미</option>
@@ -90,7 +90,7 @@ System.out.println(jp.getJob_detail()); */
 				<ul>
 					<h4>
 						지역 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-						<select name=job_location_first_name selected="<%=jp.getJob_location_first_name()%>">
+						<select name=job_location_first_name value ="<%=jp.getJob_location_first_name()%>">
 								<option value="서울">서울</option>
 								<option value="부산">부산</option>
 								<!-- <option value="인천">인천</option>
@@ -109,10 +109,9 @@ System.out.println(jp.getJob_detail()); */
 								<option value="경상북도">경상북도</option>
 								<option value="해외">해외</option> -->
 						</select> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<select name="job_location_second_name" selected="<%=jp.getJob_location_second_name() %>">
+						<select name="job_location_second_name" value="<%=jp.getJob_location_second_name() %>">
 								<option value="해운대구">해운대구</option>
 								<option value="진구">진구</option>
-
 							</select>
 						<br>
 						상세 주소 <input type="text" value = "<%=jp.getJob_location_detail()%>" name="job_location_detail">
