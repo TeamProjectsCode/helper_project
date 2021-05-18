@@ -5,7 +5,7 @@
 	<head>
 		<meta charset="EUC-KR">
 		<%@ include file="/header.jsp" %>
-		<link rel="stylesheet" href="<%=p_helper_path %>css/board_writer.css" type="text/css" />
+		<link rel="stylesheet" href="<%=p_helper_path %>/css/board_writer.css" type="text/css" />
 		<script type="text/javascript" src="script.js" charset="utf-8"></script>
 		<%
 		String user_no = (String)session.getAttribute("no");

@@ -17,98 +17,6 @@
 
         <from>
         <table id="job_board">
-        <!-- ★leni★ database에 내용이 많아지면 이 부분은 지워도 됩니다. -->
-            <tr>
-                <td><input type="checkbox" value=""></td>
-                <td id="job_location">지역</td>
-                <td id="job_title"><a href="#">제목</a></td>
-                <td>pay</td>
-                <td>알바날짜</td>
-                <td id="job_time">알바시간</td>
-                <td>등록일</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" value=""></td>
-                <td id="job_location">지역</td>
-                <td id="job_title"><a href="#">제목</a></td>
-                <td>pay</td>
-                <td>알바날짜</td>
-                <td id="job_time">알바시간</td>
-                <td>등록일</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" value=""></td>
-                <td id="job_location">지역</td>
-                <td id="job_title"><a href="#">제목</a></td>
-                <td>pay</td>
-                <td>알바날짜</td>
-                <td id="job_time">알바시간</td>
-                <td>등록일</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" value=""></td>
-                <td id="job_location">지역</td>
-                <td id="job_title"><a href="#">제목</a></td>
-                <td>pay</td>
-                <td>알바날짜</td>
-                <td id="job_time">알바시간</td>
-                <td>등록일</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" value=""></td>
-                <td id="job_location">지역</td>
-                <td id="job_title"><a href="#">제목</a></td>
-                <td>pay</td>
-                <td>알바날짜</td>
-                <td id="job_time">알바시간</td>
-                <td>등록일</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" value=""></td>
-                <td id="job_location">지역</td>
-                <td id="job_title"><a href="#">제목</a></td>
-                <td>pay</td>
-                <td>알바날짜</td>
-                <td id="job_time">알바시간</td>
-                <td>등록일</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" value=""></td>
-                <td id="job_location">지역</td>
-                <td id="job_title"><a href="#">제목</a></td>
-                <td>pay</td>
-                <td>알바날짜</td>
-                <td id="job_time">알바시간</td>
-                <td>등록일</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" value=""></td>
-                <td id="job_location">지역</td>
-                <td id="job_title"><a href="#">제목</a></td>
-                <td>pay</td>
-                <td>알바날짜</td>
-                <td id="job_time">알바시간</td>
-                <td>등록일</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" value=""></td>
-                <td id="job_location">지역</td>
-                <td id="job_title"><a href="#">제목</a></td>
-                <td>pay</td>
-                <td>알바날짜</td>
-                <td id="job_time">알바시간</td>
-                <td>등록일</td>
-            </tr>
-            <tr>
-                <td><input type="checkbox" value=""></td>
-                <td id="job_location">지역</td>
-                <td id="job_title"><a href="#">제목</a></td>
-                <td>pay</td>
-                <td>알바날짜</td>
-                <td id="job_time">알바시간</td>
-                <td>등록일</td>
-            </tr>
-                          
 		<%
         if(jpsl != null){
             for(int i=0; i<jpsl.size(); i++){
@@ -137,6 +45,10 @@
              var contentH = $('#job_board').height(); // 문서 전체 내용을 갖는 div의 높이
              
              if(scrollT+scrollH+1 >= contentH){
+            	 console.log('if in')
+            	 console.log(scrollT);
+            	 console.log(scrollH);
+            	 console.log(contentH);
                  /* ★leni★ 스크롤 시 jdbc 읽어오는 부분 */
                  <%
                  jpsl = jpDAO.getList(location_first, location_second);
