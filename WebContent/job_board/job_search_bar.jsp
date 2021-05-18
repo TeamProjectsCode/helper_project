@@ -7,8 +7,8 @@
 <html>
 <!-- ★★★★★★ ★leni★ select 부분 UI 만들어야함!! -->
 <div class="searchBox">
-     <form name="form1">
-<select name="h_area1" onChange="cat1_change(this.value,h_area2)">
+<form name="form1">
+<!-- <select name="h_area1" onChange="cat1_change(this.value,h_area2)">
 <option selected>-선택-</option>
 <option value='1'>서울</option>
 <option value='2'>부산</option>
@@ -28,22 +28,6 @@
 <option value='16'>충북</option>
 </select>
 <select name="h_area2">
-<option selected>-선택-</option>
-<option value='215'>군산시</option>
-<option value='216'>김제시</option>
-<option value='217'>남원시</option>
-<option value='218'>익산시</option>
-<option value='219'>전주시 덕진구</option>
-<option value='220'>전주시 완산구</option>
-<option value='221'>정읍시</option>
-<option value='222'>고창군</option>
-<option value='223'>무주군</option>
-<option value='224'>부안군</option>
-<option value='225'>순창군</option>
-<option value='226'>완주군</option>
-<option value='227'>임실군</option>
-<option value='228'>장수군</option>
-<option value='229'>진안군</option>
  </select>
 <script language=javascript>
  var cat1_num = new Array(1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16);
@@ -101,19 +85,92 @@
  cat2_name[16] = new Array('제천시','청주시 상당구','청주시 흥덕구','충주시','괴산군','단양군','보은군','영동군','옥천군','음성군','진천군','청원군');
 
 function cat1_change(key,sel){
+	
  if(key == '') return;
+ 
  var name = cat2_name[key];
  var val = cat2_num[key];
 
- for(i=sel.length-1; i>=0; i--)
+ for(i = sel.length-1 ; i>=0 ; i--)
   sel.options[i] = null;
- sel.options[0] = new Option('-선택-','', '', 'true');
+  sel.options[0] = new Option('-선택-','', '', 'true');
  
  for(i=0; i<name.length; i++){
   sel.options[i+1] = new Option(name[i],val[i]);
- }
+ 	}
+}
+</script> -->
+
+<select onchange="categoryChange(this)" name = "location_first_name">
+	<option selected>지역 선택</option>
+	<option value='seoul'>서울</option>
+	<option value='busan'>부산</option>
+	<option value='daegu'>대구</option>
+	<option value='incheon'>인천</option>
+	<option value='gwangju'>광주</option>
+	<option value='daejeon'>대전</option>
+	<option value='ulsan'>울산</option>
+	<option value='gangwon'>강원</option>
+	<option value='gyeonggi'>경기</option>
+	<option value='gyeongnam'>경남</option>
+	<option value='kyeongbuk'>경북</option>
+	<option value='jeonman'>전남</option>
+	<option value='jeonbuk'>전북</option>
+	<option value='jeju'>제주</option>
+	<option value='chungnam'>충남</option>
+	<option value='chungbuk'>충북</option>
+</select>
+<select id="location_second_name">
+<option>선택</option>
+</select>
+<script>
+function categoryChange(e) {
+	var location_seoul = ['강남구','강동구','강북구','강서구','관악구','광진구','구로구','금천구','노원구','도봉구','동대문구','동작구','마포구','서대문구','서초구','성동구','성북구','송파구','양천구','영등포구','용산구','은평구','종로구','중구','중랑구'];
+	var location_busan = ['강서구','금정구','남구','동구','동래구','부산진구','북구','사상구','사하구','서구','수영구','연제구','영도구','중구','해운대구','기장군'];
+	var location_daegu = ['남구','달서구','동구','북구','서구','수성구','중구','달성군'];
+	var location_incheon = ['계양구','남구','남동구','동구','부평구','서구','연수구','중구','강화군','옹진군'];
+	var location_gwangju = ['광산구','남구','동구','북구','서구'];
+	var location_daejeon = ['대덕구','동구','서구','유성구','중구'];
+	var location_ulsan = ['남구','동구','북구','중구','울주군'];
+	var location_gangwon = ['강릉시','동해시','삼척시','속초시','원주시','춘천시','태백시','고성군','양구군','양양군','영월군','인제군','정선군','철원군','평창군','홍천군','화천군','횡성군'];
+	var location_gyeonggi = ['고양시','과천시','광명시','광주시','구리시','군포시','김포시','남양주시','동두천시','부천시','성남시','수원시','시흥시','안산시','안양시','오산시','용인시','의왕시','의정부시','이천시','파주시','평택시','하남시','화성시','가평군','양주군','양평군','여주군','연천군','포천군'];
+	var location_gyeongnam = ['거제시','김해시','마산시','밀양시','사천시','양산시','진주시','진해시','창원시','통영시','거창군','고성군','남해군','산청군','의령군','창녕군','하동군','함안군','함양군','합천군'];
+	var location_kyeongbuk = ['경산시','경주시','구미시','김천시','문경시','상주시','안동시','영주시','영천시','포항시 남구','포항시 북구','고령군','군위군','봉화군','성주군','영덕군','영양군','예천군','울릉군','울진군','의성군','청도군','청송군','칠곡군'];
+	var location_jeonman = ['광양시','나주시','목포시','순천시','여수시','강진군','고흥군','곡성군','구례군','담양군','무안군','보성군','신안군','영광군','영암군','완도군','장성군','장흥군','진도군','함평군','해남군','화순군'];
+	var location_jeonbuk = ['군산시','김제시','남원시','익산시','전주시 덕진구','전주시 완산구','정읍시','고창군','무주군','부안군','순창군','완주군','임실군','장수군','진안군'];
+	var location_jeju = ['서귀포시','제주시','남제주군','북제주군'];
+	var location_chungnam = ['공주시','논산시','보령시','서산시','아산시','천안시','금산군','당진군','부여군','서천군','연기군','예산군','청양군','태안군','홍성군'];
+	var location_chungbuk = ['제천시','청주시 상당구','청주시 흥덕구','충주시','괴산군','단양군','보은군','영동군','옥천군','음성군','진천군','청원군'];
+	var target = document.getElementById("location_second_name");
+
+	if(e.value == "seoul") var d = location_seoul;
+	else if(e.value == "busan") var d = location_busan;
+	else if(e.value == "daegu") var d = location_daegu;
+	else if(e.value == "incheon") var d = location_incheon;
+	else if(e.value == "gwangju") var d = location_gwangju;
+	else if(e.value == "daejeon") var d = location_daejeon;
+	else if(e.value == "ulsan") var d = location_ulsan;
+	else if(e.value == "gangwon") var d = location_gangwon;
+	else if(e.value == "gyeonggi") var d = location_gyeonggi;
+	else if(e.value == "gyeongnam") var d = location_gyeongnam;
+	else if(e.value == "kyeongbuk") var d = location_kyeongbuk;
+	else if(e.value == "jeonman") var d = location_jeonman;
+	else if(e.value == "jeonbuk") var d = location_jeonbuk;
+	else if(e.value == "jeju") var d = location_jeju;
+	else if(e.value == "chungnam") var d = location_chungnam;
+	else if(e.value == "chungbuk") var d = location_chungbuk;
+
+	target.options.length = 0;
+
+	for (x in d) {
+		var opt = document.createElement("option");
+		opt.value = d[x];
+		opt.innerHTML = d[x];
+		target.appendChild(opt);
+	}
 }
 </script>
+
 </form>
 	</div>
 	
