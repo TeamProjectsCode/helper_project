@@ -46,14 +46,8 @@ System.out.println(jp.getJob_detail()); */
 				</ul>
 				<ul>
 					<!-- 데이, 타임 입력 -->
-					<jsp:include page="../util/datepicker.jsp"></jsp:include>
-<%-- 					<script>
-					$(function(){
-						$('#timeDay').datepicker('setDate', '<%=jp.getJob_day()%>');
-						$("#timeStart").timepicker({defaultTime: '<%=jp.getJob_time_start()%>'});
-						$("#timeEND").timepicker({defaultTime: '<%=jp.getJob_time_end()%>'});
-					}
-					</script> --%>
+					<jsp:include page="../util/datepicker_fix.jsp?no=<%=job_post_no %>"></jsp:include>
+					
 				</ul>
 			</div>
 			<div class="detail">
