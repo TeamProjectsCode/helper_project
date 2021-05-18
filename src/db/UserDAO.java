@@ -273,6 +273,36 @@ public class UserDAO {
 		}
 		return re;
 	}
+	
+	public boolean deleteUser(String no) {//회원탈퇴
+		
+		boolean isSuccess = false;
+		
+		Connection conn=null;
+		PreparedStatement pstmt=null;
+		String sql = "CALL DELETE_USER(?)";
+		try {
+			conn = DBConnection.getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, no);
+			
+			if(pstmt.executeUpdate() == 0) {
+				isSuccess = true;
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			try {
+				if (pstmt != null) pstmt.close();
+				if (conn != null) conn.close();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
+		return isSuccess;
+	}
+	
 	/*---------------관리자 로그인----------------------*/
 	public boolean admin_login(String admin_id,String admin_pass){
 		boolean b = false;

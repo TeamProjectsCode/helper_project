@@ -61,15 +61,16 @@ public class JobPostDAO {
 	}
 	
 	public ArrayList<JobPostSubBean> getList(String location_first, String location_second){
+		System.out.println("start count: "+count);
 		
 		String where;
 		if(location_first == null) {
-			where= " WHERE ? = ?";
+			where= " WHERE ? = ?)";
 			location_first = "1";
 			location_second = "1";
 		}
 		else {
-			where = " WHERE JOB_LOCATION_NO = GET_LOCATION_NO(?, ?)";
+			where = " WHERE JOB_LOCATION_NO = GET_LOCATION_NO(?, ?))";
 		}
 
 		if(total_count<count) {
@@ -79,11 +80,11 @@ public class JobPostDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String query = "SELECT ROW_NUMBER() over (ORDER BY J.CREATED_AT DESC ) AS \"ROWNUM\","
+		String query = "SELECT * FROM (SELECT ROW_NUMBER() over (ORDER BY J.CREATED_AT DESC ) AS \"ROWNUM\","
 				+ " J.*"
 				+ " FROM GET_SUB_LIST J"
-				+ where;
-				/*+ " AND ROWNUM BETWEEN ? AND ?";*/
+				+ where
+				+ " WHERE \"ROWNUM\" BETWEEN ? AND ?";
 				
 		ArrayList<JobPostSubBean> jpl = new ArrayList<JobPostSubBean>();
 		
@@ -92,8 +93,8 @@ public class JobPostDAO {
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, location_first);
 			pstmt.setString(2, location_second);
-//			pstmt.setInt(3, count);
-//			pstmt.setInt(4, count+9);
+			pstmt.setInt(3, count);
+			pstmt.setInt(4, count+9);
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {

@@ -75,8 +75,8 @@
 						<button type="button" onclick="member_delete()">회원 탈퇴</button>
 						<script>
 							function member_delete() {
-								if (confirm("정말로 탈퇴 하시겠습니까?? 한번 탈퇴 하면 되돌릴 수 없습니다") == true) {
-									document.location.href="/helper_project/mypage/member_delete_ok.jsp"
+								if (confirm("정말로 탈퇴 하시겠습니까??\n작성하셨던 모든 글들이 삭제되며, 되돌릴 수 없습니다.\n😭😭😭😭😭") == true) {
+									document.location.href="<%=p_helper_path%>/mypage/member_delete_ok.jsp"
 								} else {
 									alert("취소 되었습니다.");
 								}
