@@ -7,7 +7,8 @@
 		<%@ include file="/header.jsp"%>
 		<link rel="stylesheet" href="<%=p_helper_path %>/css/board_writer.css" type="text/css" />
 		<script type="text/javascript" src="script.js" charset="utf-8"></script>
-		<%
+ 		<script type="text/javascript" src="write_checking.js" charset="utf-8"></script>
+ 	<%
 		String user_no = (String)session.getAttribute("no");
 		if(user_no == null){
 		%>
@@ -21,7 +22,7 @@
 		<title>구인 게시글 작성</title>
 	</head>
 	<body class="total">
-		<form action="job_write_ok.jsp" method="POST">
+		<form action="job_write_ok.jsp" method="POST" name = "form">
 			<div class = "section">
 				<h1>구인 게시글 작성</h1>
 				<div class="date">
@@ -48,20 +49,20 @@
 						<h4>
 							카테고리 &nbsp;&nbsp;&nbsp; 
 							<select name="category" id="category">
-								<option value=4>선택안함</option>
-								<option value=5>가사도우미</option>
-								<option value=6>청소도우미</option>
-								<option value=7>등하원도우미</option>
-								<option value=8>요리도우미</option>
-								<option value=9>산후도우미</option>
-								<option value=10>식당도우미</option>
-								<option value=11>육아도우미</option>
-								<option value=12>펫시터</option>
-								<option value=13>베이비시터</option>
-								<option value=14>요양보호사</option>
-								<option value=15>대리티켓구매</option>
-								<option value=16>직구대행</option>
-								<option value=17>기타</option>
+								<option value='4'>선택안함</option>
+								<option value='5'>가사도우미</option>
+								<option value='6'>청소도우미</option>
+								<option value='7'>등하원도우미</option>
+								<option value='8'>요리도우미</option>
+								<option value='9'>산후도우미</option>
+								<option value='10'>식당도우미</option>
+								<option value='11'>육아도우미</option>
+								<option value='12'>펫시터</option>
+								<option value='13'>베이비시터</option>
+								<option value='14'>요양보호사</option>
+								<option value='15'>대리티켓구매</option>
+								<option value='16'>직구대행</option>
+								<option value='17'>기타</option>
 							</select>
 						</h4>
 					</ul>
@@ -82,29 +83,7 @@
 					<input type="button" onClick="goPopup();" value="주소 찾기"/> -->
 						<h4>
 							지역 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-							<select name="job_location_first_name">
-								<option value="서울">서울</option>
-								<option value="부산">부산</option>
-			<!-- 					<option value="인천">인천</option>
-								<option value="대전">대전</option>
-								<option value="대구">대구</option>
-								<option value="광주">광주</option>
-								<option value="세종시">세종시</option>
-								<option value="제주도">제주도</option>
-								<option value="경기도">경기도</option>
-								<option value="강원도">강원도</option>
-								<option value="충청북도">충청북도</option>
-								<option value="충청남도">충청남도</option>
-								<option value="전라북도">전라북도</option>
-								<option value="전라남도">전라남도</option>
-								<option value="경상남도">경상남도</option>
-								<option value="경상북도">경상북도</option>
-								<option value="해외">해외</option> -->
-							</select> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<select name="job_location_second_name">
-								<option value="해운대구">해운대구</option>
-								<option value="진구">진구</option>
-							</select>
+							<jsp:include page="job_search_bar.jsp"/>
 							<br>
 							상세 주소 <input type="text" name="job_location_detail">
 						</h4>
@@ -121,8 +100,9 @@
 					</ul>
 				</div>
 				<div class="btn">
-					<button type="submit">신청하기</button>
+					<button type="submit" onclick = "write_ok()">신청하기</button>
 					<span><button type="reset">다시쓰기</button></span>
+					
 				</div>
 			</div>
 		</form>

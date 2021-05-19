@@ -1,3 +1,4 @@
+<%@page import="java.io.PrintWriter"%>
 <%@page import="db.jobBoardBeans.JobPostBean"%>
 <%@page import="db.JobPostDAO"%>
 <%
@@ -10,6 +11,7 @@ String p_helper_path = request.getContextPath();
 
 <!-- String no = session.getAttribute("no").toString(); -->
 <%
+ 
 /* System.out.println("-----------------------------------------");
 System.out.println("user no: "+user_no); 
 System.out.println("title: "+jp.getJob_title());
@@ -19,10 +21,11 @@ System.out.println("time end: "+jp.getJob_time_end());
 System.out.println("category: "+jp.getCategory());
 System.out.println("number: "+jp.getJob_num_of_people());
 System.out.println("location name: "+jp.getJob_location_first_name());
+System.out.println("location name2: "+jp.getJob_location_second_name());
 System.out.println("location detail: "+jp.getJob_location_detail());
 System.out.println("pay: "+jp.getJob_pay());
-System.out.println("detail: "+jp.getJob_detail()); */
-
+System.out.println("detail: "+jp.getJob_detail());
+ */
 jp.setCreator_no(Integer.valueOf(user_no));
 
 JobPostDAO jpDAO = JobPostDAO.getInstance();
