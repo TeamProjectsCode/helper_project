@@ -101,7 +101,7 @@ function cat1_change(key,sel){
 }
 </script> -->
 
-<select onchange="categoryChange(this)" name = "job_location_first_name">
+<select onchange="categoryChange(this)" name = "location_first">
 	<option selected>지역 선택</option>
 	<option value='서울'>서울</option>
 	<option value='부산'>부산</option>
@@ -120,7 +120,7 @@ function cat1_change(key,sel){
 	<option value='충남'>충남</option>
 	<option value='충북'>충북</option>
 </select>
-<select id="job_location_second_name" name = "job_location_second_name">
+<select id="location_second" name = "location_second">
 <option>선택</option>
 </select>
 <script>
@@ -141,7 +141,7 @@ function categoryChange(e) {
 	var location_jeju = ['서귀포시','제주시','남제주군','북제주군'];
 	var location_chungnam = ['공주시','논산시','보령시','서산시','아산시','천안시','금산군','당진군','부여군','서천군','연기군','예산군','청양군','태안군','홍성군'];
 	var location_chungbuk = ['제천시','청주시 상당구','청주시 흥덕구','충주시','괴산군','단양군','보은군','영동군','옥천군','음성군','진천군','청원군'];
-	var target = document.getElementById("job_location_second_name");
+	var target = document.getElementById("location_second");
 
 	if(e.value == "서울") var d = location_seoul;
 	else if(e.value == "부산") var d = location_busan;

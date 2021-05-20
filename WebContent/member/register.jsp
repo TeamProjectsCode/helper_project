@@ -99,18 +99,19 @@ function openConfirmid(userinput)
 						</tr>
 
 						<!-- 주소 입력 넣을 부분 -->
-						<script type="text/javascript" src="juso.js" ></script> 
 						<tr>
-							<th>주소</th>
-							<tr>
-								<th>도로명주소</th>
-								<td><input type="text"  style="width:300px;" id="roadAddrPart1"  name="Location_no" ></td>
-							</tr>
-							<tr>
-								<th>고객입력 상세주소</th>
-								<td><input type="text"  style="width:300px;" id="addrDetail"  name="Location_detail" /></td>
-							<td colspan="2"><input type="button" onClick="goPopup();" value="팝업_domainChk"/></td>
-							</tr>
+							<script type="text/javascript" src="<%=p_helper_path %>/util/juso2.js" ></script>
+							<td class="title">도로명 주소</td>
+							<td colspan="2"><input  type="text"  style="width:auto;" id="location_addr" name="location_addr" readonly/></td>
+							<td><input type="button" onClick="goPopup();" value="주소 찾기"/></td>
+						</tr>
+						<tr>
+							<td class="title">상세주소 </td>
+							<td>
+							<input type="text"  style="width:auto;" id="location_detail"   name="location_detail" />
+							<input type="hidden" name="location_first_name" />
+							<input type="hidden" name="location_second_name"  />
+							</td>
 						</tr>
 						<tr>
 							<th><input type="submit" class="btn" value="신청하기" name="confirm"></th>
