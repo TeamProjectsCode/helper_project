@@ -22,7 +22,7 @@
 		<title>구인 게시글 작성</title>
 	</head>
 	<body class="total">
-		<form action="job_write_ok.jsp" name="form" method="POST">
+		<form action="job_write_ok.jsp" name="form" method="POST" onsubmit="return write_ok()">
 			<div class = "section">
 				<h1>구인 게시글 작성</h1>
 				<div class="date">
@@ -62,7 +62,7 @@
 								<option value='14'>요양보호사</option>
 								<option value='15'>대리티켓구매</option>
 								<option value='16'>직구대행</option>
-								<option value='17'>기타</option>
+								<option value='3'>기타</option>
 							</select>
 						</h4>
 					</ul>
@@ -98,7 +98,7 @@
 					</ul>
 				</div>
 				<div class="btn">
-					<button type="submit" onclick = "write_ok()">신청하기</button>
+					<button type="submit" >신청하기</button>
 					<span><button type="reset">다시쓰기</button></span>
 					
 				</div>
