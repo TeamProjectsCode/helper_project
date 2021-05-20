@@ -1,33 +1,21 @@
-<%@page import="myUtil.HanConv"%>
+<%@page import="db.ReviewPostDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ page import="db.reviewBeans.ReviewPostBean" %>
-<%@ page import="db.ReviewPostDAO" %>
+<%
+	request.setCharacterEncoding("utf-8");
+String user_no = (String)session.getAttribute("no");
+String p_helper_path = request.getContextPath();
+String title = request.getParameter("title");
+String review = request.getParameter("review");
+%>
 <jsp:useBean id="rb" class="db.reviewBeans.ReviewPostBean"></jsp:useBean>
 <jsp:setProperty property="*" name="rb"/>
 <%
-	ReviewPostDAO manager = ReviewPostDAO.getInstance();
-
-	rb.setReview_titile(HanConv.toKor(request.getParameter("title")));
-	rb.setReview_detail(HanConv.toKor(request.getParameter("review")));
-	String titleOk = rb.getReview_titile();
-	String detailOk = rb.getReview_detail();
-	System.out.println(titleOk + "\n" + detailOk);
-	
-	int insertReview = manager.insertReview(titleOk,detailOk);
-	
-	if(insertReview == -1){
-%>
-	<script>
-		alert("내용을 입력해주세요.");
-	</script>
-<%
-	}else{
-%>
-	<script>
-		alert("리뷰가 등록되었습니다.");
-		document.location.href="review_list.jsp"
-	</script>	
-<%
+	rb.setCreator(Integer.valueOf(user_no));
+	rb.setReview_titile(title);
+	rb.setReview_detail(review);
+	ReviewPostDAO rpDAO = ReviewPostDAO.getInstance();
+	if(rpDAO.insertReview(rb) == 1){
+		response.sendRedirect(p_helper_path+"/review_board/review_list.jsp");
 	}
 %>

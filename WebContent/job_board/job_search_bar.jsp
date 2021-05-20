@@ -101,26 +101,26 @@ function cat1_change(key,sel){
 }
 </script> -->
 
-<select onchange="categoryChange(this)" name = "location_first_name">
+<select onchange="categoryChange(this)" name = "job_location_first_name">
 	<option selected>지역 선택</option>
-	<option value='seoul'>서울</option>
-	<option value='busan'>부산</option>
-	<option value='daegu'>대구</option>
-	<option value='incheon'>인천</option>
-	<option value='gwangju'>광주</option>
-	<option value='daejeon'>대전</option>
-	<option value='ulsan'>울산</option>
-	<option value='gangwon'>강원</option>
-	<option value='gyeonggi'>경기</option>
-	<option value='gyeongnam'>경남</option>
-	<option value='kyeongbuk'>경북</option>
-	<option value='jeonman'>전남</option>
-	<option value='jeonbuk'>전북</option>
-	<option value='jeju'>제주</option>
-	<option value='chungnam'>충남</option>
-	<option value='chungbuk'>충북</option>
+	<option value='서울'>서울</option>
+	<option value='부산'>부산</option>
+	<option value='대구'>대구</option>
+	<option value='인천'>인천</option>
+	<option value='광주'>광주</option>
+	<option value='대전'>대전</option>
+	<option value='울산'>울산</option>
+	<option value='강원'>강원</option>
+	<option value='경기'>경기</option>
+	<option value='경남'>경남</option>
+	<option value='경북'>경북</option>
+	<option value='전남'>전남</option>
+	<option value='전북'>전북</option>
+	<option value='제주'>제주</option>
+	<option value='충남'>충남</option>
+	<option value='충북'>충북</option>
 </select>
-<select id="location_second_name">
+<select id="job_location_second_name" name = "job_location_second_name">
 <option>선택</option>
 </select>
 <script>
@@ -141,24 +141,24 @@ function categoryChange(e) {
 	var location_jeju = ['서귀포시','제주시','남제주군','북제주군'];
 	var location_chungnam = ['공주시','논산시','보령시','서산시','아산시','천안시','금산군','당진군','부여군','서천군','연기군','예산군','청양군','태안군','홍성군'];
 	var location_chungbuk = ['제천시','청주시 상당구','청주시 흥덕구','충주시','괴산군','단양군','보은군','영동군','옥천군','음성군','진천군','청원군'];
-	var target = document.getElementById("location_second_name");
+	var target = document.getElementById("job_location_second_name");
 
-	if(e.value == "seoul") var d = location_seoul;
-	else if(e.value == "busan") var d = location_busan;
-	else if(e.value == "daegu") var d = location_daegu;
-	else if(e.value == "incheon") var d = location_incheon;
-	else if(e.value == "gwangju") var d = location_gwangju;
-	else if(e.value == "daejeon") var d = location_daejeon;
-	else if(e.value == "ulsan") var d = location_ulsan;
-	else if(e.value == "gangwon") var d = location_gangwon;
-	else if(e.value == "gyeonggi") var d = location_gyeonggi;
-	else if(e.value == "gyeongnam") var d = location_gyeongnam;
-	else if(e.value == "kyeongbuk") var d = location_kyeongbuk;
-	else if(e.value == "jeonman") var d = location_jeonman;
-	else if(e.value == "jeonbuk") var d = location_jeonbuk;
-	else if(e.value == "jeju") var d = location_jeju;
-	else if(e.value == "chungnam") var d = location_chungnam;
-	else if(e.value == "chungbuk") var d = location_chungbuk;
+	if(e.value == "서울") var d = location_seoul;
+	else if(e.value == "부산") var d = location_busan;
+	else if(e.value == "대구") var d = location_daegu;
+	else if(e.value == "인천") var d = location_incheon;
+	else if(e.value == "광주") var d = location_gwangju;
+	else if(e.value == "대전") var d = location_daejeon;
+	else if(e.value == "울산") var d = location_ulsan;
+	else if(e.value == "강원") var d = location_gangwon;
+	else if(e.value == "경기") var d = location_gyeonggi;
+	else if(e.value == "경남") var d = location_gyeongnam;
+	else if(e.value == "경북") var d = location_kyeongbuk;
+	else if(e.value == "전남") var d = location_jeonman;
+	else if(e.value == "전북") var d = location_jeonbuk;
+	else if(e.value == "제주") var d = location_jeju;
+	else if(e.value == "충남") var d = location_chungnam;
+	else if(e.value == "충북") var d = location_chungbuk;
 
 	target.options.length = 0;
 
@@ -166,7 +166,7 @@ function categoryChange(e) {
 		var opt = document.createElement("option");
 		opt.value = d[x];
 		opt.innerHTML = d[x];
-		target.appendChild(opt);
+		target.appendChild(opt);		
 	}
 }
 </script>

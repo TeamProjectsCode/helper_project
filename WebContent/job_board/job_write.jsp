@@ -7,7 +7,8 @@
 		<%@ include file="/header.jsp"%>
 		<link rel="stylesheet" href="<%=p_helper_path %>/css/board_writer.css" type="text/css" />
 		<script type="text/javascript" src="script.js" charset="utf-8"></script>
-		<%
+ 		<script type="text/javascript" src="write_checking.js" charset="utf-8"></script>
+ 	<%
 		String user_no = (String)session.getAttribute("no");
 		if(user_no == null){
 		%>
@@ -48,20 +49,20 @@
 						<h4>
 							카테고리 &nbsp;&nbsp;&nbsp; 
 							<select name="category" id="category">
-								<option value=4>선택안함</option>
-								<option value=5>가사도우미</option>
-								<option value=6>청소도우미</option>
-								<option value=7>등하원도우미</option>
-								<option value=8>요리도우미</option>
-								<option value=9>산후도우미</option>
-								<option value=10>식당도우미</option>
-								<option value=11>육아도우미</option>
-								<option value=12>펫시터</option>
-								<option value=13>베이비시터</option>
-								<option value=14>요양보호사</option>
-								<option value=15>대리티켓구매</option>
-								<option value=16>직구대행</option>
-								<option value=17>기타</option>
+								<option value='4'>선택안함</option>
+								<option value='5'>가사도우미</option>
+								<option value='6'>청소도우미</option>
+								<option value='7'>등하원도우미</option>
+								<option value='8'>요리도우미</option>
+								<option value='9'>산후도우미</option>
+								<option value='10'>식당도우미</option>
+								<option value='11'>육아도우미</option>
+								<option value='12'>펫시터</option>
+								<option value='13'>베이비시터</option>
+								<option value='14'>요양보호사</option>
+								<option value='15'>대리티켓구매</option>
+								<option value='16'>직구대행</option>
+								<option value='17'>기타</option>
 							</select>
 						</h4>
 					</ul>
@@ -97,8 +98,9 @@
 					</ul>
 				</div>
 				<div class="btn">
-					<button type="submit">신청하기</button>
+					<button type="submit" onclick = "write_ok()">신청하기</button>
 					<span><button type="reset">다시쓰기</button></span>
+					
 				</div>
 			</div>
 		</form>
