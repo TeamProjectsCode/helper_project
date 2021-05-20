@@ -18,8 +18,10 @@ System.out.println("time start: "+jp.getJob_time_start());
 System.out.println("time end: "+jp.getJob_time_end());
 System.out.println("category: "+jp.getCategory());
 System.out.println("number: "+jp.getJob_num_of_people());
-System.out.println("location name: "+jp.getJob_location_first_name());
-System.out.println("location detail: "+jp.getJob_location_detail());
+System.out.println("location first: "+jp.getLocation_first_name());
+System.out.println("location second: "+jp.getLocation_second_name());
+System.out.println("location addr: "+jp.getLocation_addr());
+System.out.println("location detail: "+jp.getLocation_detail());
 System.out.println("pay: "+jp.getJob_pay());
 System.out.println("detail: "+jp.getJob_detail()); */
 

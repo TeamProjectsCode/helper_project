@@ -103,7 +103,7 @@ public class UserDAO {
 			pstmt.setInt(8, user.getBirth_mm());
 			pstmt.setInt(9, user.getBirth_dd());
 			pstmt.setString(10, user.getEmail());
-			pstmt.setInt(11, user.getLocation_no());
+//			pstmt.setInt(11, user.getLocation_no());
 			pstmt.setString(12, user.getLocation_detail());
 			
 			return pstmt.executeUpdate();//단순실행
@@ -149,8 +149,8 @@ public class UserDAO {
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		String sql="SELECT * FROM USERS WHERE ID=?";
-		UserBean user =null;
+		String sql="SELECT * FROM GET_USER_INFO WHERE ID = ?";
+		UserBean user = null;
 		
 		try {
 			conn = DBConnection.getConnection();
@@ -160,24 +160,24 @@ public class UserDAO {
 			
 			if(rs.next()) {
 				user = new UserBean();
-				user.setNo(rs.getInt(1));
-				user.setName(rs.getString(2));
-				user.setNick(rs.getString(3));
-				user.setId(rs.getString(4));
-				user.setPw(rs.getString(5));
-				user.setGender(rs.getInt(6));
-				user.setBirth_yy(rs.getInt(7));
-				user.setBirth_mm(rs.getInt(8));
-				user.setBirth_dd(rs.getInt(9));
-				user.setEmail(rs.getString(10));
-				user.setPoint(rs.getInt(11));
-				user.setGrade(rs.getString(12));
-				user.setLocation_zip_code(rs.getInt(13));
-				user.setLocation_no(rs.getInt(14));
-				user.setLocation_detail(rs.getString(15));
-				user.setCreated_at(rs.getTimestamp(16));
-				user.setCountry_code(rs.getInt(17));
-				
+				user.setNo(rs.getInt("NO"));
+				user.setName(rs.getString("NAME"));
+				user.setNick(rs.getString("NICK"));
+				user.setId(rs.getString("ID"));
+				user.setPw(rs.getString("PW"));
+				user.setGender(rs.getInt("GENDER"));
+				user.setBirth_yy(rs.getInt("BIRTH_YY"));
+				user.setBirth_mm(rs.getInt("BIRTH_MM"));
+				user.setBirth_dd(rs.getInt("BIRTH_DD"));
+				user.setEmail(rs.getString("EMAIL"));
+				user.setPoint(rs.getInt("POINT"));
+				user.setGrade(rs.getString("GRADE"));
+				user.setLocation_first_name(rs.getString("LOCATION_FRIST_NAME"));
+				user.setLocation_second_name(rs.getString("LOCATION_SECOND_NAME"));
+				user.setLocation_addr(rs.getString("LOCATION_ADDR"));
+				user.setLocation_detail(rs.getString("LOCATION_DETAIL"));
+				user.setCreated_at(rs.getTimestamp("CREATED_AT"));
+				user.setCountry_code(rs.getInt("COUNTRY_CODE"));	
 			}
 			
 		}catch (Exception e) {
@@ -248,18 +248,28 @@ public class UserDAO {
 		}
 		return pw;
 	}
-	public int updateUser(UserBean user) {//회원정보 수정
+	public boolean updateUser(UserBean user) {//회원정보 수정
 		Connection conn=null;
 		PreparedStatement pstmt=null;
-		String sql = "UPDATE USERS SET PW =?, EMAIL=? WHERE ID=? ";
-		int re =-1;
+		String sql = "CALL MODIFY_USER(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		boolean isSuccess = false;
 		try {
 			conn = DBConnection.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, user.getPw());
-			pstmt.setString(2, user.getEmail());
-			pstmt.setString(3, user.getId());
-			re = pstmt.executeUpdate();
+			pstmt.setInt(1, user.getNo());
+			pstmt.setString(2, user.getPw());
+			pstmt.setInt(3, user.getBirth_yy());
+			pstmt.setInt(4, user.getBirth_mm());
+			pstmt.setInt(5, user.getBirth_dd());
+			pstmt.setString(6, user.getEmail());
+			pstmt.setString(7, user.getLocation_first_name());
+			pstmt.setString(8, user.getLocation_second_name());
+			pstmt.setString(9, user.getLocation_addr());
+			pstmt.setString(10, user.getLocation_detail());
+			
+			if(pstmt.executeUpdate() == 0) {
+				isSuccess = true;
+			}
 			
 		}catch (Exception e) {
 			e.printStackTrace();
@@ -271,7 +281,7 @@ public class UserDAO {
 				e.printStackTrace();
 			}
 		}
-		return re;
+		return isSuccess;
 	}
 	
 	public boolean deleteUser(String no) {//회원탈퇴
