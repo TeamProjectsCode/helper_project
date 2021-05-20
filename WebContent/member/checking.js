@@ -66,4 +66,5 @@ function member_ok(){
 		document.form.roadAddrPart1.focus();
 		return;
 	}
+
 }

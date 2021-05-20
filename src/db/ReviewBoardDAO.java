@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
-
-import db.reviewBeans.ReviewBoard;
 import db.reviewBeans.ReviewPostBean;
 
 public class ReviewBoardDAO {

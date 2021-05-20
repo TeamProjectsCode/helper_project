@@ -1,7 +1,27 @@
+<%@page import="java.sql.Timestamp"%>
+<%@page import="db.notifyBoardBeans.NoticeDTO"%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="db.notifyBoardBeans.NoticeDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- <jsp:useBean id="admin" class="db.UserDAO"/>
+ <%
+        String user_no = (String)session.getAttribute("no");
+        if(user_no == null){
+        %>
+         <script>
+            alert("로그인 먼저 하세요.");
+            location.href="/helper_project/member/login.jsp";
+        </script> 
+        <%
+        }
+%>
+<%
+	NoticeDAO dao = NoticeDAO.getInstance();
+	ArrayList<NoticeDTO>list = dao.getDataAll() ;
+	int i,no,creator_no,category,hits;
+	String title,detail;
+	Timestamp created_at;
+%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -28,39 +48,48 @@
                         <th>게시일</th>
                         <th>작성자</th>
                         <th>조회수 </th>
+                    </tr>
+           <%
+				for(i=0; i<list.size(); i++){
+					NoticeDTO dto = list.get(i);
+					no = dto.getNo();
+					category =dto.getCategory();
+					title = dto.getTitle();
+					creator_no = dto.getCreator_no();
+					created_at = dto.getCreated_at();
+					hits = dto.getHits();
+			%>
                     
-                    <!-- list 변수에 목록 데이터를 삽입 -->
-					<c:set var="list" value="${NotifyDAO.getDataAll()}"/>
-					
-					<!-- list 변수로부터 한줄한줄 출력 -->
-					<c:forEach var="data" items="${list }">
+                    
 						<tr>
-							<td>${data.no}</td>
-							<td>${data.category}</td>
-							<td><a href="notice_reading.jsp?no=${data.no}">${data.notify_title }</a></td>
-							<td>${data.created_at}</td>
-							<td>${data.creator}</td>
-							<td>${notify_hits}</td>
+							<td><%=no%></td>
+							<td><%= category %></td>
+							<td><a href="notice_reading.jsp?no=<%= no%>"><%= title%></a></td>
+							<td><%=created_at%></td>
+							<td><%=creator_no%></td>
+							<td><%=hits%></td>
 						</tr>
-					</c:forEach>
-					</tr>
+					<%
+					System.out.println(no);
+				}
+					%>
                 </table>
             </div>
             <div class="button">
-             <%
+            <%--  <%
 			String admin_id = request.getParameter("id");
 			String admin_pass = request.getParameter("pass");
 			boolean b = admin.admin_login(admin_id, admin_pass);
 			
 			if(b){
 				session.setAttribute("adminOk", admin_id);
-			%>
-			<button type="submit" onclick="notice_write.jsp">글쓰기</button>
-			
+			%> --%>
+			<button type="submit" onclick="location.href='notice_write.jsp'">글쓰기</button>
+			<%-- 
         		<%
 			}
                      %>
-				<button type="submit" onclick="">뒤로가기</button>
+				 --%>
 			</div>
         </div>
       </form>

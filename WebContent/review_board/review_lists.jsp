@@ -1,4 +1,3 @@
-<%@page import="db.reviewBeans.ReviewBoard"%>
 <%@page import="db.reviewBeans.ReviewPostBean" %>
 <%@page import="java.util.ArrayList"%>
 <%@page import="db.ReviewBoardDAO"%>

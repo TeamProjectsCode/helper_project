@@ -7,7 +7,7 @@ import java.sql.Timestamp;
 	"NO" NUMBER PRIMARY KEY,
 	    "CREATED_AT" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
         "CATEGORY" NUMBER,
-	    "CREATOR" NUMBER NOT NULL,
+	    "CREATOR" VARCHAR2(20) NOT NULL,
 	    "NOTIFY_TITLE" VARCHAR2(200 BYTE) NOT NULL,
         "NOTIFY_DETAIL" CLOB,
 	    "NOTIFY_HITS" NUMBER(6) DEFAULT 0
@@ -16,7 +16,7 @@ import java.sql.Timestamp;
 	    FOREIGN KEY (CREATOR) REFERENCES USERS(NO)
 	);*/
 
-public class NotifyBean {
+public class NoticeDTO {
 	private int no;
 	private Timestamp created_at;
 	private int category;
