@@ -70,8 +70,8 @@ UserBean user = uDAO.getuser(user_id);
 							<td><input type="button" onClick="goPopup();" value="주소 찾기"/></td>
 						</tr>
 						<tr>
+							<td>상세주소 </td>
 							<td>
-							상세주소 
 							<input type="text"  style="width:auto;" id="location_detail" value="<%=user.getLocation_detail() %>"  name="location_detail" />
 							<input type="hidden" name="location_first_name" value="<%=user.getLocation_first_name() %>" />
 							<input type="hidden" name="location_second_name" value="<%=user.getLocation_second_name() %>" />
