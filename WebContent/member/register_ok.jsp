@@ -1,7 +1,7 @@
 <%@page import="java.sql.Timestamp"%>
 <%@page import="db.UserDAO"%>
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <% request.setCharacterEncoding("UTF-8"); %>
 
 <jsp:useBean id = "user" class = "db.userBeans.UserBean">
