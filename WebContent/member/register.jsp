@@ -33,7 +33,7 @@ function openConfirmid(userinput)
 	<div class="total">
 		 <%@ include file="/header.jsp" %>
 		<center>
-			<form action="joinAction.jsp" class="sign-up-form" id="form" name="form" method="post" onsubmit="return member_ok()" >
+			<form action="register_ok.jsp" class="sign-up-form" id="form" name="form" method="post" onsubmit="return member_ok()" >
 				<div class="main">
 					<div class="title">
 						<h1>회원가입</h1>
