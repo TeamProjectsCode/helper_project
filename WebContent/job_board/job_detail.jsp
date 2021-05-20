@@ -12,7 +12,12 @@
 
     <%
     String job_post_no = request.getParameter("no");
-    int user_no = Integer.valueOf((String)session.getAttribute("no"));
+    int user_no;
+    try{
+    	user_no = Integer.valueOf((String)session.getAttribute("no")); 
+    } catch (NumberFormatException e){
+    	user_no = 0;
+    }
     JobPostDAO  jpDAO = JobPostDAO.getInstance();
     JobPostBean jp = jpDAO.getPost(job_post_no);
     %>

@@ -164,9 +164,10 @@ public class JobPostDAO {
 				
 				jp.setJob_time_start(rs.getString("JOB_TIME_START"));
 				jp.setJob_time_end(rs.getString("JOB_TIME_END"));
-				jp.setJob_location_first_name(rs.getString("JOB_LOCATION_FIRST_NAME"));
-				jp.setJob_location_second_name(rs.getString("JOB_LOCATION_SECOND_NAME"));
-				jp.setJob_location_detail(rs.getString("JOB_LOCATION_DETAIL"));
+				jp.setLocation_first_name(rs.getString("JOB_LOCATION_FIRST_NAME"));
+				jp.setLocation_second_name(rs.getString("JOB_LOCATION_SECOND_NAME"));
+				jp.setLocation_addr(rs.getString("JOB_LOCATION_ADDR"));
+				jp.setLocation_detail(rs.getString("JOB_LOCATION_DETAIL"));
 
 				jp.setJob_num_of_people(rs.getInt("JOB_NUM_OF_PEOPLE"));
 				jp.setJob_pay(rs.getInt("JOB_PAY"));				
@@ -207,7 +208,7 @@ public class JobPostDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
-		String query = "CALL INSERT_JOB_POST(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String query = "CALL INSERT_JOB_POST(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try {
 			con = DBConnection.getConnection();
@@ -218,12 +219,13 @@ public class JobPostDAO {
 			pstmt.setString(4, jp.getJob_day());
 			pstmt.setString(5, jp.getJob_time_start());
 			pstmt.setString(6, jp.getJob_time_end());
-			pstmt.setString(7, jp.getJob_location_first_name());
-			pstmt.setString(8, jp.getJob_location_second_name());
-			pstmt.setString(9, jp.getJob_location_detail());
-			pstmt.setInt(10, jp.getJob_pay());
-			pstmt.setInt(11, jp.getJob_num_of_people());
-			pstmt.setString(12, jp.getJob_detail());
+			pstmt.setString(7, jp.getLocation_first_name());
+			pstmt.setString(8, jp.getLocation_second_name());
+			pstmt.setString(9, jp.getLocation_addr());
+			pstmt.setString(10, jp.getLocation_detail());
+			pstmt.setInt(11, jp.getJob_pay());
+			pstmt.setInt(12, jp.getJob_num_of_people());
+			pstmt.setString(13, jp.getJob_detail());
 			
 			if(pstmt.executeUpdate() == 0) {
 				isSuccess = true;
@@ -279,7 +281,7 @@ public class JobPostDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
-		String query = "CALL MODIFY_JOB_POST(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		String query = "CALL MODIFY_JOB_POST(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		try {
 			con = DBConnection.getConnection();
@@ -289,14 +291,15 @@ public class JobPostDAO {
 			pstmt.setString(3, jp.getJob_day());
 			pstmt.setString(4, jp.getJob_time_start());
 			pstmt.setString(5, jp.getJob_time_end());
-			pstmt.setString(6, jp.getJob_location_first_name());
-			pstmt.setString(7, jp.getJob_location_second_name());
-			pstmt.setString(8, jp.getJob_location_detail());
-			pstmt.setInt(9, jp.getJob_pay());
-			pstmt.setInt(10, jp.getJob_num_of_people());
-			pstmt.setString(11,	jp.getJob_people());
-			pstmt.setString(12, jp.getJob_detail());
-			pstmt.setString(13, job_post_no);
+			pstmt.setString(6, jp.getLocation_first_name());
+			pstmt.setString(7, jp.getLocation_second_name());
+			pstmt.setString(8, jp.getLocation_addr());
+			pstmt.setString(9, jp.getLocation_detail());
+			pstmt.setInt(10, jp.getJob_pay());
+			pstmt.setInt(11, jp.getJob_num_of_people());
+			pstmt.setString(12,	jp.getJob_people());
+			pstmt.setString(13, jp.getJob_detail());
+			pstmt.setString(14, job_post_no);
 			
 			if(pstmt.executeUpdate() == 0) {
 				isSuccess = true;

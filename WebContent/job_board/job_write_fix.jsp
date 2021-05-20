@@ -32,7 +32,7 @@ System.out.println(jp.getJob_detail()); */
 <body>
 
 	<div class="total">
-		<form action="job_write_fix_ok.jsp?no=<%=job_post_no %>" method="POST">
+		<form action="job_write_fix_ok.jsp?no=<%=job_post_no %>" method="POST" name="form">
 			<div class = "section">
 			<h1>구인 게시글 수정</h1>
 			<div class="date">
@@ -83,32 +83,15 @@ System.out.println(jp.getJob_detail()); */
 				</ul>
 				<ul>
 					<h4>
-						지역 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-						<select name=job_location_first_name value ="<%=jp.getJob_location_first_name()%>">
-								<option value="서울">서울</option>
-								<option value="부산">부산</option>
-								<!-- <option value="인천">인천</option>
-								<option value="대전">대전</option>
-								<option value="대구">대구</option>
-								<option value="광주">광주</option>
-								<option value="세종시">세종시</option>
-								<option value="제주도">제주도</option>
-								<option value="경기도">경기도</option>
-								<option value="강원도">강원도</option>
-								<option value="충청북도">충청북도</option>
-								<option value="충청남도">충청남도</option>
-								<option value="전라북도">전라북도</option>
-								<option value="전라남도">전라남도</option>
-								<option value="경상남도">경상남도</option>
-								<option value="경상북도">경상북도</option>
-								<option value="해외">해외</option> -->
-						</select> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-						<select name="job_location_second_name" value="<%=jp.getJob_location_second_name() %>">
-								<option value="해운대구">해운대구</option>
-								<option value="진구">진구</option>
-							</select>
-						<br>
-						상세 주소 <input type="text" value = "<%=jp.getJob_location_detail()%>" name="job_location_detail">
+					<!-- 주소 입력 -->
+						<script type="text/javascript" src="<%=p_helper_path %>/util/juso2.js" ></script>
+						도로명 주소 
+						<input  type="text"  style="width:auto;" id="location_addr" name="location_addr" value="<%=jp.getLocation_addr() %>" readonly/>
+						 <input type="button" onClick="goPopup();" value="주소 찾기"/>
+						 상세 주소
+						 <input type="text" name="location_detail" value="<%=jp.getLocation_detail()%>" />
+						 <input type="hidden" name="location_first_name" value="<%=jp.getLocation_first_name() %>" />
+						<input type="hidden" name="location_second_name" value="<%=jp.getLocation_second_name() %>" />
 					</h4>
 				</ul>
 				<ul>
@@ -130,15 +113,6 @@ System.out.println(jp.getJob_detail()); */
 		</form>
 		<div class="clear"></div>
 		<%@ include file="/footer.jsp" %>
-		<!-- <div class="footer">
-			<div class="f_img">
-				<img src="images/footer.png" id="f_img">
-			</div>
-			<div class="f_info">
-				Green.co <br> Addr. 부산시 가나다동 가나다라구 2로 1234 <br> 010 - 123
-				-1234 <br> COPYRIGHT 2019. TAMO. ALL RIGHT RESERVED.
-			</div>
-		</div> -->
 	</div>
 </body>
 </html>

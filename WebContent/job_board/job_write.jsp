@@ -22,7 +22,7 @@
 		<title>구인 게시글 작성</title>
 	</head>
 	<body class="total">
-		<form action="job_write_ok.jsp" method="POST" name = "form">
+		<form action="job_write_ok.jsp" name="form" method="POST">
 			<div class = "section">
 				<h1>구인 게시글 작성</h1>
 				<div class="date">
@@ -73,19 +73,17 @@
 						</h4>
 					</ul>
 					<ul>
-					<!-- 주소 입력 -->
-<!-- 					<script type="text/javascript" src="/helper_project/util/juso.js" ></script>
-					도로명주소
-					<input type="text"  style="width:300px;" id="roadAddrPart1"  name="roadAddrPart1" >
-					<br>
-					고객입력 상세주소
-					<input type="text"  style="width:300px;" id="addrDetail"  name="addrDetail" />
-					<input type="button" onClick="goPopup();" value="주소 찾기"/> -->
 						<h4>
-							지역 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-							<jsp:include page="job_search_bar.jsp"/>
-							<br>
-							상세 주소 <input type="text" name="job_location_detail">
+							<!-- 주소 입력 -->
+							<script type="text/javascript" src="<%=p_helper_path %>/util/juso2.js" ></script>
+							도로명 주소 
+							<input  type="text"  style="width:auto;" id="location_addr" name="location_addr" readonly/>
+							 <input type="button" onClick="goPopup();" value="주소 찾기"/>
+							 상세 주소
+							 <input type="text" name="location_detail">
+							 <input type="hidden" name="location_first_name" />
+							<input type="hidden" name="location_second_name" />
+							
 						</h4>
 					</ul>
 					<ul>
