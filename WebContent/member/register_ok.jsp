@@ -11,7 +11,21 @@
 <%
       user.setCreated_at(new Timestamp(System.currentTimeMillis()));
       UserDAO manager = UserDAO.getInstance();
-      manager.register(user);
- 
-      response.sendRedirect("login.jsp");
+      if(manager.register(user)){
 %>
+	<script>
+		alert("회원 가입을 축하드립니다! 🎉🎉🎉\n로그인해주세요!");
+	</script>
+<%
+      }
+      else {
+%>
+	<script>
+		alert("회원 가입에 실패했습니다. ㅠㅠ\n잠시 후 다시 시도해주세요.");
+	</script>
+<%    	  
+      }
+%>
+<script>
+location.href="login.jsp";
+</script>

@@ -1,28 +1,10 @@
 package db;
 
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.sql.DataSource;
-
 import db.userBeans.UserBean;
-
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.sql.DataSource;
-
-import db.userBeans.UserBean;
-import db.DBConnection;
 
 public class UserDAO {
 	private static UserDAO instance = new UserDAO();
@@ -75,41 +57,35 @@ public class UserDAO {
 		return x;// db오류
 	}
 
-	public int register(UserBean user) {// 회원가입
+	public boolean register(UserBean user) {// 회원가입
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		int number;
-		String sql = "SELECT MAX(NO) FROM USERS";
+		
+		boolean isSuccess = false;
+
+		String sql = "CALL ADD_USER(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		
 		try {
-			conn= DBConnection.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-
-			if (rs.next()) {
-				number = rs.getInt(1) + 1;
-			} else {
-				number = 1;
-			}
-
-			sql = "insert into users(no, name,nick,id, pw, gender, birth_yy, birth_mm, birth_dd, email"
-					+ ",location_detail) " + "values(?,?,?,?,?,?,?,?,?,?,?)";
 			conn=DBConnection.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, number);
-			pstmt.setString(2, user.getName());
-			pstmt.setString(3, user.getNick());
-			pstmt.setString(4, user.getId());
-			pstmt.setString(5, user.getPw());
-			pstmt.setInt(6, user.getGender());
-			pstmt.setInt(7, user.getBirth_yy());
-			pstmt.setInt(8, user.getBirth_mm());
-			pstmt.setInt(9, user.getBirth_dd());
-			pstmt.setString(10, user.getEmail());
-			//pstmt.setInt(11, user.getLocation_no());
-			pstmt.setString(11, user.getLocation_detail());
-
-			return pstmt.executeUpdate();// 단순실행
+			pstmt.setString(1, user.getName());
+			pstmt.setString(2, user.getNick());
+			pstmt.setString(3, user.getId());
+			pstmt.setString(4, user.getPw());
+			pstmt.setInt(5, user.getGender());
+			pstmt.setInt(6, user.getBirth_yy());
+			pstmt.setInt(7, user.getBirth_mm());
+			pstmt.setInt(8, user.getBirth_dd());
+			pstmt.setString(9, user.getEmail());
+			pstmt.setString(10, user.getLocation_first_name());
+			pstmt.setString(11, user.getLocation_second_name());
+			pstmt.setString(12, user.getLocation_addr());
+			pstmt.setString(13, user.getLocation_detail());
+			
+			if(pstmt.executeUpdate() == 0) {
+				isSuccess = true;
+			}
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -126,7 +102,7 @@ public class UserDAO {
 				e.printStackTrace();
 			}
 		}
-		return 1;
+		return isSuccess;
 	}
 
 	public int login(String id, String pw) {// 로그인
