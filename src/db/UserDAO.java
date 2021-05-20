@@ -10,6 +10,7 @@ import javax.naming.InitialContext;
 import javax.sql.DataSource;
 
 import db.userBeans.UserBean;
+import myUtil.HanConv;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -25,12 +26,12 @@ import db.userBeans.UserBean;
 import db.DBConnection;
 
 public class UserDAO {
-	private static UserDAO instance =new UserDAO();
-	
+	private static UserDAO instance = new UserDAO();
+
 	public static UserDAO getInstance() {
 		return instance;
 	}
-	
+
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
@@ -42,18 +43,20 @@ public class UserDAO {
 			e.printStackTrace();
 		}
 	}
+
 	public int registerCheck(String id) {// 아이디 중복체크
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		int x=-1;
 		String sql = "select * from users where id =?";
 		try {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				return 0;// 이미 존재하는 회원
+				x =1;// 이미 존재하는 회원
 			} else {
-				return 1;// 가입가능한 회원아이디
+				x = -1;// 해당아이디 없음 (가입가능한 회원아이디)
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -70,16 +73,17 @@ public class UserDAO {
 				e.printStackTrace();
 			}
 		}
-		return -1;// db오류
+		return x;// db오류
 	}
 
-	public int register(UserBean user) {//회원가입
+	public int register(UserBean user) {// 회원가입
+		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		int number;
 		String sql = "SELECT MAX(NO) FROM USERS";
 		try {
-
+			conn= DBConnection.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 
@@ -89,9 +93,9 @@ public class UserDAO {
 				number = 1;
 			}
 
-			sql = "insert into users(no, name,nick,id, pw, gender, birth_yy, birth_mm, birth_dd, email" + ",location_no,location_detail) "
-					+ "values(?,?,?,?,?,?,?,?,?,?,?,?)";
-
+			sql = "insert into users(no, name,nick,id, pw, gender, birth_yy, birth_mm, birth_dd, email"
+					+ ",location_detail) " + "values(?,?,?,?,?,?,?,?,?,?,?)";
+			conn=DBConnection.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, number);
 			pstmt.setString(2, user.getName());
@@ -103,11 +107,11 @@ public class UserDAO {
 			pstmt.setInt(8, user.getBirth_mm());
 			pstmt.setInt(9, user.getBirth_dd());
 			pstmt.setString(10, user.getEmail());
-//			pstmt.setInt(11, user.getLocation_no());
-			pstmt.setString(12, user.getLocation_detail());
-			
-			return pstmt.executeUpdate();//단순실행
-			
+			//pstmt.setInt(11, user.getLocation_no());
+			pstmt.setString(11, user.getLocation_detail());
+
+			return pstmt.executeUpdate();// 단순실행
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -123,10 +127,10 @@ public class UserDAO {
 				e.printStackTrace();
 			}
 		}
-		return 1;// db오류
+		return 1;
 	}
 
-	public int login(String id, String pw) {//로그인
+	public int login(String id, String pw) {// 로그인
 		String sql = "select pw,no from users where id=?";
 		try {
 			pstmt = conn.prepareStatement(sql);
@@ -157,8 +161,8 @@ public class UserDAO {
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
+
+			if (rs.next()) {
 				user = new UserBean();
 				user.setNo(rs.getInt("NO"));
 				user.setName(rs.getString("NAME"));
@@ -179,69 +183,85 @@ public class UserDAO {
 				user.setCreated_at(rs.getTimestamp("CREATED_AT"));
 				user.setCountry_code(rs.getInt("COUNTRY_CODE"));	
 			}
-			
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
-				if (rs != null) rs.close();
-				if (pstmt != null) pstmt.close();
-				if (conn != null) conn.close();
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 		return user;
 	}
-	public String findUserId(UserBean user) {//아이디 찾기
-		Connection conn=null;
-		PreparedStatement pstmt=null;
-		String id= null;
-		String sql ="select id from users where name=? and email=?";
+
+	public UserBean findId(String name, String email) throws Exception {// 아이디 찾기
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		UserBean id = null;
+
 		try {
 			conn = DBConnection.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, user.getName());
-			pstmt.setString(2, user.getEmail());
+			pstmt = conn.prepareStatement("select id from users where name = ? " + "and email =?");
+			pstmt.setString(1,name);
+			pstmt.setString(2, email);
 			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				id=rs.getString("id");
+
+			if (rs.next()) {
+				id = new UserBean();
+				id.setId(rs.getString("id"));
 			}
-			
-		}catch (Exception e) {
-			e.printStackTrace();
-		}finally {
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
 			try {
-				if (pstmt != null) pstmt.close();
-				if (conn != null) conn.close();
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
+
 		}
 		return id;
-	}public String findUserPw(UserBean user) {//비밀번호 찾기
-		Connection conn=null;
-		PreparedStatement pstmt=null;
-		String pw= null;
-		String sql ="select pw from users where id=? and email=?";
+	}
+
+	public UserBean findPw(String id, String email) throws Exception {// 비밀번호 찾기
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		UserBean pw = null;
+
 		try {
 			conn = DBConnection.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, user.getId());
-			pstmt.setString(2, user.getEmail());
+			pstmt = conn.prepareStatement("select pw from users where id = ? " + "and email =?");
+			pstmt.setString(1, id);
+			pstmt.setString(2, email);
 			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				pw=rs.getString("pw");
+
+			if (rs.next()) {
+				pw = new UserBean();
+				pw.setPw(rs.getString("pw"));
 			}
-			
-		}catch (Exception e) {
-			e.printStackTrace();
-		}finally {
+		} catch (Exception ex) {
+			ex.printStackTrace();
+		} finally {
 			try {
-				if (pstmt != null) pstmt.close();
-				if (conn != null) conn.close();
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -270,20 +290,20 @@ public class UserDAO {
 			if(pstmt.executeUpdate() == 0) {
 				isSuccess = true;
 			}
-			
-		}catch (Exception e) {
+		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
+		} finally {
 			try {
-				if (pstmt != null) pstmt.close();
-				if (conn != null) conn.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
 		}
 		return isSuccess;
 	}
-	
 	public boolean deleteUser(String no) {//회원탈퇴
 		
 		boolean isSuccess = false;
@@ -312,30 +332,32 @@ public class UserDAO {
 		}
 		return isSuccess;
 	}
-	
 	/*---------------관리자 로그인----------------------*/
-	public boolean admin_login(String admin_id,String admin_pass){
+	public boolean admin_login(String admin_id, String admin_pass) {
 		boolean b = false;
 		try {
 			String sql = "select * from admin where admin_id = ? and admin_pass = ?";
-			conn =DBConnection.getConnection();
+			conn = DBConnection.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, admin_id);
 			pstmt.setString(2, admin_pass);
 			rs = pstmt.executeQuery();
-			b=rs.next();
+			b = rs.next();
 		} catch (Exception e) {
 			System.out.println("admin_login err : " + e);
 		} finally {
 			try {
-				if(rs!=null)rs.close();
-				if(pstmt!=null)pstmt.close();
-				if(conn!=null)conn.close();
+				if (rs != null)
+					rs.close();
+				if (pstmt != null)
+					pstmt.close();
+				if (conn != null)
+					conn.close();
 			} catch (Exception e2) {
-				
+
 			}
 		}
-		
+
 		return b;
-	}	
+	}
 }

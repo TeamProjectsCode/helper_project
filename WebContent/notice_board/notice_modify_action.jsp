@@ -1,12 +1,24 @@
+<%@page import="db.notifyBoardBeans.NoticeDTO"%>
+<%@page import="db.notifyBoardBeans.NoticeDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <% request.setCharacterEncoding("utf-8"); %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:useBean id="notifyDAO" class="db.notifyBoardBeans.NotifyDAO"/>
-<jsp:useBean id="bean" class="db.notifyBoardBeans.NotifyBean"/>
+<jsp:useBean id="DTO" class="db.notifyBoardBeans.NoticeDTO"/>
+<jsp:setProperty property="*" name="DTO"/>
 
-<jsp:setProperty property="*" name="bean"/>
+<%
+	NoticeDAO dao = NoticeDAO.getInstance();
+	int x = dao.updateEdit(DTO);
+	
+	if(x == 1){
+		response.sendRedirect("notice_list.jsp");
+	}else{
+%>
+		<script language="JavaScript" >
+			alert("수정에 실패했습니다");
+			history.go(-1);
+		</script>
+<% 
+	}
+%>
 
-${notifyDAO.updateData(bean)}
-
-<c:redirect url="notice_reading.jsp?no=${param.no}"/>

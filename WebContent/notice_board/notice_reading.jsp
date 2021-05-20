@@ -1,13 +1,40 @@
+<%@page import="db.notifyBoardBeans.NoticeDTO"%>
+<%@page import="db.notifyBoardBeans.NoticeDAO"%>
+<%@page import="java.sql.Timestamp"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+   <%--  <%
+        String user_no = (String)session.getAttribute("no");
+        if(user_no == null){
+        %>
+        <script>
+            alert("로그인 먼저 하세요.");
+            location.href="/helper_project/member/login.jsp";
+        </script>
+        <%
+        }
+        %> --%>
+<%
 
-<jsp:useBean id="bean" class="db.notifyBoardBeans.NotifyBean"/>
-<jsp:useBean id="notifyDAO" class="db.notifyBoardBeans.NotifyDAO"/>
-<jsp:useBean id="admin" class="db.UserDAO"/>
-<c:set var="content" value = "${notifyDAO.getData(param.no)}"/>
-<c:set var="readcnt" value="${notifyDAO.updateNotify_hits(param.no)}"/>
-
+	int no_ = Integer.parseInt(request.getParameter("no"));
+	NoticeDAO dao = NoticeDAO.getInstance();
+	NoticeDTO dto = dao.selectView(no_);
+	
+	int no=0,creator_no=0,category=0,hits=0;
+	String title="",detail="";
+	Timestamp created_at=null;
+	
+	
+	if(dto != null){
+		no = dto.getNo();
+		creator_no = dto.getCreator_no();
+		category =dto.getCategory();
+		hits = dto.getHits();
+		title = dto.getTitle();
+		detail = dto.getDetail();
+		created_at = dto.getCreated_at();
+	}
+%>
 <!DOCTYPE html>
 <html>
   <head>
@@ -17,44 +44,51 @@
     <script type="text/javascript" src="script.js" charset="utf-8"></script>
   </head>
   <body>
-    <div class="total">
      <%@ include file="/header.jsp" %>
-      <form action="" method="POST">
-        <h1>${content.category}</h1>
-        <div class="section">
-            <ul>
-                <div class="title">
-                    <h3>${content.notify_title}</h3>
-                </div>
-            </ul>
-          <ul>
-            <div class="content">
-              <h3>${content.creator}</h3>
-              <h3>${content.created_at}</h3>
-              <h3>${content.notify_hits}</h3>
-              <br />
-              <div style="width: auto; height: 400px">${content.notify_detail}</div>
-            </div>
-          </ul>
-        </div>
-        <div class = "button">
-          <span><button type="button" value = "뒤로가기" onclick="location.href='notice_list.jsp'">뒤로가기</button></span>
-            <%
+     <center>
+		<h1>글 내 용 </h1>
+		<table cellspacing="0" width="600" border="1">
+			<tr align="center">
+				<td width="100">글번호</td>
+				<td width="200"><%= no %> </td>
+				<td width="100">조회수</td>
+				<td width="200"><%= hits %> </td>
+			</tr>
+			<tr align="center">
+				<td width="100">작성자</td>
+				<td width="200"><%= creator_no %> </td>
+				<td width="100">작성일</td>
+				<td width="200"><%= created_at %> </td>
+			</tr>
+			<tr >
+				<td width="100" align="center" >글제목</td>
+				<td colspan="3"><%= title %> </td>
+			</tr>
+			<tr>
+				<td width="100" align="center" >글내용</td>
+				<td colspan="3"><%= detail %> </td>
+			</tr>
+			<tr>
+				<td colspan="4" align="right" >
+            <%-- <%
 			String admin_id = request.getParameter("id");
 			String admin_pass = request.getParameter("pass");
 			boolean b = admin.admin_login(admin_id, admin_pass);
 			
 			if(b){
 				session.setAttribute("adminOk", admin_id);
-			%>
-                <a href = "notice_modify_form.jsp?no=${content.no}"><h4>수정</h4></a>
-                <a href = "notice_delete_form.jsp?no=${content.no}"><h4>삭제</h4></a>
-        		<%
-			}
-                     %>
-        </div>
-      </form>
-      <div class="space"></div>
+			%> --%>
+               
+					<input type="button" value="글수정" onclick="location.href='notice_modify_form.jsp?no=<%= no %>'" >
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="button" value="글삭제" onclick="location.href='notice_delete_form.jsp?no=<%= no %>'" >
+					&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="button" value="글목록" onclick="location.href='notice_list.jsp'" >
+				</td>
+			</tr>
+		</table>
+	</center>
+     
       <%@ include file="/footer.jsp" %>
     </div>
   </body>

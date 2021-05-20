@@ -7,12 +7,33 @@
  <script type="text/javascript" src="checking.js" charset="utf-8"></script>
 <link rel="stylesheet" href="../css/register1.css" />
 <title>document</title>
+<script>
+// 아이디 중복 여부를 판단
+function openConfirmid(userinput)
+{
+      // 아이디를 입력했는지 검사
+      if(userinput.id.value == "")
+      {
+            alert("아이디를 입력하세요");
+            return;
+      }
+
+      // url과 사용자 입력 아이디를 조합합니다.
+      url = "confirmId.jsp?id=" + userinput.id.value;
+
+      // 새로운 윈도우를 엽니다.
+      open(url, "confirm",
+            "toolbar = no, location = no, status = no," +
+            "menubar = no, scrollbars = no, resizable = no," +
+            "width = 300, height = 200");
+}
+</script>
 </head>
 <body>
 	<div class="total">
 		 <%@ include file="/header.jsp" %>
 		<center>
-			<form action="joinAction.jsp" class="sign-up-form" id="form" name="form" method="post">
+			<form action="joinAction.jsp" class="sign-up-form" id="form" name="form" method="post" onsubmit="return member_ok()" >
 				<div class="main">
 					<div class="title">
 						<h1>회원가입</h1>
@@ -24,7 +45,9 @@
 						<tr>
 							<th>아이디</th>
 							<td><input type="text" placeholder="아이디" name="id"></td>
-							<td><input type="button" value="중복확인" onclick ""><td>
+							<td><input type="button" name="confirm_id" value="중복확인" onclick = "openConfirmid(this.form)">
+
+							<td>
 						</tr>
 						<tr>
 							<th>이름</th>
@@ -81,16 +104,16 @@
 							<th>주소</th>
 							<tr>
 								<th>도로명주소</th>
-								<td><input type="text"  style="width:300px;" id="roadAddrPart1"  name="roadAddrPart1" ></td>
+								<td><input type="text"  style="width:300px;" id="roadAddrPart1"  name="Location_no" ></td>
 							</tr>
 							<tr>
 								<th>고객입력 상세주소</th>
-								<td><input type="text"  style="width:300px;" id="addrDetail"  name="addrDetail" /></td>
+								<td><input type="text"  style="width:300px;" id="addrDetail"  name="Location_detail" /></td>
 							<td colspan="2"><input type="button" onClick="goPopup();" value="팝업_domainChk"/></td>
 							</tr>
 						</tr>
 						<tr>
-							<th><input type="submit" class="btn" value="신청하기" onclick ="member_ok()"></th>
+							<th><input type="submit" class="btn" value="신청하기" name="confirm"></th>
 							<td><input type="button" class="btn" value="뒤로가기"
 								onclick="location.href='../member/login.jsp'"></td>
 						</tr>

@@ -11,25 +11,26 @@
  <body>
     <div class="total">
    <%@ include file="/header.jsp" %>
-      <form>
+      <form action="findIdAction.jsp" method="post">
         <h1 align="center">ID PW 찾기</h1>
         <div class="id_section">
 			<h3>아이디 찾기</h3>
 			<table>
 				<tr>
 					<td>이름을 입력하세요.</td>
-					<td><input type = "text" name = ""></td>
+					<td><input type = "text" name = "name"></td>
 				</tr>
 				<tr>
 					<td>이메일을 입력하세요.</td>
-					<td><input type = "text" name = ""></td>
+					<td><input type = "text" name = "email"></td>
 				</tr>
 			</table>
             <div class="button">
-				<button type="submit" onclick="location.href='findIdAction.jsp'">찾기</button>
+				<button type="submit">찾기</button>
 			</div>
         </div>
-        
+        </form>
+        <form action="findPwAction.jsp" method="post">
         <div class="pw_section">		
 					<h3>비밀번호 찾기</h3>
 			<table>
@@ -43,7 +44,7 @@
 				</tr>
 			</table>
             <div class="button">
-				<button type="submit" onclick="location.href='findPwAction.jsp'">찾기</button>
+				<button type="submit">찾기</button>
 			</div>
         </div>
       </form>

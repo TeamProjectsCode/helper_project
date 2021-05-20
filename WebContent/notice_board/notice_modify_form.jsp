@@ -1,10 +1,18 @@
+<%@page import="java.sql.Timestamp"%>
+<%@page import="db.notifyBoardBeans.NoticeDTO"%>
+<%@page import="db.notifyBoardBeans.NoticeDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<jsp:useBean id="dto" class="db.notifyBoardBeans.NotifyDTO"/>
-<jsp:useBean id="notifyDAO" class="db.notifyBoardBeans.NotifyDAO"/>
 
-<c:set var="content" value = "${notifyDAO.getData(param.no)}"/>
+<%
+	int no = Integer.parseInt(request.getParameter("no"));
+
+	NoticeDAO dao = NoticeDAO.getInstance();
+	NoticeDTO dto = dao.selectView(no);
+	
+
+%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,10 +22,10 @@
 <script type="text/javascript">
 //입력 자료 검사
 function check() {
-	if (modify_form.notify_title.value == "") {
+	if (modify_form.title.value == "") {
 		alert("제목을 입력하세요");
 		modify_form.title.focus();
-	} else if (modify_form.notify_detail.value == "") {
+	} else if (modify_form.detail.value == "") {
 		alert("내용을 입력하세요");
 		modify_form.cont.focus();
 	} else
@@ -26,16 +34,16 @@ function check() {
 </script>
 <body>
 	<h2 style="text-align:center;"> *** 수정하기 *** </h2>
-	<form name="modify_form" method="post" action = "notice_modify_action.jsp">
-		<input type="hidden" name = "no" value = "${content.no}"/>
+	<form name="modify_form" method="post" action = "notice_modify_action.jsp?no=<%=no%>">
+		<input type="hidden" name = "no" value = "<%= dto.getNo()%>"/>
 		<table border="1">
 			<tr>
 				<td align="center">제 목</td>
-				<td><input name="title" size="50" value="${content.notify_title}"></td>
+				<td><input name="title" size="50" value="<%=dto.getTitle()%>"></td>
 			</tr>
 			<tr>
 				<td align="center">내 용</td>
-				<td><textarea name="cont" cols="50" rows="10">${content.notify_detail }</textarea></td>
+				<td><textarea name="detail" cols="50" rows="10"><%=dto.getDetail()%></textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center" height="30">
