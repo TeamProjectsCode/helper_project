@@ -12,10 +12,8 @@ public class ReviewPostDAO {
 		return instance;
 	}
 	public int insertReview(ReviewPostBean rb) {
-		
 		Connection con = null;
 		PreparedStatement pstmt = null;
-		
 		String sql = "";
 		int re=-1;
 		try {

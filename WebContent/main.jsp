@@ -106,7 +106,7 @@ String p_helper_path = request.getContextPath();
 				<div class="contents1">오늘의 포인트 왕</div>
 				<div class="result">
 <%
-	sql = "SELECT NAME FROM USERS WHERE POINT = (SELECT MAX(POINT) FROM USERS)";
+	sql = "SELECT NICK FROM USERS WHERE POINT = (SELECT MAX(POINT) FROM USERS)";
 	stmt = conn.createStatement();
 	rs = stmt.executeQuery(sql);
 	while(rs.next()){

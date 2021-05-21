@@ -15,30 +15,32 @@
     <div class="total">
         <%
         	ReviewBoardDAO rbDAO = ReviewBoardDAO.getInstance();
-        	
+        	String review_no = request.getParameter("rno");
+        	ReviewPostBean rpb = rbDAO.getPost(review_no);
+
         %>
     <%@ include file="/header.jsp" %>
-      <form action="" method="POST">
+      <form action="review_writer_fix_ok.jsp?rno=<%= review_no %>" method="POST">
         <h1>후기작성 수정</h1>
         <div class="section">
           <ul>
             <div class="title">
-              <h3>제목 &nbsp;&nbsp;&nbsp;<input type="text" name="title" value = "작성한 제목"/></h3>
+              <h3>제목 &nbsp;&nbsp;&nbsp;<input type="text" name="review_titile" value="<%= rpb.getReview_titile() %>"/></h3>
             </div>
           </ul>
           <ul>
             <div class="content">
               <h4>후기 작성</h4>
-              <textarea id="detail"
+              <textarea name="review_detail"
                  style="overflow: auto; height: 400px"
                 cols="70"
-                rows="auto">작성한 내용</textarea>
+                rows="auto"><%= rpb.getReview_detail() %></textarea>
             </div>
           </ul>
           <div class="botton">
-            <button type="submit" onclick="review_writer_fix_ok.jsp">글 수정</button>
+            <button type="submit" onclick="">글 수정</button>
             <button type="reset">다시쓰기</button>
-            <span><button type="button" value = "뒤로가기" onclick="location.href='review_list.jsp'">뒤로가기</button></span>
+            <span><button type="button" value = "뒤로가기" onclick="location.href='mypage_write.jsp'">뒤로가기</button></span>
           </div>
         </div>
       </form>
