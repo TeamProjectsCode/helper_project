@@ -29,7 +29,7 @@ public class ReviewPostDAO {
 			pstmt.setInt(1, creator);
 			pstmt.setString(2, title);
 			pstmt.setString(3, review);
-			pstmt.setInt(4, 4);
+			pstmt.setInt(4, 1);
 			pstmt.executeUpdate();
 			re=1;	
 			
