@@ -12,7 +12,7 @@
         <div class="total">
            <%@ include file="/header.jsp" %>
             <div class = "space"></div>
-      <form name = "login" action="loginAction.jsp" method="post">
+      <form name = "login" action="loginAction.jsp" method="post" onsubmit="check_login()">
 			<div class="loginForm">
 				<h1>Login</h1>
 				<div class="idForm">
@@ -21,7 +21,7 @@
 				<div class="passForm">
 					<input type="password" class="pw" placeholder="PW" name = "pw">
 				</div>
-				<button type="submit" class="btn" onclick="check_login()">로그인</button>
+				<button type="submit" class="btn">로그인</button>
 				<button type="button" class="btn" onclick="location.href='register.jsp'">계정이 없으신가요? 가입하기</button>
 
 				<div class="bottomText">
