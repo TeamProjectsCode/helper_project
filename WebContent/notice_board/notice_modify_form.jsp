@@ -5,11 +5,9 @@
     pageEncoding="UTF-8"%>
 
 <%
-	int no = Integer.parseInt(request.getParameter("no"));
-
-	NoticeDAO dao = NoticeDAO.getInstance();
-	NoticeDTO dto = dao.selectView(no);
-	
+		int no = Integer.parseInt(request.getParameter("no"));
+		NoticeDAO dao = NoticeDAO.getInstance();
+		NoticeDTO dto = dao.selectView(no, false);
 
 %>
 

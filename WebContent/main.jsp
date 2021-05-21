@@ -152,7 +152,7 @@ String p_helper_path = request.getContextPath();
 				</div>
 				<div class="contents1_bold">구인 게시판</div>
 				<div class="contents2">내가 잘하는 일로 이웃도 돕고 돈도 벌고 이석이조!</div>
-				<div class="more"><a href="jop_board/board_list.jsp">MORE</a></div>
+				<div class="more"><a href="job_board/job_main.jsp">MORE</a></div>
 			</li>
 
 			<li>

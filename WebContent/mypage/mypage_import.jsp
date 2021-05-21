@@ -8,10 +8,10 @@
 <meta charset="EUC-KR">
 <link rel="stylesheet" href="../css/mypage_import.css" />
 <%
-String user_id = (String)session.getAttribute("id");
-String user_no = (String)session.getAttribute("no");
-UserDAO uDAO = UserDAO.getInstance();
-UserBean user = uDAO.getuser(user_id);
+	String user_id = (String)session.getAttribute("id");
+	String user_no = (String)session.getAttribute("no");
+	UserDAO uDAO = UserDAO.getInstance();
+	UserBean user = uDAO.getuser(user_id);
 %>
 <title>경력사항</title>
 </head>
