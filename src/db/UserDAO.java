@@ -13,31 +13,30 @@ public class UserDAO {
 		return instance;
 	}
 
-	private Connection conn;
-	private PreparedStatement pstmt;
-	private ResultSet rs;
-
-	public UserDAO() {
-		try {
-			conn = DBConnection.getConnection();
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	public int registerCheck(String id) {// 아이디 중복체크
+	public int registerCheck(String key, String value) {// 아이디 중복체크
+		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		
 		int x=-1;
-		String sql = "select * from users where id =?";
+		String sql = null;
+		
+		if(key.equals("id")) {
+			sql = "select * from users where ID = ?";
+		}
+		else if(key.equals("nick")) {
+			sql = "select * from users where NICK = ?";
+		}
+
 		try {
+			conn = DBConnection.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
+			pstmt.setString(1, value);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				x =1;// 이미 존재하는 회원
 			} else {
-				x = -1;// 해당아이디 없음 (가입가능한 회원아이디)
+				x = -1;// 해당아이디 또는 닉네임 없음 (가입가능한 회원아이디)
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -47,6 +46,9 @@ public class UserDAO {
 					rs.close();
 				}
 				if (pstmt != null) {
+					pstmt.close();
+				}
+				if (conn != null) {
 					pstmt.close();
 				}
 
@@ -91,6 +93,9 @@ public class UserDAO {
 			e.printStackTrace();
 		} finally {
 			try {
+				if(conn != null) {
+					conn.close();
+				}
 				if (rs != null) {
 					rs.close();
 				}
@@ -106,8 +111,13 @@ public class UserDAO {
 	}
 
 	public int login(String id, String pw) {// 로그인
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
 		String sql = "select pw,no from users where id=?";
 		try {
+			conn = DBConnection.getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, id);
 			rs = pstmt.executeQuery();
@@ -120,14 +130,30 @@ public class UserDAO {
 			return -1; // 아이디 없음
 		} catch (Exception e) {
 			e.printStackTrace();
+		} finally {
+			try {
+				if (conn != null) {
+					conn.close();
+				}
+				if (pstmt != null) {
+					pstmt.close();
+				}
+				if (rs != null) {
+					rs.close();
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		}
 		return -2;// db오류
 
 	}
 	public UserBean getuser(String id) {//회원정보 불러오기
+		
 		Connection conn=null;
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
+		
 		String sql="SELECT * FROM GET_USER_INFO WHERE ID = ?";
 		UserBean user = null;
 		
@@ -176,9 +202,11 @@ public class UserDAO {
 	}
 
 	public UserBean findId(String name, String email) throws Exception {// 아이디 찾기
+		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		
 		UserBean id = null;
 
 		try {
@@ -211,9 +239,11 @@ public class UserDAO {
 	}
 
 	public UserBean findPw(String id, String email) throws Exception {// 비밀번호 찾기
+		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		
 		UserBean pw = null;
 
 		try {
@@ -244,8 +274,10 @@ public class UserDAO {
 		return pw;
 	}
 	public boolean updateUser(UserBean user) {//회원정보 수정
+		
 		Connection conn=null;
 		PreparedStatement pstmt=null;
+		
 		String sql = "CALL MODIFY_USER(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 		boolean isSuccess = false;
 		try {
@@ -285,6 +317,7 @@ public class UserDAO {
 		
 		Connection conn=null;
 		PreparedStatement pstmt=null;
+		
 		String sql = "CALL DELETE_USER(?)";
 		try {
 			conn = DBConnection.getConnection();
@@ -310,6 +343,11 @@ public class UserDAO {
 	/*---------------관리자 로그인----------------------*/
 	public boolean admin_login(String admin_id, String admin_pass) {
 		boolean b = false;
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
 		try {
 			String sql = "select * from admin where admin_id = ? and admin_pass = ?";
 			conn = DBConnection.getConnection();

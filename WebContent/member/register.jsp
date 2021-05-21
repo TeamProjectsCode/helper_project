@@ -7,19 +7,23 @@
  <script type="text/javascript" src="checking.js" charset="utf-8"></script>
 <link rel="stylesheet" href="../css/register1.css" />
 <title>document</title>
+
 <script>
 // 아이디 중복 여부를 판단
-function openConfirmid(userinput)
+function openConfirmid(inputKey, inputValue)
 {
+	console.log(inputKey);
+	console.log(inputValue);
       // 아이디를 입력했는지 검사
-      if(userinput.id.value == "")
+      if(inputValue == "")
       {
-            alert("아이디를 입력하세요");
+            alert(inputKey+"를 입력하세요");
             return;
       }
 
       // url과 사용자 입력 아이디를 조합합니다.
-      url = "confirmId.jsp?id=" + userinput.id.value;
+      url = "confirmId.jsp?key="+inputKey+"&value="+inputValue;
+      console.log(url);
 
       // 새로운 윈도우를 엽니다.
       open(url, "confirm",
@@ -45,9 +49,7 @@ function openConfirmid(userinput)
 						<tr>
 							<th>아이디</th>
 							<td><input type="text" placeholder="아이디" name="id"></td>
-							<td><input type="button" name="confirm_id" value="중복확인" onclick = "openConfirmid(this.form)">
-
-							<td>
+							<td><input type="button" value="중복확인" onclick ="openConfirmid(this.form.id.name, this.form.id.value)"></td>
 						</tr>
 						<tr>
 							<th>이름</th>
@@ -56,6 +58,7 @@ function openConfirmid(userinput)
 						<tr>
 							<th>닉네임</th>
 							<td><input type="text" placeholder="닉네임" name="nick"></td>
+							<td><input type="button" value="중복확인" onclick = "openConfirmid(this.form.nick.name, this.form.nick.value)"></td>
 						</tr>
 						<tr>
 							<th>패스워드</th>
@@ -99,7 +102,7 @@ function openConfirmid(userinput)
 
 						<!-- 주소 입력 넣을 부분 -->
 						<tr>
-							<script type="text/javascript" src="<%=p_helper_path %>/util/juso2.js" ></script>
+							<script type="text/javascript" src="<%=p_helper_path %>/util/juso3.js" ></script>
 							<td class="title">도로명 주소</td>
 							<td colspan="2"><input  type="text"  style="width:auto;" id="location_addr" name="location_addr" readonly/></td>
 							<td><input type="button" onClick="goPopup();" value="주소 찾기"/></td>

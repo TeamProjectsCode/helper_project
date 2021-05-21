@@ -84,7 +84,7 @@ System.out.println(jp.getJob_detail()); */
 				<ul>
 					<h4>
 					<!-- 주소 입력 -->
-						<script type="text/javascript" src="<%=p_helper_path %>/util/juso2.js" ></script>
+						<script type="text/javascript" src="<%=p_helper_path %>/util/juso3.js" ></script>
 						도로명 주소 
 						<input  type="text"  style="width:auto;" id="location_addr" name="location_addr" value="<%=jp.getLocation_addr() %>" readonly/>
 						 <input type="button" onClick="goPopup();" value="주소 찾기"/>

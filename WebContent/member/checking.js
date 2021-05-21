@@ -36,14 +36,20 @@ function member_ok(){
 	else if(document.form.pw.value != document.form.pass2.value){
 		alert("패스워드가 일치하지 않습니다.");
 	}
-	else if(document.form.birth_yy.value.length == 0){
-		alert("생일을 써주세요.");
-	}
 	else if(document.form.email.value.length == 0){
 		alert("Email을 써주세요.");
-	}else {
-		result = true;
+	}
+	else if(document.form.email.value.length != 0){
+		result = email_check(document.form.email.value)
+		if(result != true){
+			alert("Email을 올바른 형식으로 써주세요.");
+		}	
 	}
 	console.log("result: "+result);
 	return result;
+}
+
+function email_check( email ) {    
+    var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+    return (email != '' && email != 'undefined' && regex.test(email)); 
 }

@@ -80,6 +80,7 @@ public class JobPostDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		
 		String query = "SELECT * FROM (SELECT ROW_NUMBER() over (ORDER BY J.CREATED_AT DESC ) AS \"ROWNUM\","
 				+ " J.*"
 				+ " FROM GET_SUB_LIST J"
@@ -140,6 +141,7 @@ public class JobPostDAO {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
+		
 		String query = "SELECT * FROM GET_POST WHERE JOB_NO = ?";
 		
 		JobPostBean jp = null;
@@ -248,6 +250,7 @@ public class JobPostDAO {
 	public boolean deletePost(String job_post_no) {
 		
 		boolean isSuccess = false;
+		
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		
