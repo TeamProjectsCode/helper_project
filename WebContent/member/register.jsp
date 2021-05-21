@@ -92,10 +92,9 @@ function openConfirmid(userinput)
 							</select> <input type="text" name="birth_dd" maxlength="2" placeholder="일"
 								size="4"></td>
 						</tr>
-
 						<tr>
 							<th>이메일</th>
-							<td><input type="email" placeholder="이메일" name="email"></td>
+							<td><input type="text" placeholder="이메일" name="email"></td>
 						</tr>
 
 						<!-- 주소 입력 넣을 부분 -->
