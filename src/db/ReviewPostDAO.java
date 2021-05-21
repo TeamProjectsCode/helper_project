@@ -12,8 +12,10 @@ public class ReviewPostDAO {
 		return instance;
 	}
 	public int insertReview(ReviewPostBean rb) {
+		
 		Connection con = null;
 		PreparedStatement pstmt = null;
+		
 		String sql = "";
 		int re=-1;
 		try {
@@ -29,15 +31,24 @@ public class ReviewPostDAO {
 			pstmt.setString(3, review);
 			pstmt.setInt(4, 4);
 			pstmt.executeUpdate();
-			re=1;
-			pstmt.close();
-			con.close();
+			re=1;	
+			
 			System.out.println("리뷰작성 성공");
-			} catch (Exception e) {
-			System.out.println("리뷰작성 실패");
+
+		} catch (Exception e) {
 			e.printStackTrace();
+			System.out.println("리뷰작성 실패");
 			re=-1;
+			
+		} finally {
+			try {
+				if(con != null) con.close();
+				if(pstmt != null) pstmt.close();
+			} catch (Exception e) {
+				e.printStackTrace();	
+			}
 		}
+		
 		return re;
 	}
 }

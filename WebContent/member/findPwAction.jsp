@@ -1,4 +1,3 @@
-<%@page import="myUtil.HanConv"%>
 <%@page import="db.userBeans.UserBean"%>
 <%@page import="db.UserDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
