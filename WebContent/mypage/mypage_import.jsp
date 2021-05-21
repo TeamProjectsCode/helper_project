@@ -64,7 +64,7 @@ UserBean user = uDAO.getuser(user_id);
 							<td colspan="3" text-aling="end"><input type="email" name="email" value = "<%=user.getEmail() %>" /></td>
 						</tr>
 						<tr>
-							<script type="text/javascript" src="<%=p_helper_path %>/util/juso3.js" ></script>
+							<script type="text/javascript" src="<%=p_helper_path %>/util/juso2.js" ></script>
 							<td class="title">도로명 주소</td>
 							<td colspan="2"><input  type="text"  style="width:auto;" id="location_addr" name="location_addr" value="<%=user.getLocation_addr() %>" readonly/></td>
 							<td><input type="button" onClick="goPopup();" value="주소 찾기"/></td>
