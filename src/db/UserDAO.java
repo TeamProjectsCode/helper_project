@@ -13,22 +13,30 @@ public class UserDAO {
 		return instance;
 	}
 
-	public int registerCheck(String id) {// 아이디 중복체크
+	public int registerCheck(String key, String value) {// 아이디 중복체크
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		int x=-1;
-		String sql = "select * from users where id =?";
+		String sql = null;
+		
+		if(key.equals("id")) {
+			sql = "select * from users where ID = ?";
+		}
+		else if(key.equals("nick")) {
+			sql = "select * from users where NICK = ?";
+		}
+
 		try {
 			conn = DBConnection.getConnection();
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, id);
+			pstmt.setString(1, value);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
 				x =1;// 이미 존재하는 회원
 			} else {
-				x = -1;// 해당아이디 없음 (가입가능한 회원아이디)
+				x = -1;// 해당아이디 또는 닉네임 없음 (가입가능한 회원아이디)
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
