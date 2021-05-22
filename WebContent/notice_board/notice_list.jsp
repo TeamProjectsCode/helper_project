@@ -33,7 +33,7 @@
  <body>
     <div class="total">
       <%@ include file="/header.jsp" %>
-      <form>
+      <form action = "notice_write.jsp" method = "post">
         <h1>공지 사항</h1>
         <div class="section">
         <div class = "serch">
@@ -75,7 +75,17 @@
 					%>
                 </table>
             </div>
+			<%
+			String id = (String)session.getAttribute("id");
+			boolean check = id.startsWith("ADMIN_");
+				if(check==true){
+	            %>
             <div class="button">
+	            <button type="submit">글쓰기</button>
+			</div>
+	            <%
+			}
+			%>
             <%--  <%
 			String admin_id = request.getParameter("id");
 			String admin_pass = request.getParameter("pass");
@@ -84,13 +94,12 @@
 			if(b){
 				session.setAttribute("adminOk", admin_id);
 			%> --%>
-			<button type="submit" onclick="location.href='notice_write.jsp'">글쓰기</button>
+			
 			<%-- 
         		<%
 			}
                      %>
 				 --%>
-			</div>
         </div>
       </form>
       <div class ="space"></div>

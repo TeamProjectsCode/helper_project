@@ -61,7 +61,7 @@
 						</tr>
 						<tr>
 							<td class="title">메일주소</td>
-							<td colspan="3" text-aling="end"><input type="email" name="email" value = "<%=user.getEmail() %>" /></td>
+							<td colspan="3" text-aling="end"><input type="email" name="email" id = "email" value = "<%=user.getEmail() %>" /></td>
 						</tr>
 						<tr>
 							<script type="text/javascript" src="<%=p_helper_path %>/util/juso2.js" ></script>
@@ -86,14 +86,25 @@
 						 function update(){
 							 /* ★ leni ★ 현재 비밀번호 input을 만들고 update()에서 비교해야 할 듯, 프롬프트로 하면 비밀번호가 노출 됨 */ 
       						var user_pw = prompt("기존 비밀번호를 입력해주세요.", "");
-
      						 if (user_pw != '<%=user.getPw()%>') {
 	        					alert("비밀 번호가 다릅니다.");
 	        					return false;
      						}
-     						 
+						 if(document.form.email.value.length != 0){
+								result = email_check(document.form.email.value)
+								if(result != true){
+									alert("Email을 올바른 형식으로 써주세요.");
+								}	
+							console.log("result: "+result);
+							return result;
+							}
      						return true;
 						 }
+						}
+						function email_check( email ) {    
+						    var regex=/([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+						    return (email != '' && email != 'undefined' && regex.test(email)); 
+						}
    						</script>
 						<button type="button" onclick="member_delete()">회원 탈퇴</button>
 						<script>
