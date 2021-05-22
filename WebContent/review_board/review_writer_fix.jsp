@@ -15,26 +15,24 @@
     <div class="total">
         <%
         	ReviewBoardDAO rbDAO = ReviewBoardDAO.getInstance();
-        	String review_no = request.getParameter("rno");
-        	ReviewPostBean rpb = rbDAO.getPost(review_no);
-
+        	
         %>
     <%@ include file="/header.jsp" %>
-      <form action="review_writer_fix_ok.jsp?rno=<%= review_no %>" method="POST">
+      <form action="review_writer_fix_ok.jsp" method="POST">
         <h1>후기작성 수정</h1>
         <div class="section">
           <ul>
             <div class="title">
-              <h3>제목 &nbsp;&nbsp;&nbsp;<input type="text" name="review_titile" value="<%= rpb.getReview_titile() %>"/></h3>
+              <h3>제목 &nbsp;&nbsp;&nbsp;<input type="text" name="title" value = "작성한 제목"/></h3>
             </div>
           </ul>
           <ul>
             <div class="content">
               <h4>후기 작성</h4>
-              <textarea name="review_detail"
+              <textarea name="detail"
                  style="overflow: auto; height: 400px"
                 cols="70"
-                rows="auto"><%= rpb.getReview_detail() %></textarea>
+                rows="auto">작성한 내용</textarea>
             </div>
           </ul>
           <div class="botton">
