@@ -72,8 +72,10 @@ function openConfirmid(inputKey, inputValue)
 						</tr>
 						<tr>
 							<th>성별</th>
-							<td><input type="radio" name="gender" value=0>남 <input
-								type="radio" name="gender" value=1>여</td>
+							<td>
+							<input type="radio" name="gender" value=0>남 
+							<input type="radio" name="gender" value=1>여
+							</td>
 						</tr>
 						<tr>
 							<th>생일</th>

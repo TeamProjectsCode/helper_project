@@ -5,6 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<%
+	int no = Integer.parseInt(request.getParameter("no"));
+%>
 <script type="text/javascript">
 	function check(){
 		
@@ -17,7 +20,7 @@
 </head>
 <body>
 	<h2>** 글 삭제 **</h2>
-	<form action="notice_delete_action.jsp" method="post" name="frm">
+	<form action="notice_delete_action.jsp?no=<%=no %>" method="post" name="frm">
 		<input type="button" onclick="check()" value="삭제 하기" />
 		<input type="button" value="아니요" onclick="location.href='notice_list.jsp'"/>
 	</form>

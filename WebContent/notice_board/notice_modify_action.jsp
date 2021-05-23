@@ -2,16 +2,18 @@
 <%@page import="db.notifyBoardBeans.NoticeDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    <% request.setCharacterEncoding("utf-8"); %>
-<jsp:useBean id="DTO" class="db.notifyBoardBeans.NoticeDTO"/>
-<jsp:setProperty property="*" name="DTO"/>
+<jsp:useBean id="dto" class="db.notifyBoardBeans.NoticeDTO"/>
+<jsp:setProperty property="*" name="dto"/>
+<% 
+    	request.setCharacterEncoding("utf-8");
+		NoticeDAO dao = NoticeDAO.getInstance();
+		int x = dao.updateEdit(dto);
+		String p_helper_path = request.getContextPath();
+%>
 
 <%
-	NoticeDAO dao = NoticeDAO.getInstance();
-	int x = dao.updateEdit(DTO);
-	
 	if(x == 1){
-		response.sendRedirect("notice_list.jsp");
+		response.sendRedirect(p_helper_path+"/notice_board/notice_reading.jsp");
 	}else{
 %>
 		<script language="JavaScript" >

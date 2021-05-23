@@ -18,8 +18,8 @@
 <%
 	NoticeDAO dao = NoticeDAO.getInstance();
 	ArrayList<NoticeDTO>list = dao.getDataAll() ;
-	int i,no,creator_no,category,hits;
-	String title,detail;
+	int i,no,creator_no,hits;
+	String title,detail,category;
 	Timestamp created_at;
 %>
 <!DOCTYPE html>
@@ -33,7 +33,7 @@
  <body>
     <div class="total">
       <%@ include file="/header.jsp" %>
-      <form>
+      <form action = "notice_write.jsp" method = "post">
         <h1>공지 사항</h1>
         <div class="section">
         <div class = "serch">
@@ -42,7 +42,7 @@
             <div class="list" style="overflow: auto; height: 400px">
                 <table>
                     <tr>
-                        <th>글번호</th>
+                       
                         <th>카테고리</th>
                         <th style="width: 500px;"><a href="#">제목</a></th>
                         <th>게시일</th>
@@ -62,12 +62,12 @@
                     
                     
 						<tr>
-							<td><%=no%></td>
-							<td><%= category %></td>
-							<td><a href="notice_reading.jsp?no=<%= no%>"><%= title%></a></td>
-							<td><%=created_at%></td>
-							<td><%=creator_no%></td>
-							<td><%=hits%></td>
+							
+							<td><%= list.get(i).getCategory() %></td>
+							<td><a href="notice_reading.jsp?no=<%= no%>"><%= list.get(i).getTitle()%></a></td>
+							<td><%=list.get(i).getCreated_at()%></td>
+							<td><%=list.get(i).getCreator_no()%></td>
+							<td><%=list.get(i).getHits()%></td>
 						</tr>
 					<%
 					System.out.println(no);
@@ -75,7 +75,17 @@
 					%>
                 </table>
             </div>
+			<%
+			String id = (String)session.getAttribute("id");
+			boolean check = id.startsWith("ADMIN_");
+				if(check==true){
+	            %>
             <div class="button">
+	            <button type="submit">글쓰기</button>
+			</div>
+	            <%
+			}
+			%>
             <%--  <%
 			String admin_id = request.getParameter("id");
 			String admin_pass = request.getParameter("pass");
@@ -84,13 +94,12 @@
 			if(b){
 				session.setAttribute("adminOk", admin_id);
 			%> --%>
-			<button type="submit" onclick="location.href='notice_write.jsp'">글쓰기</button>
+			
 			<%-- 
         		<%
 			}
                      %>
 				 --%>
-			</div>
         </div>
       </form>
       <div class ="space"></div>

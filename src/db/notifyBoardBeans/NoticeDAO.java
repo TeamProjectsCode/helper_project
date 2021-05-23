@@ -89,7 +89,7 @@ public class NoticeDAO{
 				NoticeDTO dto = new NoticeDTO();
 				dto.setNo(rs.getInt("no"));
 				dto.setCreated_at(rs.getTimestamp("created_at"));
-				dto.setCategory(rs.getInt("category"));
+				dto.setCategory(rs.getString("category"));
 				dto.setCreator_no(rs.getInt("creator_no"));
 				dto.setTitle(rs.getString("title"));
 				dto.setHits(rs.getInt("hits"));
@@ -123,7 +123,7 @@ public class NoticeDAO{
 			
 			psmt = con.prepareStatement(sql);
 			
-			psmt.setInt(1, dto.getCategory());
+			psmt.setString(1, dto.getCategory());
 			psmt.setString(2, dto.getTitle());
 			psmt.setString(3, dto.getDetail());
 			psmt.setInt(4, dto.getCreator_no());
@@ -138,90 +138,80 @@ public class NoticeDAO{
 	}
 	
 	// 공지사항 상세보기(view)
-	public NoticeDTO selectView(int no) {
+	public NoticeDTO selectView(int no,boolean hitt) {
 		System.out.println("셀렉idx:"+no);
 		NoticeDTO dto = null;
-
-		String sql = "SELECT * FROM notify_board " + " WHERE no=?";
+		PreparedStatement pstmtUp=null;
+		String sql="";
 		
 		try {
+			con = DBConnection.getConnection();
+			
+			if (hitt==true) {
+				sql="update notify_board set hits=hits+1 where no=?";
+				pstmtUp = con.prepareStatement(sql);
+				pstmtUp.setInt(1, no);
+				pstmtUp.executeUpdate();
+				pstmtUp.close();
+			}
+			
+			sql = "SELECT * FROM notify_board " + " WHERE no=?";
 			psmt = con.prepareStatement(sql);
 			psmt.setInt(1, no);
 			rs = psmt.executeQuery();
 			
 			if (rs.next()) {
 				dto = new NoticeDTO();
-
 				dto.setNo(rs.getInt("no"));
 				dto.setCreated_at(rs.getTimestamp("created_at"));
-				dto.setCategory(rs.getInt("category"));
+				dto.setCategory(rs.getString("category"));
 				dto.setCreator_no(rs.getInt("creator_no"));
 				dto.setTitle(rs.getString("title"));
 				dto.setHits(rs.getInt("hits"));
 				dto.setDetail(rs.getString("detail"));
-
 			}
 		} 
 		catch (Exception e) {
-			
 			e.printStackTrace();
 		}
-
 		return dto;
 	}
-	
 	// 공지사항 게시물 수정하기
 	public int updateEdit(NoticeDTO dto) {
-
+		String sql="";
 		int x = -1;
-		
 		try {
-			String sql = " UPDATE notify_board SET " 
+			con = DBConnection.getConnection();
+			sql = " UPDATE notify_board SET " 
 					+ " title=?, detail=?, category=? " 
 					+ " WHERE no=? ";
-
 			psmt = con.prepareStatement(sql);
-			
 			psmt.setString(1, dto.getTitle());
 			psmt.setString(2, dto.getDetail());
-			psmt.setInt(3, dto.getCategory());
+			psmt.setString(3, dto.getCategory());
 			psmt.setInt(4, dto.getNo());
 		    psmt.executeUpdate();
 		    x =1;
 		} 
 		catch (Exception e) {
-			
 			e.printStackTrace();
 		}
-
 		return x;
 	}
-	
 	// 게시물 삭제하기
-	public int delete(String idx) {
-		
-		String[] checkDel = idx.split(",");
-		
-		int affected = 0;
-		
+	public int delete(NoticeDTO dto) {
+		int x = 0;
 		try {
-			
 			String sql = "DELETE FROM notify_board WHERE no=?";
-
 			psmt = con.prepareStatement(sql);
-			psmt.setString(1, checkDel[0]);
-
-			affected = psmt.executeUpdate();
-			
+			psmt.setInt(1, dto.getNo());
+			x = psmt.executeUpdate();
 		} 
 		catch (Exception e) {
-			
 			System.out.println("delete중 예외발생");
 			e.printStackTrace();
 		}
-
-		return affected;
+		return x;
 	}
-	
 }
 	

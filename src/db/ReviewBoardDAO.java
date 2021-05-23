@@ -12,38 +12,23 @@ public class ReviewBoardDAO {
 	public static ReviewBoardDAO getInstance() {
 		return instance;
 	}
-	public ReviewPostBean updateReview(String review_post_no) {
+	
+	public int deleteReivew(String review_no, ReviewPostBean rb) {
 		Connection con = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "UPDATE REVIEW_BOARD SET TITLE = ?, DETAIL = ? WHERE NO = ?";
-		ReviewPostBean rpb = new ReviewPostBean();
-		String title = rpb.getReview_titile();
-		String detail = rpb.getReview_detail();
+		String sql = "DELETE FROM REVIEW_BOARD WHERE NO = ? AND CREATOR_NO = ?";
+		int result = -1;
 		try {
 			con=DBConnection.getConnection();
 			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, Integer.valueOf(review_post_no));
-			pstmt.setString(2, title);
-			pstmt.setString(3, detail);
-			
-			rs=pstmt.executeQuery();
+			pstmt.setInt(1, Integer.valueOf(review_no));
+			pstmt.setInt(2, rb.getCreator());
+			result = pstmt.executeUpdate();
+			System.out.println("삭제성공");
 		}catch (Exception e) {
+			System.out.println("리뷰삭제실패");
 			// TODO: handle exception
-		}
-		sql = "SELECT TITLE, DETAIL FROM REVIEW_BOARD WHERE NO = ?";
-		try {
-			con=DBConnection.getConnection();
-			pstmt=con.prepareStatement(sql);
-			pstmt.setInt(1, Integer.valueOf(review_post_no));
-			rs=pstmt.executeQuery();
-			if (rs.next()) {
-				rpb=new ReviewPostBean();
-				rpb.setReview_titile(rs.getString("TITLE"));
-				rpb.setReview_detail(rs.getString("DETAIL"));
-			}
-		} catch (Exception e) {
-			System.out.println("실패" + e);
 		} finally {
 			try {
 				if(con != null) con.close();
@@ -53,7 +38,36 @@ public class ReviewBoardDAO {
 				// TODO: handle exception
 			}
 		}
-		return rpb;
+		return result;
+		
+	}
+	
+	public int updateReview(String review_no, ReviewPostBean rb) {
+		Connection con = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		String sql = "UPDATE REVIEW_BOARD SET TITLE = ?, DETAIL = ? WHERE NO = ?";
+		int result = -1;
+		try {
+			con=DBConnection.getConnection();
+			pstmt=con.prepareStatement(sql);
+			pstmt.setString(1, rb.getReview_titile());
+			pstmt.setString(2, rb.getReview_detail());
+			pstmt.setInt(3, Integer.valueOf(review_no));
+			result = pstmt.executeUpdate();
+		}catch (Exception e) {
+			System.out.println("수정실패");
+			// TODO: handle exception
+		} finally {
+			try {
+				if(con != null) con.close();
+				if(pstmt != null) pstmt.close();
+				if(rs != null) rs.close();
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+		}
+		return result;
 		
 	}
 	public ReviewPostBean getPost(String review_post_no) {

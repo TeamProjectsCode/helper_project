@@ -59,7 +59,10 @@
             <button type="button" value = "뒤로가기" onclick="location.href='review_list.jsp'">뒤로가기</button>
        		</div>
         	<div class="button">
-            <button type="button" value = "수정하기" onclick="location.href='review_writer_fix.jsp'">수정학</button>
+            <button type="button" value = "수정하기" onclick="location.href='review_writer_fix.jsp?rno=<%= review_no %>'">수정하기</button>
+       		</div>
+       		<div class="button">
+            <button type="button" value = "삭제하기" onclick="location.href='review_delete.jsp?rno=<%= review_no %>'">삭제하기</button>
        		</div>
         </div>
       </form>
