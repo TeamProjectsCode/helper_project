@@ -20,14 +20,16 @@ public class ReviewPostDAO {
 			con = DBConnection.getConnection();
 			
 			sql="INSERT INTO REVIEW_BOARD(NO, CREATOR_NO, TITLE, DETAIL, JOB_POST_NO) VALUES(REVIEW_BOARD_NO_SEQ.nextval, ?, ?, ?, ?)";
-			int creator = (rb.getCreator());
-			String title = (rb.getReview_titile());
-			String review = (rb.getReview_detail());
+			int creator = rb.getCreator();
+			String title = rb.getReview_titile();
+			String review = rb.getReview_detail();
+			int jobPostNo = rb.getJob_post();
 			pstmt=con.prepareStatement(sql);
 			pstmt.setInt(1, creator);
 			pstmt.setString(2, title);
 			pstmt.setString(3, review);
 			pstmt.setInt(4, 1);
+//			pstmt.setInt(4, jobPostNo);
 			pstmt.executeUpdate();
 			re=1;	
 			
