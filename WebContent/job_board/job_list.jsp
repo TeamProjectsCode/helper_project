@@ -2,7 +2,7 @@
 <%@page import="java.util.ArrayList"%>
 <%@page import="db.JobPostDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    %>
+    pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
         <!-- ★leni★ class list 사용하는지 여쭤보고 수정가능하면 수정하기 -->
@@ -10,6 +10,8 @@
         <%
         String location_first = request.getParameter("location_first");
         String location_second = request.getParameter("location_second");
+        System.out.println("list F: "+location_first);
+        System.out.println("list S: "+location_first);
         JobPostDAO jpDAO = JobPostDAO.getInstance();
         jpDAO.setCount(location_first, location_second);
         ArrayList<JobPostSubBean> jpsl = jpDAO.getList(location_first, location_second);
