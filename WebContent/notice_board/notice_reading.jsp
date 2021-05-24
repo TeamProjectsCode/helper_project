@@ -52,8 +52,17 @@
 			<tr>
 				<td colspan="4" align="right" height="50" >
                <div  class="btn">
+			<%
+			String id = (String)session.getAttribute("id");
+			boolean check = id.startsWith("ADMIN_");
+				if(check==true){
+	            %>
+            
                <button type="submit" onclick="location.href='notice_modify_form.jsp?no=<%=no %>'">수정하기</button>
                <button type="submit" onclick="location.href='notice_delete.jsp?no=<%=no %>'" >삭제하기</button>
+	            <%
+			}
+			%>
                <button type="submit" onclick="location.href='notice_list.jsp'">글목록</button>
 				</div>
 				</td>
