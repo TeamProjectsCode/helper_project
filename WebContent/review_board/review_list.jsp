@@ -1,3 +1,4 @@
+<%@page import="db.reviewBeans.ReviewBoard"%>
 <%@page import="db.ReviewBoardDAO"%>
 <%@page import="java.sql.Timestamp"%>
 <%@page import="java.util.ArrayList"%>
@@ -30,7 +31,7 @@
 	  	ReviewPostBean rpb = new ReviewPostBean();
 	  	
     	ReviewBoardDAO rbDAO = ReviewBoardDAO.getInstance();
-    	ArrayList<ReviewPostBean> rplist = rbDAO.getList();
+    	ArrayList<ReviewBoard> rplist = rbDAO.getList();
 	  	String title;
 	  	Timestamp createdat;
 	  	int hits;
@@ -75,9 +76,9 @@
 	    			for(int i=0; i<rplist.size(); i++){
    				%>
    						<tr>
-   							<td style="width: 500px;" id="review_no"><a href="review_reading.jsp?rno=<%=rplist.get(i).getNo()%>"><%=rplist.get(i).getReview_titile() %></a></td>
-   							<td class="time"><%=rplist.get(i).getCreated_at() %></td>
-   							<td class="hit">조회수 : <%=rplist.get(i).getReview_hits() %></td>
+   							<td style="width: 500px;" id="review_no"><a href="review_reading.jsp?rno=<%=rplist.get(i).getNo()%>"><%=rplist.get(i).getTitle() %></a></td>
+   							<td class="time"><%=rplist.get(i).getCreatedat() %></td>
+   							<td class="hit">조회수 : <%=rplist.get(i).getHits() %></td>
    							<td><input type="button" value="신고"></td>
    						</tr>
    				<%
@@ -97,38 +98,3 @@
   </body>
 </html>
 <script type="text/javascript" src="resources/js/notice-write.js"></script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

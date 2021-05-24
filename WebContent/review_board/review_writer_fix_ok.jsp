@@ -4,7 +4,7 @@
 <jsp:useBean id="rb" class="db.reviewBeans.ReviewPostBean"></jsp:useBean>
 <jsp:setProperty property="*" name="rb"/>
 <%
-	request.setCharacterEncoding("utf-8");
+	request.setCharacterEncoding("UTF-8");
 	String user_no = (String)session.getAttribute("no");
 	String p_helper_path = request.getContextPath();
 	
