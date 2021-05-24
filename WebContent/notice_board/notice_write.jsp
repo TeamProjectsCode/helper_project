@@ -34,7 +34,7 @@ function notice_check() {
 			<div class="detail">
 				<ul>
 					<h3>
-						제목 &nbsp;&nbsp;&nbsp;<input type="text" name="title">
+						제목 &nbsp;&nbsp;&nbsp;<input type="text" name="title" width="100">
 						<p></p>
 						<br>
 						카테고리 &nbsp;&nbsp;&nbsp;<select name="category">
@@ -49,11 +49,11 @@ function notice_check() {
 				</ul>
 					<ul>
 					<h3>상세 내용</h3>
-					<textarea cols="60" rows="10" name="detail"></textarea>
+					<textarea cols="50" rows="10" name="detail"></textarea>
 					</ul>
 			<div class="btn">
 				<button type="submit" onclick="notice_check()">작성하기</button>
-				<span><button type="reset">다시쓰기</button></span>
+				<button type="reset">다시쓰기</button>
 			</div>
 			</div>
 			</div>
