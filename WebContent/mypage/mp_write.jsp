@@ -62,7 +62,6 @@
 	   				%>
 						<tr style="height: 50px;">
 							<td><%=mjblist.get(i).getCreated_at() %></td>
-							<td><%=mjblist.get(i).getNo() %></td>
 							<td style="width: 500px;"><a href="<%=p_helper_path%>/job_board/job_detail.jsp?no=<%=mjblist.get(i).getNo()%>"><%=mjblist.get(i).getJob_titile() %></a></td>
 						</tr>
 					<%
@@ -80,7 +79,6 @@
 	   				%>
 						<tr style="height: 50px;">
 							<td><%=mrblist.get(i).getCreatedat() %></td>
-							<td><%=mrblist.get(i).getNo() %></td>
 							<td style="width: 500px;"><a href="<%=p_helper_path%>/review_board/review_reading.jsp?rno=<%=mrblist.get(i).getNo()%>"><%=mrblist.get(i).getTitle() %></a></td>
 						</tr>
 					<%
