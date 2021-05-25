@@ -31,6 +31,16 @@ function openConfirmid(inputKey, inputValue)
             "menubar = no, scrollbars = no, resizable = no," +
             "width = 300, height = 200");
 }
+
+function openConfirmCallBack(key, value){
+	if(key == "id"){
+		document.form.id.value = value;
+	}
+	else if (key == "nick"){
+		document.form.nick.value = value;
+	}
+	
+}
 </script>
 </head>
 <body>
