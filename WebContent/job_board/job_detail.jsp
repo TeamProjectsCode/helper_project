@@ -127,9 +127,16 @@ JobPostBean jp = jpDAO.getPost(user_no, job_post_no);
 				</script>
 				<%
 					} else {
+						if(jp.getMy_state().equals(" ")){
 				%>
-				<button type="button" onclick="change()" id="apply">신청하기</button>
+							<button type="button" onclick="change()" id="apply">신청하기</button>
 				<%
+						}
+						else {
+				%>
+							<button type="button"  id="apply" disabled >신청중</button>
+				<%
+						}
 					}
 				%>
 				<script>

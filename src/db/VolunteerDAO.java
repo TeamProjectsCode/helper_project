@@ -90,8 +90,8 @@ public class VolunteerDAO {
 	public ArrayList<MyVolunteerBean> getMyList(String user_no){
 		
 		ArrayList<MyVolunteerBean> mvList = new ArrayList<MyVolunteerBean>();
-		String query = "";
 		
+		String query = "SELECT * FROM GET_MY_VOLUNTEER WHERE USER_NO = ?";
 		
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -104,7 +104,13 @@ public class VolunteerDAO {
 			
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
-				MyVolunteerBean low = ??;
+				MyVolunteerBean low = new MyVolunteerBean();
+				low.setPost_no(rs.getInt("JOB_POST_NO"));
+				low.setJob_title(rs.getString("JOB_TITLE"));
+				low.setJob_day(rs.getString("JOB_DAY"));
+				low.setJob_time_start(rs.getString("JOB_TIME_START"));
+				low.setJob_time_end(rs.getString("JOB_TIME_END"));
+				low.setMy_state(rs.getString("MY_STATE"));
 				mvList.add(low);
 			}
 			
