@@ -97,7 +97,7 @@
           <%   
           if(user_no == jp.getCreator_no()){
           %>
-          <button type="submit" >수정하기</button>
+          <button type="submit">수정하기</button>
           <button type="button" onclick="removeCheck()">삭제하기</button>
           <%
           } else {
