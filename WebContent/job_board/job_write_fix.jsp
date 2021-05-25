@@ -5,6 +5,8 @@
 <%
 request.setCharacterEncoding("UTF-8");
 String job_post_no = request.getParameter("no");
+// user_no 받아오는 부분 필요
+
 JobPostDAO jpDAO = JobPostDAO.getInstance();
 /* System.out.println("no: "+job_post_no); */
 JobPostBean jp = jpDAO.getPost(job_post_no);

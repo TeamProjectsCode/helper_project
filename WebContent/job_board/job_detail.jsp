@@ -20,7 +20,7 @@ try {
 	user_no = 0;
 }
 JobPostDAO jpDAO = JobPostDAO.getInstance();
-JobPostBean jp = jpDAO.getPost(job_post_no);
+JobPostBean jp = jpDAO.getPost(user_no, job_post_no);
 %>
 <title><%=jp.getJob_title()%></title>
 </head>
@@ -90,11 +90,11 @@ JobPostBean jp = jpDAO.getPost(job_post_no);
 								<td><h3>모집 인원 :</h3></td>
 								<td><h3><%=jp.getJob_num_of_people()%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									</h3></td>
-								<td><h3 id="state"></h3></td>
+								<td><h3 id="my_state" value="<%=jp.getMy_state()%>"></h3></td>
 							</tr>
 							<tr>
 								<td><h3>승인 인원 :</h3></td>
-								<td><h3 id="count"></h3></td>
+								<td><h3 id="worker_count" value="<%=jp.getWorker_count()%>"></h3></td>
 							</tr>
 						</table>
 						<h3>
