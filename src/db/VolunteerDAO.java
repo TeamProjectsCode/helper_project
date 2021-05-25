@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+import db.volunteerBeans.MyVolunteerBean;
 import db.volunteerBeans.VolunteerBean;
 
 public class VolunteerDAO {
@@ -14,14 +15,10 @@ public class VolunteerDAO {
 		return instance;
 	}
 	
-	public ArrayList<VolunteerBean> getList(String column, String no) {
+	public ArrayList<VolunteerBean> getList(String post_no) {
 		
 		ArrayList<VolunteerBean> vList = new ArrayList<VolunteerBean>();
-		String query = null;
-		
-		if (column.equals("POST_NO")) query = "SELECT * FROM VOLUNTEERS WHERE POST_NO = ?";
-		else if (column.equals("USER_NO")) query = "SELECT * FROM VOLUNTEERS WHERE USER_NO = ?";
-		else return vList;
+		String query = "SELECT * FROM VOLUNTEERS WHERE POST_NO = ?";
 		
 		
 		Connection conn = null;
@@ -31,7 +28,7 @@ public class VolunteerDAO {
 		try {
 			conn = DBConnection.getConnection();
 			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, no);
+			pstmt.setString(1, post_no);
 			
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
@@ -71,12 +68,9 @@ public class VolunteerDAO {
 			pstmt.setString(2, post_no);
 			pstmt.setInt(3, 0);
 			
-			System.out.println("add: "+pstmt.executeUpdate());
-			isSuccess = true;
-			
-//			if(pstmt.executeUpdate() == 0) {
-//				isSuccess = true;
-//			}
+			if(pstmt.executeUpdate() != 0) {
+				isSuccess = true;
+			}
 
 		} catch (Exception e) {
 			System.out.println("VolunteerDAO/addVolunteer()/try: "+e);
@@ -91,6 +85,43 @@ public class VolunteerDAO {
 		}
 		
 		return isSuccess;
+	}
+	
+	public ArrayList<MyVolunteerBean> getMyList(String user_no){
+		
+		ArrayList<MyVolunteerBean> mvList = new ArrayList<MyVolunteerBean>();
+		String query = "";
+		
+		
+		Connection conn = null;
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			conn = DBConnection.getConnection();
+			pstmt = conn.prepareStatement(query);
+			pstmt.setString(1, user_no);
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				MyVolunteerBean low = ??;
+				mvList.add(low);
+			}
+			
+		} catch (Exception e) {
+			System.out.println("VolunteerDAO/getMyList()/try: "+e);
+			
+		} finally {
+			try {
+				if (!conn.isClosed()) conn.close();
+				if (!pstmt.isClosed()) pstmt.close();
+				if (!rs.isClosed()) rs.close();
+			} catch (Exception e) {
+				System.out.println("VolunteerDAO/getMyList()/finally: "+e);
+			}
+		}
+		
+		return mvList;
 	}
 	
 	/*

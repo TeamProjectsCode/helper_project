@@ -144,7 +144,7 @@ public class JobPostDAO {
 		ResultSet rs = null;
 		
 //		String query = "SELECT * FROM GET_POST WHERE JOB_NO = ?";
-		String query = "SELECT *,"
+		String query = "SELECT GET_POST.*,"
 				+ " GET_VOLUNTEER_STATE(?, ?) AS \"MY_STATE\","
 				+ " GET_WORKER_COUNT(?)       AS \"WORKER_COUNT\""
 				+ " FROM GET_POST"

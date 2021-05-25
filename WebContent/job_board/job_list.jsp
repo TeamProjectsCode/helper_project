@@ -11,8 +11,7 @@
         <%
         String location_first = request.getParameter("location_first");
         String location_second = request.getParameter("location_second");
-        System.out.println("list F: "+location_first);
-        System.out.println("list S: "+location_first);
+       
         JobPostDAO jpDAO = JobPostDAO.getInstance();
         jpDAO.setCount(location_first, location_second);
         ArrayList<JobPostSubBean> jpsl = jpDAO.getList(location_first, location_second);

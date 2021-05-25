@@ -19,8 +19,10 @@ try {
 } catch (NumberFormatException e) {
 	user_no = 0;
 }
+
 JobPostDAO jpDAO = JobPostDAO.getInstance();
 JobPostBean jp = jpDAO.getPost(user_no, job_post_no);
+
 %>
 <title><%=jp.getJob_title()%></title>
 </head>
@@ -90,11 +92,11 @@ JobPostBean jp = jpDAO.getPost(user_no, job_post_no);
 								<td><h3>모집 인원 :</h3></td>
 								<td><h3><%=jp.getJob_num_of_people()%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 									</h3></td>
-								<td><h3 id="my_state" value="<%=jp.getMy_state()%>"></h3></td>
+								<td><h3 id="my_state"><%=jp.getMy_state()%></h3></td>
 							</tr>
 							<tr>
 								<td><h3>승인 인원 :</h3></td>
-								<td><h3 id="worker_count" value="<%=jp.getWorker_count()%>"></h3></td>
+								<td><h3 id="worker_count" ><%=jp.getWorker_count()%></h3></td>
 							</tr>
 						</table>
 						<h3>
@@ -134,10 +136,11 @@ JobPostBean jp = jpDAO.getPost(user_no, job_post_no);
           function change() {
         	  		if(document.getElementById("apply").innerHTML=="신청하기"){
         		 		 if(confirm("정말로 신청하시겠습니까?") == true){
-        		 			const target = document.getElementById('apply');
+        		 			 document.location.href="<%=p_helper_path%>/job_board/job_apply_ok.jsp?no=<%=job_post_no%>";
+        		 			/* const target = document.getElementById('apply');
         			  		target.disabled = true;
         			  		document.getElementById("apply").innerHTML="신청중";
-        			  		document.getElementById("state").innerHTML="지원중";
+        			  		document.getElementById("state").innerHTML="지원중"; */
         		  }else{
         			  btn.disabled = false;
         		  }
@@ -145,7 +148,7 @@ JobPostBean jp = jpDAO.getPost(user_no, job_post_no);
         	  }
           function removeCheck(){
         	  if(confirm("정말 삭제하겠습니까?") == true){
-        		  document.location.href="<%=p_helper_path%>/job_board/job_delete.jsp?no=<%=job_post_no%>"
+        		  document.location.href="<%=p_helper_path%>/job_board/job_delete.jsp?no=<%=job_post_no%>";
         	  }
           }
           </script>
