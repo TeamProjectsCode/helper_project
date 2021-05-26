@@ -123,7 +123,6 @@ JobPostBean jp = jpDAO.getPost(user_no, job_post_no);
 				<script>
 					function opner(){
 						window.open('applicant.jsp?post_no=<%=job_post_no%>','','width=400px,height=400px')
-					}
 				</script>
 				<%
 					} else {
