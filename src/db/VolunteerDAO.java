@@ -157,7 +157,6 @@ public class VolunteerDAO {
 			pstmt.setString(3, user_no);
 
 			 if (pstmt.executeUpdate() != 0) {
-				 System.out.println("set: "+state);
 				 isSuccess = state;
 			 }
 

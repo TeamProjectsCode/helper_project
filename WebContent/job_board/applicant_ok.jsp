@@ -6,10 +6,6 @@ String post_no = request.getParameter("post_no");
 String user_no = request.getParameter("user_no");
 String state = request.getParameter("state");
 
-System.out.println(post_no);
-System.out.println(user_no);
-System.out.println(state);
-
 VolunteerDAO vDAO = VolunteerDAO.getInstance();
 String isSuccess = vDAO.setState(user_no, post_no, state);
 if(isSuccess.equals("-1")){

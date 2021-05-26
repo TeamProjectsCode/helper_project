@@ -105,8 +105,7 @@
 			}
 			%>
 	</table>
-		<script>
-		</script>
+	<button onclick="window.opener.location.reload();window.close();">Close Me</button>
 	
 </body>
 </html>
