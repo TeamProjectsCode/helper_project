@@ -13,6 +13,7 @@
 <body>
 <%
 String user_no = (String) session.getAttribute("no");
+
 VolunteerDAO vDAO = VolunteerDAO.getInstance();
 ArrayList<MyVolunteerBean> myList = vDAO.getMyList(user_no);
 %>
@@ -48,7 +49,7 @@ ArrayList<MyVolunteerBean> myList = vDAO.getMyList(user_no);
 							<th width = "70px;">시 간</th>
 							<th width="200px;">지원 업무 명</th>
 							<th width = "70px;">상태</th>
-							<th width = "150px;">현재 지원자 </th>
+							<th width = "150px;">버튼으로 바꿀 것 -> 후기쓰러가기 (단, 상태가 승인일 때 만) </th>
 						</tr>
 					<%
 					for(MyVolunteerBean low: myList){
@@ -58,7 +59,15 @@ ArrayList<MyVolunteerBean> myList = vDAO.getMyList(user_no);
 							<td width = "70px;"><%=low.getTime() %></td>
 							<td width="200px;"><a href="<%=p_helper_path%>/job_board/job_detail.jsp?no=<%=low.getPost_no()%>"><%=low.getJob_title() %></a></td>
 							<td width= "70px;"><%=low.getMy_state() %></td>
-							<td width = "150px;">현재 지원자 </td>
+							<td width = "150px;">
+					<%
+						if(low.getMy_state().equals("승인")){
+					%>
+							<button type="button" onclick="location.href='<%=p_helper_path%>/review_board/review_writer.jsp?no=<%=low.getPost_no()%>'">후기작성</button>
+					<%
+						} 
+					%>
+							 </td>
 						</tr>
 					<%
 					}

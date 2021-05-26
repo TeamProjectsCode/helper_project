@@ -12,7 +12,7 @@
 <script type="text/javascript" src="script.js" charset="utf-8"></script>
 
 <%
-	String job_post_no = request.getParameter("no");
+String job_post_no = request.getParameter("no");
 int user_no;
 try {
 	user_no = Integer.valueOf((String) session.getAttribute("no"));
@@ -132,7 +132,11 @@ JobPostBean jp = jpDAO.getPost(user_no, job_post_no);
 							<button type="button" onclick="change()" id="apply">신청하기</button>
 				<%
 						}
-						else {
+						else if(jp.getMy_state().equals("승인")){
+				%>
+							<button type="button"  id="apply" disabled >당첨!</button>
+				<%
+						} else {
 				%>
 							<button type="button"  id="apply" disabled >신청중</button>
 				<%
