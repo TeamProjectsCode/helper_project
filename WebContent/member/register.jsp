@@ -12,8 +12,7 @@
 // 아이디 중복 여부를 판단
 function openConfirmid(inputKey, inputValue)
 {
-	console.log(inputKey);
-	console.log(inputValue);
+
       // 아이디를 입력했는지 검사
       if(inputValue == "")
       {
