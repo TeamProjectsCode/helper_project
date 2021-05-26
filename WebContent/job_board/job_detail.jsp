@@ -122,7 +122,7 @@ JobPostBean jp = jpDAO.getPost(user_no, job_post_no);
 				<button type="button" onclick="opner()">지원현황</button>
 				<script>
 					function opner(){
-						window.open('applicant.jsp?no=<%=user_no%>','','width=400px,height=400px')
+						window.open('applicant.jsp?post_no=<%=job_post_no%>','','width=400px,height=400px')
 					}
 				</script>
 				<%
