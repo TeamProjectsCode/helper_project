@@ -43,7 +43,7 @@ String p_helper_path = request.getContextPath();
 						<%
 						}else{
 						%>
-						<li><a href="<%=p_helper_path%>/member/login.jsp">LOGIN</a></li>
+						<li ><a href="<%=p_helper_path%>/member/login.jsp">LOGIN</a></li>
 						<%
 						}
 						%>
@@ -169,17 +169,18 @@ String p_helper_path = request.getContextPath();
 				<div class="contents2">
 				다양한 이벤트 소식과 중요한 공지를 확인해보세요!
 				</div>
-				<div class="more"><a href="notice_board/notice_list.jsp?">MORE</a></div>
+				<div class="more"><a href="notice_board/notice_list.jsp">MORE</a></div>
 			</li>
 		</ul>
 	</div>
 	<div class="main_text1">
-		<h1>SERVICE</h1>
-		<div class="contents1">당신의 시간을 삽니다</div>
+		<h1>NOTICE</h1>
+		<div class="contents1">다양한 이벤트와 공지사항을 알려드립니다</div>
 		<div class="service">
 			<div class="food_photo">
 				<img src="./images/sec.png">
 			</div>
+
 			<div class="contents2">
 <%
 	sql = "SELECT * FROM(SELECT TITLE, DETAIL FROM NOTIFY_BOARD ORDER BY CREATED_AT DESC) WHERE ROWNUM <= 1";
@@ -208,6 +209,7 @@ String p_helper_path = request.getContextPath();
 			<li></li>
 		</ul>
 	</div>
+	
 	 <%@ include file="/footer.jsp" %>
 </body>
 </html>
