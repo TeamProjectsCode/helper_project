@@ -173,7 +173,6 @@ String p_helper_path = request.getContextPath();
 			</li>
 		</ul>
 	</div>
-
 	<div class="main_text1">
 		<h1>SERVICE</h1>
 		<div class="contents1">당신의 시간을 삽니다</div>
@@ -182,15 +181,17 @@ String p_helper_path = request.getContextPath();
 				<img src="./images/sec.png">
 			</div>
 			<div class="contents2">
-				<h2>가나다라마바사아자차카타파하</h2>
-				가가가가가가가가가가가가가가가가가가가가가가가가가가가 <br>
-				나나나나나나나나나나나나나나나나나나나나나나나나나나나나나나나나 <br> 다다다다다다다다다다다다다다다다다다다다 <br>
-				<br> 라라라라라라라라라라라라라라라라라라라라라라라라라라 <br> 마마마마마마마마마마마마마마마마마마마.
-				<br> 바바바바바밥바바바바바바바바바바바바바바바바바바바 <br>
-				사사사사사사사사사사사사사사사사사사사사사사사사사사사사사사 <br>
-				<br> 아아아아아아아아아아아아아아아아아아아아아아아아아아아아 <br>
-				차차차차차차차차차차차차차차차차차차차차차차차 <br> 사사사사사사사사사사사사사사사사사사사사사사사사사사사 <br>
-				자자자자자자자자자자자자자자자자자자자자자<br>
+<%
+	sql = "SELECT * FROM(SELECT TITLE, DETAIL FROM NOTIFY_BOARD ORDER BY CREATED_AT DESC) WHERE ROWNUM <= 1";
+	stmt = conn.createStatement();
+	rs = stmt.executeQuery(sql);
+		if(rs.next()){
+	%>
+				<h2><%=rs.getString("TITLE") %></h2>
+				<%=rs.getString("DETAIL") %><br>
+	<%
+		}	
+%>			
 			</div>
 		</div>
 	</div>
