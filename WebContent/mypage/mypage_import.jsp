@@ -29,10 +29,10 @@
 						쓴글</button>
 					<br>
 					<button type="button" onclick="location.href='mypage_apply.jsp'">지원현황</button>
-					<br>
+					<!-- <br>
 					<button type="button" onclick="location.href='mypage_point.jsp'">마이포인트조회</button>
 					<br>
-					<button type="button" onclick="location.href='mypageLike.jsp'">스크랩</button>
+					<button type="button" onclick="location.href='mypageLike.jsp'">스크랩</button> -->
 				</div>
 				<div class="mainbox">
 					<h1>회원 정보 변경</h1>

@@ -40,10 +40,10 @@
                     <button type="button" onclick="location.href='mp_write.jsp'">내가 쓴글</button>
                     <br>
                     <button type="button" onclick="location.href='mypage_apply.jsp'">지원현황</button>
-                    <br>
+                   <!--  <br>
                     <button type="button" onclick="location.href='mypage_point.jsp'">마이포인트조회</button>
                     <br>
-                    <button type="button" onclick="location.href='mypageLike.jsp'">스크랩</button>
+                    <button type="button" onclick="location.href='mypageLike.jsp'">스크랩</button> -->
 				</div>
 					<p>&nbsp;&nbsp;</p>
 					<h1>&nbsp;&nbsp;등록한 글 목록</h1>

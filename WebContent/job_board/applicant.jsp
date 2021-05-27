@@ -35,6 +35,7 @@
 
 %>
 	<table>
+	<h4>지원자</h4>
 		<tr>
 			<th><h3>지원자</h3></th>
 			<th><h3>닉네임</h3></th>
@@ -83,7 +84,9 @@
 			}
 			%>
 	</table>
+			<hr>
 		<table>
+		<h4>합격자</h4>
 		<tr>
 			<th><h3>지원자</h3></th>
 			<th><h3>닉네임</h3></th>
@@ -100,12 +103,19 @@
 						<td><%=user.getNick()%></td>
 						<td><%=user.getGrade()%></td>
 						<td id="result_div_<%=user.getNo()%>"  colspan="2" >승인 완료</td>
+						<% 
+						if(i==(okList.size()-1)){
+						%>
+						<td>&nbsp;&nbsp;&nbsp;&nbsp;<button onclick="window.opener.location.reload();window.close();">Close Me</button></td>
+						<%
+						}
+						%>
+						
 					</tr>
 				<%
 			}
 			%>
 	</table>
-	<button onclick="window.opener.location.reload();window.close();">Close Me</button>
 	
 </body>
 </html>
