@@ -49,7 +49,7 @@ ArrayList<MyVolunteerBean> myList = vDAO.getMyList(user_no);
 							<th width = "70px;">시 간</th>
 							<th width="200px;">지원 업무 명</th>
 							<th width = "70px;">상태</th>
-							<th width = "150px;">버튼으로 바꿀 것 -> 후기쓰러가기 (단, 상태가 승인일 때 만) </th>
+							<th width = "150px;"></th>
 						</tr>
 					<%
 					for(MyVolunteerBean low: myList){
