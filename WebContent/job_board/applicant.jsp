@@ -14,7 +14,7 @@
 	<style>
 		table tr td h3{padding:5px 10px;}
 		
-		button{
+		.a button{
 		width:50px;
     	background-color: blue;
     	border: none;
@@ -24,6 +24,10 @@
     	font-size: 13px;
     		cursor: pointer;
 		}
+		.b {
+		margin-top : 50px;
+		}
+		
 	</style>
 </head>
 <body>
@@ -52,8 +56,8 @@
 						<td><%=user.getNick()%></td>
 						<td><%=user.getGrade()%></td>
 					
-						<td id="pass_<%=user.getNo()%>"><button onclick="applicant_ok(<%=post_no%>, <%=user.getNo()%>)">수락</button></td>
-						<td id="fail_<%=user.getNo()%>"><button onclick="applicant_fail(<%=post_no%>, <%=user.getNo()%>)">거절</button></td>
+						<td id="pass_<%=user.getNo()%>"><button class="a" onclick="applicant_ok(<%=post_no%>, <%=user.getNo()%>)">수락</button></td>
+						<td id="fail_<%=user.getNo()%>"><button class="a" onclick="applicant_fail(<%=post_no%>, <%=user.getNo()%>)">거절</button></td>
 						<td id="result_div_<%=user.getNo()%>"  colspan="2" hidden="true"></td>
 						<script>
 							function applicant_ok(post_no, user_no){
@@ -103,19 +107,15 @@
 						<td><%=user.getNick()%></td>
 						<td><%=user.getGrade()%></td>
 						<td id="result_div_<%=user.getNo()%>"  colspan="2" >승인 완료</td>
-						<% 
-						if(i==(okList.size()-1)){
-						%>
-						<td>&nbsp;&nbsp;&nbsp;&nbsp;<button onclick="window.opener.location.reload();window.close();">Close Me</button></td>
-						<%
-						}
-						%>
 						
 					</tr>
 				<%
 			}
 			%>
 	</table>
+	<center>
+			<button class= "b" onclick="window.opener.location.reload();window.close();">Close Me</button>
+	</center>
 	
 </body>
 </html>
